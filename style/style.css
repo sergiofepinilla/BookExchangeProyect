@@ -1,0 +1,58 @@
+.w-15 {
+    width: 175px;
+}
+
+body,
+footer {
+    cursor: url(../assets/img/cursor/cursor.png), auto;
+}
+
+body {
+    /*
+    background: url(../assets/img/background.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    */
+}
+
+td:hover,
+i:hover,
+button:hover:enabled,
+a:hover,
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    cursor: url(../assets/img/cursor/pointer.png), pointer;
+}
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+/* Aplica la fuente Montserrat a los títulos */
+h1, h2 {
+    font-family: 'Amatic SC', cursive;
+    font-weight: 600;
+  }
+  
+  h3, h4 {
+    font-family: 'Amatic SC', cursive;
+  }
+.custom-link{
+    text-decoration: none;
+    font-family: 'Amatic SC',cursive;
+    font-weight: 600;
+    font-size: 1.5rem; /* aumenta el tamaño del texto */
+    line-height: 2rem; /* aumenta la altura de línea del texto */
+
+}
+
+.btn,p, span, a {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+}
+/* LOGO MOVIL*/
+.mobile-p {
+    width: 180px;
+}
+.bg-black {
+    background-color: black;
+}
