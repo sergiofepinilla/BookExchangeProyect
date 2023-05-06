@@ -23,33 +23,33 @@ require_once '../navbar/navbar.php';
                 <div class="tab-pane fade show active" id="pills-fase1" role="tabpanel" aria-labelledby="pills-fase1-tab">
                     <h1>Información del libro</h1>
                     <hr>
-                    <form>
+                    <form id="formularioCompleto" method="post" action="../includes/book_form.inc.php" enctype="multipart/form-data">
                         <div class="row">
                             <!-- Columna izquierda -->
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="nombre" class="form-label">Nombre del libro</label>
-                                    <input type="text" placeholder="Ingrese el nombre del libro *" class="form-control" id="nombre" name="nombre" required>
+                                    <label for="nombre" class="form-label">Nombre del libro *</label>
+                                    <input type="text" placeholder="Ingrese el nombre del libro *" class="form-control" id="nombre" name="nombre" maxlength="100" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="isbn" class="form-label">ISBN</label>
-                                    <input type="text" placeholder="Ingrese el ISBN del libro" class="form-control" id="isbn" name="isbn" required>
+                                    <input type="number" placeholder="Ingrese el ISBN del libro" class="form-control" id="isbn" name="isbn" maxlength="13">
                                 </div>
                                 <div class="mb-3">
                                     <label for="autor" class="form-label">Autor</label>
-                                    <input type="text" placeholder="Ingrese el autor del libro " class="form-control" id="autor" name="autor" required>
+                                    <input type="text" placeholder="Ingrese el autor del libro " class="form-control" id="autor" name="autor" maxlength="50">
                                 </div>
                             </div>
                             <!-- Columna derecha -->
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="editorial" class="form-label">Editorial</label>
-                                    <input type="text" placeholder="Ingrese la editorial del libro" class="form-control" id="editorial" name="editorial" required>
+                                    <input type="text" placeholder="Ingrese la editorial del libro" class="form-control" id="editorial" name="editorial" maxlength="50">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="genero" class="form-label">Género</label>
+                                    <label for="genero" class="form-label">Género *</label>
                                     <select class="form-select" id="genero" name="genero" required>
-                                        <option value="">Seleccione el género del libro *</option>
+                                        <option value="">Seleccione el género del libro</option>
                                         <option value="1">Acción y aventura</option>
                                         <option value="2">Biografía</option>
                                         <option value="3">Ciencia ficción</option>
@@ -79,72 +79,68 @@ require_once '../navbar/navbar.php';
                                     </select>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="estado" class="form-label">Estado del libro</label>
+                                    <label for="estado" class="form-label">Estado del libro *</label>
                                     <select class="form-select" id="estado" name="estado" required>
-                                        <option value="">Seleccione el estado del libro *</option>
+                                        <option value="">Seleccione el estado del libro</option>
                                         <option value="nuevo">Nuevo</option>
                                         <option value="usado">Usado</option>
+                                        <option value="usado">Malo</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
                         <button type="button" class="btn btn-primary" id="btnFase1">Siguiente</button>
-                    </form>
                 </div>
                 <div class="tab-pane fade" id="pills-fase2" role="tabpanel" aria-labelledby="pills-fase2-tab">
                     <h1>Precio y envio</h1>
-                    <form>
-                        <div class="mb-3 col-sm-6">
-                            <label for="precio" class="form-label">Precio</label>
-                            <div class="input-group">
-                                <input type="number" class="form-control" id="precio" name="precio" required>
-                                <span class="input-group-text">
-                                    <i class="bi bi-currency-euro"></i>
-                                </span>
-                            </div>
+                    <div class="mb-3 col-sm-6">
+                        <label for="precio" class="form-label">Precio</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="precio" name="precio" maxlength="7" required>
+                            <span class="input-group-text">
+                                <i class="bi bi-currency-euro"></i>
+                            </span>
                         </div>
-                        <div class="mb-3">
-                            <label for="cambio" class="form-check-label">¿Acepta cambios?</label>
-                            <input type="checkbox" class="form-check-input" id="cambio" name="cambio">
-                        </div>
-                        <div class="mb-3">
-                            <label for="envio" class="form-check-label">¿Realizas envios?</label>
-                            <input type="checkbox" class="form-check-input" id="envio" name="envio">
-                        </div>
-                        <div class="mb-3">
-                            <label for="descripcion" class="form-label">Descripción</label>
-                            <textarea class="form-control" id="descripcion" name="descripcion" rows="5" required></textarea>
-                        </div>
-                        <button type="button" class="btn btn-secondary" id="btnRegresar">Regresar</button>
-                        <button type="button" class="btn btn-primary" id="btnFase2">Siguiente</button>
-                    </form>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cambio" class="form-check-label">¿Acepta cambios?</label>
+                        <input type="checkbox" class="form-check-input" id="cambio" name="cambio">
+                    </div>
+                    <div class="mb-3">
+                        <label for="envio" class="form-check-label">¿Realizas envios?</label>
+                        <input type="checkbox" class="form-check-input" id="envio" name="envio">
+                    </div>
+                    <div class="mb-3">
+                        <label for="descripcion" class="form-label">Descripción</label>
+                        <textarea class="form-control" id="descripcion" name="descripcion" rows="5"></textarea>
+                    </div>
+                    <button type="button" class="btn btn-secondary" id="btnRegresar">Regresar</button>
+                    <button type="button" class="btn btn-primary" id="btnFase2">Siguiente</button>
                 </div>
                 <div class="tab-pane fade" id="pills-fase3" role="tabpanel" aria-labelledby="pills-fase3-tab">
                     <h1>Imagen del libro</h1>
                     <hr>
-                    <form>
-                        <div class="row">
-                            <!-- Columna izquierda: Seleccionar archivo -->
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <h5>Seleccione una imagen para la portada del libro</h5>
-                                    <hr>
-                                    <input class="form-control" type="file" id="imagen" name="imagen" required>
-                                </div>
-                            </div>
-                            <!-- Columna derecha: Mostrar imagen seleccionada -->
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <!-- Añade este div para mostrar la previsualización -->
-                                    <h5>Imagen del libro</h5>
-                                    <hr>
-                                    <img src="" id="imagenPrevia" alt="" style="max-width: 100%; max-height: 300px;">
-                                </div>
+                    <div class="row">
+                        <!-- Columna izquierda: Seleccionar archivo -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <h5>Seleccione una imagen para la portada del libro</h5>
+                                <hr>
+                                <input class="form-control" type="file" id="imagen" name="imagen">
                             </div>
                         </div>
-                        <button type="button" class="btn btn-secondary" id="btnRegresar2">Regresar</button>
-                        <button type="button" class="btn btn-primary" id="btnFase3">Siguiente</button>
-                    </form>
+                        <!-- Columna derecha: Mostrar imagen seleccionada -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <!-- Añade este div para mostrar la previsualización -->
+                                <h5>Imagen del libro</h5>
+                                <hr>
+                                <img src="" id="imagenPrevia" alt="" style="max-width: 100%; max-height: 300px;">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-secondary" id="btnRegresar2">Regresar</button>
+                    <button type="button" class="btn btn-primary" id="btnFase3">Siguiente</button>
                 </div>
                 <div class="tab-pane fade" id="pills-fase4" role="tabpanel" aria-labelledby="pills-fase4-tab">
                     <h1>Confirmación</h1>
@@ -160,7 +156,7 @@ require_once '../navbar/navbar.php';
                                 <li><strong>Editorial:</strong> <span id="confirmEditorial"></span></li>
                                 <li><strong>Género:</strong> <span id="confirmGenero"></span></li>
                                 <li><strong>Estado del libro:</strong> <span id="confirmEstado"></span></li>
-                                <li><strong>Precio:</strong> <span id="confirmPrecio"></span></li>
+                                <li><strong>Precio:</strong> <span id="confirmPrecio"></span>€</li>
                                 <li><strong>Acepta cambios:</strong> <span id="confirmCambio"></span></li>
                                 <li><strong>Realiza envíos:</strong> <span id="confirmEnvio"></span></li>
                                 <li><strong>Descripción:</strong> <span id="confirmDescripcion"></span></li>
@@ -175,12 +171,13 @@ require_once '../navbar/navbar.php';
                         </div>
                     </div>
                     <hr>
-                    <form id="formularioCompleto" method="post" action="../includes/book_form.inc.php">
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="envio" name="envio">
-                            <label for="envio" class="form-check-label">Confirmo que toda la información es correcta</label>
-                        </div>
-                        <input type="submit" class="btn btn-primary" value="Enviar">
+
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="envio" name="envio">
+                        <label for="envio" class="form-check-label">Confirmo que toda la información es correcta</label>
+                    </div>
+                    <button id="btnRegresar3" type="button" class="btn btn-secondary">Atrás</button>
+                    <input type="submit" class="btn btn-primary" value="Enviar">
                     </form>
                 </div>
             </div>

@@ -54,7 +54,7 @@ function loadCarousel(carouselInnerId, productsToShow) {
 getProducts().then(
   function (products) {
     var lastBooks = products.slice(0, 10);
-    var recommendedBooks = products.slice(0, 10); // Cambiar a futuro por los libros recomendados
+    var recommendedBooks = products.slice(0, 10);
 
     loadCarousel("carouselInner", lastBooks);
     loadCarousel("recommendedCarouselInner", recommendedBooks);
@@ -63,28 +63,6 @@ getProducts().then(
     console.error(error);
   }
 );
-
-/*
-getProducts().then(function (products) {
-    productos = products.slice(0, 5); // Obtén los primeros 4 elementos del array de productos
-    productos.forEach(producto => {
-        productosLista.appendChild(createCard(producto))
-    })
-}, function (error) {
-    console.error(error);
-});
-*/
-
-/*
-getProducts().then(function (products) {
-    productos = products
-    productos.forEach(producto => {
-        productosLista.appendChild(createCard(producto))
-    })
-}, function (error) {
-    console.error(error);
-});
-*/
 
 function createCard(producto, margin = "") {
   var card = document.createElement("div");

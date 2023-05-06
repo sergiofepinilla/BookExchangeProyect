@@ -53,7 +53,7 @@ function createCard(producto) {
     "mb-2",
     "mb-xxl-0"
   );
-  badge.textContent = producto.name;
+  badge.textContent = producto.nombre;
   clearfix.appendChild(badge);
 
   var price = document.createElement("span");
