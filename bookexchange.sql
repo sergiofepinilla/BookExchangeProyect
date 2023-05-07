@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-05-2023 a las 13:41:49
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Tiempo de generación: 07-05-2023 a las 21:35:16
+-- Versión del servidor: 10.4.25-MariaDB
+-- Versión de PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `bloqueados` (
   `id` int(11) NOT NULL,
   `correo` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -41,7 +41,7 @@ CREATE TABLE `bloqueados` (
 CREATE TABLE `categorias` (
   `id` int(11) NOT NULL,
   `categoria` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `categorias`
@@ -64,7 +64,7 @@ INSERT INTO `categorias` (`id`, `categoria`) VALUES
 CREATE TABLE `claves` (
   `id_usuario` int(11) NOT NULL,
   `clave` varchar(60) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `claves`
@@ -72,7 +72,9 @@ CREATE TABLE `claves` (
 
 INSERT INTO `claves` (`id_usuario`, `clave`) VALUES
 (4, '$2y$10$it4XfOFKQTk6d6FgJ5cuWuEfAxsAMq5JEc2RDsKSPlrjvgDMv34iO'),
-(5, '$2y$10$FpP5hoUfUja3HvnDbWjgkuN8olwl1jMSFcJsePVQVuR.1iAAYvhJe');
+(5, '$2y$10$FpP5hoUfUja3HvnDbWjgkuN8olwl1jMSFcJsePVQVuR.1iAAYvhJe'),
+(7, '$2y$10$XCyQE.ST7vd/PUKj0NBXS.Hblah4djQdEmqwC4nPP24L9TlTCM9pS'),
+(8, '$2y$10$HRkGy1YMevYdS8OQr/RbKuGDYKwlqfYhDJXu6.6L8u3LMxlYAduOG');
 
 -- --------------------------------------------------------
 
@@ -85,7 +87,7 @@ CREATE TABLE `contacto` (
   `nombre_completo` varchar(100) NOT NULL,
   `correo` varchar(100) NOT NULL,
   `descripcion` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `contacto`
@@ -110,7 +112,7 @@ CREATE TABLE `datos_usuario` (
   `direccion` varchar(255) DEFAULT NULL,
   `pais` varchar(255) DEFAULT NULL,
   `foto_perfil` longblob DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `datos_usuario`
@@ -118,7 +120,9 @@ CREATE TABLE `datos_usuario` (
 
 INSERT INTO `datos_usuario` (`id_usuario`, `nombre`, `genero`, `fecha_nacimiento`, `direccion`, `pais`, `foto_perfil`) VALUES
 (4, 'usu', 'hombre', NULL, NULL, NULL, NULL),
-(5, 'admin', 'hombre', NULL, NULL, NULL, NULL);
+(5, 'admin', 'hombre', NULL, NULL, NULL, NULL),
+(7, 'Pepe', 'hombre', NULL, NULL, NULL, NULL),
+(8, 'tyty', 'hombre', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -129,7 +133,7 @@ INSERT INTO `datos_usuario` (`id_usuario`, `nombre`, `genero`, `fecha_nacimiento
 CREATE TABLE `generos` (
   `id` int(11) NOT NULL,
   `genero` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `generos`
@@ -171,7 +175,7 @@ INSERT INTO `generos` (`id`, `genero`) VALUES
 CREATE TABLE `imagenes` (
   `id` int(11) DEFAULT NULL,
   `ruta` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `imagenes`
@@ -221,6 +225,28 @@ INSERT INTO `imagenes` (`id`, `ruta`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `libros_venta`
+--
+
+CREATE TABLE `libros_venta` (
+  `id` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `nombre` varchar(255) NOT NULL,
+  `isbn` varchar(13) NOT NULL,
+  `editorial` varchar(255) NOT NULL,
+  `genero` varchar(255) NOT NULL,
+  `estado` enum('nuevo','usado','malo') NOT NULL,
+  `precio` decimal(10,2) NOT NULL,
+  `cambio` tinyint(1) NOT NULL,
+  `envio` tinyint(1) NOT NULL,
+  `descripcion` text NOT NULL,
+  `imagen` longblob NOT NULL,
+  `autor` varchar(255) NOT NULL DEFAULT 'Desconocido'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `productos`
 --
 
@@ -232,23 +258,26 @@ CREATE TABLE `productos` (
   `precio` double NOT NULL,
   `imagen` varchar(255) NOT NULL,
   `categoria` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `productos`
 --
 
 INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `cantidad`, `precio`, `imagen`, `categoria`) VALUES
-(3, 'Prueba', 'Esto es una descripción del libro que se está vendiendo.', 5, 9.99, 'https://img.freepik.com/vector-premium/libro-abierto-leer-vector-simbolo_599395-337.jpg?w=2000', 2),
-(4, 'Prueba', 'Esto es una descripción del libro que se está vendiendo.', 0, 9.99, 'https://img.freepik.com/vector-premium/libro-abierto-leer-vector-simbolo_599395-337.jpg?w=2000', 2),
-(6, 'Prueba', 'Esto es una descripción del libro que se está vendiendo.', 0, 9.99, 'https://img.freepik.com/vector-premium/libro-abierto-leer-vector-simbolo_599395-337.jpg?w=2000', 2),
-(107, 'Prueba', 'Esto es una descripción del libro que se está vendiendo.', 0, 9.99, 'https://img.freepik.com/vector-premium/libro-abierto-leer-vector-simbolo_599395-337.jpg?w=2000', 1),
-(108, 'Prueba', 'Esto es una descripción del libro que se está vendiendo.', 0, 9.99, 'https://img.freepik.com/vector-premium/libro-abierto-leer-vector-simbolo_599395-337.jpg?w=2000', 1),
-(109, 'Prueba', 'Esto es una descripción del libro que se está vendiendo.', 0, 9.99, 'https://img.freepik.com/vector-premium/libro-abierto-leer-vector-simbolo_599395-337.jpg?w=2000', 3),
-(110, 'Prueba', 'Esto es una descripción del libro que se está vendiendo.', 0, 9.99, 'https://img.freepik.com/vector-premium/libro-abierto-leer-vector-simbolo_599395-337.jpg?w=2000', 3),
-(111, 'Prueba', 'Esto es una descripción del libro que se está vendiendo.', 0, 9.99, 'https://img.freepik.com/vector-premium/libro-abierto-leer-vector-simbolo_599395-337.jpg?w=2000', 5),
-(113, 'Prueba', 'Esto es una descripción del libro que se está vendiendo.', 1, 9.99, 'https://img.freepik.com/vector-premium/libro-abierto-leer-vector-simbolo_599395-337.jpg?w=2000', 4),
-(200, 'Prueba', 'Esto es una descripción del libro que se está vendiendo.', 1, 9.99, 'https://img.freepik.com/vector-premium/libro-abierto-leer-vector-simbolo_599395-337.jpg?w=2000', 2);
+(3, 'Prueba 1', 'Esto es una descripción del libro que se está vendiendo.', 5, 9.99, 'https://img.freepik.com/vector-premium/libro-abierto-leer-vector-simbolo_599395-337.jpg?w=2000', 2),
+(4, 'Prueba 2', 'Esto es una descripción del libro que se está vendiendo.', 0, 9.99, 'https://img.freepik.com/vector-premium/libro-abierto-leer-vector-simbolo_599395-337.jpg?w=2000', 2),
+(6, 'Prueba 3', 'Esto es una descripción del libro que se está vendiendo.', 0, 9.99, 'https://img.freepik.com/vector-premium/libro-abierto-leer-vector-simbolo_599395-337.jpg?w=2000', 2),
+(107, 'Prueba 4', 'Esto es una descripción del libro que se está vendiendo.', 0, 9.99, 'https://img.freepik.com/vector-premium/libro-abierto-leer-vector-simbolo_599395-337.jpg?w=2000', 1),
+(108, 'Prueba 5', 'Esto es una descripción del libro que se está vendiendo.', 0, 9.99, 'https://img.freepik.com/vector-premium/libro-abierto-leer-vector-simbolo_599395-337.jpg?w=2000', 1),
+(109, 'Prueba 6', 'Esto es una descripción del libro que se está vendiendo.', 0, 9.99, 'https://img.freepik.com/vector-premium/libro-abierto-leer-vector-simbolo_599395-337.jpg?w=2000', 3),
+(110, 'Prueba 7', 'Esto es una descripción del libro que se está vendiendo.', 0, 9.99, 'https://img.freepik.com/vector-premium/libro-abierto-leer-vector-simbolo_599395-337.jpg?w=2000', 3),
+(111, 'Prueba 8', 'Esto es una descripción del libro que se está vendiendo.', 0, 9.99, 'https://img.freepik.com/vector-premium/libro-abierto-leer-vector-simbolo_599395-337.jpg?w=2000', 5),
+(113, 'Prueba 9', 'Esto es una descripción del libro que se está vendiendo.', 1, 9.99, 'https://img.freepik.com/vector-premium/libro-abierto-leer-vector-simbolo_599395-337.jpg?w=2000', 4),
+(200, 'Prueba 10', 'Esto es una descripción del libro que se está vendiendo.', 1, 9.99, 'https://img.freepik.com/vector-premium/libro-abierto-leer-vector-simbolo_599395-337.jpg?w=2000', 2),
+(201, 'Prueba 11', 'Esto es una descripción del libro que se está vendiendo.', 5, 9.99, 'https://img.freepik.com/vector-premium/libro-abierto-leer-vector-simbolo_599395-337.jpg?w=2000', 2),
+(202, 'Prueba 12', 'Esto es una descripción del libro que se está vendiendo.', 5, 9.99, 'https://img.freepik.com/vector-premium/libro-abierto-leer-vector-simbolo_599395-337.jpg?w=2000', 2),
+(203, 'Prueba 13', 'Esto es una descripción del libro que se está vendiendo.', 5, 9.99, 'https://img.freepik.com/vector-premium/libro-abierto-leer-vector-simbolo_599395-337.jpg?w=2000', 2);
 
 -- --------------------------------------------------------
 
@@ -259,7 +288,7 @@ INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `cantidad`, `precio`, `i
 CREATE TABLE `tipo` (
   `id` int(11) NOT NULL,
   `descripcion` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `tipo`
@@ -280,7 +309,7 @@ CREATE TABLE `usuarios` (
   `apodo` varchar(255) NOT NULL,
   `tipo` int(11) NOT NULL CHECK (`tipo` in (1,2)),
   `correo` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -288,7 +317,9 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `apodo`, `tipo`, `correo`) VALUES
 (4, 'usu', 1, 'usu@usu.com'),
-(5, 'admin', 2, 'admin@admin.com');
+(5, 'admin', 2, 'admin@admin.com'),
+(7, 'Pip', 1, 'pip@pip.com'),
+(8, 'ttytytyty', 1, '123@123.com');
 
 --
 -- Índices para tablas volcadas
@@ -332,6 +363,13 @@ ALTER TABLE `generos`
   ADD UNIQUE KEY `genero` (`genero`);
 
 --
+-- Indices de la tabla `libros_venta`
+--
+ALTER TABLE `libros_venta`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_usuario` (`id_usuario`);
+
+--
 -- Indices de la tabla `productos`
 --
 ALTER TABLE `productos`
@@ -373,6 +411,12 @@ ALTER TABLE `generos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
+-- AUTO_INCREMENT de la tabla `libros_venta`
+--
+ALTER TABLE `libros_venta`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
 -- AUTO_INCREMENT de la tabla `tipo`
 --
 ALTER TABLE `tipo`
@@ -382,7 +426,7 @@ ALTER TABLE `tipo`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restricciones para tablas volcadas
@@ -399,6 +443,12 @@ ALTER TABLE `claves`
 --
 ALTER TABLE `datos_usuario`
   ADD CONSTRAINT `datos_usuario_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `libros_venta`
+--
+ALTER TABLE `libros_venta`
+  ADD CONSTRAINT `libros_venta_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`);
 
 --
 -- Filtros para la tabla `productos`
