@@ -50,9 +50,9 @@ session_start();
                         <a class="nav-link text-white" href="../login/login.php">Iniciar Sesion</a>
                     </li>
                 <?php } else {
-                    // El usuario ha iniciado sesión
+
                     $user = unserialize($_SESSION["user"]);
-                    // Puedes acceder a las propiedades del usuario con los métodos get
+
                     $userId = $user->getId();
                     $userNick = $user->getNick();
                     $userType = $user->getUserType();

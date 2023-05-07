@@ -27,7 +27,8 @@
                         <div class=" card-body text-center">
                             <?php if ($userProfilePicture == "") { ?>
                                 <img src="../assets/img/userimg/profile.png" class="rounded-circle img-fluid" style="width: 150px; height: 150px;">
-                            <?php } else {$image_data = base64_encode(
+                            <?php } else {
+                                $image_data = base64_encode(
                                     $userProfilePicture
                                 );
                                 $image_type = "jpeg";
@@ -36,7 +37,8 @@
                                     $image_type .
                                     ";base64," .
                                     $image_data .
-                                    '" class="rounded-circle img-fluid " style="width: 150px; height: 150px;">';} ?>
+                                    '" class="rounded-circle img-fluid " style="width: 150px; height: 150px;">';
+                            } ?>
                             <h5 class="my-3"><?php echo $userNick; ?></h5>
                             <p class="text-muted mb-1"><?php echo $userEmail; ?></p>
                             <p class="text-muted mb-4"><?php echo $userCountry; ?></p>
@@ -83,30 +85,30 @@
                                 <div class="col-sm-9">
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="profileGender" id="maleRadio" value="male" <?php if (
-                                            $userGender == "male"
-                                        ) {
-                                            echo " checked";
-                                        } ?>>
+                                                                                                                                            $userGender == "male"
+                                                                                                                                        ) {
+                                                                                                                                            echo " checked";
+                                                                                                                                        } ?>>
                                         <label class="form-check-label" for="maleRadio">
-                                           Hombre
+                                            Hombre
                                         </label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="profileGender" id="femaleRadio" value="female" <?php if (
-                                            $userGender == "female"
-                                        ) {
-                                            echo " checked";
-                                        } ?>>
+                                                                                                                                                $userGender == "female"
+                                                                                                                                            ) {
+                                                                                                                                                echo " checked";
+                                                                                                                                            } ?>>
                                         <label class="form-check-label" for="femaleRadio">
                                             Mujer
                                         </label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="profileGender" id="otherRadio" value="other" <?php if (
-                                            $userGender == "other"
-                                        ) {
-                                            echo " checked";
-                                        } ?>>
+                                                                                                                                            $userGender == "other"
+                                                                                                                                        ) {
+                                                                                                                                            echo " checked";
+                                                                                                                                        } ?>>
                                         <label class="form-check-label" for="otherRadio">
                                             Otro
                                         </label>
@@ -133,55 +135,55 @@
                                     <select name="profileCountry" class="bg  form-select" aria-label="Choose a Country">
                                         <option value="" disabled selected>Elige una ciudad...</option>
                                         <option value="argentina" <?php if (
-                                            $userCountry == "argentina"
-                                        ) {
-                                            echo " selected";
-                                        } ?>>Argentina</option>
+                                                                        $userCountry == "argentina"
+                                                                    ) {
+                                                                        echo " selected";
+                                                                    } ?>>Argentina</option>
                                         <option value="brazil" <?php if (
-                                            $userCountry == "brazil"
-                                        ) {
-                                            echo " selected";
-                                        } ?>>Brazil</option>
+                                                                    $userCountry == "brazil"
+                                                                ) {
+                                                                    echo " selected";
+                                                                } ?>>Brazil</option>
                                         <option value="colombia" <?php if (
-                                            $userCountry == "colombia"
-                                        ) {
-                                            echo " selected";
-                                        } ?>>Colombia</option>
+                                                                        $userCountry == "colombia"
+                                                                    ) {
+                                                                        echo " selected";
+                                                                    } ?>>Colombia</option>
                                         <option value="spain" <?php if (
-                                            $userCountry == "spain"
-                                        ) {
-                                            echo " selected";
-                                        } ?>>Spain</option>
+                                                                    $userCountry == "spain"
+                                                                ) {
+                                                                    echo " selected";
+                                                                } ?>>Spain</option>
                                         <option value="france" <?php if (
-                                            $userCountry == "france"
-                                        ) {
-                                            echo " selected";
-                                        } ?>>France</option>
+                                                                    $userCountry == "france"
+                                                                ) {
+                                                                    echo " selected";
+                                                                } ?>>France</option>
                                         <option value="italy" <?php if (
-                                            $userCountry == "italy"
-                                        ) {
-                                            echo " selected";
-                                        } ?>>Italy</option>
+                                                                    $userCountry == "italy"
+                                                                ) {
+                                                                    echo " selected";
+                                                                } ?>>Italy</option>
                                         <option value="mexico" <?php if (
-                                            $userCountry == "mexico"
-                                        ) {
-                                            echo " selected";
-                                        } ?>>Mexico</option>
+                                                                    $userCountry == "mexico"
+                                                                ) {
+                                                                    echo " selected";
+                                                                } ?>>Mexico</option>
                                         <option value="peru" <?php if (
-                                            $userCountry == "peru"
-                                        ) {
-                                            echo " selected";
-                                        } ?>>Peru</option>
+                                                                    $userCountry == "peru"
+                                                                ) {
+                                                                    echo " selected";
+                                                                } ?>>Peru</option>
                                         <option value="portugal" <?php if (
-                                            $userCountry == "portugal"
-                                        ) {
-                                            echo " selected";
-                                        } ?>>Portugal</option>
+                                                                        $userCountry == "portugal"
+                                                                    ) {
+                                                                        echo " selected";
+                                                                    } ?>>Portugal</option>
                                         <option value="uruguay" <?php if (
-                                            $userCountry == "uruguay"
-                                        ) {
-                                            echo " selected";
-                                        } ?>>Uruguay</option>
+                                                                    $userCountry == "uruguay"
+                                                                ) {
+                                                                    echo " selected";
+                                                                } ?>>Uruguay</option>
                                     </select>
                                 </div>
                             </div>
@@ -220,7 +222,8 @@
                         <div class="card-body text-center">
                             <?php if ($userProfilePicture == "") { ?>
                                 <img src="../assets/img/userimg/profile.png" class="rounded-circle img-fluid" style="width: 150px; height: 150px;">
-                            <?php } else {$image_data = base64_encode(
+                            <?php } else {
+                                $image_data = base64_encode(
                                     $userProfilePicture
                                 );
                                 $image_type = "jpeg";
@@ -229,7 +232,8 @@
                                     $image_type .
                                     ";base64," .
                                     $image_data .
-                                    '" class="rounded-circle img-fluid " style="width: 150px; height: 150px;">';} ?>
+                                    '" class="rounded-circle img-fluid " style="width: 150px; height: 150px;">';
+                            } ?>
                             <h5 class="my-3"><?php echo $userName; ?></h5>
                             <p class="text-muted mb-1"><?php echo $userEmail; ?></p>
                             <p class="text-muted mb-4"><?php echo $userCountry; ?></p>
@@ -316,10 +320,10 @@
         <div class="container mt-5">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#login">Libros (5)</a>
+                    <a class="nav-link active" data-toggle="tab" href="#login" id="booksTabLink">Libros</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#signup">Valoraciones (20)</a>
+                    <a class="nav-link" data-toggle="tab" href="#signup">Valoraciones</a>
                 </li>
             </ul>
             <div class="tab-content">

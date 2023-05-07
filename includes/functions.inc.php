@@ -119,9 +119,19 @@ function uidExists($conn, $uid, $email)
     mysqli_stmt_execute($stmt);
     $resultData = mysqli_stmt_get_result($stmt);
     if ($row = mysqli_fetch_assoc($resultData)) {
-        // Crear un objeto User a partir de los datos obtenidos
-        $user = new User($row['id'], $row['userType'], $row['nick'], $row['email'], $row['fullname'], $row['userPassword'],
-            $row['gender'], $row['datebirth'], $row['country'], $row['address'], $row['pfp']);
+        $user = new User(
+            $row['id'],
+            $row['userType'],
+            $row['nick'],
+            $row['email'],
+            $row['fullname'],
+            $row['userPassword'],
+            $row['gender'],
+            $row['datebirth'],
+            $row['country'],
+            $row['address'],
+            $row['pfp']
+        );
         return $user;
     } else {
         $result = false;

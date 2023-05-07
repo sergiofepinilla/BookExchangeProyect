@@ -1,11 +1,14 @@
 function getProducts() {
   return new Promise(function (resolve, reject) {
     $.ajax({
-      url: "../modelo/index.php",
+      url: "../modelo/user_profile_products.php",
       type: "GET",
       dataType: "json",
       success: function (data) {
-        resolve(data);
+        resolve({
+          products: data.products,
+          total: data.total,
+        });
       },
       error: function (xhr, status, error) {
         reject(error);
@@ -50,11 +53,18 @@ function loadCarousel(carouselInnerId, productsToShow) {
   }
 }
 
-// Load products into carousels
 getProducts().then(
-  function (products) {
+  function (data) {
+    var products = data.products;
+    var total = data.total;
+
+    var booksTabLink = document.querySelector(
+      "a[data-toggle='tab'][href='#login']"
+    );
+    booksTabLink.innerHTML = `Libros (${total})`;
+
     var lastBooks = products.slice(0, 10);
-    var recommendedBooks = products.slice(0, 10); // Cambiar a futuro por los libros recomendados
+    var recommendedBooks = products.slice(0, 10);
 
     loadCarousel("carouselInner", lastBooks);
     loadCarousel("recommendedCarouselInner", recommendedBooks);
@@ -64,28 +74,6 @@ getProducts().then(
   }
 );
 
-/*
-getProducts().then(function (products) {
-    productos = products.slice(0, 5); // Obtén los primeros 4 elementos del array de productos
-    productos.forEach(producto => {
-        productosLista.appendChild(createCard(producto))
-    })
-}, function (error) {
-    console.error(error);
-});
-*/
-
-/*
-getProducts().then(function (products) {
-    productos = products
-    productos.forEach(producto => {
-        productosLista.appendChild(createCard(producto))
-    })
-}, function (error) {
-    console.error(error);
-});
-*/
-
 function createCard(producto, margin = "") {
   var card = document.createElement("div");
   card.classList.add("col");
@@ -93,19 +81,49 @@ function createCard(producto, margin = "") {
   card.id = producto.id;
 
   var innerCard = document.createElement("div");
-  innerCard.classList.add("card", "bg-black", "border-3", "border-dark");
+  innerCard.classList.add(
+    "text-white",
+    "card",
+    "bg-black",
+    "border-3",
+    "border-danger",
+    "d-flex",
+    "flex-column",
+    "h-100"
+  );
+
+  var imgContainer = document.createElement("div");
+  imgContainer.classList.add(
+    "flex-grow-1",
+    "d-flex",
+    "align-items-center",
+    "justify-content-center",
+    "img-fluid"
+  );
+  imgContainer.style.height = "250px";
 
   var link = document.createElement("a");
   link.href = `../product/product.php?id=${producto.id}`;
 
   var img = document.createElement("img");
-  img.classList.add("card-img-top");
-  img.src = producto.imagen;
+  img.classList.add("card-img-top", "img-fluid");
+  img.src = "data:image/jpeg;base64," + producto.imagen;
   img.alt = producto.nombre;
-  link.appendChild(img);
+
+  imgContainer.appendChild(img);
+  link.appendChild(imgContainer);
 
   var cardBody = document.createElement("div");
-  cardBody.classList.add("card-body");
+  cardBody.classList.add("card-body", "d-flex", "flex-column");
+
+  var bookName = document.createElement("p");
+  bookName.classList.add("mb-2");
+
+  bookName.textContent = producto.nombre;
+
+  applyEllipsisStyle(bookName, "1.2em", 1);
+
+  cardBody.insertBefore(bookName, clearfix);
 
   var clearfix = document.createElement("div");
   clearfix.classList.add("clearfix", "mb-3");
@@ -117,13 +135,22 @@ function createCard(producto, margin = "") {
     "rounded-pill",
     "bg-primary",
     "col-12",
-    "col-xxl-9"
+    "col-xxl-9",
+    "mb-3"
   );
-  badge.textContent = producto.nombre;
+  badge.textContent = producto.estado;
   clearfix.appendChild(badge);
 
   var price = document.createElement("span");
-  price.classList.add("float-end", "price-hp", "text-white");
+  price.classList.add(
+    "float-end",
+    "price-hp",
+    "text-white",
+    "bg-warning",
+    "rounded-pill",
+    "fw-bold",
+    "badge"
+  );
   price.innerHTML = `${producto.precio}&euro;`;
   clearfix.appendChild(price);
 
@@ -132,22 +159,11 @@ function createCard(producto, margin = "") {
   var textEnd = document.createElement("div");
   textEnd.classList.add("row", "gx-2");
 
-  var divBuy = document.createElement("div");
-  divBuy.classList.add("col-12", "col-xxl-6");
-
-  var buyBtn = document.createElement("button");
-  buyBtn.classList.add("btn", "btn-success", "w-100", "mb-2", "mb-xxl-0");
-  buyBtn.textContent = "COM";
-  divBuy.appendChild(buyBtn);
-  textEnd.appendChild(divBuy);
-
-  buyBtn.addEventListener("click", addToCart);
-
   var divCheck = document.createElement("div");
-  divCheck.classList.add("col-12", "col-xxl-6");
+  divCheck.classList.add("col-12");
 
   var checkBtn = document.createElement("a");
-  checkBtn.classList.add("btn", "btn-primary", "w-100");
+  checkBtn.classList.add("btn", "btn-success", "w-100");
   checkBtn.textContent = "VER";
   checkBtn.href = `../product/product.php?id=${producto.id}`;
   divCheck.appendChild(checkBtn);
@@ -161,6 +177,9 @@ function createCard(producto, margin = "") {
 
   return card;
 }
+
+var booksTabLink = document.getElementById("booksTabLink");
+booksTabLink.innerHTML = `Libros (${total})`;
 
 function addToCart(e) {
   var cart = localStorage.getItem("cart");
@@ -177,4 +196,14 @@ function addToCart(e) {
   }
 
   localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+function applyEllipsisStyle(element, lineHeight, maxLines) {
+  element.style.overflow = "hidden";
+  element.style.textOverflow = "ellipsis";
+  element.style.display = "-webkit-box";
+  element.style.webkitBoxOrient = "vertical";
+  element.style.webkitLineClamp = maxLines;
+  element.style.lineHeight = lineHeight;
+  element.style.maxHeight = `calc(${lineHeight} * ${maxLines})`;
 }

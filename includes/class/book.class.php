@@ -32,17 +32,13 @@ class Libro
 
     public function insertar()
     {
-        // Conexión a la base de datos
         $conn = Connection::getConnection();
 
-        // Preparación de la consulta
         $stmt = $conn->prepare("INSERT INTO libros_venta (nombre, isbn, autor, editorial, genero, estado, precio, cambio, envio, descripcion, imagen,id_usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("ssssssdiissi", $this->nombre, $this->isbn, $this->autor, $this->editorial, $this->genero, $this->estado, $this->precio, $this->cambio, $this->envio, $this->descripcion, $this->imagen, $this->userId);
 
-        // Asignación de valores y ejecución de la consulta
         $result = $stmt->execute();
 
-        // Cierre de la consulta y de la conexión a la base de datos
         $stmt->close();
         $conn->close();
 
