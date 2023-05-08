@@ -7,17 +7,13 @@ session_start();
 $user = unserialize($_SESSION["user"]);
 $userId = $user->getId();
 
-if (!empty($_GET['category']) or !empty($_GET['name'])) {
-    $category = $_GET['category'];
-    // $query = "SELECT * FROM productos WHERE categoria='$category'";
-    if (!empty($_GET['name'])) {
-        $name = $_GET['name'];
-        $query .= " or LOWER(name) LIKE LOWER('%$name%')";
-    }
-    // $query .= " ORDER BY id DESC";
-} else if (isset($_GET['id'])) {
+if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    //  $query = "SELECT * FROM productos WHERE id='$id'";
+    $query = "SELECT libros_venta.*, usuarios.apodo, usuarios.correo
+    FROM libros_venta
+    JOIN usuarios ON libros_venta.id_usuario = usuarios.id
+    WHERE libros_venta.id_usuario = '$id'
+    ORDER BY libros_venta.id DESC";
 } else {
     $query = "SELECT * FROM libros_venta WHERE id_usuario = '$userId' ORDER BY id DESC";
 }

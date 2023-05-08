@@ -1,12 +1,12 @@
 <?php require_once "../header/header.php"; ?>
 <?php require_once "../navbar/navbar.php"; ?>
 
-<?php if (!isset($_SESSION["user"])) {
+<?php if (!isset($_GET["id"])) {
     echo '<img src="../assets/img/403.png" alt="forbidden" class="bg-danger w-100">';
     include_once "../footer/footer.php";
     exit();
 } ?>
-<?php  ?>
+
 <?php if (isset($_POST["editProfileSubmit"])) { ?>
     <!-- EDIT VERSION -->
     <section>
@@ -41,7 +41,6 @@
                             } ?>
                             <h5 class="my-3"><?php echo $userNick; ?></h5>
                             <p class="text-muted mb-1"><?php echo $userEmail; ?></p>
-                            <p class="text-muted mb-4"><?php echo $userCountry; ?></p>
                             <form action="../includes/profile.inc.php" method="POST" enctype="multipart/form-data">
                                 <div class="d-flex justify-content-center mb-2">
                                     <!-- CAMBIAR IMAGEN BTN -->
@@ -77,126 +76,7 @@
                                 </div>
                             </div>
                             <hr>
-                            <!-- GENDER FIELD -->
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Gender</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="profileGender" id="maleRadio" value="male" <?php if (
-                                                                                                                                            $userGender == "male"
-                                                                                                                                        ) {
-                                                                                                                                            echo " checked";
-                                                                                                                                        } ?>>
-                                        <label class="form-check-label" for="maleRadio">
-                                            Hombre
-                                        </label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="profileGender" id="femaleRadio" value="female" <?php if (
-                                                                                                                                                $userGender == "female"
-                                                                                                                                            ) {
-                                                                                                                                                echo " checked";
-                                                                                                                                            } ?>>
-                                        <label class="form-check-label" for="femaleRadio">
-                                            Mujer
-                                        </label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="profileGender" id="otherRadio" value="other" <?php if (
-                                                                                                                                            $userGender == "other"
-                                                                                                                                        ) {
-                                                                                                                                            echo " checked";
-                                                                                                                                        } ?>>
-                                        <label class="form-check-label" for="otherRadio">
-                                            Otro
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr>
-                            <!-- ADDRESS FIELD -->
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Dirección</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <input type="text" maxlength="40" name="profileAddress" value="<?php echo $userAddress; ?>" class="form-control no-border bg " placeholder="Enter new Address...">
-                                </div>
-                            </div>
-                            <hr>
-                            <!-- COUNTRY FIELD -->
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Ciudad</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <select name="profileCountry" class="bg  form-select" aria-label="Choose a Country">
-                                        <option value="" disabled selected>Elige una ciudad...</option>
-                                        <option value="argentina" <?php if (
-                                                                        $userCountry == "argentina"
-                                                                    ) {
-                                                                        echo " selected";
-                                                                    } ?>>Argentina</option>
-                                        <option value="brazil" <?php if (
-                                                                    $userCountry == "brazil"
-                                                                ) {
-                                                                    echo " selected";
-                                                                } ?>>Brazil</option>
-                                        <option value="colombia" <?php if (
-                                                                        $userCountry == "colombia"
-                                                                    ) {
-                                                                        echo " selected";
-                                                                    } ?>>Colombia</option>
-                                        <option value="spain" <?php if (
-                                                                    $userCountry == "spain"
-                                                                ) {
-                                                                    echo " selected";
-                                                                } ?>>Spain</option>
-                                        <option value="france" <?php if (
-                                                                    $userCountry == "france"
-                                                                ) {
-                                                                    echo " selected";
-                                                                } ?>>France</option>
-                                        <option value="italy" <?php if (
-                                                                    $userCountry == "italy"
-                                                                ) {
-                                                                    echo " selected";
-                                                                } ?>>Italy</option>
-                                        <option value="mexico" <?php if (
-                                                                    $userCountry == "mexico"
-                                                                ) {
-                                                                    echo " selected";
-                                                                } ?>>Mexico</option>
-                                        <option value="peru" <?php if (
-                                                                    $userCountry == "peru"
-                                                                ) {
-                                                                    echo " selected";
-                                                                } ?>>Peru</option>
-                                        <option value="portugal" <?php if (
-                                                                        $userCountry == "portugal"
-                                                                    ) {
-                                                                        echo " selected";
-                                                                    } ?>>Portugal</option>
-                                        <option value="uruguay" <?php if (
-                                                                    $userCountry == "uruguay"
-                                                                ) {
-                                                                    echo " selected";
-                                                                } ?>>Uruguay</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <hr>
-                            <!-- BIRTHDAY FIELD -->
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Fecha de nacimiento</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <input type="date" class="form-control bg " id="profileBirthDay" name="profileBirthDay" value="<?php echo $userDateOfBirth; ?>">
-                                </div>
-                            </div>
+
                             </form>
                         </div>
                     </div>
@@ -234,9 +114,9 @@
                                     $image_data .
                                     '" class="rounded-circle img-fluid " style="width: 150px; height: 150px;">';
                             } ?>
-                            <h5 class="my-3"><?php echo $userName; ?></h5>
-                            <p class="text-muted mb-1"><?php echo $userEmail; ?></p>
-                            <p class="text-muted mb-4"><?php echo $userCountry; ?></p>
+                            <h5 class="my-3" id="nombre">
+                            </h5>
+                            <p class="text-muted mb-1" id="email"></p>
                             <!-- FORM EDIT PROFILE -->
                             <form action="profile.php" method="POST">
                                 <div class="d-flex justify-content-center mb-2">
@@ -270,45 +150,6 @@
                                 </div>
                             </div>
                             <hr>
-                            <!-- GENDER FIELD -->
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Género</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0"><?php echo $userGender; ?></p>
-                                </div>
-                            </div>
-                            <hr>
-                            <!-- ADDRESS FIELD-->
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Address</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0"><?php echo $userAddress; ?></p>
-                                </div>
-                            </div>
-                            <hr>
-                            <!-- COUNTRY FIELD -->
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Country</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0"><?php echo $userCountry; ?></p>
-                                </div>
-                            </div>
-                            <hr>
-                            <!-- BIRTHDAY FIELD -->
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Birth Day</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0"><?php echo $userDateOfBirth; ?></p>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

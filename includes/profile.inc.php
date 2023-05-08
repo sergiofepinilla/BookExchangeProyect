@@ -7,13 +7,13 @@ if (isset($_POST['saveProfileSubmit'])) {
     session_start();
 
     //Current User Data
-    $userId ;
-    $userName ;
-    $userGender ;
-    $userDateOfBirth ;
-    $userCountry ;
-    $userAddress ;
-    $userProfilePicture ;
+    $userId;
+    $userName;
+    $userGender;
+    $userDateOfBirth;
+    $userCountry;
+    $userAddress;
+    $userProfilePicture;
     // New Form Values
     $profileUserName = $_POST['profileUserName']; //Form Full Name
     $profileAddress = $_POST['profileAddress']; //Form Address
@@ -22,9 +22,7 @@ if (isset($_POST['saveProfileSubmit'])) {
     $profileBirthDay = $_POST['profileBirthDay']; //Form BirthDay
 
     if (isset($_FILES['profilePicture']) && $_FILES['profilePicture']['error'] === 0) {
-        // Código a ejecutar si se ha enviado un archivo
         if ($_FILES['profilePicture']['error'] == UPLOAD_ERR_OK) {
-            // Obtener la imagen cargada
             $image = file_get_contents($_FILES['profilePicture']['tmp_name']);
         }
     } else {

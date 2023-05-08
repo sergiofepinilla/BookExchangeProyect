@@ -1,9 +1,12 @@
 function getProducts() {
   return new Promise(function (resolve, reject) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get("id");
     $.ajax({
       url: "../modelo/user_profile_products.php",
       type: "GET",
       dataType: "json",
+      data: { id: id },
       success: function (data) {
         resolve({
           products: data.products,
@@ -169,6 +172,9 @@ function createCard(producto, margin = "") {
   divCheck.appendChild(checkBtn);
   textEnd.appendChild(divCheck);
 
+  var usu_apodo = document.getElementById("nombre");
+  usu_apodo.textContent = producto.apodo;
+
   cardBody.appendChild(textEnd);
 
   innerCard.appendChild(link);
@@ -180,6 +186,10 @@ function createCard(producto, margin = "") {
 
 var booksTabLink = document.getElementById("booksTabLink");
 booksTabLink.innerHTML = `Libros (${total})`;
+
+var booksTabLink = document.getElementById("booksTabLink");
+
+var booksTabLink = document.getElementById("booksTabLink");
 
 function addToCart(e) {
   var cart = localStorage.getItem("cart");

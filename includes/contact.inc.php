@@ -13,7 +13,7 @@ if (isset($_POST["contact-submit"])) {
     }
     if (invalidEmail($contactEmail) !== false) {
         header("location: ../contact/contact.php?error=invalidEmail");
-        exit(); // para el script
+        exit();
     }
     saveTicket($conn, $contactName, $contactEmail, $contactText);
     session_start();

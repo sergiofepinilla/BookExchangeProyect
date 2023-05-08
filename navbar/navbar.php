@@ -58,10 +58,6 @@ session_start();
                     $userType = $user->getUserType();
                     $userEmail = $user->getEmail();
                     $userName = $user->getName();
-                    $userGender = $user->getGender();
-                    $userDateOfBirth = $user->getDateOfBirth();
-                    $userCountry = $user->getCountry();
-                    $userAddress = $user->getAddress();
                     $userProfilePicture = $user->getProfilePicture();
                 ?>
                     <?php if ($userType == 2) { ?>

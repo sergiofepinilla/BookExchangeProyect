@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $envio = isset($_POST['envio']) ? 1 : 0;
   $descripcion = isset($_POST['descripcion']) ? $_POST['descripcion'] : '';
 
-  // Verifica si los campos de autor, isbn y editorial están vacíos
+
   if (empty($autor)) {
     $autor = "Desconocido";
   }
@@ -33,7 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   }
 
   if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === 0) {
-    // Código a ejecutar si se ha enviado un archivo
     if ($_FILES['imagen']['error'] == UPLOAD_ERR_OK) {
       // Obtener la imagen cargada
       $imagen = file_get_contents($_FILES['imagen']['tmp_name']);
