@@ -38,7 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $imagen = file_get_contents($_FILES['imagen']['tmp_name']);
     }
   } else {
-    echo "error";
+    $defaultImagePath = '../assets/img/default.PNG';
+    $imagen = file_get_contents($defaultImagePath);
   }
 
   $libro = new Libro($nombre, $isbn, $autor, $editorial, $genero, $estado, $precio, $cambio, $envio, $descripcion, $imagen, $userId);

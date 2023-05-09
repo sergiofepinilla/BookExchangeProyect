@@ -36,6 +36,9 @@ session_start();
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 fs-4">
                 <li class="nav-item ">
+                    <a class="nav-link text-white" href="../home/home.php">Inicio</a>
+                </li>
+                <li class="nav-item ">
                     <a class="nav-link text-white" href="../shop/shop.php">Tienda</a>
                 </li>
                 <li class="nav-item">
@@ -70,15 +73,12 @@ session_start();
                         </li>
 
                     <?php } ?>
-
                     <li class="nav-item d-lg-none">
-                        <a class="nav-link text-white" href="../profile/profile.php">Perfil</a>
+                    <a href="../profile/profile.php?id=<?php echo $userId; ?>">Perfil</a>
                     </li>
-
                     <li class="nav-item d-lg-none">
                         <a class="nav-link text-white" href="../home/logout.php">Cerrar Sesion</a>
                     </li>
-
                 <?php } ?>
             </ul>
 
@@ -99,7 +99,7 @@ session_start();
                             <i class="bi bi-person"></i>
                         </button>
                         <ul class="dropdown-menu border-dark " aria-labelledby="dropdownMenuButton">
-                            <li><a class="dropdown-item " href="../profile/profile.php">Perfil</a></li>
+                            <li><a class="dropdown-item " href="../profile/profile.php?id=<?php echo $userId; ?>">Perfil</a></li>
                             <?php if ($userType == 2) { ?>
                                 <a class="dropdown-item " href="../admin/admin.php?admin=users">Administrar Usuarios</a>
                                 <a class="dropdown-item " href="../admin/admin.php?admin=products">Administrar Productos </a>

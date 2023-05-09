@@ -11,6 +11,41 @@ function sanitarizar(input) {
   return sanitizedInput;
 }
 
+//Limitar input precio
+const precioInput = document.getElementById('precio');
+precioInput.addEventListener('input', () => {
+  if (precioInput.value.length > 5) {
+    precioInput.value = precioInput.value.slice(0, 5);
+  }
+});
+
+//Limitar textarea descripcion 
+const descripcionInput = document.getElementById('descripcion');
+const maxLengthDescription = 250; 
+
+descripcionInput.addEventListener('input', () => {
+  const descripcion = descripcionInput.value;
+
+  if (descripcion.length > maxLengthDescription) {
+    descripcionInput.value = descripcion.slice(0, maxLengthDescription);
+  }
+});
+
+//Limitar ISBN 
+
+const isbnInput = document.getElementById('isbn');
+const maxLengthISBN = 13;
+
+isbnInput.addEventListener('input', () => {
+  const isbn = isbnInput.value;
+
+  if (isbn.length > maxLengthISBN) {
+    isbnInput.value = isbn.slice(0, maxLengthISBN);
+  }
+});
+
+
+
 function validarFase1() {
   const nombre = document.getElementById("nombre");
   const autor = document.getElementById("autor");
@@ -76,7 +111,7 @@ document.getElementById("btnFase3").addEventListener("click", function () {
 });
 
 document.getElementById("btnFase3").addEventListener("click", function () {
-  if (validarFase1()) {
+  if (validarFase1() && validarFase2()) {
     document.getElementById("confirmNombre").innerText =
       document.getElementById("nombre").value;
     document.getElementById("confirmAutor").innerText =
@@ -104,14 +139,19 @@ document.getElementById("btnFase3").addEventListener("click", function () {
       : "No";
     document.getElementById("confirmDescripcion").innerText =
       document.getElementById("descripcion").value;
-    document.getElementById("pills-fase4-tab").click();
-    // Añade esta línea para actualizar la imagen en la confirmación
-    document.getElementById("confirmImagen").src =
-      document.getElementById("imagenPrevia").src;
+      
+    // Añade este código para actualizar la imagen en la confirmación
+    if (document.getElementById("imagen").files.length > 0) {
+      document.getElementById("confirmImagen").src =
+        document.getElementById("imagenPrevia").src;
+    } else {
+      document.getElementById("confirmImagen").src = "../assets/img/default.PNG";
+    }
 
     document.getElementById("pills-fase4-tab").click();
   }
 });
+
 
 //Botones de regreso
 document.getElementById("btnRegresar").addEventListener("click", function () {

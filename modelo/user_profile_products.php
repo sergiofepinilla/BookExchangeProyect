@@ -15,7 +15,7 @@ if (isset($_GET['id'])) {
     WHERE libros_venta.id_usuario = '$id'
     ORDER BY libros_venta.id DESC";
 } else {
-    $query = "SELECT * FROM libros_venta WHERE id_usuario = '$userId' ORDER BY id DESC";
+   // $query = "SELECT * FROM libros_venta WHERE id_usuario = '$userId' ORDER BY id DESC";
 }
 
 

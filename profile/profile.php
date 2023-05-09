@@ -117,12 +117,17 @@
                             <h5 class="my-3" id="nombre">
                             </h5>
                             <p class="text-muted mb-1" id="email"></p>
-                            <!-- FORM EDIT PROFILE -->
-                            <form action="profile.php" method="POST">
+                            <?php if($_GET['id'] == $userId){ ?>
+  <!-- FORM EDIT PROFILE -->
+  <form action="profile.php?id=<?php echo $userId ?>" method="POST">
                                 <div class="d-flex justify-content-center mb-2">
                                     <button type="submit" class="btn btn-primary" name="editProfileSubmit">Editar Perfil</button>
                                 </div>
                             </form>
+
+
+                          <?php  } ?>
+                          
                         </div>
                     </div>
                 </div>
@@ -171,9 +176,12 @@
                 <div id="login" class="tab-pane active">
                     <div class="col-md-12 d-flex justify-content-between align-items-center">
                         <h2 class="mt-3">Libros en Venta</h2>
+                        <?php if($_GET['id'] == $userId){ ?>
                         <button class="btn btn-success btn-lg me-3" onclick="window.location.href='../bookform/book_form.php'">
                             <i class="bi bi-book me-1"></i> Subir Libro
                         </button>
+                        <?php } ?>
+                        
                     </div>
 
                     <!--Ultimos Productos Container-->

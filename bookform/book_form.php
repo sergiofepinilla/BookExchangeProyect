@@ -29,11 +29,11 @@ require_once '../navbar/navbar.php';
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="nombre" class="form-label">Nombre del libro *</label>
-                                    <input type="text" placeholder="Ingrese el nombre del libro *" class="form-control" id="nombre" name="nombre" maxlength="100" required>
+                                    <input type="text" placeholder="Ingrese el nombre del libro *" class="form-control" id="nombre" name="nombre" maxlength="50" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="isbn" class="form-label">ISBN</label>
-                                    <input type="number" placeholder="Ingrese el ISBN del libro" class="form-control" id="isbn" name="isbn" maxlength="13">
+                                    <input type="number" placeholder="Ingrese el ISBN del libro" class="form-control" id="isbn" name="isbn">
                                 </div>
                                 <div class="mb-3">
                                     <label for="autor" class="form-label">Autor</label>

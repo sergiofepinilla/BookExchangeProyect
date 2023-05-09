@@ -74,9 +74,8 @@ function createCard(producto, margin = "") {
   innerCard.classList.add(
     "text-white",
     "card",
-    "bg-black",
     "border-3",
-    "border-danger",
+    "border-dark",
     "d-flex",
     "flex-column",
     "h-100"
@@ -89,7 +88,11 @@ function createCard(producto, margin = "") {
     "d-flex",
     "align-items-center",
     "justify-content-center",
-    "img-fluid"
+    "img-fluid",
+    "overflow-hidden",
+    "border",
+    "border-bottom",
+    "border-white"
   ); // Añade las clases de Flexbox aquí
   imgContainer.style.height = "250px"; // Establece la altura fija del contenedor de la imagen
 
@@ -100,12 +103,13 @@ function createCard(producto, margin = "") {
   img.classList.add("card-img-top", "img-fluid");
   img.src = "data:image/jpeg;base64," + producto.imagen;
   img.alt = producto.nombre;
+  img.style.objectFit = "cover"; // Añade esta línea para ajustar la imagen al contenedor
 
   imgContainer.appendChild(img);
   link.appendChild(imgContainer);
 
   var cardBody = document.createElement("div");
-  cardBody.classList.add("card-body", "d-flex", "flex-column");
+  cardBody.classList.add("card-body", "d-flex", "flex-column","bg-black");
 
   // Crea el nuevo elemento <p> y asígnale una clase de Bootstrap
   var bookName = document.createElement("p");

@@ -87,23 +87,27 @@ function createCard(producto, margin = "") {
   innerCard.classList.add(
     "text-white",
     "card",
-    "bg-black",
     "border-3",
-    "border-danger",
+    "border-dark",
     "d-flex",
     "flex-column",
     "h-100"
   );
 
+  // Crea un div contenedor para la imagen
   var imgContainer = document.createElement("div");
   imgContainer.classList.add(
     "flex-grow-1",
     "d-flex",
     "align-items-center",
     "justify-content-center",
-    "img-fluid"
-  );
-  imgContainer.style.height = "250px";
+    "img-fluid",
+    "overflow-hidden",
+    "border",
+    "border-bottom",
+    "border-white"
+  ); // Añade las clases de Flexbox aquí
+  imgContainer.style.height = "250px"; // Establece la altura fija del contenedor de la imagen
 
   var link = document.createElement("a");
   link.href = `../product/product.php?id=${producto.id}`;
@@ -112,20 +116,25 @@ function createCard(producto, margin = "") {
   img.classList.add("card-img-top", "img-fluid");
   img.src = "data:image/jpeg;base64," + producto.imagen;
   img.alt = producto.nombre;
+  img.style.objectFit = "cover"; // Añade esta línea para ajustar la imagen al contenedor
 
   imgContainer.appendChild(img);
   link.appendChild(imgContainer);
 
   var cardBody = document.createElement("div");
-  cardBody.classList.add("card-body", "d-flex", "flex-column");
+  cardBody.classList.add("card-body", "d-flex", "flex-column","bg-black");
 
+  // Crea el nuevo elemento <p> y asígnale una clase de Bootstrap
   var bookName = document.createElement("p");
-  bookName.classList.add("mb-2");
+  bookName.classList.add("mb-2"); // Añade una clase para el margen inferior
 
+  // Establece el contenido del nuevo elemento <p> con el nombre del libro
   bookName.textContent = producto.nombre;
 
-  applyEllipsisStyle(bookName, "1.2em", 1);
+  // Aplica los estilos de puntos suspensivos al nombre del libro
+  applyEllipsisStyle(bookName, "1.2em", 1); // lineHeight: 1.2em, maxLines: 1
 
+  // Inserta el nuevo elemento <p> en el cardBody antes del elemento clearfix
   cardBody.insertBefore(bookName, clearfix);
 
   var clearfix = document.createElement("div");
@@ -183,6 +192,7 @@ function createCard(producto, margin = "") {
 
   return card;
 }
+
 
 var booksTabLink = document.getElementById("booksTabLink");
 booksTabLink.innerHTML = `Libros (${total})`;

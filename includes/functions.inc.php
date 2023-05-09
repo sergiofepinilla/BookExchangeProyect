@@ -154,36 +154,21 @@ function updateData(
     $conn,
     $userId,
     $profileUserName,
-    $profileAddress,
-    $profileGender,
-    $profileCounty,
-    $profileBirthDay,
     $image
 ) {
     $sql = "UPDATE datos_usuario INNER JOIN usuarios ON datos_usuario.id_usuario = usuarios.id SET datos_usuario.nombre = ?,
-     datos_usuario.genero = ?, datos_usuario.fecha_nacimiento = ?, datos_usuario.direccion = ?, datos_usuario.pais = ?,
       datos_usuario.foto_perfil = ? WHERE usuarios.id = ?";
     $stmt = $conn->prepare($sql);
 
     $stmt->bind_param(
-        "ssssssi",
+        "ssi",
         $profileUserName,
-        $profileGender,
-        $profileBirthDay,
-        $profileAddress,
-        $profileCounty,
         $image,
         $userId
     );
     $stmt->execute();
 
     if ($stmt->affected_rows > 0) {
-        $_SESSION["fullname"] = $profileUserName;
-        $_SESSION["gender"] = $profileGender;
-        $_SESSION["datebirth"] = $profileBirthDay;
-        $_SESSION["country"] = $profileCounty;
-        $_SESSION["address"] = $profileAddress;
-        $_SESSION["pfp"] = $image;
         return true; // Se realizaron cambios
     } else {
         return false; // No se realizaron cambios
