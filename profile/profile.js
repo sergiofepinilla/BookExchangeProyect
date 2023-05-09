@@ -24,7 +24,20 @@ var productos;
 var containerNovedades = document.getElementById("containerNovedades");
 var productosLista = document.getElementById("productosLista");
 
-function loadCarousel(carouselInnerId, productsToShow) {
+function loadCarousel(carouselInnerId, productsToShow, userProfile) {
+
+   // Crea la imagen de perfil aquí
+   var imgPerfil = document.createElement("img");
+   imgPerfil.classList.add("card-img-top", "img-fluid");
+   imgPerfil.src = "data:image/jpeg;base64," + userProfile.foto_perfil;
+   imgPerfil.style.objectFit = "cover";
+ 
+   // Selecciona el contenedor de la imagen de perfil
+   var profileImageContainer = document.getElementById("profileImageContainer");
+ 
+   // Agrega la imagen de perfil al contenedor
+   profileImageContainer.appendChild(imgPerfil);
+ 
   var carouselInner = document.getElementById(carouselInnerId);
 
   for (let i = 0; i < productsToShow.length; i += 5) {
@@ -50,6 +63,7 @@ function loadCarousel(carouselInnerId, productsToShow) {
       var card = createCard(product);
       row.appendChild(card);
     }
+    
 
     carouselItem.appendChild(row);
     carouselInner.appendChild(carouselItem);
@@ -61,6 +75,8 @@ getProducts().then(
     var products = data.products;
     var total = data.total;
 
+    var userProfile = products[0]; // Asume que el primer producto contiene la información del perfil del usuario
+
     var booksTabLink = document.querySelector(
       "a[data-toggle='tab'][href='#login']"
     );
@@ -69,8 +85,9 @@ getProducts().then(
     var lastBooks = products.slice(0, 10);
     var recommendedBooks = products.slice(0, 10);
 
-    loadCarousel("carouselInner", lastBooks);
-    loadCarousel("recommendedCarouselInner", recommendedBooks);
+    loadCarousel("carouselInner", lastBooks,userProfile);
+
+    
   },
   function (error) {
     console.error(error);
@@ -78,6 +95,7 @@ getProducts().then(
 );
 
 function createCard(producto, margin = "") {
+
   var card = document.createElement("div");
   card.classList.add("col");
   if (margin) card.classList.add(margin);
@@ -117,6 +135,7 @@ function createCard(producto, margin = "") {
   img.src = "data:image/jpeg;base64," + producto.imagen;
   img.alt = producto.nombre;
   img.style.objectFit = "cover"; // Añade esta línea para ajustar la imagen al contenedor
+
 
   imgContainer.appendChild(img);
   link.appendChild(imgContainer);
@@ -183,6 +202,7 @@ function createCard(producto, margin = "") {
 
   var usu_apodo = document.getElementById("nombre");
   usu_apodo.textContent = producto.apodo;
+
 
   cardBody.appendChild(textEnd);
 

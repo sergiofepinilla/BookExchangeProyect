@@ -100,20 +100,7 @@
                 <div class="col-lg-4">
                     <div class=" card mb-4 border-danger">
                         <div class="card-body text-center">
-                            <?php if ($userProfilePicture == "") { ?>
-                                <img src="../assets/img/userimg/profile.png" class="rounded-circle img-fluid" style="width: 150px; height: 150px;">
-                            <?php } else {
-                                $image_data = base64_encode(
-                                    $userProfilePicture
-                                );
-                                $image_type = "jpeg";
-                                // Cambiar según el tipo de imagen almacenado en la base de datos
-                                echo '<img src="data:image/' .
-                                    $image_type .
-                                    ";base64," .
-                                    $image_data .
-                                    '" class="rounded-circle img-fluid " style="width: 150px; height: 150px;">';
-                            } ?>
+                        <div id="profileImageContainer"></div>
                             <h5 class="my-3" id="nombre">
                             </h5>
                             <p class="text-muted mb-1" id="email"></p>
