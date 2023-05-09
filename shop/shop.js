@@ -33,7 +33,7 @@ function createCard(producto) {
   var img = document.createElement("img");
   img.classList.add("card-img-top");
   img.src = producto.imagen;
-  img.alt = producto.name;
+  img.alt = producto.nombre;
   link.appendChild(img);
 
   var cardBody = document.createElement("div");

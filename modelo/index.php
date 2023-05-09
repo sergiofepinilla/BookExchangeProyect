@@ -13,7 +13,7 @@ if (!empty($_GET['category']) or !empty($_GET['name'])) {
     $id = $_GET['id'];
     $query = "SELECT * FROM productos WHERE id='$id'";
 } else {
-    $query = "SELECT * FROM productos ORDER BY id DESC";
+    $query = "SELECT * FROM libros_venta ORDER BY id DESC";
 }
 
 $conn = Connection::getConnection();

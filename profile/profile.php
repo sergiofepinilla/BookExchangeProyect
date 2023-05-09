@@ -6,6 +6,54 @@
     include_once "../footer/footer.php";
     exit();
 } ?>
+<!-- USER A IMPLEMENTAR-->
+<div class="container mt-5">
+<h1>Perfil de Usuario</h1>
+<hr>
+</div>
+
+   
+                <div class="container h-100 mt-5">
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+                        <div class="col col-md-9 col-lg-7 col-xl-5 w-100">
+                            <div class="card border border-4 " style="border-radius: 15px;">
+                                <div class="card-body p-4">
+                                    <div class="d-flex text-black">
+                                        <div class="flex">
+                                        <div id="profileImageContainer"></div>
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                         
+                                                <h5 class="mb-1" id="nombre">Vendedor</h5>
+                                          
+                                            
+                                            <div class="d-flex justify-content-start rounded-3 p-2 mb-2"
+                                                style="background-color: #efefef;">
+                                                <div>
+                                                    <p class="small text-muted mb-1">Libros en venta</p>
+                                                    <p class="mb-0">41</p>
+                                                </div>
+                                                <div class="px-3">
+                                                    <p class="small text-muted mb-1">Libros Vendidos</p>
+                                                    <p class="mb-0">976</p>
+                                                </div>
+                                                <div>
+                                                    <p class="small text-muted mb-1">Puntuación</p>
+                                                    <p class="mb-0">8.5 /10</p>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex pt-1  justify-content-end">
+                                                
+                                                <button type="button" class="btn btn-lg btn-outline-dark me-1">Editar Perfil</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    <!-- USER A IMPLEMENTAR-->
 
 <?php if (isset($_POST["editProfileSubmit"])) { ?>
     <!-- EDIT VERSION -->
@@ -87,21 +135,14 @@
     <section>
         <div class="container py-5">
             <!-- TITULO TARJETA -->
-            <div class="row">
-                <div class="col">
-                    <nav aria-label="breadcrumb" class="rounded-3 p-3 mb-4 border border-danger">
-                        <h1>Perfil de Usuario</h1>
-                    </nav>
-                </div>
-            </div>
             <!-- DIV CONTENEDOR IMAGEN/DATOS -->
             <div class="row">
                 <!-- DIV CONTENEDOR IMAGEN -->
                 <div class="col-lg-4">
                     <div class=" card mb-4 border-danger">
                         <div class="card-body text-center">
-                        <div id="profileImageContainer"></div>
-                            <h5 class="my-3" id="nombre">
+                       
+                            
                             </h5>
                             <p class="text-muted mb-1" id="email"></p>
                             <?php if($_GET['id'] == $userId){ ?>
