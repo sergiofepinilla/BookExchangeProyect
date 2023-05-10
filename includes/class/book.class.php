@@ -1,7 +1,7 @@
 <?php
 class Libro
 {
-    private $nombre;
+    private $titulo;
     private $isbn;
     private $autor;
     private $editorial;
@@ -14,9 +14,9 @@ class Libro
     private $imagen;
     private $userId;
 
-    function __construct($nombre, $isbn, $autor, $editorial, $genero, $estado, $precio, $cambio, $envio, $descripcion, $imagen, $userId)
+    function __construct($titulo, $isbn, $autor, $editorial, $genero, $estado, $precio, $cambio, $envio, $descripcion, $imagen, $userId)
     {
-        $this->nombre = $nombre;
+        $this->titulo = $titulo;
         $this->isbn = $isbn;
         $this->autor = $autor;
         $this->editorial = $editorial;
@@ -34,8 +34,8 @@ class Libro
     {
         $conn = Connection::getConnection();
 
-        $stmt = $conn->prepare("INSERT INTO libros_venta (nombre, isbn, autor, editorial, genero, estado, precio, cambio, envio, descripcion, imagen,id_usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssssdiissi", $this->nombre, $this->isbn, $this->autor, $this->editorial, $this->genero, $this->estado, $this->precio, $this->cambio, $this->envio, $this->descripcion, $this->imagen, $this->userId);
+        $stmt = $conn->prepare("INSERT INTO libros_venta (titulo, isbn, autor, editorial, genero, estado, precio, cambio, envio, descripcion, imagen,id_usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssssdiissi", $this->titulo, $this->isbn, $this->autor, $this->editorial, $this->genero, $this->estado, $this->precio, $this->cambio, $this->envio, $this->descripcion, $this->imagen, $this->userId);
 
         $result = $stmt->execute();
 
@@ -48,7 +48,7 @@ class Libro
 
     public function imprimir()
     {
-        echo "Nombre: " . $this->nombre . "<br>";
+        echo "Titulo: " . $this->titulo . "<br>";
         echo "ISBN: " . $this->isbn . "<br>";
         echo "Autor: " . $this->autor . "<br>";
         echo "Editorial: " . $this->editorial . "<br>";

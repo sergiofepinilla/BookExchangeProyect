@@ -1,11 +1,17 @@
 function getProducts() {
   return new Promise(function (resolve, reject) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get("id");
     $.ajax({
-      url: "../modelo/homepage_product.php",
+      url: "../modelo/user_profile_products.php",
       type: "GET",
       dataType: "json",
+      data: { id: id },
       success: function (data) {
-        resolve(data);
+        resolve({
+          products: data.products,
+          total: data.total,
+        });
       },
       error: function (xhr, status, error) {
         reject(error);
@@ -18,7 +24,22 @@ var productos;
 var containerNovedades = document.getElementById("containerNovedades");
 var productosLista = document.getElementById("productosLista");
 
-function loadCarousel(carouselInnerId, productsToShow) {
+function loadCarousel(carouselInnerId, productsToShow, userProfile) {
+
+   // Crea la imagen de perfil aquí
+   var imgPerfil = document.createElement("img");
+   imgPerfil.classList.add("card-img-top", "img-fluid", "rounded-circle","h-100","border","border-5","border-dark");
+   imgPerfil.src = "data:image/jpeg;base64," + userProfile.foto_perfil;
+   imgPerfil.style.objectFit = "cover";
+   imgPerfil.style.width = "180px";
+imgPerfil.style.borderRadius = "10px";
+ 
+   // Selecciona el contenedor de la imagen de perfil
+   var profileImageContainer = document.getElementById("profileImageContainer");
+ 
+   // Agrega la imagen de perfil al contenedor
+   profileImageContainer.appendChild(imgPerfil);
+ 
   var carouselInner = document.getElementById(carouselInnerId);
 
   for (let i = 0; i < productsToShow.length; i += 5) {
@@ -44,20 +65,31 @@ function loadCarousel(carouselInnerId, productsToShow) {
       var card = createCard(product);
       row.appendChild(card);
     }
+    
 
     carouselItem.appendChild(row);
     carouselInner.appendChild(carouselItem);
   }
 }
 
-// Load products into carousels
 getProducts().then(
-  function (products) {
+  function (data) {
+    var products = data.products;
+    var total = data.total;
+
+    var userProfile = products[0]; // Asume que el primer producto contiene la información del perfil del usuario
+
+    var booksTabLink = document.querySelector(
+      "a[data-toggle='tab'][href='#login']"
+    );
+    booksTabLink.innerHTML = `Libros (${total})`;
+
     var lastBooks = products.slice(0, 10);
     var recommendedBooks = products.slice(0, 10);
 
-    loadCarousel("carouselInner", lastBooks);
-    loadCarousel("recommendedCarouselInner", recommendedBooks);
+    loadCarousel("carouselInner", lastBooks,userProfile);
+
+    
   },
   function (error) {
     console.error(error);
@@ -157,6 +189,9 @@ function createCard(producto, margin = "") {
   divCheck.appendChild(checkBtn);
   btnRow.appendChild(divCheck);
 
+  var usu_apodo = document.getElementById("nombre");
+usu_apodo.textContent = producto.apodo;
+
   cardBody.appendChild(btnRow);
 
   innerCard.appendChild(link);
@@ -168,6 +203,13 @@ function createCard(producto, margin = "") {
 
 
 
+
+var booksTabLink = document.getElementById("booksTabLink");
+booksTabLink.innerHTML = `Libros (${total})`;
+
+var booksTabLink = document.getElementById("booksTabLink");
+
+var booksTabLink = document.getElementById("booksTabLink");
 
 function addToCart(e) {
   var cart = localStorage.getItem("cart");

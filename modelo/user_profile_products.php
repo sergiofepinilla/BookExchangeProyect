@@ -9,12 +9,14 @@ $userId = $user->getId();
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $query = "SELECT libros_venta.*, usuarios.apodo, usuarios.correo, datos_usuario.foto_perfil
-    FROM libros_venta
-    JOIN usuarios ON libros_venta.id_usuario = usuarios.id
-    JOIN datos_usuario ON usuarios.id = datos_usuario.id_usuario
-    WHERE libros_venta.id_usuario = '$id'
+    $query = "
+    SELECT usuarios.apodo, usuarios.correo, datos_usuario.foto_perfil, datos_usuario.nombre, libros_venta.*
+    FROM usuarios
+    LEFT JOIN libros_venta ON usuarios.id = libros_venta.id_usuario
+    INNER JOIN datos_usuario ON usuarios.id = datos_usuario.id_usuario
+    WHERE usuarios.id = '$id'
     ORDER BY libros_venta.id DESC";
+
 } else {
    // $query = "SELECT * FROM libros_venta WHERE id_usuario = '$userId' ORDER BY id DESC";
 }

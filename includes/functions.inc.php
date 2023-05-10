@@ -99,8 +99,7 @@ function uidExists($conn, $uid, $email)
 {
     $sql = 'SELECT US.id as id, US.tipo as userType, US.apodo as nick,
     US.correo as email, P.id_usuario as userIdPassword, P.clave as userPassword, 
-    D.nombre as fullname, D.genero as gender, D.fecha_nacimiento as datebirth, 
-    D.direccion as address, D.pais as country, D.foto_perfil as pfp 
+    D.nombre as fullname,D.foto_perfil as pfp 
     FROM usuarios US
     INNER JOIN claves P ON US.id = P.id_usuario
     INNER JOIN datos_usuario D on US.id = D.id_usuario
@@ -126,10 +125,6 @@ function uidExists($conn, $uid, $email)
             $row['email'],
             $row['fullname'],
             $row['userPassword'],
-            $row['gender'],
-            $row['datebirth'],
-            $row['country'],
-            $row['address'],
             $row['pfp']
         );
         return $user;

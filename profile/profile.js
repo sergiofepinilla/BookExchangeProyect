@@ -32,13 +32,22 @@ function loadCarousel(carouselInnerId, productsToShow, userProfile) {
    imgPerfil.src = "data:image/jpeg;base64," + userProfile.foto_perfil;
    imgPerfil.style.objectFit = "cover";
    imgPerfil.style.width = "180px";
-imgPerfil.style.borderRadius = "10px";
+   imgPerfil.style.borderRadius = "10px";
  
    // Selecciona el contenedor de la imagen de perfil
    var profileImageContainer = document.getElementById("profileImageContainer");
  
    // Agrega la imagen de perfil al contenedor
    profileImageContainer.appendChild(imgPerfil);
+
+   var usu_apodo = document.getElementById("apodo");
+   usu_apodo.textContent = userProfile.apodo;
+
+   var usu_nombre = document.getElementById("nombre");
+   usu_nombre.innerHTML = userProfile.nombre;
+
+   var usu_correo = document.getElementById("correo");
+   usu_correo.innerHTML = userProfile.correo;
  
   var carouselInner = document.getElementById(carouselInnerId);
 
@@ -62,7 +71,9 @@ imgPerfil.style.borderRadius = "10px";
 
     for (let j = i; j < i + 5 && j < productsToShow.length; j++) {
       var product = productsToShow[j];
+      if (product.titulo != null) {
       var card = createCard(product);
+      }
       row.appendChild(card);
     }
     
@@ -75,7 +86,14 @@ imgPerfil.style.borderRadius = "10px";
 getProducts().then(
   function (data) {
     var products = data.products;
-    var total = data.total;
+    var total = 0; // Inicia total en 0
+
+    // Aumenta el total solo si el producto tiene un título
+    products.forEach(function(product) {
+      if (product.titulo != null) {
+        total++;
+      }
+    });
 
     var userProfile = products[0]; // Asume que el primer producto contiene la información del perfil del usuario
 
@@ -97,7 +115,6 @@ getProducts().then(
 );
 
 function createCard(producto, margin = "") {
-
   var card = document.createElement("div");
   card.classList.add("col");
   if (margin) card.classList.add(margin);
@@ -114,7 +131,6 @@ function createCard(producto, margin = "") {
     "h-100"
   );
 
-  // Crea un div contenedor para la imagen
   var imgContainer = document.createElement("div");
   imgContainer.classList.add(
     "flex-grow-1",
@@ -126,8 +142,8 @@ function createCard(producto, margin = "") {
     "border",
     "border-bottom",
     "border-white"
-  ); // Añade las clases de Flexbox aquí
-  imgContainer.style.height = "250px"; // Establece la altura fija del contenedor de la imagen
+  );
+  imgContainer.style.height = "250px";
 
   var link = document.createElement("a");
   link.href = `../product/product.php?id=${producto.id}`;
@@ -135,9 +151,10 @@ function createCard(producto, margin = "") {
   var img = document.createElement("img");
   img.classList.add("card-img-top", "img-fluid");
   img.src = "data:image/jpeg;base64," + producto.imagen;
-  img.alt = producto.nombre;
-  img.style.objectFit = "cover"; // Añade esta línea para ajustar la imagen al contenedor
-
+  img.alt = producto.titulo;
+  img.style.objectFit = "contain";
+  img.style.height = "100%";
+  img.style.width = "auto";
 
   imgContainer.appendChild(img);
   link.appendChild(imgContainer);
@@ -145,52 +162,40 @@ function createCard(producto, margin = "") {
   var cardBody = document.createElement("div");
   cardBody.classList.add("card-body", "d-flex", "flex-column","bg-black");
 
-  // Crea el nuevo elemento <p> y asígnale una clase de Bootstrap
+  var bookNameRow = document.createElement("div");
+  bookNameRow.classList.add("row", "justify-content-center");
+  
   var bookName = document.createElement("p");
-  bookName.classList.add("mb-2"); // Añade una clase para el margen inferior
+  bookName.classList.add("mb-2");
+  bookName.textContent = producto.titulo;
+  applyEllipsisStyle(bookName, "1.2em", 1);
 
-  // Establece el contenido del nuevo elemento <p> con el nombre del libro
-  bookName.textContent = producto.nombre;
+  bookNameRow.appendChild(bookName);
 
-  // Aplica los estilos de puntos suspensivos al nombre del libro
-  applyEllipsisStyle(bookName, "1.2em", 1); // lineHeight: 1.2em, maxLines: 1
-
-  // Inserta el nuevo elemento <p> en el cardBody antes del elemento clearfix
-  cardBody.insertBefore(bookName, clearfix);
-
-  var clearfix = document.createElement("div");
-  clearfix.classList.add("clearfix", "mb-3");
+  var badgeRow = document.createElement("div");
+  badgeRow.classList.add("row", "justify-content-center", "mb-3");
 
   var badge = document.createElement("span");
-  badge.classList.add(
-    "float-start",
-    "badge",
-    "rounded-pill",
-    "bg-primary",
-    "col-12",
-    "col-xxl-9",
-    "mb-3"
-  );
+  badge.classList.add("badge", "rounded-pill", "bg-primary");
   badge.textContent = producto.estado;
-  clearfix.appendChild(badge);
+
+  badgeRow.appendChild(badge);
+
+  var priceRow = document.createElement("div");
+  priceRow.classList.add("row", "justify-content-end");
 
   var price = document.createElement("span");
-  price.classList.add(
-    "float-end",
-    "price-hp",
-    "text-white",
-    "bg-warning",
-    "rounded-pill",
-    "fw-bold",
-    "badge"
-  );
+  price.classList.add("price-hp", "text-white", "bg-warning", "rounded-pill", "fw-bold", "badge","mb-3");
   price.innerHTML = `${producto.precio}&euro;`;
-  clearfix.appendChild(price);
 
-  cardBody.appendChild(clearfix);
+  priceRow.appendChild(price);
 
-  var textEnd = document.createElement("div");
-  textEnd.classList.add("row", "gx-2");
+  cardBody.appendChild(bookNameRow);
+  cardBody.appendChild(badgeRow);
+  cardBody.appendChild(priceRow);
+
+  var btnRow = document.createElement("div");
+  btnRow.classList.add("row");
 
   var divCheck = document.createElement("div");
   divCheck.classList.add("col-12");
@@ -200,13 +205,11 @@ function createCard(producto, margin = "") {
   checkBtn.textContent = "VER";
   checkBtn.href = `../product/product.php?id=${producto.id}`;
   divCheck.appendChild(checkBtn);
-  textEnd.appendChild(divCheck);
+  btnRow.appendChild(divCheck);
 
-  var usu_apodo = document.getElementById("nombre");
-  usu_apodo.textContent = producto.apodo;
+  
 
-
-  cardBody.appendChild(textEnd);
+  cardBody.appendChild(btnRow);
 
   innerCard.appendChild(link);
   innerCard.appendChild(cardBody);
@@ -214,6 +217,8 @@ function createCard(producto, margin = "") {
 
   return card;
 }
+
+
 
 
 var booksTabLink = document.getElementById("booksTabLink");

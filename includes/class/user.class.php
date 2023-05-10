@@ -13,7 +13,7 @@ class User
     private $address;
     private $profilePicture;
 
-    public function __construct($id, $nick, $userType, $email, $name, $password, $gender, $dateOfBirth, $country, $address, $profilePicture)
+    public function __construct($id, $nick, $userType, $email, $name, $password,$profilePicture)
     {
         $this->id = $id;
         $this->nick = $nick;
@@ -21,10 +21,6 @@ class User
         $this->email = $email;
         $this->name = $name;
         $this->password = $password;
-        $this->gender = $gender;
-        $this->dateOfBirth = $dateOfBirth;
-        $this->country = $country;
-        $this->address = $address;
         $this->profilePicture = $profilePicture;
     }
 
@@ -58,30 +54,20 @@ class User
         return $this->password;
     }
 
-    public function getGender()
-    {
-        return $this->gender;
-    }
-
-    public function getDateOfBirth()
-    {
-        return $this->dateOfBirth;
-    }
-
-    public function getCountry()
-    {
-        return $this->country;
-    }
-
-    public function getAddress()
-    {
-        return $this->address;
-    }
-
     public function getProfilePicture()
     {
         return $this->profilePicture;
     }
+
+    public function setName($name)
+{
+    $this->name = $name;
+}
+
+public function setProfilePicture($profilePicture)
+{
+    $this->profilePicture = $profilePicture;
+}
 
     public static function createUser($conn, $nick, $email, $name, $password)
     {
@@ -93,10 +79,10 @@ class User
         $stmt->execute();
         $id = $stmt->insert_id;
 
-
-        $sql = "INSERT INTO datos_usuario (id_usuario, nombre) VALUES (?, ?)";
+        $defaultProfilePic = file_get_contents(__DIR__ . '/../../assets/img/userimg/profile.png');
+        $sql = "INSERT INTO datos_usuario (id_usuario, nombre,foto_perfil) VALUES (?, ?, ?)";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("is", $id, $name);
+        $stmt->bind_param("iss", $id, $name, $defaultProfilePic);
         $stmt->execute();
 
 
@@ -147,7 +133,7 @@ class User
 
     public function loadUserById($conn, $id)
     {
-        $sql = "SELECT id, apodo, tipo, correo, nombre, clave, genero, fecha_nacimiento, pais, direccion, foto_perfil FROM usuarios JOIN datos_usuario ON usuarios.id = datos_usuario.id_usuario JOIN claves ON usuarios.id = claves.id_usuario WHERE usuarios.id = ?";
+        $sql = "SELECT id, apodo, tipo, correo, nombre, clave,foto_perfil FROM usuarios JOIN datos_usuario ON usuarios.id = datos_usuario.id_usuario JOIN claves ON usuarios.id = claves.id_usuario WHERE usuarios.id = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("i", $id);
         $stmt->execute();
@@ -160,10 +146,6 @@ class User
         $this->email = $userData['correo'];
         $this->name = $userData['nombre'];
         $this->password = $userData['clave'];
-        $this->gender = $userData['genero'];
-        $this->dateOfBirth = $userData['fecha_nacimiento'];
-        $this->country = $userData['pais'];
-        $this->address = $userData['direccion'];
         $this->profilePicture = $userData['foto_perfil'];
     }
 

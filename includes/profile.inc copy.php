@@ -21,7 +21,6 @@ if (isset($_POST['saveProfileSubmit'])) {
             $image = file_get_contents($_FILES['profilePicture']['tmp_name']);
         }
     } else {
-        $userProfilePicture = $user->getProfilePicture();
         $image = $userProfilePicture;
     }
 
@@ -35,8 +34,6 @@ if (isset($_POST['saveProfileSubmit'])) {
     } else {
         // Ha habido cambios
         updateData($conn, $userId, $profileUserName, $image);
-        $user->setName($profileUserName);
-        $user->setProfilePicture($image);
         unset($_SESSION['editProfileSubmit']);
         header('location: ../profile/profile.php?id='.$userId);
     }

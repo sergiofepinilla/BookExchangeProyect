@@ -1,6 +1,8 @@
 <?php require_once '../header/header.php' ?>
 <?php require_once '../navbar/navbar.php' ?>
 <?php require_once '../carousel/main_carousel.php' ?>
+<div class="container">
+
 
 <!--separador-->
 <hr class="w-75 mt-5 mb-5 mx-auto">
@@ -74,7 +76,9 @@
 <?php include_once "../newsletter/newsletter.php"; ?>
 </div>
 </div>
+
 <?php require_once '../footer/upper_footer.php' ?>
+</div>
 <script src="../navbar/navbar.js"></script>
 <script src="home.js"></script>
 <?php require_once '../footer/footer_links.php' ?>
