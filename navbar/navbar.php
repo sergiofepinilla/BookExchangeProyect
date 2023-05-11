@@ -44,6 +44,9 @@ session_start();
                 <li class="nav-item">
                     <a class="nav-link text-white" href="../contact/contact.php">Contacto</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="../purchase_history/purchase_history.php">Historial</a>
+                </li>
 
                 <?php if (!isset($_SESSION["user"])) { ?>
                     <li class="nav-item d-lg-none">

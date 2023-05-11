@@ -5,7 +5,13 @@ $conn = Connection::getConnection();
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $query = "SELECT libros_venta.*, usuarios.apodo AS vendedor_apodo, usuarios.correo AS vendedor_correo FROM libros_venta JOIN usuarios ON libros_venta.id_usuario = usuarios.id WHERE libros_venta.id='$id'";
+    $query = "
+SELECT libros_venta.*, usuarios.apodo AS vendedor_apodo, datos_usuario.foto_perfil
+FROM libros_venta
+JOIN usuarios ON libros_venta.id_usuario = usuarios.id
+JOIN datos_usuario ON datos_usuario.id_usuario = usuarios.id
+WHERE libros_venta.id='$id'";
+
 } else {
    
 }
@@ -17,6 +23,7 @@ $products = array();
 
 while ($row = $result->fetch_assoc()) {
     $row['imagen'] = base64_encode($row['imagen']);
+    $row['foto_perfil'] = base64_encode($row['foto_perfil']);
     $products[] = (object) $row;
 }
 

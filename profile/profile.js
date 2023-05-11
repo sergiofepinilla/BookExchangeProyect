@@ -41,13 +41,19 @@ function loadCarousel(carouselInnerId, productsToShow, userProfile) {
    profileImageContainer.appendChild(imgPerfil);
 
    var usu_apodo = document.getElementById("apodo");
-   usu_apodo.textContent = userProfile.apodo;
+   if (usu_apodo) {
+    usu_apodo.textContent = userProfile.apodo;
+  }
 
    var usu_nombre = document.getElementById("nombre");
-   usu_nombre.innerHTML = userProfile.nombre;
-
+   if(usu_nombre){
+    usu_nombre.innerHTML = userProfile.nombre;
+   }
+   
    var usu_correo = document.getElementById("correo");
-   usu_correo.innerHTML = userProfile.correo;
+   if(usu_correo){
+    usu_correo.innerHTML = userProfile.correo;
+   }
  
   var carouselInner = document.getElementById(carouselInnerId);
 

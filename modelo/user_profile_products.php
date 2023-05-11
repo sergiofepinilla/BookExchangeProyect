@@ -4,8 +4,11 @@ include_once "../includes/class/user.class.php";
 $conn = Connection::getConnection();
 
 session_start();
-$user = unserialize($_SESSION["user"]);
-$userId = $user->getId();
+
+if (isset($_SESSION["user"])) {
+    $user = unserialize($_SESSION["user"]);
+    $userId = $user->getId();
+}
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -18,7 +21,7 @@ if (isset($_GET['id'])) {
     ORDER BY libros_venta.id DESC";
 
 } else {
-   // $query = "SELECT * FROM libros_venta WHERE id_usuario = '$userId' ORDER BY id DESC";
+    //error
 }
 
 

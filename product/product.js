@@ -37,13 +37,12 @@ if (!id) {
 
 function loadProduct(product) {
   sellerId = product.id_usuario;
-  console.log(sellerId);
   const category = document.getElementById("genero");
   category.href = `../shop/shop.php?category=${product.genero}`;
   category.textContent = categories[product.genero - 1];
 
-  const name = document.getElementById("nombre");
-  name.textContent = product.nombre;
+  const name = document.getElementById("titulo");
+  name.textContent = product.titulo;
 
   const autor = document.getElementById("autor");
   autor.innerHTML = "<span class='fw-bold'>Autor</span>: " + product.autor;
@@ -67,24 +66,40 @@ function loadProduct(product) {
   const usu_vendedor = document.getElementById("usu_vendedor");
   usu_vendedor.textContent = product.vendedor_apodo;
 
-
-  
-
   const usuVendedorLink = document.getElementById("usu_vendedor_link");
   usuVendedorLink.href = `../profile/profile.php?id=${product.id_usuario}`;
 
   const imgContainer = document.getElementById("imgContainer");
   const img = document.createElement("img");
-  
-  
 
-  if (currentUserId == product.id_usuario) {
-    const buyBtn = document.getElementById("buyBtn");
-    buyBtn.disabled = true;
-    buyBtn.classList.add("btn-secondary");
-    buyBtn.classList.remove("btn-primary");
-    buyBtn.textContent = "No puedes comprar tu propio producto";
-  }
+  const profilePicture = document.getElementById("profilePicture");
+
+  const img_perfil = document.createElement("img");
+  img_perfil.classList.add("card-img-top", "img-fluid", "rounded-circle", "border", "border-5", "border-dark");
+  img_perfil.style.maxHeight = "100%"; // Establece la altura máxima de la imagen al 100% del contenedor
+  img_perfil.style.width = "auto"; // Ajusta automáticamente el ancho de la imagen según su proporción
+  img_perfil.src = "data:image/jpeg;base64," + product.foto_perfil;
+  img_perfil.alt = product.vendedor_apodo;
+
+  profilePicture.appendChild(img_perfil);
+  
+  
+  if(typeof currentUserId !== "undefined"){
+    if (currentUserId == product.id_usuario) {
+      const buyBtn = document.getElementById("buyBtn");
+      buyBtn.disabled = true;
+      buyBtn.classList.add("btn-secondary");
+      buyBtn.classList.remove("btn-primary");
+      buyBtn.textContent = "No puedes comprar tu propio producto";
+    }
+}else{
+      const buyBtn = document.getElementById("buyBtn");
+      buyBtn.disabled = true;
+      buyBtn.classList.add("btn-secondary");
+      buyBtn.classList.remove("btn-primary");
+      buyBtn.textContent = "Necesitas estar registrado para poder comprar un producto";
+}
+
   img.classList.add("d-block","w-100","img-fluid");
   img.src = "data:image/jpeg;base64," + product.imagen;
   img.alt = product.nombre;
@@ -113,22 +128,31 @@ document.getElementById("buyBtn").addEventListener("click", function () {
 
 
 function purchaseProduct() {
-  // Extrae la información del producto y del vendedor
-  // (asumiendo que todos estos valores ya están en el DOM y disponibles)
   const id_usu_comprador = currentUserId;
+  console.log(id_usu_comprador);
   const id_usu_vendedor = sellerId;
-  const nombre = document.getElementById("nombre").textContent;
+  console.log(id_usu_vendedor);
+  const titulo = document.getElementById("titulo").textContent;
+  console.log(titulo);
   const isbn = document.getElementById("isbn").textContent.split(": ")[1];
+  console.log(isbn);
   const autor = document.getElementById("autor").textContent.split(": ")[1];
-  const genero = categories.indexOf(document.getElementById("categoria").textContent) + 1;
+  console.log(autor);
+  const genero = categories.indexOf(document.getElementById("genero").textContent) + 1;
+  console.log(genero);
   const editorial = document.getElementById("editorial").textContent.split(": ")[1];
+  console.log(editorial);
   const estado = document.getElementById("estado").textContent.split(": ")[1];
-  const precio = parseFloat(document.getElementById("precio").textContent.split(" ")[0]);
+  console.log(estado);
+  const precioElement = document.getElementById("precio");
+  const precioText = precioElement.textContent.trim(); // Elimina espacios en blanco al inicio y al final
+  const precioValue = precioText.split(":")[1].trim(); // Extrae la parte después de ":" y elimina espacios en blanco
+  const precio = parseFloat(precioValue); // Convierte el valor en formato numérico
 
   const formData = new FormData();
   formData.append("id_usu_comprador", id_usu_comprador);
   formData.append("id_usu_vendedor", id_usu_vendedor);
-  formData.append("nombre", nombre);
+  formData.append("titulo", titulo);
   formData.append("isbn", isbn);
   formData.append("autor", autor);
   formData.append("genero", genero);
@@ -149,9 +173,9 @@ function purchaseProduct() {
       }
     })
     .then((data) => {
-      if (data) {
+      if (data === "success") {
         // Redirige a la página de éxito
-        window.location.href = "../success.php";
+        window.location.href = "../home/home.php";
       } else {
         // Redirige a la página de error
         window.location.href = "../error.php";

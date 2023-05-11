@@ -1,0 +1,132 @@
+Array
+(
+    [id_usu_comprador] => 22
+    [id_usu_vendedor] => 20
+    [titulo] => qwewq
+    [isbn] => Desconocido
+    [autor] => qweqwqweqw
+    [genero] => 3
+    [editorial] => qweqwewq
+    [estado] => usado
+    [precio] => 1231
+)
+Array
+(
+    [id_usu_comprador] => 22
+    [id_usu_vendedor] => 20
+    [titulo] => qwewq
+    [isbn] => Desconocido
+    [autor] => qweqwqweqw
+    [genero] => 3
+    [editorial] => qweqwewq
+    [estado] => usado
+    [precio] => 1231
+)
+Array
+(
+    [id_usu_comprador] => 22
+    [id_usu_vendedor] => 20
+    [titulo] => qwewq
+    [isbn] => Desconocido
+    [autor] => qweqwqweqw
+    [genero] => 3
+    [editorial] => qweqwewq
+    [estado] => usado
+    [precio] => 1231
+)
+Array
+(
+    [id_usu_comprador] => 22
+    [id_usu_vendedor] => 20
+    [titulo] => qwewq
+    [isbn] => Desconocido
+    [autor] => qweqwqweqw
+    [genero] => 3
+    [editorial] => qweqwewq
+    [estado] => usado
+    [precio] => 1231
+)
+Array
+(
+    [id_usu_comprador] => 22
+    [id_usu_vendedor] => 20
+    [titulo] => qwewq
+    [isbn] => Desconocido
+    [autor] => qweqwqweqw
+    [genero] => 3
+    [editorial] => qweqwewq
+    [estado] => usado
+    [precio] => 1231
+)
+Array
+(
+    [id_usu_comprador] => 22
+    [id_usu_vendedor] => 4
+    [titulo] => A Court of Mist and Fury
+    [isbn] => 9781619634466
+    [autor] => Sarah J Maas
+    [genero] => 1
+    [editorial] => A Court of Thorns and Roses
+    [estado] => usado
+    [precio] => 25
+)
+Array
+(
+    [id_usu_comprador] => 4
+    [id_usu_vendedor] => 22
+    [titulo] => qwewqe
+    [isbn] => Desconocido
+    [autor] => qweqwe
+    [genero] => 3
+    [editorial] => wqe
+    [estado] => usado
+    [precio] => 12312
+)
+Array
+(
+    [id_usu_comprador] => 4
+    [id_usu_vendedor] => 22
+    [titulo] => qwewqe
+    [isbn] => Desconocido
+    [autor] => qweqwe
+    [genero] => 3
+    [editorial] => wqe
+    [estado] => usado
+    [precio] => 12312
+)
+Array
+(
+    [id_usu_comprador] => 4
+    [id_usu_vendedor] => 23
+    [titulo] => Lorem Septum Umbralla
+    [isbn] => Desconocido
+    [autor] => Desconocido
+    [genero] => 3
+    [editorial] => Desconocido
+    [estado] => usado
+    [precio] => 25
+)
+Array
+(
+    [id_usu_comprador] => 4
+    [id_usu_vendedor] => 22
+    [titulo] => qwewqe
+    [isbn] => Desconocido
+    [autor] => qweqwe
+    [genero] => 3
+    [editorial] => wqe
+    [estado] => usado
+    [precio] => 12312
+)
+Array
+(
+    [id_usu_comprador] => 24
+    [id_usu_vendedor] => 22
+    [titulo] => qwewqe
+    [isbn] => Desconocido
+    [autor] => qweqwe
+    [genero] => 3
+    [editorial] => wqe
+    [estado] => usado
+    [precio] => 12312
+)

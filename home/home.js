@@ -101,7 +101,7 @@ function createCard(producto, margin = "") {
   var img = document.createElement("img");
   img.classList.add("card-img-top", "img-fluid");
   img.src = "data:image/jpeg;base64," + producto.imagen;
-  img.alt = producto.nombre;
+  img.alt = producto.titulo;
   img.style.objectFit = "contain";
   img.style.height = "100%";
   img.style.width = "auto";
@@ -117,7 +117,7 @@ function createCard(producto, margin = "") {
   
   var bookName = document.createElement("p");
   bookName.classList.add("mb-2");
-  bookName.textContent = producto.nombre;
+  bookName.textContent = producto.titulo;
   applyEllipsisStyle(bookName, "1.2em", 1);
 
   bookNameRow.appendChild(bookName);

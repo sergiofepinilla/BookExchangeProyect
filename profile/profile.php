@@ -39,28 +39,35 @@
                 </div>
                 <div class="card-body">
     <div class="row">
+      <?php if(isset($userId) && $userId == $_GET['id']){ ?>
         <div class="col-12 col-md-4">
             <strong>Nombre Completo:</strong>
         </div>
+     <?php } ?>
         <div class="col-12 col-md-8">
             <?php if (isset($_POST["editProfileSubmit"])) : ?>
                 <div class="col-8">
-                    <input type="text" name="profileUserName" class="form-control" value="<?php echo $userName; ?>">
+                    <input type="text" name="profileUserName" class="form-control" value="">
                 </div>
             <?php else : ?>
+              <?php if(isset($userId) && $userId == $_GET['id']){ ?>
                 <div class="col-8">
-                    <span id="nombre"><?php echo $userName; ?></span>
+                    <span id="nombre"></span>
                 </div>
+                <?php } ?>
             <?php endif; ?>
         </div>
     </div>
     <div class="row">
+    <?php if(isset($userId) && $userId == $_GET['id']){ ?>
         <div class="col-12 col-md-4">
             <strong>Correo electrónico:</strong>
         </div>
+        
         <div class="col-12 col-md-8">
             <span id="correo"></span>
         </div>
+        <?php } ?>
     </div>
     <div class="row">
         <div class="col-12 col-md-4">
@@ -106,6 +113,7 @@
               </div>
             </div>
             </div>
+            <?php if(isset($userId) && $userId == $_GET['id']){ ?>
               <div class="d-flex pt-1 justify-content-end">
                 <!-- EDIT OR SAVE BUTTON -->
                 <?php if (isset($_POST["editProfileSubmit"])) : ?>
@@ -116,6 +124,7 @@
                   </form>
                 <?php endif; ?>
               </div>
+              <?php } ?>
             </div>
           </div>
         </div>
@@ -141,7 +150,7 @@
             <div id="login" class="tab-pane active">
                 <div class="col-md-12 d-flex justify-content-between align-items-center">
                     <h2 class="mt-3">Libros en Venta</h2>
-                    <?php if($_GET['id'] == $userId){ ?>
+                    <?php if(isset($userId) && $userId == $_GET['id']){ ?>
                     <button class="btn btn-success btn-lg me-3" onclick="window.location.href='../bookform/book_form.php'">
                     <i class="bi bi-book me-1"></i> Subir Libro
                     </button>

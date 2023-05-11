@@ -63,16 +63,10 @@
 </div>
 <!-- Libros recomendados Container FIN -->
 
-
-<hr class="w-75 mt-5 mb-5 mx-auto">
-
-<!-- PRODUCTOS -->
-<div class="d-flex mb-3 justify-content-center">
-    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 w-75 g-3 " id="productosLista">
-    </div>
+<div class="container">
+    <hr class ="mt-5 mb-5 mx-auto">
 </div>
-<!-- PRODUCTOS FIN-->
-</div>
+
 <?php include_once "../newsletter/newsletter.php"; ?>
 </div>
 </div>

@@ -1,10 +1,10 @@
 <?php
-require_once 'connection.php';
+  include_once 'dbh.inc.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id_usu_comprador = $_POST['id_usu_comprador'];
     $id_usu_vendedor = $_POST['id_usu_vendedor'];
-    $nombre = $_POST['nombre'];
+    $titulo = $_POST['titulo'];
     $isbn = $_POST['isbn'];
     $autor = $_POST['autor'];
     $genero = $_POST['genero'];
@@ -12,16 +12,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $estado = $_POST['estado'];
     $precio = $_POST['precio'];
     $review = 0;
+    file_put_contents('debug.log', print_r($_POST, true), FILE_APPEND);
+
+    
 
     $conn = Connection::getConnection();
-    $stmt = $conn->prepare("INSERT INTO libros_vendidos (id_usu_comprador, id_usu_vendedor, nombre, isbn, autor, genero, editorial, estado, precio, review) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("iissssssdi", $id_usu_comprador, $id_usu_vendedor, $nombre, $isbn, $autor, $genero, $editorial, $estado, $precio, $review);
+    $stmt = $conn->prepare("INSERT INTO libros_vendidos (id_usu_comprador, id_usu_vendedor, titulo, isbn, autor, genero, editorial, estado, precio, review) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("iissssssdi", $id_usu_comprador, $id_usu_vendedor, $titulo, $isbn, $autor, $genero, $editorial, $estado, $precio, $review);
     $stmt->execute();
 
     if ($stmt->affected_rows > 0) {
-        header("Location: ../success.php"); // Redirige a una página de éxito
+        echo "success";
     } else {
-        header("Location: ../error.php"); // Redirige a una página de error
+        echo "error";
     }
 
     $stmt->close();
