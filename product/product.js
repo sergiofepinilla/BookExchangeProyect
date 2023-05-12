@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
 let sellerId;
+let id_book;
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const id = urlParams.get("id");
@@ -28,6 +29,7 @@ if (!id) {
   getProduct().then(
     function (product) {
       loadProduct(product[0]);
+      console.log(id_book);
     },
     function (error) {
       console.error(error);
@@ -37,6 +39,7 @@ if (!id) {
 
 function loadProduct(product) {
   sellerId = product.id_usuario;
+  id_book = product.id;
   const category = document.getElementById("genero");
   category.href = `../shop/shop.php?category=${product.genero}`;
   category.textContent = categories[product.genero - 1];
@@ -74,6 +77,7 @@ function loadProduct(product) {
 
   const profilePicture = document.getElementById("profilePicture");
 
+  
   const img_perfil = document.createElement("img");
   img_perfil.classList.add("card-img-top", "img-fluid", "rounded-circle", "border", "border-5", "border-dark");
   img_perfil.style.maxHeight = "100%"; // Establece la altura máxima de la imagen al 100% del contenedor
@@ -129,25 +133,18 @@ document.getElementById("buyBtn").addEventListener("click", function () {
 
 function purchaseProduct() {
   const id_usu_comprador = currentUserId;
-  console.log(id_usu_comprador);
   const id_usu_vendedor = sellerId;
-  console.log(id_usu_vendedor);
   const titulo = document.getElementById("titulo").textContent;
-  console.log(titulo);
   const isbn = document.getElementById("isbn").textContent.split(": ")[1];
-  console.log(isbn);
   const autor = document.getElementById("autor").textContent.split(": ")[1];
-  console.log(autor);
   const genero = categories.indexOf(document.getElementById("genero").textContent) + 1;
-  console.log(genero);
   const editorial = document.getElementById("editorial").textContent.split(": ")[1];
-  console.log(editorial);
   const estado = document.getElementById("estado").textContent.split(": ")[1];
-  console.log(estado);
   const precioElement = document.getElementById("precio");
   const precioText = precioElement.textContent.trim(); // Elimina espacios en blanco al inicio y al final
   const precioValue = precioText.split(":")[1].trim(); // Extrae la parte después de ":" y elimina espacios en blanco
   const precio = parseFloat(precioValue); // Convierte el valor en formato numérico
+  const id_libro = id_book;
 
   const formData = new FormData();
   formData.append("id_usu_comprador", id_usu_comprador);
@@ -159,6 +156,7 @@ function purchaseProduct() {
   formData.append("editorial", editorial);
   formData.append("estado", estado);
   formData.append("precio", precio);
+  formData.append("id_libro", id_libro);
 
   // Envía los datos al script de PHP usando AJAX
   fetch("../includes/purchase_process.inc.php", {

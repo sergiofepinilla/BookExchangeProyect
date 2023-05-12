@@ -11,14 +11,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $editorial = $_POST['editorial'];
     $estado = $_POST['estado'];
     $precio = $_POST['precio'];
+    $id_libro_venta = $_POST['id_libro'];
     $review = 0;
     file_put_contents('debug.log', print_r($_POST, true), FILE_APPEND);
 
     
 
     $conn = Connection::getConnection();
-    $stmt = $conn->prepare("INSERT INTO libros_vendidos (id_usu_comprador, id_usu_vendedor, titulo, isbn, autor, genero, editorial, estado, precio, review) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("iissssssdi", $id_usu_comprador, $id_usu_vendedor, $titulo, $isbn, $autor, $genero, $editorial, $estado, $precio, $review);
+    $stmt = $conn->prepare("INSERT INTO libros_vendidos (id_usu_comprador, id_usu_vendedor, titulo, isbn, autor, genero, editorial, estado, precio, review,id_libro_venta) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("iissssssdii", $id_usu_comprador, $id_usu_vendedor, $titulo, $isbn, $autor, $genero, $editorial, $estado, $precio, $review,$id_libro_venta);
     $stmt->execute();
 
     if ($stmt->affected_rows > 0) {

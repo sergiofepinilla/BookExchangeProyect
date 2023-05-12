@@ -23,7 +23,7 @@ $stmt = $conn->prepare("
     FROM libros_vendidos 
     JOIN datos_usuario ON libros_vendidos.id_usu_vendedor = datos_usuario.id_usuario 
     JOIN generos ON libros_vendidos.genero = generos.id 
-    WHERE libros_vendidos.id_usu_comprador = ? AND libros_vendidos.review = 0
+    WHERE libros_vendidos.id_usu_comprador = ? 
     LIMIT ? OFFSET ?
 ");
 $stmt->bind_param("iii", $userId, $perPage, $startComprados);
@@ -132,9 +132,17 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
                 <td><?php echo htmlspecialchars($row['nombre']); ?></td>
                 <td><?php echo htmlspecialchars($row['fecha_compra']); ?></td>
                 <td>
-                    <button class="btn btn-primary" onclick="location.href='valorar.php?id=<?php echo $row['id']; ?>'">
-                        Valorar
-                    </button>
+                <?php if ($row['review'] == 0): ?>
+                    <button class="btn btn-primary valorar" data-idlibro="<?php echo $row['id_libro_venta']; ?>"
+            data-idusuvendedor="<?php echo $row['id_usu_vendedor']; ?>"
+            data-idusucomprador="<?php echo $userId; ?>">
+  Valorar
+</button>
+    <?php else: ?>
+        <button class="btn btn-primary" disabled>
+            Valorar
+        </button>
+    <?php endif; ?>
                 </td>
             </tr>
         <?php endwhile; ?>
@@ -179,9 +187,8 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
                 <th scope="col">Título</th>
                 <th scope="col">Estado</th>
                 <th scope="col">Precio</th>
-                <th scope="col">Vendedor</th>
+                <th scope="col">Comprador</th>
                 <th scope="col">Fecha de compra</th>
-                <th scope="col">Valorar</th>
             </tr>
         </thead>
         <tbody>
@@ -192,11 +199,6 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
                 <td><?php echo htmlspecialchars($row['precio']); ?></td>
                 <td><?php echo htmlspecialchars($row['nombre']); ?></td>
                 <td><?php echo htmlspecialchars($row['fecha_compra']); ?></td>
-                <td>
-                    <button class="btn btn-primary" onclick="location.href='valorar.php?id=<?php echo $row['id']; ?>'">
-                        Valorar
-                    </button>
-                </td>
             </tr>
         <?php endwhile; ?>
         </tbody>
@@ -266,21 +268,53 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
 </div>
 
 </div>
-<script>
-$(function() {
-  // Al cargar la página, comprueba si hay un tab guardado en la localStorage
-  let activeTab = localStorage.getItem('activeTab');
-  if (activeTab) {
-    // Si hay un tab guardado, actívalo
-    $('.nav-link[href="' + activeTab + '"]').tab('show');
-  }
 
-  // Cuando cambies de tab, guarda el nuevo tab en la localStorage
-  $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
-    localStorage.setItem('activeTab', $(e.target).attr('href'));
-  });
-});
-</script>
+<!-- Modal Valoración -->
+<div class="modal fade" id="modalValoracion" tabindex="-1" aria-labelledby="modalValoracionLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalValoracionLabel">Valoración</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <form id="formValoracion">
+        <div class="modal-body">
+          <input type="hidden" id="idLibroValorar" name="idLibro">
+          <input type="hidden" id="idUsuarioVendedor" name="idUsuarioVendedor">
+          <input type="hidden" id="idUsuarioComprador" name="idUsuarioComprador">
+
+          <div class="form-group">
+            <label for="rating">Puntuación</label>
+            <select id="rating" name="rating" autocomplete="off">
+              <option value="">Selecciona una puntuación</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="comentario">Comentario</label>
+            <textarea id="comentario" name="comentario" class="form-control" rows="3"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary">Enviar valoración</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal Valoración -->
+
+
 <?php require_once '../footer/upper_footer.php' ?>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bar-rating/1.2.2/jquery.barrating.min.js"></script>
+<script src="purchease_history.js"></script>
 <script src="../navbar/navbar.js"></script>
 <?php require_once '../footer/footer_links.php' ?>
+
