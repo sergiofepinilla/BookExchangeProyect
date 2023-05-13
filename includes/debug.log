@@ -155,3 +155,68 @@ Array
     [precio] => 24
     [id_libro] => 38
 )
+Array
+(
+    [id_usu_comprador] => 9
+    [id_usu_vendedor] => 4
+    [titulo] => 
+    [isbn] => 12312
+    [autor] => 213123
+    [genero] => 3
+    [editorial] => 123123
+    [estado] => nuevo
+    [precio] => 25
+    [id_libro] => 17
+)
+Array
+(
+    [id_usu_comprador] => 9
+    [id_usu_vendedor] => 4
+    [titulo] => Ohio
+    [isbn] => 1238127828
+    [autor] => Velazquez
+    [genero] => 3
+    [editorial] => Garujo
+    [estado] => usado
+    [precio] => 999
+    [id_libro] => 18
+)
+Array
+(
+    [id_usu_comprador] => 4
+    [id_usu_vendedor] => 9
+    [titulo] => qeqw
+    [isbn] => 123123
+    [autor] => qweqwe
+    [genero] => 3
+    [editorial] => qweqw
+    [estado] => nuevo
+    [precio] => 23
+    [id_libro] => 19
+)
+Array
+(
+    [id_usu_comprador] => 4
+    [id_usu_vendedor] => 9
+    [titulo] => qeqw
+    [isbn] => 123123
+    [autor] => qweqwe
+    [genero] => 3
+    [editorial] => qweqw
+    [estado] => nuevo
+    [precio] => 23
+    [id_libro] => 19
+)
+Array
+(
+    [id_usu_comprador] => 4
+    [id_usu_vendedor] => 9
+    [titulo] => qeqw
+    [isbn] => 123123
+    [autor] => qweqwe
+    [genero] => 3
+    [editorial] => qweqw
+    [estado] => nuevo
+    [precio] => 23
+    [id_libro] => 19
+)

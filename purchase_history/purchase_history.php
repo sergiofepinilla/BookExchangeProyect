@@ -1,9 +1,7 @@
-<?php 
+<?php
 require_once '../header/header.php';
 require_once '../navbar/navbar.php';
 include_once "../includes/dbh.inc.php";
-
-
 
 // Definimos la página actual para cada pestaña
 $pageComprados = isset($_GET['pageComprados']) ? (int)$_GET['pageComprados'] : 1;
@@ -26,6 +24,7 @@ $stmt = $conn->prepare("
     WHERE libros_vendidos.id_usu_comprador = ? 
     LIMIT ? OFFSET ?
 ");
+
 $stmt->bind_param("iii", $userId, $perPage, $startComprados);
 $stmt->execute();
 $resultLibrosComprados = $stmt->get_result();
@@ -97,175 +96,199 @@ $totalEnVenta = $resultCountEnVenta->fetch_assoc()['total'];
 $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
 ?>
 <div class="container mb-5 mt-5">
-<h1>Historial de Transacciones</h1>
-<ul class="nav nav-tabs mt-5">
-  <li class="nav-item">
-    <a class="nav-link active" href="#comprados" data-bs-toggle="tab">Libros Comprados</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#vendidos" data-bs-toggle="tab">Libros Vendidos</a>
+  <h1>Historial de Transacciones</h1>
+  <ul class="nav nav-tabs mt-5">
     <li class="nav-item">
-    <a class="nav-link" href="#enventa" data-bs-toggle="tab">Libros en Venta</a>
-  </li>
-</ul>
+      <a class="nav-link active" href="#comprados" data-bs-toggle="tab">Libros Comprados</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#vendidos" data-bs-toggle="tab">Libros Vendidos</a>
+    <li class="nav-item">
+      <a class="nav-link" href="#enventa" data-bs-toggle="tab">Libros en Venta</a>
+    </li>
+  </ul>
 
-<div class="tab-content">
-  <div class="tab-pane active" id="comprados">
-        <!-- Código de la tabla de libros comprados -->
-<table class="table table-striped mt-3">
+  <div class="tab-content">
+    <div class="tab-pane active" id="comprados">
+      <!-- Código de la tabla de libros comprados -->
+      <table class="table table-striped mt-3">
         <thead>
-            <tr>
-                <th scope="col">Título</th>
-                <th scope="col">Estado</th>
-                <th scope="col">Precio</th>
-                <th scope="col">Vendedor</th>
-                <th scope="col">Fecha de compra</th>
-                <th scope="col">Valorar</th>
-            </tr>
+          <tr>
+            <th scope="col">Título</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Vendedor</th>
+            <th scope="col">Fecha de compra</th>
+            <th scope="col">Valorar</th>
+          </tr>
         </thead>
         <tbody>
-        <?php while($row = $resultLibrosComprados->fetch_assoc()): ?>
+          <?php while ($row = $resultLibrosComprados->fetch_assoc()) : ?>
             <tr>
-                <td><?php echo htmlspecialchars($row['titulo']); ?></td>
-                <td><?php echo htmlspecialchars($row['estado']); ?></td>
-                <td><?php echo htmlspecialchars($row['precio']); ?></td>
-                <td><?php echo htmlspecialchars($row['nombre']); ?></td>
-                <td><?php echo htmlspecialchars($row['fecha_compra']); ?></td>
-                <td>
-                <?php if ($row['review'] == 0): ?>
-                    <button class="btn btn-primary valorar" data-idlibro="<?php echo $row['id_libro_venta']; ?>"
-            data-idusuvendedor="<?php echo $row['id_usu_vendedor']; ?>"
-            data-idusucomprador="<?php echo $userId; ?>">
-  Valorar
-</button>
-    <?php else: ?>
-        <button class="btn btn-primary" disabled>
-            Valorar
-        </button>
-    <?php endif; ?>
-                </td>
+              <td><?php echo htmlspecialchars($row['titulo']); ?></td>
+              <td><?php echo htmlspecialchars($row['estado']); ?></td>
+              <td><?php echo htmlspecialchars($row['precio']); ?></td>
+              <td><?php echo htmlspecialchars($row['nombre']); ?></td>
+              <td><?php echo htmlspecialchars($row['fecha_compra']); ?></td>
+              <td>
+                <?php if ($row['review'] == 0) : ?>
+                  <button class="btn btn-primary valorar" data-rowid="<?php echo $row['id']; ?>" data-idlibro="<?php echo $row['id_libro_venta']; ?>" data-idusuvendedor="<?php echo $row['id_usu_vendedor']; ?>" data-idusucomprador="<?php echo $userId; ?>">
+                    Valorar
+                  </button>
+                <?php else : ?>
+                  <button class="btn btn-primary" disabled>
+                    Valorar
+                  </button>
+                <?php endif; ?>
+              </td>
             </tr>
-        <?php endwhile; ?>
+          <?php endwhile; ?>
         </tbody>
-    </table>
-    <!-- Código de la tabla de libros comprados -->
-    <hr>
-    <table class="table table-striped mt-3">
-      <!-- Resto del código de la tabla de libros comprados -->
-      <!-- Código de la paginación -->
-      <nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <?php if ($pageComprados > 1): ?>
-        <li class="page-item">
-            <a class="page-link" href="?pageComprados=<?php echo $pageComprados-1; ?>">Anterior</a>
-        </li>
-    <?php else: ?>
-        <li class="page-item disabled">
-            <a class="page-link">Anterior</a>
-        </li>
-    <?php endif; ?>
+      </table>
+      <!-- Código de la tabla de libros comprados -->
+      <table class="table table-striped mt-3">
+        <!-- Resto del código de la tabla de libros comprados -->
+        <!-- Código de la paginación -->
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <?php if ($pageComprados > 1) : ?>
+              <li class="page-item">
+                <a class="page-link" href="?pageComprados=<?php echo $pageComprados - 1; ?>">Anterior</a>
+              </li>
+            <?php else : ?>
+              <li class="page-item disabled">
+                <a class="page-link">Anterior</a>
+              </li>
+            <?php endif; ?>
 
-    <?php if ($pageComprados < $totalPagesComprados): ?>
-        <li class="page-item">
-            <a class="page-link" href="?pageComprados=<?php echo $pageComprados+1; ?>">Siguiente</a>
-        </li>
-    <?php else: ?>
-        <li class="page-item disabled">
-            <a class="page-link">Siguiente</a>
-        </li>
-    <?php endif; ?>
-  </ul>
-</nav>
-    </table>
-  </div>
+            <?php if ($pageComprados < $totalPagesComprados) : ?>
+              <li class="page-item">
+                <a class="page-link" href="?pageComprados=<?php echo $pageComprados + 1; ?>">Siguiente</a>
+              </li>
+            <?php else : ?>
+              <li class="page-item disabled">
+                <a class="page-link">Siguiente</a>
+              </li>
+            <?php endif; ?>
+          </ul>
+        </nav>
+      </table>
+    </div>
 
-  <div class="tab-pane" id="vendidos">
-        <!-- Código de la tabla de libros vendidos -->
-<table class="table table-striped mt-3">
+    <div class="tab-pane" id="vendidos">
+      <!-- Código de la tabla de libros vendidos -->
+      <table class="table table-striped mt-3">
         <thead>
-            <tr>
-                <th scope="col">Título</th>
-                <th scope="col">Estado</th>
-                <th scope="col">Precio</th>
-                <th scope="col">Comprador</th>
-                <th scope="col">Fecha de compra</th>
-            </tr>
+          <tr>
+            <th scope="col">Título</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Comprador</th>
+            <th scope="col">Fecha de compra</th>
+          </tr>
         </thead>
         <tbody>
-        <?php while($row = $resultLibrosVendidos->fetch_assoc()): ?>
+          <?php while ($row = $resultLibrosVendidos->fetch_assoc()) : ?>
             <tr>
-                <td><?php echo htmlspecialchars($row['titulo']); ?></td>
-                <td><?php echo htmlspecialchars($row['estado']); ?></td>
-                <td><?php echo htmlspecialchars($row['precio']); ?></td>
-                <td><?php echo htmlspecialchars($row['nombre']); ?></td>
-                <td><?php echo htmlspecialchars($row['fecha_compra']); ?></td>
+              <td><?php echo htmlspecialchars($row['titulo']); ?></td>
+              <td><?php echo htmlspecialchars($row['estado']); ?></td>
+              <td><?php echo htmlspecialchars($row['precio']); ?></td>
+              <td><?php echo htmlspecialchars($row['nombre']); ?></td>
+              <td><?php echo htmlspecialchars($row['fecha_compra']); ?></td>
             </tr>
-        <?php endwhile; ?>
+          <?php endwhile; ?>
         </tbody>
-    </table>
-    <!-- Código de la tabla de libros vendidos -->
-    <hr>
-    <table class="table table-striped mt-3">
-      <!-- Resto del código de la tabla de libros vendidos -->
-      <!-- Código de la paginación -->
-      <nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <?php if ($pageVendidos > 1): ?>
-        <li class="page-item">
-            <a class="page-link" href="?pageVendidos=<?php echo $pageVendidos-1; ?>">Anterior</a>
-        </li>
-    <?php else: ?>
-        <li class="page-item disabled">
-            <a class="page-link">Anterior</a>
-        </li>
-    <?php endif; ?>
+      </table>
+      <!-- Código de la tabla de libros vendidos -->
+      <table class="table table-striped mt-3">
+        <!-- Resto del código de la tabla de libros vendidos -->
+        <!-- Código de la paginación -->
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <?php if ($pageVendidos > 1) : ?>
+              <li class="page-item">
+                <a class="page-link" href="?pageVendidos=<?php echo $pageVendidos - 1; ?>">Anterior</a>
+              </li>
+            <?php else : ?>
+              <li class="page-item disabled">
+                <a class="page-link">Anterior</a>
+              </li>
+            <?php endif; ?>
 
-    <?php if ($pageVendidos < $totalPagesVendidos): ?>
-        <li class="page-item">
-            <a class="page-link" href="?pageVendidos=<?php echo $pageVendidos+1; ?>">Siguiente</a>
-        </li>
-    <?php else: ?>
-        <li class="page-item disabled">
-            <a class="page-link">Siguiente</a>
-        </li>
-    <?php endif; ?>
-  </ul>
-</nav>
-    </table>
-  </div>
+            <?php if ($pageVendidos < $totalPagesVendidos) : ?>
+              <li class="page-item">
+                <a class="page-link" href="?pageVendidos=<?php echo $pageVendidos + 1; ?>">Siguiente</a>
+              </li>
+            <?php else : ?>
+              <li class="page-item disabled">
+                <a class="page-link">Siguiente</a>
+              </li>
+            <?php endif; ?>
+          </ul>
+        </nav>
+      </table>
+    </div>
 
-  <div class="tab-pane" id="enventa">
-    <!-- Código de la tabla de libros en venta -->
-    <hr>
-    <table class="table table-striped mt-3">
+    <div class="tab-pane" id="enventa">
+      <!-- Código de la tabla de libros en venta -->
+      <table class="table table-striped mt-3">
+        <thead>
+          <tr>
+            <th scope="col">Título</th>
+            <th scope="col">Editorial</th>
+            <th scope="col">Género</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php while ($row = $resultLibrosEnVenta->fetch_assoc()) : ?>
+            <tr>
+              <td><?php echo htmlspecialchars($row['titulo']); ?></td>
+              <td><?php echo htmlspecialchars($row['editorial']); ?></td>
+              <td><?php echo htmlspecialchars($row['genero']); ?></td>
+              <td><?php echo htmlspecialchars($row['estado']); ?></td>
+              <td><?php echo htmlspecialchars($row['precio']); ?></td>
+              <td>
+                <button class="btn btn-primary retirar" data-id="<?php echo $row['id']; ?>">
+                  Retirar Libro
+                </button>
+              </td>
+            </tr>
+          <?php endwhile; ?>
+        </tbody>
+      </table>
       <!-- Resto del código de la tabla de libros en venta -->
+
+
       <!-- Código de la paginación -->
       <nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <?php if ($pageEnVenta > 1): ?>
-        <li class="page-item">
-            <a class="page-link" href="?pageEnVenta=<?php echo $pageEnVenta-1; ?>">Anterior</a>
-        </li>
-    <?php else: ?>
-        <li class="page-item disabled">
-            <a class="page-link">Anterior</a>
-        </li>
-    <?php endif; ?>
+        <ul class="pagination">
+          <?php if ($pageEnVenta > 1) : ?>
+            <li class="page-item">
+              <a class="page-link" href="?pageEnVenta=<?php echo $pageEnVenta - 1; ?>">Anterior</a>
+            </li>
+          <?php else : ?>
+            <li class="page-item disabled">
+              <a class="page-link">Anterior</a>
+            </li>
+          <?php endif; ?>
 
-    <?php if ($pageEnVenta < $totalPagesEnVenta): ?>
-        <li class="page-item">
-            <a class="page-link" href="?pageEnVenta=<?php echo $pageEnVenta+1; ?>">Siguiente</a>
-        </li>
-    <?php else: ?>
-        <li class="page-item disabled">
-            <a class="page-link">Siguiente</a>
-        </li>
-    <?php endif; ?>
-  </ul>
-</nav>
-    </table>
+          <?php if ($pageEnVenta < $totalPagesEnVenta) : ?>
+            <li class="page-item">
+              <a class="page-link" href="?pageEnVenta=<?php echo $pageEnVenta + 1; ?>">Siguiente</a>
+            </li>
+          <?php else : ?>
+            <li class="page-item disabled">
+              <a class="page-link">Siguiente</a>
+            </li>
+          <?php endif; ?>
+        </ul>
+      </nav>
+      </table>
+    </div>
   </div>
-</div>
 
 </div>
 
@@ -280,6 +303,7 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
       <form id="formValoracion">
         <div class="modal-body">
           <input type="hidden" id="idLibroValorar" name="idLibro">
+          <input type="hidden" id="rowId" value="">
           <input type="hidden" id="idUsuarioVendedor" name="idUsuarioVendedor">
           <input type="hidden" id="idUsuarioComprador" name="idUsuarioComprador">
 
@@ -307,8 +331,6 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
     </div>
   </div>
 </div>
-
-
 <!-- Modal Valoración -->
 
 
@@ -317,4 +339,3 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
 <script src="purchease_history.js"></script>
 <script src="../navbar/navbar.js"></script>
 <?php require_once '../footer/footer_links.php' ?>
-
