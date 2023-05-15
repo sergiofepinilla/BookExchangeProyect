@@ -11,9 +11,7 @@ FROM libros_venta
 JOIN usuarios ON libros_venta.id_usuario = usuarios.id
 JOIN datos_usuario ON datos_usuario.id_usuario = usuarios.id
 WHERE libros_venta.id='$id'";
-
 } else {
-   
 }
 
 

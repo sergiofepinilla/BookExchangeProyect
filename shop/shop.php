@@ -37,6 +37,7 @@
                                 <li><a class="dropdown-item" href="./shop.php?category=23">Teatro</a></li>
                                 <li><a class="dropdown-item" href="./shop.php?category=24">Thriller y suspense</a></li>
                                 <li><a class="dropdown-item" href="./shop.php?category=25">Viajes y aventuras</a></li>
+                                <li><a class="dropdown-item" href="./shop.php?category=26">Otros</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -49,6 +50,7 @@
         </div>
         <div class="row">
             <div class="col">
+                <h1 id="category-header"></h1> <!-- Aquí es donde se insertará el encabezado -->
                 <div class="row pt-3 row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4" id="container">
                 </div>
             </div>

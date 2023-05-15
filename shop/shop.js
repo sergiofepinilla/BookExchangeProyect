@@ -1,96 +1,150 @@
-const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
-const category = urlParams.get("category");
-const productName = urlParams.get("name");
-const container = document.getElementById("container");
+$(document).ready(function () {
+  getProducts(); // Muestra todos los productos cuando se carga la página
 
-if (category || productName)
-  document.getElementById("clear").classList.toggle("d-none");
-var productos;
-getProducts().then(
-  function (products) {
-    productos = products;
-    productos.forEach((producto) => {
-      container.appendChild(createCard(producto));
-    });
-  },
-  function (error) {
-    console.error(error);
+  $(".dropdown-item").click(function (event) {
+    event.preventDefault(); // Detiene la acción por defecto del click en el enlace
+    var category = $(this).attr("href").split("=")[1]; // Obtiene la categoría del href del enlace
+    getProducts(category); // Hace la solicitud GET con la categoría seleccionada
+  });
+});
+
+function getProducts(category) {
+  var ajaxSettings = {
+    url: "../modelo/shop_product.php",
+    type: "GET",
+    dataType: "json",
+  };
+
+  var categoryName = "Todos"; // Por defecto, mostramos todos los productos
+
+  if (category !== undefined) {
+    ajaxSettings.data = { category: category };
+    categoryName = $(
+      ".dropdown-item[href='./shop.php?category=" + category + "']"
+    ).text();
   }
-);
 
-function createCard(producto) {
+  $.ajax(ajaxSettings)
+    .done(function (products) {
+      // Borra el contenido actual del contenedor
+      $("#container").empty();
+
+      // Actualiza el encabezado con la categoría seleccionada
+      $("#category-header").text(categoryName);
+
+      // Añade los nuevos productos al contenedor
+      var productos = products;
+      productos.forEach((producto) => {
+        container.appendChild(createCard(producto));
+      });
+    })
+    .fail(function (xhr, status, error) {
+      console.error(error);
+    });
+}
+
+function createCard(producto, margin = "") {
   var card = document.createElement("div");
-  card.classList.add("col", "mb-4");
+  card.classList.add("col", "mb-3");
+  if (margin) card.classList.add(margin);
   card.id = producto.id;
 
   var innerCard = document.createElement("div");
-  innerCard.classList.add("card", "bg-black", "border-3", "border-dark");
+  innerCard.classList.add(
+    "text-white",
+    "card",
+    "border-3",
+    "border-dark",
+    "d-flex",
+    "flex-column",
+    "h-100"
+  );
+
+  var imgContainer = document.createElement("div");
+  imgContainer.classList.add(
+    "flex-grow-1",
+    "d-flex",
+    "align-items-center",
+    "justify-content-center",
+    "img-fluid",
+    "overflow-hidden",
+    "border",
+    "border-bottom",
+    "border-white"
+  );
+  imgContainer.style.height = "250px";
 
   var link = document.createElement("a");
   link.href = `../product/product.php?id=${producto.id}`;
 
   var img = document.createElement("img");
-  img.classList.add("card-img-top");
-  img.src = producto.imagen;
-  img.alt = producto.nombre;
-  link.appendChild(img);
+  img.classList.add("card-img-top", "img-fluid");
+  img.src = "data:image/jpeg;base64," + producto.imagen;
+  img.alt = producto.titulo;
+  img.style.objectFit = "contain";
+  img.style.height = "100%";
+  img.style.width = "auto";
+
+  imgContainer.appendChild(img);
+  link.appendChild(imgContainer);
 
   var cardBody = document.createElement("div");
-  cardBody.classList.add("card-body");
+  cardBody.classList.add("card-body", "d-flex", "flex-column", "bg-black");
 
-  var clearfix = document.createElement("div");
-  clearfix.classList.add("clearfix", "mb-3");
+  var bookNameRow = document.createElement("div");
+  bookNameRow.classList.add("row", "justify-content-center");
+
+  var bookName = document.createElement("p");
+  bookName.classList.add("mb-2");
+  bookName.textContent = producto.titulo;
+  applyEllipsisStyle(bookName, "1.2em", 1);
+
+  bookNameRow.appendChild(bookName);
+
+  var badgeRow = document.createElement("div");
+  badgeRow.classList.add("row", "justify-content-center", "mb-3");
 
   var badge = document.createElement("span");
-  badge.classList.add(
-    "float-start",
-    "badge",
-    "rounded-pill",
-    "bg-primary",
-    "col-12",
-    "col-xxl-9",
-    "mb-2",
-    "mb-xxl-0"
-  );
-  badge.textContent = producto.nombre;
-  clearfix.appendChild(badge);
+  badge.classList.add("badge", "rounded-pill", "bg-primary");
+  badge.textContent = producto.estado;
+
+  badgeRow.appendChild(badge);
+
+  var priceRow = document.createElement("div");
+  priceRow.classList.add("row", "justify-content-end");
 
   var price = document.createElement("span");
-  price.classList.add("float-end", "price-hp", "text-white");
+  price.classList.add(
+    "price-hp",
+    "text-white",
+    "bg-warning",
+    "rounded-pill",
+    "fw-bold",
+    "badge",
+    "mb-3"
+  );
   price.innerHTML = `${producto.precio}&euro;`;
-  clearfix.appendChild(price);
 
-  cardBody.appendChild(clearfix);
+  priceRow.appendChild(price);
 
-  var textEnd = document.createElement("div");
-  textEnd.classList.add("row", "gx-2");
+  cardBody.appendChild(bookNameRow);
+  cardBody.appendChild(badgeRow);
+  cardBody.appendChild(priceRow);
 
-  var divBuy = document.createElement("div");
-  divBuy.classList.add("col-12", "col-xxl-6", "mb-1", "mb-xxl-0");
-
-  var buyBtn = document.createElement("button");
-  buyBtn.classList.add("btn", "btn-success", "btn-outline", "w-100");
-  buyBtn.textContent = "COMPRAR";
-  buyBtn.style.fontSize = "2vh";
-  divBuy.appendChild(buyBtn);
-  textEnd.appendChild(divBuy);
-
-  buyBtn.addEventListener("click", addToCart);
+  var btnRow = document.createElement("div");
+  btnRow.classList.add("row");
 
   var divCheck = document.createElement("div");
-  divCheck.classList.add("col-12", "col-xxl-6");
+  divCheck.classList.add("col-12");
 
   var checkBtn = document.createElement("a");
-  checkBtn.classList.add("btn", "btn-primary", "btn-outline", "w-100");
+  checkBtn.classList.add("btn", "btn-success", "w-100");
   checkBtn.textContent = "VER";
-  checkBtn.style.fontSize = "2vh";
-  divCheck.appendChild(checkBtn);
-  textEnd.appendChild(divCheck);
-
   checkBtn.href = `../product/product.php?id=${producto.id}`;
+  divCheck.appendChild(checkBtn);
+  btnRow.appendChild(divCheck);
 
-  cardBody.appendChild(textEnd);
+  cardBody.appendChild(btnRow);
 
   innerCard.appendChild(link);
   innerCard.appendChild(cardBody);
@@ -116,22 +170,12 @@ function addToCart(e) {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-function getProducts() {
-  return new Promise(function (resolve, reject) {
-    $.ajax({
-      url: "../modelo/index.php",
-      type: "GET",
-      dataType: "json",
-      data: {
-        category: category,
-        name: productName,
-      },
-      success: function (data) {
-        resolve(data);
-      },
-      error: function (xhr, status, error) {
-        reject(error);
-      },
-    });
-  });
+function applyEllipsisStyle(element, lineHeight, maxLines) {
+  element.style.overflow = "hidden";
+  element.style.textOverflow = "ellipsis";
+  element.style.display = "-webkit-box";
+  element.style.webkitBoxOrient = "vertical";
+  element.style.webkitLineClamp = maxLines;
+  element.style.lineHeight = lineHeight;
+  element.style.maxHeight = `calc(${lineHeight} * ${maxLines})`;
 }

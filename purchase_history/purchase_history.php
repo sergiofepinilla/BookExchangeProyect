@@ -29,7 +29,7 @@ $stmt->bind_param("iii", $userId, $perPage, $startComprados);
 $stmt->execute();
 $resultLibrosComprados = $stmt->get_result();
 
-// Para Libros Comprados Count
+// Libros Comprados Count 
 $stmtCountComprados = $conn->prepare("
     SELECT COUNT(*) as total 
     FROM libros_vendidos 
@@ -78,9 +78,9 @@ $stmtEnVenta = $conn->prepare("
     WHERE libros_venta.id_usuario = ?
     LIMIT ? OFFSET ?
 ");
-$stmt->bind_param("iii", $userId, $perPage, $startEnVenta);
-$stmt->execute();
-$resultLibrosEnVenta = $stmt->get_result();
+$stmtEnVenta->bind_param("iii", $userId, $perPage, $startEnVenta);
+$stmtEnVenta->execute();
+$resultLibrosEnVenta = $stmtEnVenta->get_result();
 
 //Libros en Venta Count
 $stmtCountEnVenta = $conn->prepare("
@@ -88,6 +88,7 @@ $stmtCountEnVenta = $conn->prepare("
     FROM libros_venta 
     WHERE libros_venta.id_usuario = ?
 ");
+
 $stmtCountEnVenta->bind_param("i", $userId);
 $stmtCountEnVenta->execute();
 $resultCountEnVenta = $stmtCountEnVenta->get_result();
@@ -95,6 +96,7 @@ $totalEnVenta = $resultCountEnVenta->fetch_assoc()['total'];
 
 $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
 ?>
+
 <div class="container mb-5 mt-5">
   <h1>Historial de Transacciones</h1>
   <ul class="nav nav-tabs mt-5">
@@ -110,7 +112,7 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
 
   <div class="tab-content">
     <div class="tab-pane active" id="comprados">
-      <!-- Código de la tabla de libros comprados -->
+      <!-- Tabla de Libros Comprados -->
       <table class="table table-striped mt-3">
         <thead>
           <tr>
@@ -145,10 +147,10 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
           <?php endwhile; ?>
         </tbody>
       </table>
-      <!-- Código de la tabla de libros comprados -->
+      <!-- Tabla de Libros Comprados -->
       <table class="table table-striped mt-3">
-        <!-- Resto del código de la tabla de libros comprados -->
-        <!-- Código de la paginación -->
+
+        <!-- Paginación Libros Comprados -->
         <nav aria-label="Page navigation example">
           <ul class="pagination">
             <?php if ($pageComprados > 1) : ?>
@@ -172,11 +174,12 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
             <?php endif; ?>
           </ul>
         </nav>
+        <!-- Paginación Libros Comprados -->
       </table>
     </div>
 
     <div class="tab-pane" id="vendidos">
-      <!-- Código de la tabla de libros vendidos -->
+      <!-- Tabla de Libros Vendidos -->
       <table class="table table-striped mt-3">
         <thead>
           <tr>
@@ -199,10 +202,10 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
           <?php endwhile; ?>
         </tbody>
       </table>
-      <!-- Código de la tabla de libros vendidos -->
+      <!-- Tabla de Libros Vendidos -->
       <table class="table table-striped mt-3">
-        <!-- Resto del código de la tabla de libros vendidos -->
-        <!-- Código de la paginación -->
+
+        <!-- Paginación Libros en Vendidos -->
         <nav aria-label="Page navigation example">
           <ul class="pagination">
             <?php if ($pageVendidos > 1) : ?>
@@ -226,11 +229,12 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
             <?php endif; ?>
           </ul>
         </nav>
+        <!-- Paginación Libros en Vendidos -->
       </table>
     </div>
 
     <div class="tab-pane" id="enventa">
-      <!-- Código de la tabla de libros en venta -->
+      <!-- Tabla Libros en Venta -->
       <table class="table table-striped mt-3">
         <thead>
           <tr>
@@ -259,10 +263,9 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
           <?php endwhile; ?>
         </tbody>
       </table>
-      <!-- Resto del código de la tabla de libros en venta -->
+      <!-- Tabla Libros en Venta -->
 
-
-      <!-- Código de la paginación -->
+      <!-- Paginación Libros en Venta -->
       <nav aria-label="Page navigation example">
         <ul class="pagination">
           <?php if ($pageEnVenta > 1) : ?>
@@ -286,6 +289,7 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
           <?php endif; ?>
         </ul>
       </nav>
+      <!-- Paginación Libros en Venta -->
       </table>
     </div>
   </div>

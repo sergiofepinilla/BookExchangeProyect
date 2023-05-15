@@ -110,11 +110,11 @@ function createCard(producto, margin = "") {
   link.appendChild(imgContainer);
 
   var cardBody = document.createElement("div");
-  cardBody.classList.add("card-body", "d-flex", "flex-column","bg-black");
+  cardBody.classList.add("card-body", "d-flex", "flex-column", "bg-black");
 
   var bookNameRow = document.createElement("div");
   bookNameRow.classList.add("row", "justify-content-center");
-  
+
   var bookName = document.createElement("p");
   bookName.classList.add("mb-2");
   bookName.textContent = producto.titulo;
@@ -135,7 +135,15 @@ function createCard(producto, margin = "") {
   priceRow.classList.add("row", "justify-content-end");
 
   var price = document.createElement("span");
-  price.classList.add("price-hp", "text-white", "bg-warning", "rounded-pill", "fw-bold", "badge","mb-3");
+  price.classList.add(
+    "price-hp",
+    "text-white",
+    "bg-warning",
+    "rounded-pill",
+    "fw-bold",
+    "badge",
+    "mb-3"
+  );
   price.innerHTML = `${producto.precio}&euro;`;
 
   priceRow.appendChild(price);
@@ -165,9 +173,6 @@ function createCard(producto, margin = "") {
 
   return card;
 }
-
-
-
 
 function addToCart(e) {
   var cart = localStorage.getItem("cart");

@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
       theme: "fontawesome-stars",
     });
 
-    // Abre el modal de valoración cuando se hace clic en el botón de valorar
+    // <!-- Abrir modal on Click -->
     $(".valorar").click(function () {
       var idLibro = $(this).data("idlibro");
       var rowId = $(this).data("rowid");
@@ -45,7 +45,9 @@ document.addEventListener("DOMContentLoaded", function () {
       // Abre el modal de valoración
       $("#modalValoracion").modal("show");
     });
+    // <!-- Abrir modal on Click -->
 
+    // <-- Retirar Producto de la Tienda -->
     $(".retirar").click(function () {
       var idLibro = $(this).data("id");
       console.log("qweqwe");
@@ -58,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (confirmar) {
         // Aquí iría la llamada AJAX para eliminar el libro.
         $.ajax({
-          url: "retirarLibro.php", // Cambia esto por la ruta a tu script PHP para retirar libros.
+          url: "../includes/deleteProduct.inc.php", // Cambia esto por la ruta a tu script PHP para retirar libros.
           type: "POST",
           data: {
             idLibro: idLibro,
@@ -68,12 +70,14 @@ document.addEventListener("DOMContentLoaded", function () {
             location.reload();
           },
           error: function (xhr, status, error) {
-            // Manejar errores.
+            alert("Hubo un problema al retirar el libro de la tienda.");
           },
         });
       }
     });
-    // Envía el formulario de valoración
+    // <-- Retirar Producto de la Tienda -->
+
+    // <-- Formulario de Valoración -->
     $("#formValoracion").submit(function (e) {
       e.preventDefault();
 
@@ -111,18 +115,17 @@ document.addEventListener("DOMContentLoaded", function () {
           $("#rating").barrating("clear");
           $("#comentario").val("");
 
-          // Aquí puedes actualizar la interfaz de usuario con la nueva valoración
-          // ...
           location.reload();
           // Informar al usuario que la valoración fue enviada con éxito
         },
         error: function (err) {
-          // Informar al usuario si hubo un error al enviar la valoración
+          // En caso de error
           alert(
             "Hubo un error al enviar tu valoración. Por favor, inténtalo de nuevo."
           );
         },
       });
     });
+    // <-- Formulario de Valoración -->
   });
 });
