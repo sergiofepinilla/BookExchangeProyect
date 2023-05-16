@@ -17,10 +17,10 @@ $startEnVenta = ($pageEnVenta > 1) ? ($pageEnVenta * $perPage) - $perPage : 0;
 // Libros Comprados
 $conn = Connection::getConnection();
 $stmt = $conn->prepare("
-    SELECT libros_vendidos.*, datos_usuario.nombre, generos.genero AS nombre_genero
+    SELECT libros_vendidos.*, datos_usuario.nombre, generos.nombre_genero AS nombre_genero
     FROM libros_vendidos 
     JOIN datos_usuario ON libros_vendidos.id_usu_vendedor = datos_usuario.id_usuario 
-    JOIN generos ON libros_vendidos.genero = generos.id 
+    JOIN generos ON libros_vendidos.genero = generos.id_genero 
     WHERE libros_vendidos.id_usu_comprador = ? 
     LIMIT ? OFFSET ?
 ");
@@ -46,9 +46,9 @@ $totalPagesComprados = ceil($totalComprados / $perPage);
 
 // Libros Vendidos
 $stmt = $conn->prepare("
-    SELECT libros_vendidos.*, generos.genero, datos_usuario.nombre 
+    SELECT libros_vendidos.*, generos.nombre_genero, datos_usuario.nombre 
     FROM libros_vendidos 
-    INNER JOIN generos ON libros_vendidos.genero = generos.id 
+    INNER JOIN generos ON libros_vendidos.genero = generos.id_Genero 
     INNER JOIN datos_usuario ON libros_vendidos.id_usu_vendedor = datos_usuario.id_usuario
     WHERE libros_vendidos.id_usu_vendedor = ?
     LIMIT ? OFFSET ?
@@ -72,9 +72,9 @@ $totalPagesVendidos = ceil($totalVendidos / $perPage);
 
 // Libros En Venta
 $stmtEnVenta = $conn->prepare("
-    SELECT libros_venta.*, generos.genero 
+    SELECT libros_venta.*, generos.nombre_genero 
     FROM libros_venta 
-    INNER JOIN generos ON libros_venta.genero = generos.id 
+    INNER JOIN generos ON libros_venta.genero = generos.id_genero 
     WHERE libros_venta.id_usuario = ?
     LIMIT ? OFFSET ?
 ");
@@ -163,6 +163,8 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
               </li>
             <?php endif; ?>
 
+           
+
             <?php if ($pageComprados < $totalPagesComprados) : ?>
               <li class="page-item">
                 <a class="page-link" href="?pageComprados=<?php echo $pageComprados + 1; ?>">Siguiente</a>
@@ -172,6 +174,7 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
                 <a class="page-link">Siguiente</a>
               </li>
             <?php endif; ?>
+            <span class="pagination-item d-inline-block p-2  align-middle">Página <?php echo $pageComprados; ?> de <?php echo $totalPagesComprados; ?></span>
           </ul>
         </nav>
         <!-- Paginación Libros Comprados -->
@@ -226,6 +229,7 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
               <li class="page-item disabled">
                 <a class="page-link">Siguiente</a>
               </li>
+              <span class="pagination-item d-inline-block p-2  align-middle">Página <?php echo $pageVendidos; ?> de <?php echo $totalPagesVendidos; ?></span>
             <?php endif; ?>
           </ul>
         </nav>
@@ -251,7 +255,7 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
             <tr>
               <td><?php echo htmlspecialchars($row['titulo']); ?></td>
               <td><?php echo htmlspecialchars($row['editorial']); ?></td>
-              <td><?php echo htmlspecialchars($row['genero']); ?></td>
+              <td><?php echo htmlspecialchars($row['nombre_genero']); ?></td>
               <td><?php echo htmlspecialchars($row['estado']); ?></td>
               <td><?php echo htmlspecialchars($row['precio']); ?></td>
               <td>
@@ -286,6 +290,7 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
             <li class="page-item disabled">
               <a class="page-link">Siguiente</a>
             </li>
+            <span class="pagination-item d-inline-block p-2  align-middle">Página <?php echo $pageEnVenta; ?> de <?php echo $totalPagesEnVenta; ?></span>
           <?php endif; ?>
         </ul>
       </nav>

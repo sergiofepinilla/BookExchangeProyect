@@ -1,31 +1,45 @@
 $(document).ready(function () {
-  getProducts(); // Muestra todos los productos cuando se carga la página
+  
+  getProducts(1); // Muestra todos los productos de la primera página cuando se carga la página
 
   $(".dropdown-item").click(function (event) {
     event.preventDefault(); // Detiene la acción por defecto del click en el enlace
     var category = $(this).attr("href").split("=")[1]; // Obtiene la categoría del href del enlace
-    getProducts(category); // Hace la solicitud GET con la categoría seleccionada
+    getProducts(1, category); // Hace la solicitud GET con la categoría seleccionada y la primera página
+  });
+
+  $("#prev-page").click(function (event) {
+    event.preventDefault();
+    var currentPage = parseInt($("#page-number").text());
+    if (currentPage > 1) {
+      getProducts(currentPage - 1);
+    }
+  });
+
+  $("#next-page").click(function (event) {
+    event.preventDefault();
+    var currentPage = parseInt($("#page-number").text());
+    getProducts(currentPage + 1);
   });
 });
 
-function getProducts(category) {
+function getProducts(page, category) {
   var ajaxSettings = {
     url: "../modelo/shop_product.php",
     type: "GET",
     dataType: "json",
+    data: { page: page }
   };
 
   var categoryName = "Todos"; // Por defecto, mostramos todos los productos
 
   if (category !== undefined) {
-    ajaxSettings.data = { category: category };
-    categoryName = $(
-      ".dropdown-item[href='./shop.php?category=" + category + "']"
-    ).text();
+    ajaxSettings.data.category = category;
+    categoryName = $(".dropdown-item[href='./shop.php?category=" + category + "']").text();
   }
 
   $.ajax(ajaxSettings)
-    .done(function (products) {
+    .done(function (response) {
       // Borra el contenido actual del contenedor
       $("#container").empty();
 
@@ -33,10 +47,12 @@ function getProducts(category) {
       $("#category-header").text(categoryName);
 
       // Añade los nuevos productos al contenedor
-      var productos = products;
-      productos.forEach((producto) => {
+      response.forEach((producto) => {
         container.appendChild(createCard(producto));
       });
+
+      // Actualiza el número de la página actual
+      $("#page-number").text(page);
     })
     .fail(function (xhr, status, error) {
       console.error(error);
@@ -95,7 +111,7 @@ function createCard(producto, margin = "") {
   bookNameRow.classList.add("row", "justify-content-center");
 
   var bookName = document.createElement("p");
-  bookName.classList.add("mb-2");
+  bookName.classList.add("mb-2","fw-bold");
   bookName.textContent = producto.titulo;
   applyEllipsisStyle(bookName, "1.2em", 1);
 
@@ -106,7 +122,7 @@ function createCard(producto, margin = "") {
 
   var badge = document.createElement("span");
   badge.classList.add("badge", "rounded-pill", "bg-primary");
-  badge.textContent = producto.estado;
+  badge.textContent = producto.nombre_genero;
 
   badgeRow.appendChild(badge);
 
@@ -117,10 +133,8 @@ function createCard(producto, margin = "") {
   price.classList.add(
     "price-hp",
     "text-white",
-    "bg-warning",
-    "rounded-pill",
     "fw-bold",
-    "badge",
+    "text-end",
     "mb-3"
   );
   price.innerHTML = `${producto.precio}&euro;`;

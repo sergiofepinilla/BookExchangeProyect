@@ -9,9 +9,11 @@
         <div class="col-8 border">
             <div class="card-body">
                 <a class="text-danger" id="genero">Fantasia</a>
+                
                 <h3 class="card-title fs-1 fw-bold" id="titulo">Libro de Prueba</h3>
                 <hr>
                 <p id="autor">Autor.</p>
+                <p id="genero_name">Fantasia</p>
                 <p id="isbn">ISBN.</p>
                 <p id="editorial">Editorial.</p>
                 <p id="estado">Estado.</p>

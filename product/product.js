@@ -44,6 +44,9 @@ function loadProduct(product) {
   category.href = `../shop/shop.php?category=${product.genero}`;
   category.textContent = categories[product.genero - 1];
 
+  const categoryName = document.getElementById("genero_name");
+  categoryName.innerHTML = "<span class='fw-bold'>Género</span>: " +product.nombre_genero;
+
   const name = document.getElementById("titulo");
   name.textContent = product.titulo;
 

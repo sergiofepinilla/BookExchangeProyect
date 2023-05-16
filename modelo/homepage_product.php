@@ -14,7 +14,10 @@ if (!empty($_GET['category']) or !empty($_GET['name'])) {
     $id = $_GET['id'];
     //  $query = "SELECT * FROM productos WHERE id='$id'";
 } else {
-    $query = "SELECT * FROM libros_venta ORDER BY id DESC";
+    $query = "SELECT libros_venta.*, generos.nombre_genero
+    FROM libros_venta
+    JOIN generos ON libros_venta.genero = generos.id_genero
+    ORDER BY libros_venta.id DESC";
 }
 
 

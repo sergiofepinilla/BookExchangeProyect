@@ -116,7 +116,7 @@ function createCard(producto, margin = "") {
   bookNameRow.classList.add("row", "justify-content-center");
 
   var bookName = document.createElement("p");
-  bookName.classList.add("mb-2");
+  bookName.classList.add("mb-2","fw-bold");
   bookName.textContent = producto.titulo;
   applyEllipsisStyle(bookName, "1.2em", 1);
 
@@ -127,21 +127,18 @@ function createCard(producto, margin = "") {
 
   var badge = document.createElement("span");
   badge.classList.add("badge", "rounded-pill", "bg-primary");
-  badge.textContent = producto.estado;
+  badge.textContent = producto.nombre_genero;
 
   badgeRow.appendChild(badge);
 
   var priceRow = document.createElement("div");
-  priceRow.classList.add("row", "justify-content-end");
+  priceRow.classList.add("row", "justify-content-end","text-end");
 
   var price = document.createElement("span");
   price.classList.add(
     "price-hp",
     "text-white",
-    "bg-warning",
-    "rounded-pill",
     "fw-bold",
-    "badge",
     "mb-3"
   );
   price.innerHTML = `${producto.precio}&euro;`;
@@ -200,3 +197,61 @@ function applyEllipsisStyle(element, lineHeight, maxLines) {
   element.style.lineHeight = lineHeight;
   element.style.maxHeight = `calc(${lineHeight} * ${maxLines})`;
 }
+
+// Función para establecer una cookie
+function setCookie(name, value, days) {
+  var expires = "";
+  if (days) {
+      var date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
+
+// Función para obtener el valor de una cookie
+function getCookie(name) {
+  var nameEQ = name + "=";
+  var ca = document.cookie.split(';');
+  for (var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+  }
+  return null;
+}
+
+
+    // Función para mostrar la notificación de cookies
+    function showCookieNotification() {
+        var cookieNotification = document.getElementById("cookie-notification");
+        cookieNotification.style.display = "block";
+    }
+
+    // Función para ocultar la notificación de cookies y establecer la cookie de género
+    function acceptCookies() {
+        var genre = "fantasia"; // Obtén el género del libro visitado (en este caso, "fantasia")
+        setCookie("genre", genre, 30); // Establece la cookie "genre" con el valor del género durante 30 días
+        var cookieNotification = document.getElementById("cookie-notification");
+        cookieNotification.style.display = "none";
+    }
+
+    // Función para rechazar las cookies y ocultar la notificación
+    function rejectCookies() {
+        var cookieNotification = document.getElementById("cookie-notification");
+        cookieNotification.style.display = "none";
+    }
+
+    // Verifica si la cookie de género ya está establecida
+    var genreCookie = getCookie("genre");
+    if (genreCookie === null) {
+        showCookieNotification();
+    }
+
+    // Maneja el evento de clic en el botón de aceptar cookies
+    var acceptCookiesButton = document.getElementById("accept-cookies");
+    acceptCookiesButton.addEventListener("click", acceptCookies);
+
+    // Maneja el evento de clic en el botón de rechazar cookies
+    var rejectCookiesButton = document.getElementById("reject-cookies");
+    rejectCookiesButton.addEventListener("click", rejectCookies);

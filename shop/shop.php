@@ -50,8 +50,23 @@
         </div>
         <div class="row">
             <div class="col">
-                <h1 id="category-header"></h1> <!-- Aquí es donde se insertará el encabezado -->
+                <h1 id="category-header" class="mt-3"></h1> <!-- Aquí es donde se insertará el encabezado -->
                 <div class="row pt-3 row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4" id="container">
+                </div>
+                <!-- Aquí es donde se insertarán los botones de paginación -->
+                <div id="pagination-container">
+                <div class="row">
+    <div class="col d-flex justify-content-center">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#" id="prev-page">Anterior</a></li>
+                <li class="page-item"><span class="page-link" id="page-number">1</span></li>
+                <li class="page-item"><a class="page-link" href="#" id="next-page">Siguiente</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
                 </div>
             </div>
         </div>

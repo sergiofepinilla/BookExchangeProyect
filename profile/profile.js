@@ -172,7 +172,7 @@ function createCard(producto, margin = "") {
   bookNameRow.classList.add("row", "justify-content-center");
   
   var bookName = document.createElement("p");
-  bookName.classList.add("mb-2");
+  bookName.classList.add("mb-2","fw-bold");
   bookName.textContent = producto.titulo;
   applyEllipsisStyle(bookName, "1.2em", 1);
 
@@ -183,7 +183,7 @@ function createCard(producto, margin = "") {
 
   var badge = document.createElement("span");
   badge.classList.add("badge", "rounded-pill", "bg-primary");
-  badge.textContent = producto.estado;
+  badge.textContent = producto.nombre_genero;
 
   badgeRow.appendChild(badge);
 
@@ -191,7 +191,7 @@ function createCard(producto, margin = "") {
   priceRow.classList.add("row", "justify-content-end");
 
   var price = document.createElement("span");
-  price.classList.add("price-hp", "text-white", "bg-warning", "rounded-pill", "fw-bold", "badge","mb-3");
+  price.classList.add("price-hp", "text-white", "text-end","fw-bold", "badge","mb-3");
   price.innerHTML = `${producto.precio}&euro;`;
 
   priceRow.appendChild(price);
@@ -224,11 +224,11 @@ function createCard(producto, margin = "") {
   return card;
 }
 
-
+//booksTabLink.innerHTML = `Libros (${total})`;
 
 
 var booksTabLink = document.getElementById("booksTabLink");
-booksTabLink.innerHTML = `Libros (${total})`;
+
 
 var booksTabLink = document.getElementById("booksTabLink");
 

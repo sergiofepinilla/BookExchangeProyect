@@ -4,7 +4,7 @@ $conn = Connection::getConnection();
 
 if (!empty($_GET['category']) or !empty($_GET['name'])) {
     $category = $_GET['category'];
-    $query = "SELECT * FROM libros_venta WHERE genero='$category'";
+    $query = "SELECT * FROM libros_venta INNER JOIN generos ON libros_venta.genero = generos.id_genero WHERE generos.id='$category'";
     if (!empty($_GET['name'])) {
         $name = $_GET['name'];
         $query .= " or LOWER(name) LIKE LOWER('%$name%')";
@@ -14,7 +14,7 @@ if (!empty($_GET['category']) or !empty($_GET['name'])) {
     $id = $_GET['id'];
     //  $query = "SELECT * FROM productos WHERE id='$id'";
 } else {
-    $query = "SELECT * FROM libros_venta ORDER BY id DESC";
+    $query = "SELECT * FROM libros_venta INNER JOIN generos ON libros_venta.genero = generos.id_genero ORDER BY libros_venta.id DESC";
 }
 
 
