@@ -8,10 +8,26 @@ function getProducts() {
       dataType: "json",
       data: { id: id },
       success: function (data) {
-        resolve({
-          products: data.products,
-          total: data.total,
-        });
+        resolve(data);
+      },
+      error: function (xhr, status, error) {
+        reject(error);
+      },
+    });
+  });
+}
+
+function getReviews() {
+  return new Promise(function (resolve, reject) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get("id");
+    $.ajax({
+      url: "../modelo/user_profile_reviews.php",
+      type: "GET",
+      dataType: "json",
+      data: { id: id },
+      success: function (data) {
+        resolve(data);
       },
       error: function (xhr, status, error) {
         reject(error);
@@ -92,16 +108,22 @@ function loadCarousel(carouselInnerId, productsToShow, userProfile) {
 getProducts().then(
   function (data) {
     var products = data.products;
-    var total = 0; // Inicia total en 0
+    var total = 0;
+    console.log(data);  // Agrega esta línea
+    var books_sold = data.books_sold;
+    var books_on_sale = data.books_on_sale;
 
-    // Aumenta el total solo si el producto tiene un título
+    console.log('Libros vendidos:', books_sold);
+    console.log('Libros en venta:', books_on_sale);
+
+
     products.forEach(function(product) {
       if (product.titulo != null) {
         total++;
       }
     });
 
-    var userProfile = products[0]; // Asume que el primer producto contiene la información del perfil del usuario
+    var userProfile = products[0];
 
     var booksTabLink = document.querySelector(
       "a[data-toggle='tab'][href='#login']"
@@ -109,16 +131,58 @@ getProducts().then(
     booksTabLink.innerHTML = `Libros (${total})`;
 
     var lastBooks = products.slice(0, 10);
-    var recommendedBooks = products.slice(0, 10);
-
+    var recommendedBooks = products.slice(0,10);
     loadCarousel("carouselInner", lastBooks,userProfile);
 
-    
+// Muestra la cantidad de libros vendidos
+var libros_vendidos = document.getElementById("libros_vendidos");
+libros_vendidos.innerHTML = data.books_sold;
+
+// Muestra la cantidad de libros en venta
+var libros_en_venta = document.getElementById("libros_en_venta");
+libros_en_venta.innerHTML = data.books_on_sale;},
+function (error) {
+console.error(error);
+}
+);
+
+
+getReviews().then(
+  function (data) {
+    var reviews = data.reviews;
+    var total = 0;
+
+    reviews.forEach(function(review) {
+      if (review.puntuacion != null) {
+        total++;
+      }
+    });
+
+    var reviewsTabLink = document.getElementById("reviewsTabLink");
+    reviewsTabLink.innerHTML = `Valoraciones (${total})`;
+
+    loadReviews(reviews);  // Llama a la nueva función aquí
+
+    // Muestra la puntuación media
+    var puntuacion = document.getElementById("puntuacion");
+    puntuacion.innerHTML = data.average_score.toFixed(2);  // Convierte la puntuación media a un número con dos decimales
   },
   function (error) {
     console.error(error);
   }
 );
+
+
+function loadReviews(reviews) {
+  var reviewsContainer = document.getElementById("reviewsContainer");  // Asegúrate de tener este contenedor en tu HTML
+
+  reviews.forEach(function(review) {
+    var reviewCard = createReviewCard(review);
+    reviewsContainer.appendChild(reviewCard);
+  });
+}
+
+
 
 function createCard(producto, margin = "") {
   var card = document.createElement("div");
@@ -213,8 +277,6 @@ function createCard(producto, margin = "") {
   divCheck.appendChild(checkBtn);
   btnRow.appendChild(divCheck);
 
-  
-
   cardBody.appendChild(btnRow);
 
   innerCard.appendChild(link);
@@ -224,13 +286,100 @@ function createCard(producto, margin = "") {
   return card;
 }
 
-//booksTabLink.innerHTML = `Libros (${total})`;
+function createReviewCard(review) {
+  var card = document.createElement("div");
+  card.classList.add("card", "my-2");
 
+  var cardBody = document.createElement("div");
+  cardBody.classList.add("card-body");
 
-var booksTabLink = document.getElementById("booksTabLink");
+  var rowTop = document.createElement("div");
+  rowTop.classList.add("row", "align-items-center");
 
+  var colImg = document.createElement("div");
+  colImg.classList.add("col-auto");
 
-var booksTabLink = document.getElementById("booksTabLink");
+  var imgLink = document.createElement("a");
+  imgLink.href = `../profile/profile.php?id=${review.id_usu_valorador}`;
+  imgLink.classList.add("profile-link");  // Añade la clase aquí
+
+  var img = document.createElement("img");
+  img.classList.add("rounded-circle");
+  img.src = "data:image/jpeg;base64," + review.foto_perfil;
+  img.alt = "Foto de perfil del revisor";
+  img.style.width = "60px"; // Ajusta este valor para cambiar el tamaño de la imagen
+  img.style.height = "60px"; // Asegúrate de que el alto y el ancho sean iguales para una imagen circular
+  img.style.objectFit = "cover";
+
+  imgLink.appendChild(img);
+  colImg.appendChild(imgLink);
+
+  var colName = document.createElement("div");
+  colName.classList.add("col");
+
+  var titleLink = document.createElement("a");
+  titleLink.href = `../profile/profile.php?id=${review.id_usu_valorador}`;
+  titleLink.classList.add("profile-link");  // Añade la clase aquí
+
+  var title = document.createElement("h5");
+  title.classList.add("card-title", "mb-0");
+  title.textContent = review.nombre_valorador;
+
+  titleLink.appendChild(title);
+  colName.appendChild(titleLink);
+
+  rowTop.appendChild(colImg);
+  rowTop.appendChild(colName);
+
+  var hr = document.createElement("hr");
+
+  var rowMid = document.createElement("div");
+  rowMid.classList.add("row", "align-items-center");
+
+  var colRating = document.createElement("div");
+  colRating.classList.add("col-auto");
+
+  var rating = document.createElement("p");
+  rating.classList.add("card-text", "mb-3", "star-rating");  // Añade la clase aquí
+  var fullStar = "&#9733;";
+  var emptyStar = "&#9734;";
+  var stars = "";
+  for(var i = 0; i < 5; i++) {
+    if(i < review.puntuacion) {
+      stars += fullStar;
+    } else {
+      stars += emptyStar;
+    }
+  }
+  rating.innerHTML = stars;
+
+  colRating.appendChild(rating);
+
+  var colDate = document.createElement("div");
+  colDate.classList.add("col", "text-end");
+
+  var date = document.createElement("p");
+  date.classList.add("card-text", "mb-0");
+  var reviewDate = new Date(review.fecha_review);
+  date.textContent = "Fecha de revisión: " + reviewDate.toLocaleDateString();
+
+  colDate.appendChild(date);
+
+  rowMid.appendChild(colRating);
+  rowMid.appendChild(colDate);
+
+  var comment = document.createElement("p");
+  comment.classList.add("card-text");
+  comment.textContent = review.comentario ? review.comentario : "No hay comentarios";
+
+  cardBody.appendChild(rowTop);
+  cardBody.appendChild(hr);
+  cardBody.appendChild(rowMid);
+  cardBody.appendChild(comment);
+  card.appendChild(cardBody);
+
+  return card;
+}
 
 var booksTabLink = document.getElementById("booksTabLink");
 

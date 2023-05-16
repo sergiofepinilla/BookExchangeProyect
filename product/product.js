@@ -82,9 +82,7 @@ function loadProduct(product) {
 
   
   const img_perfil = document.createElement("img");
-  img_perfil.classList.add("card-img-top", "img-fluid", "rounded-circle", "border", "border-5", "border-dark");
-  img_perfil.style.maxHeight = "100%"; // Establece la altura máxima de la imagen al 100% del contenedor
-  img_perfil.style.width = "auto"; // Ajusta automáticamente el ancho de la imagen según su proporción
+  img_perfil.classList.add("card-img-top", "img-fluid", "rounded-circle", "border", "border-5", "border-dark", "img-perfil-vendedor"); 
   img_perfil.src = "data:image/jpeg;base64," + product.foto_perfil;
   img_perfil.alt = product.vendedor_apodo;
 

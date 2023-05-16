@@ -272,3 +272,81 @@ Array
     [precio] => 25
     [id_libro] => 37
 )
+Array
+(
+    [id_usu_comprador] => 26
+    [id_usu_vendedor] => 4
+    [titulo] => qwewqe
+    [isbn] => Desconocido
+    [autor] => wqewqewq
+    [genero] => 3
+    [editorial] => 12312
+    [estado] => usado
+    [precio] => 21412
+    [id_libro] => 41
+)
+Array
+(
+    [id_usu_comprador] => 27
+    [id_usu_vendedor] => 4
+    [titulo] => ction createCard
+    [isbn] => 123123123
+    [autor] => ction createCard
+    [genero] => 3
+    [editorial] => ction createCard
+    [estado] => usado
+    [precio] => 1123
+    [id_libro] => 34
+)
+Array
+(
+    [id_usu_comprador] => 27
+    [id_usu_vendedor] => 4
+    [titulo] => ction createCard
+    [isbn] => 123123123
+    [autor] => ction createCard
+    [genero] => 3
+    [editorial] => ction createCard
+    [estado] => usado
+    [precio] => 1123
+    [id_libro] => 34
+)
+Array
+(
+    [id_usu_comprador] => 27
+    [id_usu_vendedor] => 4
+    [titulo] => American Psyco
+    [isbn] => 1283190238109
+    [autor] => Jhon debundom
+    [genero] => 3
+    [editorial] => Editorial Bruno
+    [estado] => usado
+    [precio] => 25
+    [id_libro] => 39
+)
+Array
+(
+    [id_usu_comprador] => 4
+    [id_usu_vendedor] => 28
+    [titulo] => Pepito Grillo
+    [isbn] => 123123
+    [autor] => wakala
+    [genero] => 3
+    [editorial] => Muoz
+    [estado] => usado
+    [precio] => 25
+    [id_libro] => 44
+)
+Array
+(
+    [id_usu_comprador] => 4
+    [id_usu_vendedor] => 28
+    [titulo] => Pepito Grillo
+    [isbn] => 123123
+    [autor] => wakala
+    [genero] => 3
+    [editorial] => Muoz
+    [estado] => usado
+    [precio] => 25
+    [id_libro] => 44
+)

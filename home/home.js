@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", function () {
 function getProducts() {
   return new Promise(function (resolve, reject) {
     $.ajax({
@@ -255,3 +256,4 @@ function getCookie(name) {
     // Maneja el evento de clic en el botón de rechazar cookies
     var rejectCookiesButton = document.getElementById("reject-cookies");
     rejectCookiesButton.addEventListener("click", rejectCookies);
+  });

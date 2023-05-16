@@ -63,3 +63,18 @@ h1, h2 {
     white-space: nowrap;
     max-width: 100%;
 }
+.star-rating {
+    color: gold;
+    font-size: 2em;
+  }
+
+a.profile-link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+.img-perfil-vendedor {
+    width: 80px; /* Ajusta este valor según el tamaño deseado */
+    height: 80px; /* Asegúrate de que el alto y el ancho sean iguales para una imagen circular */
+    object-fit: cover;
+  }
