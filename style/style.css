@@ -74,7 +74,12 @@ a.profile-link {
   }
 
 .img-perfil-vendedor {
-    width: 80px; /* Ajusta este valor según el tamaño deseado */
-    height: 80px; /* Asegúrate de que el alto y el ancho sean iguales para una imagen circular */
+    width: 65px; /* Ajusta este valor según el tamaño deseado */
+    height: 65px; /* Asegúrate de que el alto y el ancho sean iguales para una imagen circular */
     object-fit: cover;
+  }
+
+  .rating-container {
+    display: flex;
+    align-items: center;
   }

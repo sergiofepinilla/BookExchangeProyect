@@ -23,19 +23,65 @@ function getProduct() {
   });
 }
 
-if (!id) {
-  window.location.replace("../error/404.html");
-} else {
-  getProduct().then(
-    function (product) {
-      loadProduct(product[0]);
-      console.log(id_book);
+function loadSellerRating() {
+  return new Promise(function (resolve, reject) {
+    $.ajax({
+      url: "../modelo/user_rating.php",
+      type: "GET",
+      data: { id: sellerId },
+      dataType: "json",
+      success: function (data) {
+        resolve(data);
+      },
+      error: function (xhr, status, error) {
+        reject(error);
+      },
+    });
+  }).then(
+    function (ratingData) {
+      displaySellerRating(ratingData);  // Cambiamos esto para pasar todo el objeto ratingData
     },
     function (error) {
       console.error(error);
     }
   );
 }
+
+function displaySellerRating(ratingData) {
+  const user_rating = document.getElementById("user_rating");
+  const review_count = document.getElementById("review_count");  // Nuevo elemento
+
+  var fullStar = "&#9733;"; // Unicode para la estrella llena
+  var emptyStar = "&#9734;"; // Unicode para la estrella vacía
+  var stars = "";
+  for(var i = 0; i < 5; i++) {
+    if(i < ratingData.average_score) {
+      stars += fullStar;
+    } else {
+      stars += emptyStar;
+    }
+  }
+  user_rating.innerHTML = stars;
+
+  // Actualizamos el nuevo elemento con el número de valoraciones
+  review_count.textContent = "(" + ratingData.num_reviews + ")";
+}
+
+
+if (!id) {
+  window.location.replace("../error/404.html");
+} else {
+  getProduct().then(
+    function (product) {
+      loadProduct(product[0]);
+      loadSellerRating();
+    },
+    function (error) {
+      console.error(error);
+    }
+  );
+}
+
 
 function loadProduct(product) {
   sellerId = product.id_usuario;
@@ -76,6 +122,10 @@ function loadProduct(product) {
   usuVendedorLink.href = `../profile/profile.php?id=${product.id_usuario}`;
 
   const imgContainer = document.getElementById("imgContainer");
+  imgContainer.style.width = "300px"; // o cualquier tamaño que desees
+  imgContainer.style.height = "300px"; // o cualquier tamaño que desees
+  imgContainer.style.position = "relative";
+  imgContainer.style.overflow = "hidden";
   const img = document.createElement("img");
 
   const profilePicture = document.getElementById("profilePicture");
@@ -105,9 +155,12 @@ function loadProduct(product) {
       buyBtn.textContent = "Necesitas estar registrado para poder comprar un producto";
 }
 
-  img.classList.add("d-block","w-100","img-fluid");
+  img.classList.add("d-block","img-fluid");
   img.src = "data:image/jpeg;base64," + product.imagen;
   img.alt = product.nombre;
+  img.style.width = "100%";
+img.style.height = "100%";
+img.style.objectFit = "contain";
   
   imgContainer.appendChild(img);
 

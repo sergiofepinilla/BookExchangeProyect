@@ -389,3 +389,16 @@ Array
     [precio] => 17
     [id_libro] => 3853
 )
+Array
+(
+    [id_usu_comprador] => 4
+    [id_usu_vendedor] => 25
+    [titulo] => The Slow Regard of Silent Things
+    [isbn] => 3559324720
+    [autor] => Javier Marías
+    [genero] => 3
+    [editorial] => MIT Press
+    [estado] => malo
+    [precio] => 16
+    [id_libro] => 3912
+)

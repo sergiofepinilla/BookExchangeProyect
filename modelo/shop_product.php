@@ -2,7 +2,7 @@
 require_once 'connection.php';
 $conn = Connection::getConnection();
 
-$items_per_page = 8;
+$items_per_page = 12;
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 $start = ($page - 1) * $items_per_page;
 

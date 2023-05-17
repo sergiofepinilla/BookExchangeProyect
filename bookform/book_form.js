@@ -178,7 +178,7 @@ document.getElementById("imagen").addEventListener("change", function (e) {
   const maxWidth = 1920;
   const maxHeight = 1080;
 
-  const allowedFormats = ["image/jpeg", "image/png", "image/gif"];
+  const allowedFormats = ["image/jpeg", "image/png"];
 
   if (file) {
     if (file.size > maxSize) {

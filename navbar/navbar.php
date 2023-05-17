@@ -2,7 +2,7 @@
 session_start();
 ?>
 <!-- Primera navbar (superior) con logo y barra de búsqueda -->
-<nav class="navbar navbar-expand-lg bg bg-white">
+<nav class="navbar navbar-expand-lg bg bg-light ">
     <div class="container">
         <a href="../home/home.php" class="w-25 d-flex align-items-center me-2">
             <img src="../assets/img/logo/logo1.png" class="w-100 d-none d-lg-flex" alt="Logo">
@@ -27,7 +27,7 @@ session_start();
 
 
 <!-- Segunda navbar (inferior) con el resto de los botones -->
-<nav class="navbar navbar-expand-lg navbar-light bg-danger">
+<nav class="navbar navbar-expand-lg navbar-light bg-danger border-top border-bottom border-5 border-warning ">
     <div class="container">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -36,16 +36,16 @@ session_start();
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 fs-4">
                 <li class="nav-item ">
-                    <a class="nav-link text-white" href="../home/home.php">Inicio</a>
+                    <a class="nav-link text-white fw-bold " href="../home/home.php">Inicio</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link text-white" href="../shop/shop.php">Tienda</a>
+                    <a class="nav-link text-white fw-bold " href="../shop/shop.php">Tienda</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="../contact/contact.php">Contacto</a>
+                    <a class="nav-link text-white fw-bold " href="../contact/contact.php">Contacto</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="../purchase_history/purchase_history.php">Historial</a>
+                    <a class="nav-link text-white fw-bold " href="../purchase_history/purchase_history.php">Historial</a>
                 </li>
 
                 <?php if (!isset($_SESSION["user"])) { ?>
@@ -92,13 +92,13 @@ session_start();
                 </div>
 
             <?php } else { ?>
-                <button class="btn btn-success btn-lg me-3 border border-white" onclick="window.location.href='../bookform/book_form.php'">
-                    <i class="bi bi-book me-1"></i> Subir Libro
+                <button class="btn btn-success btn-lg me-3 border border-white fw-bold" onclick="window.location.href='../bookform/book_form.php'">
+                    <i class="bi bi-book me-1 "></i> Subir Libro
                 </button>
 
                 <div class="button-container me-2 d-none d-lg-block">
                     <div class="dropdown">
-                        <button class="border border-white btn btn-outline-white text-white dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="border border-white btn btn-lg btn-outline-white text-white dropdown-toggle " type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-person"></i>
                         </button>
                         <ul class="dropdown-menu border-dark " aria-labelledby="dropdownMenuButton">
