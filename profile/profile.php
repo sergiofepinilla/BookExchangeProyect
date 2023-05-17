@@ -7,16 +7,6 @@
     } ?>
 <div class="container mt-3 mt-md-5">
     <h1>Perfil de Usuario</h1>
-    
-    <?php $imageData = $user->getProfilePicture();
-// Check if the BLOB data was returned from the database
-if ($imageData) {
-    // Convert the BLOB to a base64 encoded string
-    $base64Image = base64_encode($imageData);
-
-    // Print out the base64 encoded image
-    echo "<img src='data:image/jpeg;base64," . $base64Image . "' />";
-} ?>
     <hr>
 </div>
 <!-- USER -->
@@ -28,15 +18,14 @@ if ($imageData) {
                     <div class="d-flex text-black flex-column flex-md-row">
                         <div class="me-3 mb-md-0 flex">
                             <div id="profileImageContainer">
-                                <!-- Display the image here -->
                             </div>
                             <!-- IMAGE EDITING-->
                             <?php if (isset($_POST["editProfileSubmit"])) : ?>
                             <form action="../includes/profile.inc.php" method="POST" enctype="multipart/form-data" class="d-flex justify-content-center">
                                 <div class="row ">
                                     <div class="col ">
-                                        <input type="file" name="profilePicture" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" style="display:none;" accept="image/*">
-                                        <label class="custom-file-label btn btn-primary mt-2" for="inputGroupFile01">Cambiar imagen</label>
+                                    <input type="file" name="profilePicture" id="profilePicture" class="custom-file-input" style="display:none;" accept="image/*">
+                                    <label class="custom-file-label btn btn-primary mt-2" for="profilePicture">Cambiar imagen</label>
                                     </div>
                                 </div>
                                 <?php endif; ?>
@@ -154,7 +143,7 @@ if ($imageData) {
         </ul>
         <div class="tab-content">
             <div id="login" class="tab-pane active">
-                <div class="col-md-12 d-flex justify-content-between align-items-center">
+                <div class="col-md-12 d-flex justify-content-between align-items-center mb-3">
                     <h2 class="mt-3">Libros en Venta</h2>
                     <?php if(isset($userId) && $userId == $_GET['id']){ ?>
                     <button class="btn btn-success btn-lg me-3" onclick="window.location.href='../bookform/book_form.php'">

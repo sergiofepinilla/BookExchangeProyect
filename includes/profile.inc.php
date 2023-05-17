@@ -30,12 +30,13 @@ if (isset($_POST['saveProfileSubmit'])) {
     if ($userName == $profileUserName && $image == $userProfilePicture) {
         // No changes
         unset($_SESSION['editProfileSubmit']);
-        header('location: ../profile/profile.php?id='.$userId);
+       header('location: ../profile/profile.php?id='.$userId);
     } else {
         // There were changes
         updateData($conn, $userId, $profileUserName, $image);
         $user->setName($profileUserName);
         $user->setProfilePicture($image);
+        $_SESSION["user"] = serialize($user);
         unset($_SESSION['editProfileSubmit']);
         header('location: ../profile/profile.php?id='.$userId);
     }

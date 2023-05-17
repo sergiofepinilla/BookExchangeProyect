@@ -130,8 +130,7 @@ getProducts().then(
     );
     booksTabLink.innerHTML = `Libros (${total})`;
 
-    var lastBooks = products.slice(0, 10);
-    var recommendedBooks = products.slice(0,10);
+    var lastBooks = products;
     loadCarousel("carouselInner", lastBooks,userProfile);
 
 // Muestra la cantidad de libros vendidos
@@ -145,7 +144,6 @@ function (error) {
 console.error(error);
 }
 );
-
 
 getReviews().then(
   function (data) {
@@ -409,3 +407,48 @@ function applyEllipsisStyle(element, lineHeight, maxLines) {
   element.style.lineHeight = lineHeight;
   element.style.maxHeight = `calc(${lineHeight} * ${maxLines})`;
 }
+var profilePictureElement = document.getElementById('profilePicture');
+if (profilePictureElement) {
+document.getElementById('profilePicture').addEventListener('change', function(e) {
+  // Comprueba si el usuario seleccionó un archivo
+  if (e.target.files && e.target.files[0]) {
+      // Restricciones de tamaño y formato
+      var fileSize = e.target.files[0].size / 1024 / 1024; // tamaño del archivo en MB
+      var fileType = e.target.files[0].type;
+      
+      if (fileSize > 2) { // Tamaño máximo de 2MB
+          alert('El archivo es demasiado grande. Debe ser menor a 2MB.');
+          return;
+      }
+      
+      if (fileType !== 'image/jpeg' && fileType !== 'image/png') { // Solo permite JPG y PNG
+          alert('El formato del archivo no es válido. Solo se permiten archivos JPG y PNG.');
+          return;
+      }
+
+      var reader = new FileReader();
+
+      reader.onload = function(event) {
+          // Cuando la imagen esté cargada, reemplace la imagen del perfil
+          var imgElement = document.createElement("img");
+          imgElement.src = event.target.result;
+          imgElement.classList.add("card-img-top", "img-fluid", "rounded-circle", "h-100", "border", "border-5", "border-dark");
+          imgElement.style.objectFit = "cover";
+          imgElement.style.width = "180px";
+          imgElement.style.borderRadius = "10px";
+
+          // Limpia el contenedor de la imagen de perfil y agrega la nueva imagen
+          var container = document.getElementById('profileImageContainer');
+          container.innerHTML = '';
+          container.appendChild(imgElement);
+      };
+
+      // Lee la imagen como URL de datos
+      reader.readAsDataURL(e.target.files[0]);
+  } else {
+      console.log("No file selected");
+  }
+
+});
+}
+
