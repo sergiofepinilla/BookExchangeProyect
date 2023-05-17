@@ -363,3 +363,29 @@ Array
     [precio] => 9
     [id_libro] => 29
 )
+Array
+(
+    [id_usu_comprador] => 4
+    [id_usu_vendedor] => 10
+    [titulo] => The Wise Man\'s Fear
+    [isbn] => 9854613860
+    [autor] => Robert Louis Stevenson
+    [genero] => 3
+    [editorial] => Ballantine Books
+    [estado] => nuevo
+    [precio] => 97
+    [id_libro] => 3911
+)
+Array
+(
+    [id_usu_comprador] => 4
+    [id_usu_vendedor] => 9
+    [titulo] => Insurgent
+    [isbn] => 6478116732
+    [autor] => Herman Melville
+    [genero] => 1
+    [editorial] => Doubleday
+    [estado] => nuevo
+    [precio] => 17
+    [id_libro] => 3853
+)

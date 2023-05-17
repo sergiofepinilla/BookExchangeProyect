@@ -1,8 +1,6 @@
 <?php
 require_once 'includes/dbh.inc.php';
-$conn = Connection::getConnection();
 
-$usuarios = [4, 9, 10, 24, 25, 26, 27, 28];
 $editoriales = ["Penguin Random House",
 "HarperCollins",
 "Simon & Schuster",
@@ -610,13 +608,14 @@ function generateRandomBoolean()
     return rand(0, 1);
 }
 
-require_once 'includes/dbh.inc.php';
-$conn = Connection::getConnection();
-
-$usuarios = [4, 9, 10, 24, 25, 26, 27, 28];
-
 $maxBooks = 200; // Máximo de libros a insertar
 $insertedBooks = 0; // Contador de libros insertados
+
+$carpetaImagenes = "imagenes/inyeccion/IMG/";
+$imagenes = glob($carpetaImagenes . "*.jpg");
+
+$conn = Connection::getConnection();
+$usuarios = [4, 9, 10, 24, 25, 26, 27, 28];
 
 foreach ($titulos as $titulo) {
     if ($insertedBooks >= $maxBooks) {
@@ -633,7 +632,9 @@ foreach ($titulos as $titulo) {
     $cambio = generateRandomBoolean();
     $envio = generateRandomBoolean();
     $descripcion = $descripciones[array_rand($descripciones)];
-    $imagen = file_get_contents("imagenes/inyeccion/IMG/A Court of Mist and Fury.jpg"); // Ruta a la imagen que deseas utilizar
+    $indiceAleatorio = array_rand($imagenes);
+    $rutaImagenAleatoria = $imagenes[$indiceAleatorio];
+    $imagen = file_get_contents($rutaImagenAleatoria);
     $autor = $autores[array_rand($autores)];
     $tituloEscaped = mysqli_real_escape_string($conn, $titulo);
     $editorialEscaped = mysqli_real_escape_string($conn, $editorial);
@@ -642,7 +643,7 @@ foreach ($titulos as $titulo) {
           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("isssisdiissb", $usuario, $tituloEscaped, $isbn, $editorialEscaped, $genero, $estado, $precio, $cambio, $envio, $descripcion, $imagen, $autor);
+    $stmt->bind_param("isssisdiisss", $usuario, $tituloEscaped, $isbn, $editorialEscaped, $genero, $estado, $precio, $cambio, $envio, $descripcion, $imagen, $autor);
     $result = $stmt->execute();
 
     if ($result) {
