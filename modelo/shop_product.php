@@ -2,21 +2,18 @@
 require_once 'connection.php';
 $conn = Connection::getConnection();
 
-if (!empty($_GET['category']) or !empty($_GET['name'])) {
+$items_per_page = 8;
+$page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+$start = ($page - 1) * $items_per_page;
+
+$query = "SELECT * FROM libros_venta INNER JOIN generos ON libros_venta.genero = generos.id_genero";
+
+if (!empty($_GET['category'])) {
     $category = $_GET['category'];
-    $query = "SELECT * FROM libros_venta INNER JOIN generos ON libros_venta.genero = generos.id_genero WHERE generos.id='$category'";
-    if (!empty($_GET['name'])) {
-        $name = $_GET['name'];
-        $query .= " or LOWER(name) LIKE LOWER('%$name%')";
-    }
-    // $query .= " ORDER BY id DESC";
-} else if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    //  $query = "SELECT * FROM productos WHERE id='$id'";
-} else {
-    $query = "SELECT * FROM libros_venta INNER JOIN generos ON libros_venta.genero = generos.id_genero ORDER BY libros_venta.id DESC";
+    $query .= " WHERE generos.id='$category'";
 }
 
+$query .= " ORDER BY libros_venta.id DESC LIMIT $start, $items_per_page";
 
 $result = $conn->query($query);
 
@@ -27,6 +24,21 @@ while ($row = $result->fetch_assoc()) {
     $products[] = (object) $row;
 }
 
+// Obtener el número total de páginas
+$totalItemsQuery = "SELECT COUNT(*) as total FROM libros_venta INNER JOIN generos ON libros_venta.genero = generos.id_genero";
+if (!empty($_GET['category'])) {
+    $category = $_GET['category'];
+    $totalItemsQuery .= " WHERE generos.id='$category'";
+}
+$totalItemsResult = $conn->query($totalItemsQuery);
+$totalItems = $totalItemsResult->fetch_assoc()['total'];
+$totalPages = ceil($totalItems / $items_per_page);
+
+$response = array(
+    'products' => $products,
+    'totalPages' => $totalPages
+);
 
 header("Content-Type: application/json");
-echo json_encode($products);
+echo json_encode($response);
+?>

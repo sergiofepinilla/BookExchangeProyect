@@ -24,12 +24,12 @@
                         <div class="col col-md-9 col-lg-7 col-xl-5 w-100">
                             <div class="card" style="border-radius: 15px;">
                                 <div class="card-body">
-                                    <div class="row align-items-center">
+                                    <div class="row align-items-center mb-2">
                                         <div id="profilePicture" class="me-3 col-auto"></div>
                                         <h1 class="mb-2 text-dark col" id="usu_vendedor">Vendedor</h1>
                                     </div>
                                     <div class="d-flex align-items-start">
-                                        <div>
+                                        <div class="w-100">
                                             <a href="" id="usu_vendedor_link" class="w-100">
                                             <button type="button" class="btn btn-success w-100">Ver Perfil</button>
                                             </a>

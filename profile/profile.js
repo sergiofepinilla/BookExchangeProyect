@@ -44,7 +44,7 @@ function loadCarousel(carouselInnerId, productsToShow, userProfile) {
 
    // Crea la imagen de perfil aquí
    var imgPerfil = document.createElement("img");
-   imgPerfil.classList.add("card-img-top", "img-fluid", "rounded-circle","h-100","border","border-5","border-dark");
+   imgPerfil.classList.add("card-img-top", "img-fluid", "rounded-circle","h-100","border","border-3","border-dark");
    imgPerfil.src = "data:image/jpeg;base64," + userProfile.foto_perfil;
    imgPerfil.style.objectFit = "cover";
    imgPerfil.style.width = "180px";
@@ -432,7 +432,7 @@ document.getElementById('profilePicture').addEventListener('change', function(e)
           // Cuando la imagen esté cargada, reemplace la imagen del perfil
           var imgElement = document.createElement("img");
           imgElement.src = event.target.result;
-          imgElement.classList.add("card-img-top", "img-fluid", "rounded-circle", "h-100", "border", "border-5", "border-dark");
+          imgElement.classList.add("card-img-top", "img-fluid", "rounded-circle", "h-100", "border", "border-3", "border-dark");
           imgElement.style.objectFit = "cover";
           imgElement.style.width = "180px";
           imgElement.style.borderRadius = "10px";

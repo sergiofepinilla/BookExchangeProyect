@@ -1,26 +1,49 @@
+var currentCategory;
+var currentPage = 1;
+var totalPages = 1;
+
 $(document).ready(function () {
-  
-  getProducts(1); // Muestra todos los productos de la primera página cuando se carga la página
+  getProducts(currentPage); // Muestra todos los productos de la primera página cuando se carga la página
 
   $(".dropdown-item").click(function (event) {
-    event.preventDefault(); // Detiene la acción por defecto del click en el enlace
-    var category = $(this).attr("href").split("=")[1]; // Obtiene la categoría del href del enlace
-    getProducts(1, category); // Hace la solicitud GET con la categoría seleccionada y la primera página
+    event.preventDefault();
+    currentCategory = $(this).attr("href").split("=")[1];
+    currentPage = 1;
+    getProducts(currentPage, currentCategory);
   });
 
   $("#prev-page").click(function (event) {
     event.preventDefault();
-    var currentPage = parseInt($("#page-number").text());
     if (currentPage > 1) {
-      getProducts(currentPage - 1);
+      currentPage--;
+      getProducts(currentPage, currentCategory);
     }
   });
 
   $("#next-page").click(function (event) {
     event.preventDefault();
-    var currentPage = parseInt($("#page-number").text());
-    getProducts(currentPage + 1);
+    if (currentPage < totalPages) {
+      currentPage++;
+      getProducts(currentPage, currentCategory);
+    }
   });
+
+  if (currentPage === 1) {
+    $("#prev-page").prop("disabled", true);
+  } else {
+    $("#prev-page").prop("disabled", false);
+  }
+
+  if (currentPage === totalPages) {
+    $("#next-page").prop("disabled", true);
+  } else {
+    $("#next-page").prop("disabled", false);
+  }
+
+
+
+
+
 });
 
 function getProducts(page, category) {
@@ -28,31 +51,61 @@ function getProducts(page, category) {
     url: "../modelo/shop_product.php",
     type: "GET",
     dataType: "json",
-    data: { page: page }
+    data: { page: page, category: category }
   };
 
-  var categoryName = "Todos"; // Por defecto, mostramos todos los productos
-
-  if (category !== undefined) {
-    ajaxSettings.data.category = category;
-    categoryName = $(".dropdown-item[href='./shop.php?category=" + category + "']").text();
-  }
+  var categoryName = "Todos";
 
   $.ajax(ajaxSettings)
     .done(function (response) {
-      // Borra el contenido actual del contenedor
       $("#container").empty();
-
-      // Actualiza el encabezado con la categoría seleccionada
       $("#category-header").text(categoryName);
 
-      // Añade los nuevos productos al contenedor
-      response.forEach((producto) => {
-        container.appendChild(createCard(producto));
+      response.products.forEach((producto) => {
+        $("#container").append(createCard(producto));
       });
 
-      // Actualiza el número de la página actual
-      $("#page-number").text(page);
+      currentPage = page;
+      totalPages = response.totalPages;
+
+      $("#page-number").text(currentPage);
+      $("#total-pages").text(totalPages);
+
+      $("#prev-page").prop("disabled", currentPage === 1);
+      $("#next-page").prop("disabled", currentPage === totalPages);
+    })
+    .fail(function (xhr, status, error) {
+      console.error(error);
+    });
+}
+
+function getProducts(page, category) {
+  var ajaxSettings = {
+    url: "../modelo/shop_product.php",
+    type: "GET",
+    dataType: "json",
+    data: { page: page, category: category }
+  };
+
+  var categoryName = "Todos";
+
+  $.ajax(ajaxSettings)
+    .done(function (response) {
+      $("#container").empty();
+      $("#category-header").text(categoryName);
+
+      response.products.forEach((producto) => {
+        $("#container").append(createCard(producto));
+      });
+
+      currentPage = page;
+      totalPages = response.totalPages;
+
+      $("#page-number").text(currentPage);
+      $("#total-pages").text(totalPages);
+
+      $("#prev-page").prop("disabled", currentPage === 1);
+      $("#next-page").prop("disabled", currentPage === totalPages);
     })
     .fail(function (xhr, status, error) {
       console.error(error);

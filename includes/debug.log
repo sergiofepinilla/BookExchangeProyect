@@ -350,3 +350,16 @@ Array
     [precio] => 25
     [id_libro] => 44
 )
+Array
+(
+    [id_usu_comprador] => 4
+    [id_usu_vendedor] => 10
+    [titulo] => Speak
+    [isbn] => 9780736231916
+    [autor] => Laurie Halse Anderson
+    [genero] => 3
+    [editorial] => Una edicin de Speak 1999
+    [estado] => usado
+    [precio] => 9
+    [id_libro] => 29
+)
