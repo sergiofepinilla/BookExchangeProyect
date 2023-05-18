@@ -286,7 +286,7 @@ function createCard(producto, margin = "") {
 
 function createReviewCard(review) {
   var card = document.createElement("div");
-  card.classList.add("card", "my-2");
+  card.classList.add("card", "my-2","rounded","bg-light");
 
   var cardBody = document.createElement("div");
   cardBody.classList.add("card-body");

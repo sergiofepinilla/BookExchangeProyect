@@ -9,12 +9,13 @@ session_start();
             <img src="../assets/img/logo/logo1.png" class="d-lg-none w-100" alt="Logo">
         </a>
 
-        <!-- SEARCH BAR -->
-
-        <div class="d-flex justify-content-center align-items-center flex-grow-1">
-            <input class="form-control me-2 w-100" placeholder="Busca por autor, título, género, ISBN" id="searchBar">
-            <button class="btn btn-outline-danger" id="btnSearch"><i class="bi bi-search"></i></button>
-        </div>
+     <!-- SEARCH BAR -->
+<div class="d-flex justify-content-center align-items-center flex-grow-1">
+    <div class="input-group">
+        <input class="form-control" placeholder="Busca por autor, título, género, ISBN" id="searchBar">
+        <button class="btn btn-outline-danger" id="btnSearch"><i class="bi bi-search"></i></button>
+    </div>
+</div>
         <!-- CARRITO -->
         <a class="border border-danger btn mx-3 btn-outline-danger text-danger position-relative" href="../cart/cart.php">
             <i class="bi bi-cart2"></i>

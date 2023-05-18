@@ -42,6 +42,8 @@
                                     <hr class="dropdown-divider">
                                 </li>
                                 <li><a class="dropdown-item" href="./shop.php" id="clear">X Mostrar Todos</a></li>
+
+
                             </ul>
                         </li>
                     </ul>

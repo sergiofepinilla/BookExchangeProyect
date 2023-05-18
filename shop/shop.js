@@ -1,22 +1,24 @@
-var currentCategory;
+var currentCategory = "";
 var currentPage = 1;
 var totalPages = 1;
 
 $(document).ready(function () {
-  getProducts(currentPage); // Muestra todos los productos de la primera página cuando se carga la página
-
+  const urlParams = new URLSearchParams(window.location.search);
+  const query = urlParams.get('query');
+  getProducts(currentPage, currentCategory, query);
+  
   $(".dropdown-item").click(function (event) {
     event.preventDefault();
     currentCategory = $(this).attr("href").split("=")[1];
     currentPage = 1;
-    getProducts(currentPage, currentCategory);
+    getProducts(currentPage, currentCategory, query);
   });
 
   $("#prev-page").click(function (event) {
     event.preventDefault();
     if (currentPage > 1) {
       currentPage--;
-      getProducts(currentPage, currentCategory);
+      getProducts(currentPage, currentCategory, query);
     }
   });
 
@@ -24,8 +26,16 @@ $(document).ready(function () {
     event.preventDefault();
     if (currentPage < totalPages) {
       currentPage++;
-      getProducts(currentPage, currentCategory);
+      window.scrollTo(0, document.getElementById('category-header').offsetTop);
+      getProducts(currentPage, currentCategory, query);
     }
+  });
+
+  $("#clear").click(function (event) {
+    event.preventDefault();
+    currentCategory = "";
+    currentPage = 1;
+    getProducts(currentPage, currentCategory);
   });
 
   if (currentPage === 1) {
@@ -39,26 +49,20 @@ $(document).ready(function () {
   } else {
     $("#next-page").prop("disabled", false);
   }
-
-
-
-
-
 });
 
-function getProducts(page, category) {
+function getProducts(page, category, query) {
   var ajaxSettings = {
     url: "../modelo/shop_product.php",
     type: "GET",
     dataType: "json",
-    data: { page: page, category: category }
+    data: { page: page, category: category, query: query }
   };
-
-  var categoryName = "Todos";
 
   $.ajax(ajaxSettings)
     .done(function (response) {
       $("#container").empty();
+      var categoryName = (category === "") ? "Todos" : response.categoryName;
       $("#category-header").text(categoryName);
 
       response.products.forEach((producto) => {
@@ -79,38 +83,6 @@ function getProducts(page, category) {
     });
 }
 
-function getProducts(page, category) {
-  var ajaxSettings = {
-    url: "../modelo/shop_product.php",
-    type: "GET",
-    dataType: "json",
-    data: { page: page, category: category }
-  };
-
-  var categoryName = "Todos";
-
-  $.ajax(ajaxSettings)
-    .done(function (response) {
-      $("#container").empty();
-      $("#category-header").text(categoryName);
-
-      response.products.forEach((producto) => {
-        $("#container").append(createCard(producto));
-      });
-
-      currentPage = page;
-      totalPages = response.totalPages;
-
-      $("#page-number").text(currentPage);
-      $("#total-pages").text(totalPages);
-
-      $("#prev-page").prop("disabled", currentPage === 1);
-      $("#next-page").prop("disabled", currentPage === totalPages);
-    })
-    .fail(function (xhr, status, error) {
-      console.error(error);
-    });
-}
 
 function createCard(producto, margin = "") {
   var card = document.createElement("div");
@@ -246,3 +218,4 @@ function applyEllipsisStyle(element, lineHeight, maxLines) {
   element.style.lineHeight = lineHeight;
   element.style.maxHeight = `calc(${lineHeight} * ${maxLines})`;
 }
+
