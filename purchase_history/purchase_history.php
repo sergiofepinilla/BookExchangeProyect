@@ -17,9 +17,9 @@ $startEnVenta = ($pageEnVenta > 1) ? ($pageEnVenta * $perPage) - $perPage : 0;
 // Libros Comprados
 $conn = Connection::getConnection();
 $stmt = $conn->prepare("
-    SELECT libros_vendidos.*, datos_usuario.nombre, generos.nombre_genero AS nombre_genero
+    SELECT libros_vendidos.*, usuarios.apodo, usuarios.id as id_usuario, generos.nombre_genero AS nombre_genero
     FROM libros_vendidos 
-    JOIN datos_usuario ON libros_vendidos.id_usu_vendedor = datos_usuario.id_usuario 
+    JOIN usuarios ON libros_vendidos.id_usu_vendedor = usuarios.id
     JOIN generos ON libros_vendidos.genero = generos.id_genero 
     WHERE libros_vendidos.id_usu_comprador = ? 
     ORDER BY libros_vendidos.id DESC
@@ -50,10 +50,10 @@ $totalPagesComprados = ceil($totalComprados / $perPage);
 
 // Libros Vendidos
 $stmt = $conn->prepare("
-    SELECT libros_vendidos.*, generos.nombre_genero, datos_usuario.nombre 
+    SELECT libros_vendidos.*, generos.nombre_genero, usuarios.id as id_usuario, usuarios.apodo
     FROM libros_vendidos 
     INNER JOIN generos ON libros_vendidos.genero = generos.id_Genero 
-    INNER JOIN datos_usuario ON libros_vendidos.id_usu_vendedor = datos_usuario.id_usuario
+    INNER JOIN usuarios ON libros_vendidos.id_usu_vendedor = usuarios.id
     WHERE libros_vendidos.id_usu_vendedor = ?
     ORDER BY libros_vendidos.id DESC
     LIMIT ? OFFSET ?
@@ -136,7 +136,7 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
               <td><?php echo htmlspecialchars($row['titulo']); ?></td>
               <td><?php echo htmlspecialchars($row['estado']); ?></td>
               <td><?php echo htmlspecialchars($row['precio']); ?></td>
-              <td><?php echo htmlspecialchars($row['nombre']); ?></td>
+              <td><a class ="klk" href="../profile/profile.php?id=<?php echo $row['id_usuario']; ?>"><?php echo htmlspecialchars($row['apodo']); ?></a></td>
               <td><?php echo htmlspecialchars($row['fecha_compra']); ?></td>
               <td>
                 <?php if ($row['review'] == 0) : ?>
@@ -205,7 +205,7 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
               <td><?php echo htmlspecialchars($row['titulo']); ?></td>
               <td><?php echo htmlspecialchars($row['estado']); ?></td>
               <td><?php echo htmlspecialchars($row['precio']); ?></td>
-              <td><?php echo htmlspecialchars($row['nombre']); ?></td>
+              <td><a class ="klk" href="../profile/profile.php?id=<?php echo $row['id_usuario']; ?>"><?php echo htmlspecialchars($row['apodo']); ?></a></td>
               <td><?php echo htmlspecialchars($row['fecha_compra']); ?></td>
             </tr>
           <?php endwhile; ?>

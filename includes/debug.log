@@ -402,3 +402,42 @@ Array
     [precio] => 16
     [id_libro] => 3912
 )
+Array
+(
+    [id_usu_comprador] => 4
+    [id_usu_vendedor] => 25
+    [titulo] => Orgullo y prejuicio
+    [isbn] => 9471005920
+    [autor] => Stephen King
+    [genero] => 3
+    [editorial] => Harvard University Press
+    [estado] => malo
+    [precio] => 68
+    [id_libro] => 3941
+)
+Array
+(
+    [id_usu_comprador] => 4
+    [id_usu_vendedor] => 10
+    [titulo] => The Witcher: Baptism of Fire
+    [isbn] => 6694227178
+    [autor] => J.R.R. Tolkien
+    [genero] => 3
+    [editorial] => Sceptre
+    [estado] => malo
+    [precio] => 79
+    [id_libro] => 4107
+)
+Array
+(
+    [id_usu_comprador] => 4
+    [id_usu_vendedor] => 28
+    [titulo] => The Witcher: The Tower of Swallows
+    [isbn] => 5394745134
+    [autor] => Robert Louis Stevenson
+    [genero] => 3
+    [editorial] => Orion Publishing Group
+    [estado] => malo
+    [precio] => 85
+    [id_libro] => 4108
+)

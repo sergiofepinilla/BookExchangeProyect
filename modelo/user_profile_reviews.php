@@ -10,7 +10,8 @@ if (isset($_GET['id'])) {
     FROM review
     INNER JOIN usuarios ON review.id_usu_valorador = usuarios.id
     INNER JOIN datos_usuario ON review.id_usu_valorador = datos_usuario.id_usuario
-    WHERE review.id_usu_valorado = '$id'";
+    WHERE review.id_usu_valorado = '$id'
+    ORDER BY review.id DESC";
 
     $result = $conn->query($query);
 

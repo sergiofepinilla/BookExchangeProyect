@@ -36,6 +36,7 @@ h1, h2 {
   h3, h4 {
     font-family: 'Amatic SC', cursive;
   }
+
 .custom-link{
     text-decoration: none;
     font-family: 'Amatic SC',cursive;
@@ -44,6 +45,17 @@ h1, h2 {
     line-height: 2rem; /* aumenta la altura de línea del texto */
 
 }
+
+.klk{
+  
+      font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+  text-decoration: none;
+  font-size: 1.1rem; /* aumenta el tamaño del texto */
+  line-height: 2rem; /* aumenta la altura de línea del texto */
+
+}
+
 
 .btn,p, span, a {
     font-family: 'Montserrat', sans-serif;
