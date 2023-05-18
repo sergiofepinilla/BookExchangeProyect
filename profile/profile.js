@@ -381,23 +381,6 @@ function createReviewCard(review) {
 
 var booksTabLink = document.getElementById("booksTabLink");
 
-function addToCart(e) {
-  var cart = localStorage.getItem("cart");
-  cart = JSON.parse(cart) ?? [];
-
-  var id = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.id;
-  var product =
-    cart.find((x) => x.id === id) ?? productos.find((x) => x.id === id);
-
-  if (cart.find((x) => x.id === id)) cart.find((x) => x.id === id).quantity++;
-  else {
-    product.quantity++;
-    cart.push(product);
-  }
-
-  localStorage.setItem("cart", JSON.stringify(cart));
-}
-
 function applyEllipsisStyle(element, lineHeight, maxLines) {
   element.style.overflow = "hidden";
   element.style.textOverflow = "ellipsis";

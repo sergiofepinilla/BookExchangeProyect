@@ -22,7 +22,11 @@ $stmt = $conn->prepare("
     JOIN datos_usuario ON libros_vendidos.id_usu_vendedor = datos_usuario.id_usuario 
     JOIN generos ON libros_vendidos.genero = generos.id_genero 
     WHERE libros_vendidos.id_usu_comprador = ? 
+    ORDER BY libros_vendidos.id DESC
     LIMIT ? OFFSET ?
+    
+    
+    
 ");
 
 $stmt->bind_param("iii", $userId, $perPage, $startComprados);
@@ -51,6 +55,7 @@ $stmt = $conn->prepare("
     INNER JOIN generos ON libros_vendidos.genero = generos.id_Genero 
     INNER JOIN datos_usuario ON libros_vendidos.id_usu_vendedor = datos_usuario.id_usuario
     WHERE libros_vendidos.id_usu_vendedor = ?
+    ORDER BY libros_vendidos.id DESC
     LIMIT ? OFFSET ?
 ");
 $stmt->bind_param("iii", $userId, $perPage, $startVendidos);
@@ -76,6 +81,7 @@ $stmtEnVenta = $conn->prepare("
     FROM libros_venta 
     INNER JOIN generos ON libros_venta.genero = generos.id_genero 
     WHERE libros_venta.id_usuario = ?
+    ORDER BY libros_venta.id DESC
     LIMIT ? OFFSET ?
 ");
 $stmtEnVenta->bind_param("iii", $userId, $perPage, $startEnVenta);

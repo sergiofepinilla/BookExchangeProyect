@@ -15,9 +15,21 @@ function getProducts() {
   });
 }
 
-var productos;
-var containerNovedades = document.getElementById("containerNovedades");
-var productosLista = document.getElementById("productosLista");
+function getRecommendedBooks() {
+  return new Promise(function (resolve, reject) {
+    $.ajax({
+      url: "../modelo/recommended_books.php",
+      type: "GET",
+      dataType: "json",
+      success: function (data) {
+        resolve(data);
+      },
+      error: function (xhr, status, error) {
+        reject(error);
+      },
+    });
+  });
+}
 
 function loadCarousel(carouselInnerId, productsToShow) {
   var carouselInner = document.getElementById(carouselInnerId);
@@ -52,10 +64,9 @@ function loadCarousel(carouselInnerId, productsToShow) {
 }
 
 // Load products into carousels
-getProducts().then(
-  function (products) {
+Promise.all([getProducts(), getRecommendedBooks()]).then(
+  function ([products, recommendedBooks]) {
     var lastBooks = products.slice(0, 10);
-    var recommendedBooks = products.slice(0, 10);
 
     loadCarousel("carouselInner", lastBooks);
     loadCarousel("recommendedCarouselInner", recommendedBooks);
@@ -172,23 +183,6 @@ function createCard(producto, margin = "") {
   return card;
 }
 
-function addToCart(e) {
-  var cart = localStorage.getItem("cart");
-  cart = JSON.parse(cart) ?? [];
-
-  var id = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.id;
-  var product =
-    cart.find((x) => x.id === id) ?? productos.find((x) => x.id === id);
-
-  if (cart.find((x) => x.id === id)) cart.find((x) => x.id === id).quantity++;
-  else {
-    product.quantity++;
-    cart.push(product);
-  }
-
-  localStorage.setItem("cart", JSON.stringify(cart));
-}
-
 function applyEllipsisStyle(element, lineHeight, maxLines) {
   element.style.overflow = "hidden";
   element.style.textOverflow = "ellipsis";
@@ -225,35 +219,34 @@ function getCookie(name) {
 
     // Función para mostrar la notificación de cookies
     function showCookieNotification() {
-        var cookieNotification = document.getElementById("cookie-notification");
-        cookieNotification.style.display = "block";
-    }
+      var cookieNotification = document.getElementById("cookie-notification");
+      cookieNotification.style.display = "block";
+  }
 
-    // Función para ocultar la notificación de cookies y establecer la cookie de género
-    function acceptCookies() {
-        var genre = "fantasia"; // Obtén el género del libro visitado (en este caso, "fantasia")
-        setCookie("genre", genre, 30); // Establece la cookie "genre" con el valor del género durante 30 días
-        var cookieNotification = document.getElementById("cookie-notification");
-        cookieNotification.style.display = "none";
-    }
+  // Función para ocultar la notificación de cookies sin establecer la cookie de género
+  function acceptCookies() {
+    setCookie("cookiesAccepted", "true", 30); // Establece la cookie "cookiesAccepted" con el valor "true" durante 30 días
+    var cookieNotification = document.getElementById("cookie-notification");
+    cookieNotification.style.display = "none";
+}
 
-    // Función para rechazar las cookies y ocultar la notificación
-    function rejectCookies() {
-        var cookieNotification = document.getElementById("cookie-notification");
-        cookieNotification.style.display = "none";
-    }
+  // Función para rechazar las cookies y ocultar la notificación sin establecer la cookie de género
+  function rejectCookies() {
+      var cookieNotification = document.getElementById("cookie-notification");
+      cookieNotification.style.display = "none";
+  }
 
-    // Verifica si la cookie de género ya está establecida
-    var genreCookie = getCookie("genre");
-    if (genreCookie === null) {
-        showCookieNotification();
-    }
+  // Verifica si la cookie de género ya está establecida
+  var genreCookie = getCookie("cookiesAccepted");
+  if (genreCookie === null) {
+      showCookieNotification();
+  }
 
-    // Maneja el evento de clic en el botón de aceptar cookies
-    var acceptCookiesButton = document.getElementById("accept-cookies");
-    acceptCookiesButton.addEventListener("click", acceptCookies);
+  // Maneja el evento de clic en el botón de aceptar cookies
+  var acceptCookiesButton = document.getElementById("accept-cookies");
+  acceptCookiesButton.addEventListener("click", acceptCookies);
 
-    // Maneja el evento de clic en el botón de rechazar cookies
-    var rejectCookiesButton = document.getElementById("reject-cookies");
-    rejectCookiesButton.addEventListener("click", rejectCookies);
-  });
+  // Maneja el evento de clic en el botón de rechazar cookies
+  var rejectCookiesButton = document.getElementById("reject-cookies");
+  rejectCookiesButton.addEventListener("click", rejectCookies);
+});

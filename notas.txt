@@ -1,0 +1,9 @@
+Colores BookExchange 
+letrasLogo : style="background-color: rgb(130, 29, 30);"
+Libro Claro: style="background-color: rgb(185, 55, 55);"
+Libro Oscuro : style="background-color: rgb(130, 29, 30);"
+Libro cuadrado claro : style="background-color: rgb(234, 168, 168);"
+Amarillo Claro : style="background-color: rgb(254, 197, 10);"
+Amarillo Oscuro : style="background-color: rgb(203, 151, 8);"
+"Marron Hojas Claro" : style="background-color: rgb(229, 224, 170);"
+"Marron Hojas Oscuro" : style="background-color: rgb(191, 184, 116);"

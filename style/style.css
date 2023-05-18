@@ -84,4 +84,11 @@ a.profile-link {
     align-items: center;
   }
 
-  
+  .custom-border {
+    background-color: rgb(185, 55, 55);
+  }
+  /*
+  body {
+    background-image: url("../imagenes/grey-paper-texture-card-stock-scrapbooking-heavy-gauge-3.jpg");
+  }
+  */

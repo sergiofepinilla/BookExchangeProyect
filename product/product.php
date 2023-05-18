@@ -56,9 +56,35 @@
         </div>
     </div>
 </div>
-<div class="container">
     <hr>
-    <h1>También te puede interesar...</h1>
+<!-- Libros recomendados Container -->
+<div class="container mb-3">
+    <div class="row mb-2 mt-2">
+        <div class="col">
+            <h1 class="">También te puede interesar...</h1>
+        </div>
+        <div class="col d-flex justify-content-end">
+            <a href="" class="align-self-center text-dark custom-link">Ver todos los libros</a>
+        </div>
+    </div>
+    <!-- Libros recomendados Row Container -->
+    <div id="recommendedCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner" id="recommendedCarouselInner">
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#recommendedCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#recommendedCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+<!-- Libros recomendados Container FIN -->
+
+
 </div>
 <?php 
     echo "<script>let currentUserId = undefined;";

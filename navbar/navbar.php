@@ -2,7 +2,7 @@
 session_start();
 ?>
 <!-- Primera navbar (superior) con logo y barra de búsqueda -->
-<nav class="navbar navbar-expand-lg bg bg-light ">
+<nav class="navbar navbar-expand-lg bg bg-light">
     <div class="container">
         <a href="../home/home.php" class="w-25 d-flex align-items-center me-2">
             <img src="../assets/img/logo/logo1.png" class="w-100 d-none d-lg-flex" alt="Logo">
@@ -16,19 +16,12 @@ session_start();
         <button class="btn btn-outline-danger" id="btnSearch"><i class="bi bi-search"></i></button>
     </div>
 </div>
-        <!-- CARRITO -->
-        <a class="border border-danger btn mx-3 btn-outline-danger text-danger position-relative" href="../cart/cart.php">
-            <i class="bi bi-cart2"></i>
-            <span class="position-absolute 
-                    top-0 start-100 translate-middle 
-                    badge rounded-pill bg-danger" id="cartCount"></span>
-        </a>
     </div>
 </nav>
 
 
 <!-- Segunda navbar (inferior) con el resto de los botones -->
-<nav class="navbar navbar-expand-lg navbar-light bg-danger border-top border-bottom border-5 border-warning ">
+<nav class="navbar navbar-expand-lg navbar-light custom-border">
     <div class="container">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -93,7 +86,7 @@ session_start();
                 </div>
 
             <?php } else { ?>
-                <button class="btn btn-success btn-lg me-3 border border-white fw-bold" onclick="window.location.href='../bookform/book_form.php'">
+                <button class="btn btn-lg me-3 border border-white fw-bold text-white" onclick="window.location.href='../bookform/book_form.php'">
                     <i class="bi bi-book me-1 "></i> Subir Libro
                 </button>
 

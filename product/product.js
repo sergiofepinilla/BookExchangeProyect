@@ -1,86 +1,154 @@
 document.addEventListener("DOMContentLoaded", function () {
-let sellerId;
-let id_book;
-const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
-const id = urlParams.get("id");
-const categories = ["Fantasia", "Novelas", "", "", "", ""];
+  let sellerId;
+  let id_book;
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const id = urlParams.get("id");
+  const categories = ["Fantasia", "Novelas", "", "", "", ""];
 
-function getProduct() {
-  return new Promise(function (resolve, reject) {
-    $.ajax({
-      url: "../modelo/product_model.php",
-      type: "GET",
-      data: { id: id },
-      dataType: "json",
-      success: function (data) {
-        resolve(data);
-      },
-      error: function (xhr, status, error) {
-        reject(error);
-      },
-    });
-  });
-}
-
-function loadSellerRating() {
-  return new Promise(function (resolve, reject) {
-    $.ajax({
-      url: "../modelo/user_rating.php",
-      type: "GET",
-      data: { id: sellerId },
-      dataType: "json",
-      success: function (data) {
-        resolve(data);
-      },
-      error: function (xhr, status, error) {
-        reject(error);
-      },
-    });
-  }).then(
-    function (ratingData) {
-      displaySellerRating(ratingData);  // Cambiamos esto para pasar todo el objeto ratingData
-    },
-    function (error) {
-      console.error(error);
+  function getCookie(name) {
+    let cookieArray = document.cookie.split(';');
+    let cookieName = name + "=";
+    for (let i = 0; i < cookieArray.length; i++) {
+      let cookie = cookieArray[i];
+      while (cookie.charAt(0) === ' ') {
+        cookie = cookie.substring(1);
+      }
+      if (cookie.indexOf(cookieName) === 0) {
+        return cookie.substring(cookieName.length, cookie.length);
+      }
     }
-  );
-}
+    return "";
+  }
 
-function displaySellerRating(ratingData) {
-  const user_rating = document.getElementById("user_rating");
-  const review_count = document.getElementById("review_count");  // Nuevo elemento
+  function setCookie(name, value, daysToExpire) {
+    let date = new Date();
+    date.setTime(date.getTime() + (daysToExpire * 24 * 60 * 60 * 1000));
+    let expires = "expires=" + date.toUTCString();
+    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+  }
 
-  var fullStar = "&#9733;"; // Unicode para la estrella llena
-  var emptyStar = "&#9734;"; // Unicode para la estrella vacía
-  var stars = "";
-  for(var i = 0; i < 5; i++) {
-    if(i < ratingData.average_score) {
-      stars += fullStar;
-    } else {
-      stars += emptyStar;
+  function getProduct() {
+    return new Promise(function (resolve, reject) {
+      $.ajax({
+        url: "../modelo/product_model.php",
+        type: "GET",
+        data: { id: id },
+        dataType: "json",
+        success: function (data) {
+          resolve(data);
+        },
+        error: function (xhr, status, error) {
+          reject(error);
+        },
+      });
+    });
+  }
+
+  function getRecommendedBooks() {
+    return new Promise(function (resolve, reject) {
+      $.ajax({
+        url: "../modelo/recommended_books.php",
+        type: "GET",
+        dataType: "json",
+        success: function (data) {
+          resolve(data);
+        },
+        error: function (xhr, status, error) {
+          reject(error);
+        },
+      });
+    });
+  }
+
+  function loadSellerRating() {
+    return new Promise(function (resolve, reject) {
+      $.ajax({
+        url: "../modelo/user_rating.php",
+        type: "GET",
+        data: { id: sellerId },
+        dataType: "json",
+        success: function (data) {
+          resolve(data);
+        },
+        error: function (xhr, status, error) {
+          reject(error);
+        },
+      });
+    }).then(
+      function (ratingData) {
+        displaySellerRating(ratingData);
+      },
+      function (error) {
+        console.error(error);
+      }
+    );
+  }
+
+  function displaySellerRating(ratingData) {
+    const user_rating = document.getElementById("user_rating");
+    const review_count = document.getElementById("review_count");
+
+    var fullStar = "&#9733;";
+    var emptyStar = "&#9734;";
+    var stars = "";
+    for (var i = 0; i < 5; i++) {
+      if (i < ratingData.average_score) {
+        stars += fullStar;
+      } else {
+        stars += emptyStar;
+      }
+    }
+    user_rating.innerHTML = stars;
+    review_count.textContent = "(" + ratingData.num_reviews + ")";
+  }
+
+  if (!id) {
+    window.location.replace("../error/404.html");
+  } else {
+    Promise.all([getProduct(), getRecommendedBooks()]).then(
+      function ([product, recommendedBooks]) {
+        loadProduct(product[0]);
+        loadSellerRating();
+        loadCarousel("recommendedCarouselInner", recommendedBooks);
+      },
+      function (error) {
+        console.error(error);
+      }
+    );
+  }
+
+  function loadCarousel(carouselInnerId, productsToShow) {
+    var carouselInner = document.getElementById(carouselInnerId);
+  
+    for (let i = 0; i < productsToShow.length; i += 5) {
+      var carouselItem = document.createElement("div");
+      carouselItem.classList.add("carousel-item");
+  
+      if (i === 0) {
+        carouselItem.classList.add("active");
+      }
+  
+      var row = document.createElement("div");
+      row.classList.add(
+        "row",
+        "row-cols-1",
+        "row-cols-md-2",
+        "row-cols-lg-3",
+        "row-cols-xl-5",
+        "g-3"
+      );
+  
+      for (let j = i; j < i + 5 && j < productsToShow.length; j++) {
+        var product = productsToShow[j];
+        var card = createCard(product);
+        row.appendChild(card);
+      }
+  
+      carouselItem.appendChild(row);
+      carouselInner.appendChild(carouselItem);
     }
   }
-  user_rating.innerHTML = stars;
-
-  // Actualizamos el nuevo elemento con el número de valoraciones
-  review_count.textContent = "(" + ratingData.num_reviews + ")";
-}
-
-
-if (!id) {
-  window.location.replace("../error/404.html");
-} else {
-  getProduct().then(
-    function (product) {
-      loadProduct(product[0]);
-      loadSellerRating();
-    },
-    function (error) {
-      console.error(error);
-    }
-  );
-}
 
 
 function loadProduct(product) {
@@ -90,8 +158,9 @@ function loadProduct(product) {
   category.href = `../shop/shop.php?category=${product.genero}`;
   category.textContent = categories[product.genero - 1];
 
-  const categoryName = document.getElementById("genero_name");
+   const categoryName = document.getElementById("genero_name");
   categoryName.innerHTML = "<span class='fw-bold'>Género</span>: " +product.nombre_genero;
+  setCookie('genre', product.nombre_genero, 30);
 
   const name = document.getElementById("titulo");
   name.textContent = product.titulo;
@@ -236,6 +305,123 @@ function purchaseProduct() {
     .catch((error) => {
       console.error("Error:", error);
     });
+}
+
+function createCard(producto, margin = "") {
+  var card = document.createElement("div");
+  card.classList.add("col");
+  if (margin) card.classList.add(margin);
+  card.id = producto.id;
+
+  var innerCard = document.createElement("div");
+  innerCard.classList.add(
+    "text-white",
+    "card",
+    "border-3",
+    "border-dark",
+    "d-flex",
+    "flex-column",
+    "h-100"
+  );
+
+  var imgContainer = document.createElement("div");
+  imgContainer.classList.add(
+    "flex-grow-1",
+    "d-flex",
+    "align-items-center",
+    "justify-content-center",
+    "img-fluid",
+    "overflow-hidden",
+    "border",
+    "border-bottom",
+    "border-white"
+  );
+  imgContainer.style.height = "250px";
+
+  var link = document.createElement("a");
+  link.href = `../product/product.php?id=${producto.id}`;
+
+  var img = document.createElement("img");
+  img.classList.add("card-img-top", "img-fluid");
+  img.src = "data:image/jpeg;base64," + producto.imagen;
+  img.alt = producto.titulo;
+  img.style.objectFit = "contain";
+  img.style.height = "100%";
+  img.style.width = "auto";
+
+  imgContainer.appendChild(img);
+  link.appendChild(imgContainer);
+
+  var cardBody = document.createElement("div");
+  cardBody.classList.add("card-body", "d-flex", "flex-column", "bg-black");
+
+  var bookNameRow = document.createElement("div");
+  bookNameRow.classList.add("row", "justify-content-center");
+
+  var bookName = document.createElement("p");
+  bookName.classList.add("mb-2","fw-bold");
+  bookName.textContent = producto.titulo;
+  applyEllipsisStyle(bookName, "1.2em", 1);
+
+  bookNameRow.appendChild(bookName);
+
+  var badgeRow = document.createElement("div");
+  badgeRow.classList.add("row", "justify-content-center", "mb-3");
+
+  var badge = document.createElement("span");
+  badge.classList.add("badge", "rounded-pill", "bg-primary");
+  badge.textContent = producto.nombre_genero;
+
+  badgeRow.appendChild(badge);
+
+  var priceRow = document.createElement("div");
+  priceRow.classList.add("row", "justify-content-end","text-end");
+
+  var price = document.createElement("span");
+  price.classList.add(
+    "price-hp",
+    "text-white",
+    "fw-bold",
+    "mb-3"
+  );
+  price.innerHTML = `${producto.precio}&euro;`;
+
+  priceRow.appendChild(price);
+
+  cardBody.appendChild(bookNameRow);
+  cardBody.appendChild(badgeRow);
+  cardBody.appendChild(priceRow);
+
+  var btnRow = document.createElement("div");
+  btnRow.classList.add("row");
+
+  var divCheck = document.createElement("div");
+  divCheck.classList.add("col-12");
+
+  var checkBtn = document.createElement("a");
+  checkBtn.classList.add("btn", "btn-success", "w-100");
+  checkBtn.textContent = "VER";
+  checkBtn.href = `../product/product.php?id=${producto.id}`;
+  divCheck.appendChild(checkBtn);
+  btnRow.appendChild(divCheck);
+
+  cardBody.appendChild(btnRow);
+
+  innerCard.appendChild(link);
+  innerCard.appendChild(cardBody);
+  card.appendChild(innerCard);
+
+  return card;
+}
+
+function applyEllipsisStyle(element, lineHeight, maxLines) {
+  element.style.overflow = "hidden";
+  element.style.textOverflow = "ellipsis";
+  element.style.display = "-webkit-box";
+  element.style.webkitBoxOrient = "vertical";
+  element.style.webkitLineClamp = maxLines;
+  element.style.lineHeight = lineHeight;
+  element.style.maxHeight = `calc(${lineHeight} * ${maxLines})`;
 }
 
 });

@@ -162,6 +162,7 @@ function createCard(producto, margin = "") {
     "text-end",
     "mb-3"
   );
+  
   price.innerHTML = `${producto.precio}&euro;`;
 
   priceRow.appendChild(price);
@@ -190,23 +191,6 @@ function createCard(producto, margin = "") {
   card.appendChild(innerCard);
 
   return card;
-}
-
-function addToCart(e) {
-  var cart = localStorage.getItem("cart");
-  cart = JSON.parse(cart) ?? [];
-
-  var id = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.id;
-  var product =
-    cart.find((x) => x.id === id) ?? productos.find((x) => x.id === id);
-
-  if (cart.find((x) => x.id === id)) cart.find((x) => x.id === id).quantity++;
-  else {
-    product.quantity++;
-    cart.push(product);
-  }
-
-  localStorage.setItem("cart", JSON.stringify(cart));
 }
 
 function applyEllipsisStyle(element, lineHeight, maxLines) {
