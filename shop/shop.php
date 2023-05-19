@@ -1,6 +1,5 @@
 <?php require_once '../header/header.php' ?>
 <?php require_once '../navbar/navbar.php' ?>
-
 <body>
     <div class="container mt-3">
         <div class="row">
@@ -9,7 +8,7 @@
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Categorias
+                            Categorias
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-scrollable" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="./shop.php?category=1">Acción y aventura</a></li>
@@ -42,8 +41,6 @@
                                     <hr class="dropdown-divider">
                                 </li>
                                 <li><a class="dropdown-item" href="./shop.php" id="clear">X Mostrar Todos</a></li>
-
-
                             </ul>
                         </li>
                     </ul>
@@ -52,26 +49,28 @@
         </div>
         <div class="row">
             <div class="col">
-                <h1 id="category-header" class="mt-3"></h1> <!-- Aquí es donde se insertará el encabezado -->
+                <h1 id="category-header" class="mt-3"></h1>
+                <!-- Aquí es donde se insertará el encabezado -->
                 <div class="row pt-3 row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4" id="container">
                 </div>
                 <div id="pagination-container">
-  <div class="row">
-    <div class="col d-flex justify-content-center">
-      <nav aria-label="Page navigation example">
-        <ul class="pagination">
-          <li class="page-item"><a class="page-link btn-lg" href="#" id="prev-page">Anterior</a></li>
-          <li class="page-item"><span class="page-link btn-lg" id="page-number">1</span></li>
-          <li class="page-item"><a class="page-link btn-lg" href="#" id="next-page">Siguiente</a></li>
-        </ul>
-      </nav>
+                    <div class="row">
+                        <div class="col d-flex justify-content-center">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination">
+                                    <li class="page-item"><a class="page-link btn-lg" href="#" id="prev-page">Anterior</a></li>
+                                    <li class="page-item"><span class="page-link btn-lg" id="page-number">1</span></li>
+                                    <li class="page-item"><a class="page-link btn-lg" href="#" id="next-page">Siguiente</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
-
-</div>
-
-    <?php require_once '../footer/upper_footer.php' ?>
-    <script src="../navbar/navbar.js"></script>
-    <script src="shop.js"></script>
+        <?php require_once '../footer/upper_footer.php' ?>
+        <script src="../navbar/navbar.js"></script>
+        <script src="shop.js"></script>
+    </div>
     <?php require_once '../footer/footer_links.php' ?>

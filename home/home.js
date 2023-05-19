@@ -1,4 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
+
+const recommendedGenre = getCookie("genre");
+const shopLink = document.getElementById("recommended_shop");
+if (recommendedGenre) {
+  shopLink.href = `../shop/shop.php?query=${recommendedGenre}`;
+}else {
+  shopLink.href = "../shop/shop.php";
+}
+
+
 function getProducts() {
   return new Promise(function (resolve, reject) {
     $.ajax({
@@ -63,11 +73,10 @@ function loadCarousel(carouselInnerId, productsToShow) {
   }
 }
 
-// Load products into carousels
+// Cargar Los Productos En El Carousel
 Promise.all([getProducts(), getRecommendedBooks()]).then(
   function ([products, recommendedBooks]) {
     var lastBooks = products.slice(0, 10);
-
     loadCarousel("carouselInner", lastBooks);
     loadCarousel("recommendedCarouselInner", recommendedBooks);
   },
@@ -75,7 +84,7 @@ Promise.all([getProducts(), getRecommendedBooks()]).then(
     console.error(error);
   }
 );
-
+// Crear Tarjetas Personalizadas Para Cada Producto
 function createCard(producto, margin = "") {
   var card = document.createElement("div");
   card.classList.add("col");
@@ -182,7 +191,7 @@ function createCard(producto, margin = "") {
 
   return card;
 }
-
+// Aplicar Estilo A Las Tarjetas
 function applyEllipsisStyle(element, lineHeight, maxLines) {
   element.style.overflow = "hidden";
   element.style.textOverflow = "ellipsis";
@@ -193,7 +202,7 @@ function applyEllipsisStyle(element, lineHeight, maxLines) {
   element.style.maxHeight = `calc(${lineHeight} * ${maxLines})`;
 }
 
-// Función para establecer una cookie
+// Establecer Cookie
 function setCookie(name, value, days) {
   var expires = "";
   if (days) {
@@ -204,7 +213,7 @@ function setCookie(name, value, days) {
   document.cookie = name + "=" + (value || "") + expires + "; path=/";
 }
 
-// Función para obtener el valor de una cookie
+// Obtener El Valor De Una Cookie
 function getCookie(name) {
   var nameEQ = name + "=";
   var ca = document.cookie.split(';');
@@ -216,37 +225,59 @@ function getCookie(name) {
   return null;
 }
 
+     // Establecer Cookie
+     function setCookie(name, value, days) {
+      var expires = "";
+      if (days) {
+          var date = new Date();
+          date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+          expires = "; expires=" + date.toUTCString();
+      }
+      document.cookie = name + "=" + (value || "") + expires + "; path=/";
+    }
 
-    // Función para mostrar la notificación de cookies
+    // Obtener El Valor De Una Cookie
+    function getCookie(name) {
+      var nameEQ = name + "=";
+      var ca = document.cookie.split(';');
+      for (var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+          if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+      }
+      return null;
+    }
+
+    // Mostrar notificación de Cookies
     function showCookieNotification() {
       var cookieNotification = document.getElementById("cookie-notification");
       cookieNotification.style.display = "block";
-  }
+    }
 
-  // Función para ocultar la notificación de cookies sin establecer la cookie de género
-  function acceptCookies() {
-    setCookie("cookiesAccepted", "true", 30); // Establece la cookie "cookiesAccepted" con el valor "true" durante 30 días
-    var cookieNotification = document.getElementById("cookie-notification");
-    cookieNotification.style.display = "none";
-}
-
-  // Función para rechazar las cookies y ocultar la notificación sin establecer la cookie de género
-  function rejectCookies() {
+    // Ocultar la notificación de cookies sin establecer la cookie de género
+    function acceptCookies() {
+      setCookie("cookiesAccepted", "true", 30); // Establece la cookie "cookiesAccepted" con el valor "true" durante 30 días
       var cookieNotification = document.getElementById("cookie-notification");
       cookieNotification.style.display = "none";
-  }
+    }
 
-  // Verifica si la cookie de género ya está establecida
-  var genreCookie = getCookie("cookiesAccepted");
-  if (genreCookie === null) {
+    // Rechazar las cookies y ocultar la notificación sin establecer la cookie de género
+    function rejectCookies() {
+      var cookieNotification = document.getElementById("cookie-notification");
+      cookieNotification.style.display = "none";
+    }
+
+    // Verifica si la cookie de género ya está establecida
+    var genreCookie = getCookie("cookiesAccepted");
+    if (genreCookie === null) {
       showCookieNotification();
-  }
+    }
 
-  // Maneja el evento de clic en el botón de aceptar cookies
-  var acceptCookiesButton = document.getElementById("accept-cookies");
-  acceptCookiesButton.addEventListener("click", acceptCookies);
+    // Maneja el evento de clic en el botón de aceptar cookies
+    var acceptCookiesButton = document.getElementById("accept-cookies");
+    acceptCookiesButton.addEventListener("click", acceptCookies);
 
-  // Maneja el evento de clic en el botón de rechazar cookies
-  var rejectCookiesButton = document.getElementById("reject-cookies");
-  rejectCookiesButton.addEventListener("click", rejectCookies);
+    // Maneja el evento de clic en el botón de rechazar cookies
+    var rejectCookiesButton = document.getElementById("reject-cookies");
+    rejectCookiesButton.addEventListener("click", rejectCookies);
 });

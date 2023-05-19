@@ -15,7 +15,7 @@
             <h2 class="">Ultimos Libros...</h2>
         </div>
         <div class="col d-flex justify-content-end">
-            <a href="" class="align-self-center text-dark custom-link">Ver todos los libros recomendados...</a>
+            <a href="../shop/shop.php" class="align-self-center text-dark custom-link">Ver todos los libros...</a>
         </div>
     </div>
     <!--Book Row Container-->
@@ -43,7 +43,7 @@
             <h2 class="">Libros recomendados...</h2>
         </div>
         <div class="col d-flex justify-content-end">
-            <a href="" class="align-self-center text-dark custom-link">Ver todos los libros recomendados</a>
+            <a href="" class="align-self-center text-dark custom-link" id="recommended_shop">Ver todos los libros recomendados</a>
         </div>
     </div>
     <!-- Libros recomendados Row Container -->
@@ -68,13 +68,20 @@
 </div>
 
 <!--Cookies-->
-<div id="cookie-notification" class="alert alert-info alert-dismissible fade show" role="alert" style="display: none;">
-    <p>Este sitio web utiliza cookies para mejorar la experiencia del usuario. Al continuar navegando, aceptas nuestra política de cookies.</p>
-    <button id="accept-cookies" class="btn btn-primary">Aceptar</button>
-    <button id="reject-cookies" class="btn btn-secondary">Rechazar</button>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<div id="cookie-notification" class="container alert alert-warning alert-dismissible fade show fixed-bottom border border-warning" role="alert" style="display: none;">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col">
+                <p>Este sitio web utiliza cookies para mejorar la experiencia del usuario. Al continuar navegando, aceptas nuestra política de cookies.</p>
+            </div>
+            <div class="col-auto">
+                <button id="accept-cookies" class="btn btn-success">Aceptar</button>
+                <button id="reject-cookies" class="btn btn-secondary">Rechazar</button>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
 </div>
-
 <!--Cookies-->
 
 <?php include_once "../newsletter/newsletter.php"; ?>

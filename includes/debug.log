@@ -441,3 +441,55 @@ Array
     [precio] => 85
     [id_libro] => 4108
 )
+Array
+(
+    [id_usu_comprador] => 4
+    [id_usu_vendedor] => 26
+    [titulo] => The Witcher: Season of Storms
+    [isbn] => 4347306169
+    [autor] => Mark Twain
+    [genero] => 3
+    [editorial] => Bantam Books
+    [estado] => usado
+    [precio] => 24
+    [id_libro] => 4512
+)
+Array
+(
+    [id_usu_comprador] => 4
+    [id_usu_vendedor] => 26
+    [titulo] => The Witcher: Blood of Elves
+    [isbn] => 4586582707
+    [autor] => Hermann Hesse
+    [genero] => 15
+    [editorial] => William Morrow
+    [estado] => nuevo
+    [precio] => 10
+    [id_libro] => 4507
+)
+Array
+(
+    [id_usu_comprador] => 4
+    [id_usu_vendedor] => 10
+    [titulo] => Mansfield Park
+    [isbn] => 6517481784
+    [autor] => Joseph Heller
+    [genero] => 24
+    [editorial] => Anchor Books
+    [estado] => nuevo
+    [precio] => 22
+    [id_libro] => 4377
+)
+Array
+(
+    [id_usu_comprador] => 4
+    [id_usu_vendedor] => 10
+    [titulo] => A Clash of Kings
+    [isbn] => 4293875245
+    [autor] => Ernest Hemingway
+    [genero] => 20
+    [editorial] => Columbia University Press
+    [estado] => malo
+    [precio] => 93
+    [id_libro] => 4503
+)

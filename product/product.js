@@ -1,10 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
+
   let sellerId;
   let id_book;
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const id = urlParams.get("id");
-  const categories = ["Fantasia", "Novelas", "", "", "", ""];
+  let categories;
 
   function getCookie(name) {
     let cookieArray = document.cookie.split(';');
@@ -20,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     return "";
   }
+
 
   function setCookie(name, value, daysToExpire) {
     let date = new Date();
@@ -106,16 +108,18 @@ document.addEventListener("DOMContentLoaded", function () {
   if (!id) {
     window.location.replace("../error/404.html");
   } else {
-    Promise.all([getProduct(), getRecommendedBooks()]).then(
-      function ([product, recommendedBooks]) {
-        loadProduct(product[0]);
-        loadSellerRating();
-        loadCarousel("recommendedCarouselInner", recommendedBooks);
-      },
-      function (error) {
-        console.error(error);
-      }
-    );
+    getProduct()
+    .then(product => {
+      loadProduct(product[0]);
+      return getRecommendedBooks();
+    })
+    .then(recommendedBooks => {
+      loadCarousel("recommendedCarouselInner", recommendedBooks);
+      loadSellerRating();
+    })
+    .catch(error => {
+      console.error(error);
+    });
   }
 
   function loadCarousel(carouselInnerId, productsToShow) {
@@ -154,17 +158,30 @@ document.addEventListener("DOMContentLoaded", function () {
 function loadProduct(product) {
   sellerId = product.id_usuario;
   id_book = product.id;
-  const category = document.getElementById("genero");
-  category.href = `../shop/shop.php?category=${product.genero}`;
-  category.textContent = categories[product.genero - 1];
+
 
    const categoryName = document.getElementById("genero_name");
   categoryName.innerHTML = "<span class='fw-bold'>Género</span>: " +product.nombre_genero;
-  setCookie('genre', product.nombre_genero, 30);
+
+  // Obtener el valor de la cookie de aceptación de cookies
+  var cookiesAccepted = getCookie("cookiesAccepted");
+
+  // Verificar si se ha aceptado las cookies antes de establecer la cookie de género
+  if (cookiesAccepted === "true") {
+    setCookie('genre', product.nombre_genero, 30);
+  }
+
+  const recommendedGenre = getCookie("genre");
+  const shopLink = document.getElementById("recommended_shop");
+  if (recommendedGenre) {
+    shopLink.href = `../shop/shop.php?query=${product.nombre_genero}`;
+  }else {
+    shopLink.href = "../shop/shop.php";
+  }
 
   const name = document.getElementById("titulo");
   name.textContent = product.titulo;
-
+  categories = product.id_genero;
   const autor = document.getElementById("autor");
   autor.innerHTML = "<span class='fw-bold'>Autor</span>: " + product.autor;
 
@@ -260,7 +277,7 @@ function purchaseProduct() {
   const titulo = document.getElementById("titulo").textContent;
   const isbn = document.getElementById("isbn").textContent.split(": ")[1];
   const autor = document.getElementById("autor").textContent.split(": ")[1];
-  const genero = categories.indexOf(document.getElementById("genero").textContent) + 1;
+  const genero = categories;
   const editorial = document.getElementById("editorial").textContent.split(": ")[1];
   const estado = document.getElementById("estado").textContent.split(": ")[1];
   const precioElement = document.getElementById("precio");

@@ -37,7 +37,6 @@
         </div>
         <div class="col border bg-light " style="border-radius: 15px;">
             <div class="card-body">
-                <a class="text-danger" id="genero">Fantasia</a>
                 <h3 class="card-title fs-1 fw-bold" id="titulo">Libro de Prueba</h3>
                 <hr>
                 <p id="autor">Autor.</p>
@@ -64,7 +63,7 @@
             <h1 class="">También te puede interesar...</h1>
         </div>
         <div class="col d-flex justify-content-end">
-            <a href="" class="align-self-center text-dark custom-link">Ver todos los libros</a>
+            <a href="" class="align-self-center text-dark custom-link" id="recommended_shop">Ver todos los libros recomendados...</a>
         </div>
     </div>
     <!-- Libros recomendados Row Container -->

@@ -17,7 +17,7 @@
                 <div class="card-body p-4">
                     <div class="d-flex text-black flex-column flex-md-row">
                         <div class="me-3 mb-md-0 flex">
-                            <div id="profileImageContainer">
+                            <div id="profileImageContainer" class="profileImageContainer" >
                             </div>
                             <!-- IMAGE EDITING-->
                             <?php if (isset($_POST["editProfileSubmit"])) : ?>

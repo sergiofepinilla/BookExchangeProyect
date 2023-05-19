@@ -4,21 +4,24 @@ $conn = Connection::getConnection();
 
 if (isset($_COOKIE['genre'])) {
     $genre = $_COOKIE['genre'];
-    $query = "SELECT libros_venta.*, generos.nombre_genero
+    $stmt = $conn->prepare("SELECT libros_venta.*, generos.nombre_genero
     FROM libros_venta
     JOIN generos ON libros_venta.genero = generos.id_genero
-    WHERE generos.nombre_genero = '$genre'
+    WHERE generos.nombre_genero = ?
     ORDER BY RAND()
-    LIMIT 10";
+    LIMIT 10");
+    $stmt->bind_param("s", $genre);
 } else {
-    $query = "SELECT libros_venta.*, generos.nombre_genero
+    $stmt = $conn->prepare("SELECT libros_venta.*, generos.nombre_genero
     FROM libros_venta
     JOIN generos ON libros_venta.genero = generos.id_genero
     ORDER BY RAND()
-    LIMIT 10";
+    LIMIT 10");
 }
 
-$result = $conn->query($query);
+$stmt->execute();
+
+$result = $stmt->get_result();
 
 $products = array();
 

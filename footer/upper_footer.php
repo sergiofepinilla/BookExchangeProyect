@@ -1,29 +1,30 @@
+
 <footer class="text-center text-lg-start bg-light text-muted">
-    <!-- Section: Social media -->
-    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-
-        <div>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-twitter"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-google"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-github"></i>
-            </a>
+    <div class="container">
+    <section class="d-flex justify-content-center justify-content-lg-end p-4 border-bottom">
+        
+        <div class="d-flex">
+          <a href="" class="me-4 text-reset">
+          <i class="bi bi-facebook"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+          <i class="bi bi-twitter"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+          <i class="bi bi-google"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+          <i class="bi bi-instagram"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+          <i class="bi bi-linkedin"></i>
+          </a>
         </div>
-
-    </section>
+      
+      </section>
+    </div>
+    <!-- Section: Social media -->
+ 
 
     <section class="">
         <div class="container text-center text-md-start mt-5">
@@ -48,13 +49,10 @@
                         Productos
                     </h6>
                     <p>
-                        <a href="#!" class="text-reset">Comprar</a>
+                        <a href="../shop/shop.php" class="text-reset">Comprar</a>
                     </p>
                     <p>
-                        <a href="#!" class="text-reset">Vender</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset">Cambiar</a>
+                        <a href="../bookform/book_form.php" class="text-reset">Vender</a>
                     </p>
                 </div>
 
@@ -69,9 +67,6 @@
                         <a href="../shop/shop.php" class="text-reset">Tienda</a>
                     </p>
                     <p>
-                        <a href="../profile/profile.php" class="text-reset">Perfil</a>
-                    </p>
-                    <p>
                         <a href="../contact/contact.php" class="text-reset">Contacto</a>
                     </p>
 
@@ -82,12 +77,12 @@
                 <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                     <!-- Links -->
                     <h6 class="text-uppercase fw-bold mb-4">¿Necesita ayuda?</h6>
-                    <p><i class="fas fa-home me-3"></i> España, CP 20000, ES</p>
+                    <p><i class="bi bi-house-door"></i></i> España, CP 20000, ES</p>
                     <p>
-                        <i class="fas fa-envelope me-3"></i>
+                    <i class="bi bi-envelope"></i>
                         bookExchange@admin.com
                     </p>
-                    <p><i class="fas fa-phone me-3"></i> + 34 666 666 666</p>
+                    <p><i class="bi bi-telephone"></i> + 34 666 666 666</p>
                 </div>
 
             </div>
@@ -99,5 +94,4 @@
         © 2023 Copyright:
         <a class="text-reset fw-bold" href="#">BookExchange.com</a>
     </div>
-
 </footer>

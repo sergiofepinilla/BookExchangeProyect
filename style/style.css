@@ -104,3 +104,9 @@ a.profile-link {
     background-image: url("../imagenes/grey-paper-texture-card-stock-scrapbooking-heavy-gauge-3.jpg");
   }
   */
+  .profileImageContainer {
+    width: 180px;
+    height: 180px;
+    overflow: hidden; 
+    border-radius: 50%;
+}
