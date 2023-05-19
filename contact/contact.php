@@ -60,7 +60,7 @@
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Describe brevemente la razón de contacto..." name="contactText" required></textarea>
                 </div>
                 <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
                     <label class="form-check-label" for="exampleCheck1">
                         <strong>Consiento el tratamiento de mis datos.</strong> BookExchange tratará sus datos con la finalidad de contestar a sus consultas, dudas o reclamaciones. Puede ejercer sus derechos de acceso, rectificación, supresión, portabilidad, limitación y oposición, como le informamos en nuestra <a href="" class="text-primary">Política de Privacidad</a> y <a href="" class="text-primary">Aviso Legal.</a>
                     </label>

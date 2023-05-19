@@ -309,42 +309,42 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
 
 <!-- Modal Valoración -->
 <div class="modal fade" id="modalValoracion" tabindex="-1" aria-labelledby="modalValoracionLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalValoracionLabel">Valoración</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-      </div>
-      <form id="formValoracion">
-        <div class="modal-body">
-          <input type="hidden" id="idLibroValorar" name="idLibro">
-          <input type="hidden" id="rowId" value="">
-          <input type="hidden" id="idUsuarioVendedor" name="idUsuarioVendedor">
-          <input type="hidden" id="idUsuarioComprador" name="idUsuarioComprador">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-black text-white">
+                <h5 class="modal-title" id="modalValoracionLabel">Valoración</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <form id="formValoracion">
+                <div class="modal-body">
+                    <input type="hidden" id="idLibroValorar" name="idLibro">
+                    <input type="hidden" id="rowId" value="">
+                    <input type="hidden" id="idUsuarioVendedor" name="idUsuarioVendedor">
+                    <input type="hidden" id="idUsuarioComprador" name="idUsuarioComprador">
 
-          <div class="form-group">
-            <label for="rating">Puntuación</label>
-            <select id="rating" name="rating" autocomplete="off">
-              <option value="">Selecciona una puntuación</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="comentario">Comentario</label>
-            <textarea id="comentario" name="comentario" class="form-control" rows="3"></textarea>
-          </div>
+                    <div class="form-group mb-3">
+                        <label for="rating" class="mb-2">Puntuación</label>
+                        <select id="rating" name="rating" class="form-select">
+                            <option value="">Selecciona una puntuación</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="comentario" class="mb-2">Comentario</label>
+                        <textarea id="comentario" name="comentario" class="form-control" rows="3" placeholder ="Escriba aqui su comentario sobre la venta o el vendedor, o dejelo vacío."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-success">Enviar valoración</button>
+                </div>
+            </form>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="submit" class="btn btn-primary">Enviar valoración</button>
-        </div>
-      </form>
     </div>
-  </div>
 </div>
 <!-- Modal Valoración -->
 

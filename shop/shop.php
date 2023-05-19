@@ -10,7 +10,7 @@
                         <h1 id="category-header"></h1> <!-- Encabezado -->
                         <ul class="navbar-nav">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle text-dark border border-2" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Categorias
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-scrollable" aria-labelledby="navbarDropdown">
@@ -57,9 +57,9 @@
                 <div class="col d-flex justify-content-center">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
-                            <li class="page-item"><a class="page-link btn-lg" href="#" id="prev-page">Anterior</a></li>
-                            <li class="page-item"><span class="page-link btn-lg" id="page-number">1</span></li>
-                            <li class="page-item"><a class="page-link btn-lg" href="#" id="next-page">Siguiente</a></li>
+                            <li class="page-item"><a class="page-link btn-lg text-dark" href="#" id="prev-page">Anterior</a></li>
+                            <li class="page-item"><span class="page-link btn-lg text-dark" id="page-number">1</span></li>
+                            <li class="page-item"><a class="page-link btn-lg text-dark" href="#" id="next-page">Siguiente</a></li>
                         </ul>
                     </nav>
                 </div>

@@ -2,7 +2,7 @@
 session_start();
 ?>
 <!-- Primera navbar (superior) con logo y barra de búsqueda -->
-<nav class="navbar navbar-expand-lg bg bg-light">
+<nav class="navbar navbar-expand-lg bg bg-black">
     <div class="container">
         <a href="../home/home.php" class="w-25 d-flex align-items-center me-2">
             <img src="../assets/img/logo/logo1.png" class="w-100 d-none d-lg-flex" alt="Logo">
@@ -21,7 +21,7 @@ session_start();
 
 
 <!-- Segunda navbar (inferior) con el resto de los botones -->
-<nav class="navbar navbar-expand-lg navbar-light custom-border">
+<nav class="navbar navbar-expand-lg navbar-light bg-black border-top border-bottom border-danger border-5">
     <div class="container">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

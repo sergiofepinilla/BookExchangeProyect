@@ -493,3 +493,29 @@ Array
     [precio] => 93
     [id_libro] => 4503
 )
+Array
+(
+    [id_usu_comprador] => 4
+    [id_usu_vendedor] => 9
+    [titulo] => The Witcher: Lady of the Lake
+    [isbn] => 7346663783
+    [autor] => Stephen King
+    [genero] => 7
+    [editorial] => University of Chicago Press
+    [estado] => usado
+    [precio] => 13
+    [id_libro] => 4511
+)
+Array
+(
+    [id_usu_comprador] => 4
+    [id_usu_vendedor] => 9
+    [titulo] => The Slow Regard of Silent Things
+    [isbn] => 4117662795
+    [autor] => William Shakespeare
+    [genero] => 23
+    [editorial] => Quercus
+    [estado] => usado
+    [precio] => 97
+    [id_libro] => 4515
+)

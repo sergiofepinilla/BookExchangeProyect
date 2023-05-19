@@ -46,8 +46,10 @@ $(document).ready(function () {
 
   if (currentPage === totalPages) {
     $("#next-page").prop("disabled", true);
+    document.getElementById("next-page").disabled = true;
   } else {
     $("#next-page").prop("disabled", false);
+    document.getElementById("next-page").disabled = false;
   }
 });
 

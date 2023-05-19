@@ -11,9 +11,6 @@
         <div class="carousel-inner h-50">
             <div class="carousel-item active">
                 <img src="../assets/img/carousel/envio.jpeg" class="img-fluid w-100 border border-dark  border-5 rounded" alt="..." style="max-height: 400px;">
-                <div class="carousel-caption d-none d-md-block">
-                    <button class="btn btn-success btn-lg me-4 ">Ver más</button>
-                </div>
             </div>
             <div class="carousel-item">
                 <img src="../assets/img/carousel/envio.jpeg" class="img-fluid w-100 border border-dark  border-5 rounded" alt="..." style="max-height: 400px;">

@@ -259,7 +259,7 @@ function showRemoveProductLink(product) {
   if (product.id_usuario == currentUserId) {
     // Si el producto pertenece al usuario actual, muestra el enlace y asigna la URL de retirar producto
     removeProductLink.style.display = "block";
-    removeProductLink.querySelector("a").href = `../remove_product/remove_product.php?productId=${product.id}`;
+    removeProductLink.querySelector("a").href = `../purchase_history/purchase_history.php`;
   } else {
     // Si el producto no pertenece al usuario actual, oculta el enlace
     removeProductLink.style.display = "none";

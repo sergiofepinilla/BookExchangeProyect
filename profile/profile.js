@@ -368,7 +368,7 @@ function createReviewCard(review) {
 
   var comment = document.createElement("p");
   comment.classList.add("card-text");
-  comment.textContent = review.comentario ? review.comentario : "No hay comentarios";
+  comment.textContent = review.comentario ? review.comentario : "";
 
   cardBody.appendChild(rowTop);
   cardBody.appendChild(hr);

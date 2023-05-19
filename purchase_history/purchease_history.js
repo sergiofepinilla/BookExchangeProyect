@@ -89,13 +89,6 @@ document.addEventListener("DOMContentLoaded", function () {
       var idUsuarioComprador = parseInt($("#idUsuarioComprador").val());
       var rowId = parseInt($("#rowId").val());
 
-      console.log("Tipo de rating: " + rating);
-      console.log("Tipo de comentario: " + comentario);
-      console.log("Tipo de libroId: " + libroId);
-      console.log("Tipo de idUsuarioComprador: " + idUsuarioComprador);
-      console.log("Tipo de idUsuarioVendedor: " + idUsuarioVendedor);
-      console.log("Rowid: " + rowId);
-
       $.ajax({
         url: "../includes/review.inc.php",
         type: "POST",
