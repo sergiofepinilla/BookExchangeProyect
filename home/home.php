@@ -4,67 +4,67 @@
 <div class="container">
 
 
-<!--separador-->
-<hr class="w-75 mt-5 mb-5 mx-auto">
-<!--separador-->
+    <!--separador-->
+    <hr class="w-75 mt-5 mb-5 mx-auto">
+    <!--separador-->
 
-<!--Ultimos Productos Container-->
-<div class="container mb-4 mt-2">
-    <div class="row mb-2">
-        <div class="col">
-            <h2 class="">Ultimos Libros...</h2>
+    <!--Ultimos Productos Container-->
+    <div class="container mb-4 mt-2">
+        <div class="row mb-2">
+            <div class="col">
+                <h2 class="">Ultimos Libros...</h2>
+            </div>
+            <div class="col d-flex justify-content-end">
+                <a href="../shop/shop.php" class="align-self-center custom-link">Ver todos los libros...</a>
+            </div>
         </div>
-        <div class="col d-flex justify-content-end">
-            <a href="../shop/shop.php" class="align-self-center text-dark custom-link">Ver todos los libros...</a>
-        </div>
-    </div>
-    <!--Book Row Container-->
-    <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner" id="carouselInner">
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-</div>
-<!--Ultimos Productos Container FIN-->
-<hr class="w-75 mt-5 mb-5 mx-auto">
-<?php require_once '../carousel/second_carousel.php' ?>
-<hr class="w-75 mt-5 mb-5 mx-auto">
-<!-- Libros recomendados Container -->
-<div class="container">
-    <div class="row mb-2 mt-2">
-        <div class="col">
-            <h2 class="">Libros recomendados...</h2>
-        </div>
-        <div class="col d-flex justify-content-end">
-            <a href="" class="align-self-center text-dark custom-link" id="recommended_shop">Ver todos los libros recomendados</a>
+        <!--Book Row Container-->
+        <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner" id="carouselInner">
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
     </div>
-    <!-- Libros recomendados Row Container -->
-    <div id="recommendedCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner" id="recommendedCarouselInner">
+    <!--Ultimos Productos Container FIN-->
+    <hr class="w-75 mt-5 mb-5 mx-auto">
+    <?php require_once '../carousel/second_carousel.php' ?>
+    <hr class="w-75 mt-5 mb-5 mx-auto">
+    <!-- Libros recomendados Container -->
+    <div class="container">
+        <div class="row mb-2 mt-2">
+            <div class="col">
+                <h2 class="">Libros recomendados...</h2>
+            </div>
+            <div class="col d-flex justify-content-end">
+                <a href="" class="align-self-center custom-link" id="recommended_shop">Ver todos los libros recomendados...</a>
+            </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#recommendedCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#recommendedCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+        <!-- Libros recomendados Row Container -->
+        <div id="recommendedCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner" id="recommendedCarouselInner">
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#recommendedCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#recommendedCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
     </div>
-</div>
 </div>
 <!-- Libros recomendados Container FIN -->
 
 <div class="container">
-    <hr class ="mt-5 mb-5 mx-auto">
+    <hr class="mt-5 mb-5 mx-auto">
 </div>
 
 <!--Cookies-->

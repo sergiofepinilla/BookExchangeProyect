@@ -1,7 +1,9 @@
+/*
 body,
 footer {
     cursor: url(./assets/img/cursor/cursor.png), auto;
 }
+
 
 body {
     /*background: url(./assets/img/background.png) no-repeat center center fixed;
@@ -9,9 +11,10 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    */
+    
 }
-
+*/
+/*
 td:hover,
 i:hover,
 button:hover:enabled,
@@ -20,5 +23,5 @@ a:hover,
 .carousel-control-next:hover {
     cursor: url(../assets/img/cursor/pointer.png), pointer;
 }
-
+*/
 
