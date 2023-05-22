@@ -50,13 +50,14 @@ $totalPagesComprados = ceil($totalComprados / $perPage);
 
 // Libros Vendidos
 $stmt = $conn->prepare("
-    SELECT libros_vendidos.*, generos.nombre_genero, usuarios.id as id_usuario, usuarios.apodo
-    FROM libros_vendidos 
-    INNER JOIN generos ON libros_vendidos.genero = generos.id_Genero 
-    INNER JOIN usuarios ON libros_vendidos.id_usu_vendedor = usuarios.id
-    WHERE libros_vendidos.id_usu_vendedor = ?
-    ORDER BY libros_vendidos.id DESC
-    LIMIT ? OFFSET ?
+SELECT libros_vendidos.*, generos.nombre_genero, usuarios.id as id_usuario, usuarios.apodo, 
+COALESCE((SELECT apodo FROM usuarios WHERE id = libros_vendidos.id_usu_comprador), 'desconocido') as apodo_comprador
+FROM libros_vendidos 
+INNER JOIN generos ON libros_vendidos.genero = generos.id_Genero 
+INNER JOIN usuarios ON libros_vendidos.id_usu_vendedor = usuarios.id
+WHERE libros_vendidos.id_usu_vendedor = ?
+ORDER BY libros_vendidos.id DESC
+LIMIT ? OFFSET ?
 ");
 $stmt->bind_param("iii", $userId, $perPage, $startVendidos);
 $stmt->execute();
@@ -136,7 +137,7 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
               <td><?php echo htmlspecialchars($row['titulo']); ?></td>
               <td><?php echo htmlspecialchars($row['estado']); ?></td>
               <td><?php echo htmlspecialchars($row['precio']); ?></td>
-              <td><a class ="klk" href="../profile/profile.php?id=<?php echo $row['id_usuario']; ?>"><?php echo htmlspecialchars($row['apodo']); ?></a></td>
+              <td><a class="klk" href="../profile/profile.php?id=<?php echo $row['id_usuario']; ?>"><?php echo htmlspecialchars($row['apodo']); ?></a></td>
               <td><?php echo htmlspecialchars($row['fecha_compra']); ?></td>
               <td>
                 <?php if ($row['review'] == 0) : ?>
@@ -169,7 +170,7 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
               </li>
             <?php endif; ?>
 
-           
+
 
             <?php if ($pageComprados < $totalPagesComprados) : ?>
               <li class="page-item">
@@ -205,7 +206,7 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
               <td><?php echo htmlspecialchars($row['titulo']); ?></td>
               <td><?php echo htmlspecialchars($row['estado']); ?></td>
               <td><?php echo htmlspecialchars($row['precio']); ?></td>
-              <td><a class ="klk" href="../profile/profile.php?id=<?php echo $row['id_usuario']; ?>"><?php echo htmlspecialchars($row['apodo']); ?></a></td>
+              <td><a class="klk" href="../profile/profile.php?id=<?php echo $row['id_usu_comprador']; ?>"><?php echo htmlspecialchars($row['apodo_comprador']); ?></a></td>
               <td><?php echo htmlspecialchars($row['fecha_compra']); ?></td>
             </tr>
           <?php endwhile; ?>
@@ -309,42 +310,42 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
 
 <!-- Modal Valoración -->
 <div class="modal fade" id="modalValoracion" tabindex="-1" aria-labelledby="modalValoracionLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header bg-black text-white">
-                <h5 class="modal-title" id="modalValoracionLabel">Valoración</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-            </div>
-            <form id="formValoracion">
-                <div class="modal-body">
-                    <input type="hidden" id="idLibroValorar" name="idLibro">
-                    <input type="hidden" id="rowId" value="">
-                    <input type="hidden" id="idUsuarioVendedor" name="idUsuarioVendedor">
-                    <input type="hidden" id="idUsuarioComprador" name="idUsuarioComprador">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-black text-white">
+        <h5 class="modal-title" id="modalValoracionLabel">Valoración</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <form id="formValoracion">
+        <div class="modal-body">
+          <input type="hidden" id="idLibroValorar" name="idLibro">
+          <input type="hidden" id="rowId" value="">
+          <input type="hidden" id="idUsuarioVendedor" name="idUsuarioVendedor">
+          <input type="hidden" id="idUsuarioComprador" name="idUsuarioComprador">
 
-                    <div class="form-group mb-3">
-                        <label for="rating" class="mb-2">Puntuación</label>
-                        <select id="rating" name="rating" class="form-select">
-                            <option value="">Selecciona una puntuación</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="comentario" class="mb-2">Comentario</label>
-                        <textarea id="comentario" name="comentario" class="form-control" rows="3" placeholder ="Escriba aqui su comentario sobre la venta o el vendedor, o dejelo vacío."></textarea>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn btn-success">Enviar valoración</button>
-                </div>
-            </form>
+          <div class="form-group mb-3">
+            <label for="rating" class="mb-2">Puntuación</label>
+            <select id="rating" name="rating" class="form-select">
+              <option value="">Selecciona una puntuación</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="comentario" class="mb-2">Comentario</label>
+            <textarea id="comentario" name="comentario" class="form-control" rows="3" placeholder="Escriba aqui su comentario sobre la venta o el vendedor, o dejelo vacío."></textarea>
+          </div>
         </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-success">Enviar valoración</button>
+        </div>
+      </form>
     </div>
+  </div>
 </div>
 <!-- Modal Valoración -->
 

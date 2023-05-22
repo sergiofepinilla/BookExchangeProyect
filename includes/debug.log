@@ -532,3 +532,55 @@ Array
     [precio] => 88
     [id_libro] => 4711
 )
+Array
+(
+    [id_usu_comprador] => 32
+    [id_usu_vendedor] => 34
+    [titulo] => The Wise Man\'s Fear
+    [isbn] => 4220008534
+    [autor] => Jane Austen
+    [genero] => 25
+    [editorial] => Oneworld Publications
+    [estado] => usado
+    [precio] => 81
+    [id_libro] => 4716
+)
+Array
+(
+    [id_usu_comprador] => 32
+    [id_usu_vendedor] => 34
+    [titulo] => The Wise Man\'s Fear
+    [isbn] => 4220008534
+    [autor] => Jane Austen
+    [genero] => 25
+    [editorial] => Oneworld Publications
+    [estado] => usado
+    [precio] => 81
+    [id_libro] => 4716
+)
+Array
+(
+    [id_usu_comprador] => 32
+    [id_usu_vendedor] => 34
+    [titulo] => The Wise Man\'s Fear
+    [isbn] => 4220008534
+    [autor] => Jane Austen
+    [genero] => 25
+    [editorial] => Oneworld Publications
+    [estado] => usado
+    [precio] => 81
+    [id_libro] => 4716
+)
+Array
+(
+    [id_usu_comprador] => 30
+    [id_usu_vendedor] => 32
+    [titulo] => The Slow Regard of Silent Things
+    [isbn] => 5826994943
+    [autor] => Bram Stoker
+    [genero] => 7
+    [editorial] => Scribner
+    [estado] => nuevo
+    [precio] => 41
+    [id_libro] => 4717
+)

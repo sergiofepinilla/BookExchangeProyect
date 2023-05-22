@@ -9,9 +9,10 @@
     <h1>Perfil de Usuario</h1>
     <div class="custom-hr w-100"></div>
 </div>
-<!-- USER FIX -->
 
-<div class="container border boder-5 border-white mt-5 mb-5 rounded inf-nav ">
+<img src="../assets/img/no-result.JPG" alt="" id="no-results-image" class="w-75 mt-5 mb-5 mx-auto" style="display:none">
+<!-- USER FIX -->
+<div class="container border boder-5 border-white mt-5 mb-5 rounded inf-nav" id="user-info">
     <!-- Perfil -->
     <div class="row card-body inf-nav rounded inf-nav custom-text">
         <div class="d-flex text-black flex-column flex-md-row">
@@ -126,7 +127,7 @@
 </div>
 <!-- VALORACIONES / COMENTARIOS -->
 
-<div class="container mb-5">
+<div class="container mb-5" id="user-reviews">
     <h1>Libros y Valoraciones</h1>
     <div class="custom-hr w-100"></div>
     <div class="container mt-5">

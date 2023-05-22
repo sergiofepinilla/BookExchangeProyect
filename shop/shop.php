@@ -52,10 +52,7 @@
             </nav>
         </div>
         <div class="row pt-3 row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4" id="container"></div>
-        <div class="container " id="no-results-image" style="display: none; ">
-            <img src="../assets/img/no-result.JPG" alt="" class="w-75">
-        </div>
-
+        <img src="../assets/img/no-result.JPG" alt="" id="no-results-image" class="w-75 mt-5 mb-5 mx-auto">
 
         <div id="pagination-container">
             <div class="row">
