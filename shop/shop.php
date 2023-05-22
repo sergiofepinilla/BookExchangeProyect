@@ -5,12 +5,12 @@
     <div class="container mt-3">
         <div class="row">
             <nav class="navbar navbar-expand-lg">
-                <div class="container-fluid bg-light">
+                <div class="container-fluid dark-theme">
                     <div class="d-flex justify-content-between align-items-center w-100">
                         <h1 id="category-header"></h1> <!-- Encabezado -->
                         <ul class="navbar-nav">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-dark border border-2" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle custom-text border border-2 custom-hover" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Categorias
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-scrollable" aria-labelledby="navbarDropdown">
@@ -52,6 +52,8 @@
             </nav>
         </div>
         <div class="row pt-3 row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4" id="container"></div>
+        <img id="no-results-image" src="../assets/img/logo/wow.png" alt="No hay resultados" style="display: none;">
+
         <div id="pagination-container">
             <div class="row">
                 <div class="col d-flex justify-content-center">

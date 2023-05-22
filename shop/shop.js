@@ -66,10 +66,18 @@ function getProducts(page, category, query) {
       $("#container").empty();
       var categoryName = (category === "") ? "Todos" : response.categoryName;
       $("#category-header").text(categoryName);
+      
 
-      response.products.forEach((producto) => {
-        $("#container").append(createCard(producto));
-      });
+      if (response.products.length === 0) {
+        $("#no-results-image").css("display", "block");
+        $("#container").css("display", "none");
+      } else {
+        response.products.forEach((producto) => {
+          $("#container").append(createCard(producto));
+        });
+        $("#no-results-image").css("display", "none");
+        $("#container").css("display", "flex");
+      }
 
       currentPage = page;
       totalPages = response.totalPages;
@@ -88,7 +96,7 @@ function getProducts(page, category, query) {
 
 function createCard(producto, margin = "") {
   var card = document.createElement("div");
-  card.classList.add("col", "mb-3");
+  card.classList.add("col-6","col-md-4","col-lg-3", "mb-3");
   if (margin) card.classList.add(margin);
   card.id = producto.id;
 

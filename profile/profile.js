@@ -44,7 +44,7 @@ function loadCarousel(carouselInnerId, productsToShow, userProfile) {
 
    // Crea la imagen de perfil aquí
    var imgPerfil = document.createElement("img");
-   imgPerfil.classList.add("card-img-top", "img-fluid", "rounded-circle", "h-100", "custom-card-border-2");
+   imgPerfil.classList.add("card-img-top", "img-fluid", "rounded-circle", "h-100", "border", "border-3", "border-dark");
    imgPerfil.src = "data:image/jpeg;base64," + userProfile.foto_perfil;
    imgPerfil.style.objectFit = "cover";
    imgPerfil.style.width = "180px";

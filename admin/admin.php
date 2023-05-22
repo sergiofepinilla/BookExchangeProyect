@@ -34,9 +34,8 @@ include_once "../includes/dbh.inc.php";
                 <?php if ($_GET["admin"] == "users") {
 
                     $query = "SELECT US.id as id, US.apodo as apodo,
-                        US.correo as correo, D.nombre as nombre_completo 
+                        US.correo as correo
                         FROM usuarios US
-                        INNER JOIN datos_usuario D on US.id = D.id_usuario
                         WHERE us.tipo != 2;";
                     $conn = Connection::getConnection();
                     $result = mysqli_query($conn, $query);
@@ -57,7 +56,7 @@ include_once "../includes/dbh.inc.php";
                     ?>
                     <?php
                 } elseif ($_GET["admin"] == "products") {
-                    $query = "SELECT * FROM productos";
+                    $query = "SELECT * FROM libros_venta";
                     $conn = Connection::getConnection();
                     $result = mysqli_query($conn, $query);
                     while ($row = mysqli_fetch_array($result)) { ?>
@@ -86,9 +85,6 @@ include_once "../includes/dbh.inc.php";
                                             ]; ?>">
                                                 <i class="bi bi-trash btn btn-danger border border-danger"></i>
                                             </a>
-                                            <button type="submit" class="btn btn-success border border-success">
-                                                <i class="bi bi-file-earmark-arrow-up-fill"></i>
-                                            </button>
                                         </td>
                                     </form>
 

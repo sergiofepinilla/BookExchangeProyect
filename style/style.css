@@ -138,10 +138,24 @@ background-color: #1d1d1d;
 .custom-text{
   color: #eff1da;
 }
+
+.custom-white-bg{
+  background-color:#eff1da;
+}
 .btn-close {
   filter: invert(1); /* Invertir Color Por Defecto */
 }
 
 .cookie-btn:hover{
   color: white;
+}
+
+.custom-hover:hover{
+  color: #5c55be;
+}
+
+#no-results-image {
+  display: block;
+  margin: 0 auto;
+  max-width: 400px;
 }

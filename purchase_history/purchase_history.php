@@ -119,7 +119,7 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
   <div class="tab-content">
     <div class="tab-pane active" id="comprados">
       <!-- Tabla de Libros Comprados -->
-      <table class="table table-striped mt-3">
+      <table class="table table-striped mt-3 bg-light custom-card-border-2">
         <thead>
           <tr>
             <th scope="col">Título</th>
@@ -180,7 +180,7 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
                 <a class="page-link">Siguiente</a>
               </li>
             <?php endif; ?>
-            <span class="pagination-item d-inline-block p-2  align-middle">Página <?php echo $pageComprados; ?> de <?php echo $totalPagesComprados; ?></span>
+            <span class="pagination-item  d-inline-block p-2  align-middle">Página <?php echo $pageComprados; ?> de <?php echo $totalPagesComprados; ?></span>
           </ul>
         </nav>
         <!-- Paginación Libros Comprados -->
@@ -189,7 +189,7 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
 
     <div class="tab-pane" id="vendidos">
       <!-- Tabla de Libros Vendidos -->
-      <table class="table table-striped mt-3">
+      <table class="table table-striped mt-3 bg-light custom-card-border-2">
         <thead>
           <tr>
             <th scope="col">Título</th>
@@ -235,7 +235,7 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
               <li class="page-item disabled">
                 <a class="page-link">Siguiente</a>
               </li>
-              <span class="pagination-item d-inline-block p-2  align-middle">Página <?php echo $pageVendidos; ?> de <?php echo $totalPagesVendidos; ?></span>
+              <span class="pagination-item  d-inline-block p-2  align-middle">Página <?php echo $pageVendidos; ?> de <?php echo $totalPagesVendidos; ?></span>
             <?php endif; ?>
           </ul>
         </nav>
@@ -245,7 +245,7 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
 
     <div class="tab-pane" id="enventa">
       <!-- Tabla Libros en Venta -->
-      <table class="table table-striped mt-3">
+      <table class="table table-striped mt-3 bg-light custom-card-border-2">
         <thead>
           <tr>
             <th scope="col">Título</th>
@@ -296,7 +296,7 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
             <li class="page-item disabled">
               <a class="page-link">Siguiente</a>
             </li>
-            <span class="pagination-item d-inline-block p-2  align-middle">Página <?php echo $pageEnVenta; ?> de <?php echo $totalPagesEnVenta; ?></span>
+            <span class="pagination-item  d-inline-block p-2  align-middle">Página <?php echo $pageEnVenta; ?> de <?php echo $totalPagesEnVenta; ?></span>
           <?php endif; ?>
         </ul>
       </nav>
