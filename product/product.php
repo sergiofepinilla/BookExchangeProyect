@@ -2,11 +2,11 @@
 <?php require_once '../navbar/navbar.php' ?>
 <div class="container mt-5 mb-5">
     <div class="row ">
-        <div class="col-4 d-flex flex-column align-items-center me-2 bg-light border" style="border-radius: 15px;">
+        <div class="col-4 d-flex flex-column align-items-center me-2 dark-theme custom-text custom-card-border-2" style="border-radius: 15px;">
             <div id="imgContainer" class="mt-3  d-flex align-items-center justify-content-center  my-auto" style="height: 200px; width: 100%;"></div>
             <div class="row mt-2 p-4">
             <h5 class="text-center">Información del Vendedor</h5>
-                <div class="card" style="border-radius: 15px;">
+                <div class="card dark-theme  custom-card-border-2" style="border-radius: 15px;">
                     <div class="card-body">
                    
                         <div class="row align-items-center">
@@ -14,7 +14,7 @@
                                 <!-- Aquí va el contenido de la foto del vendedor -->
                             </div>
                             <div class="col-auto d-flex align-items-center">
-                                <h1 class="mb-2 text-dark" id="usu_vendedor">Vendedor</h1>
+                                <h1 class="mb-2 custom-text fw-bold" id="usu_vendedor">Vendedor</h1>
                             </div>
                             
                         </div>
@@ -27,7 +27,7 @@
                         <div class="row">
                             <div class="col-12 d-flex align-items-center">
                                 <a href="" id="usu_vendedor_link" class="w-100">
-                                    <button type="button" class="btn btn-success w-100">Ver Perfil</button>
+                                    <button type="button" class="btn accent custom-text fw-bold w-100">Ver Perfil</button>
                                 </a>
                             </div>
                         </div>
@@ -35,7 +35,7 @@
                 </div>
             </div>
         </div>
-        <div class="col border bg-light " style="border-radius: 15px;">
+        <div class="col dark-theme custom-text custom-card-border-2 " style="border-radius: 15px;">
             <div class="card-body">
                 <h3 class="card-title fs-1 fw-bold" id="titulo">Libro de Prueba</h3>
                 <hr>
@@ -50,7 +50,7 @@
             </div>
             <hr>
             <p class="fs-4 text-end" id="precio">9.99€</p>
-            <button class="btn btn-outline-danger w-100 mb-3" id="buyBtn">COMPRAR</button>
+            <button class="btn primary-btn custom-text fw-bold w-100 mb-3" id="buyBtn">COMPRAR</button>
             <p id="removeProductLink" style="display:none;" class="mt-2 text-center"><a href="#">¿Deseas retirar tu producto de la tienda?</a></p>
         </div>
     </div>

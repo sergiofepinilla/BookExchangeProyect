@@ -5,7 +5,7 @@
 
 
     <!--separador-->
-    <hr class="w-75 mt-5 mb-5 mx-auto">
+    <div class="mt-5 mb-5 mx-auto custom-hr"> </div>
     <!--separador-->
 
     <!--Ultimos Productos Container-->
@@ -33,9 +33,9 @@
         </div>
     </div>
     <!--Ultimos Productos Container FIN-->
-    <hr class="w-75 mt-5 mb-5 mx-auto">
+    <div class="mt-5 mb-5 mx-auto custom-hr"> </div>
     <?php require_once '../carousel/second_carousel.php' ?>
-    <hr class="w-75 mt-5 mb-5 mx-auto">
+    <div class="mt-5 mb-5 mx-auto custom-hr"> </div>
     <!-- Libros recomendados Container -->
     <div class="container">
         <div class="row mb-2 mt-2">
@@ -63,20 +63,18 @@
 </div>
 <!-- Libros recomendados Container FIN -->
 
-<div class="container">
-    <hr class="mt-5 mb-5 mx-auto">
-</div>
+<div class="mt-5 mb-5 mx-auto custom-hr"> </div>
 
 <!--Cookies-->
-<div id="cookie-notification" class="container alert alert-warning alert-dismissible fade show fixed-bottom border border-warning" role="alert" style="display: none;">
+<div id="cookie-notification" class="container alert custom-text dark-theme alert-dismissible fade show fixed-bottom custom-card-border-2" role="alert" style="display: none;">
     <div class="container">
         <div class="row align-items-center">
             <div class="col">
                 <p>Este sitio web utiliza cookies para mejorar la experiencia del usuario. Al continuar navegando, aceptas nuestra política de cookies.</p>
             </div>
             <div class="col-auto">
-                <button id="accept-cookies" class="btn btn-success">Aceptar</button>
-                <button id="reject-cookies" class="btn btn-secondary">Rechazar</button>
+                <button id="accept-cookies" class="btn primary-btn custom-text cookie-btn">Aceptar</button>
+                <button id="reject-cookies" class="btn secondary-btn custom-text cookie-btn">Rechazar</button>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         </div>

@@ -94,8 +94,6 @@ document.addEventListener("DOMContentLoaded", function () {
       "bg-black",
       "text-white",
       "card",
-      "border",
-      "border-white",
       "d-flex",
       "flex-column",
       "h-100"
@@ -109,9 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "justify-content-center",
       "img-fluid",
       "overflow-hidden",
-      "border",
-      "border-bottom",
-      "border-white"
+      "custom-card-border"
     );
     imgContainer.style.height = "250px";
 
@@ -130,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
     link.appendChild(imgContainer);
 
     var cardBody = document.createElement("div");
-    cardBody.classList.add("card-body", "d-flex", "flex-column", "bg-black");
+    cardBody.classList.add("card-body", "d-flex", "flex-column", "dark-theme","custom-card-border-2");
 
     var bookNameRow = document.createElement("div");
     bookNameRow.classList.add("row", "justify-content-center");
@@ -171,7 +167,7 @@ document.addEventListener("DOMContentLoaded", function () {
     divCheck.classList.add("col-12");
 
     var checkBtn = document.createElement("a");
-    checkBtn.classList.add("btn", "btn-success", "w-100");
+    checkBtn.classList.add("btn", "primary-btn", "w-100","fw-bold","custom-text");
     checkBtn.textContent = "VER";
     checkBtn.href = `../product/product.php?id=${producto.id}`;
     divCheck.appendChild(checkBtn);

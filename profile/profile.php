@@ -13,8 +13,8 @@
 <div class="container h-100 my-3 my-md-5">
     <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-10">
-            <div class="card border border-4" style="border-radius: 15px;">
-                <div class="card-body p-4">
+            <div class="card  dark-theme custom-card-border-2 " style="border-radius: 15px;">
+                <div class="card-body p-3">
                     <div class="d-flex text-black flex-column flex-md-row">
                         <div class="me-3 mb-md-0 flex">
                             <div id="profileImageContainer" class="profileImageContainer" >
@@ -115,7 +115,7 @@
                     <button type="submit" class="btn btn-lg btn-outline-dark me-1" name="saveProfileSubmit">Guardar cambios</button>
                     <?php else : ?>
                     <form action="profile.php?id=<?php echo $userId ?>" method="POST">
-                    <button type="submit" class="btn btn-lg btn-outline-dark me-1" name="editProfileSubmit">Editar Perfil</button>
+                    <button type="submit" class="btn custom-text me-1" name="editProfileSubmit">Editar Perfil</button>
                     </form>
                     <?php endif; ?>
                     </div>
@@ -128,6 +128,54 @@
 </div>
 </div>
 <!-- USER INFO-->
+
+<!-- SEGUNDO USER -->
+Mira este formulario : <section class="h-100 gradient-custom-2">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-lg-9 col-xl-7">
+        <div class="card">
+          <div class="rounded-top text-white d-flex flex-row" style="background-color: #000; height:200px;">
+            <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
+                alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
+                style="width: 150px; z-index: 1">
+              <button type="button" class="btn btn-outline-light btn-custom" data-bs-ripple-color="dark"
+                style="z-index: 1;">
+                Edit profile
+              </button>
+            </div>
+            <div class="ms-3" style="margin-top: 130px;">
+              <h5>Andy Horwitz</h5>
+              <p>New York</p>
+            </div>
+          </div>
+          <div class="p-4 text-black" style="background-color: #f8f9fa;">
+            <div class="d-flex justify-content-end text-center py-1">
+              <div>
+                <p class="mb-1 h5">253</p>
+                <p class="small text-muted mb-0">Photos</p>
+              </div>
+              <div class="px-3">
+                <p class="mb-1 h5">1026</p>
+                <p class="small text-muted mb-0">Followers</p>
+              </div>
+              <div>
+                <p class="mb-1 h5">478</p>
+                <p class="small text-muted mb-0">Following</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- SEGUNDO USER -->
 <!-- VALORACIONES / COMENTARIOS -->
 <div class="container mb-5">
     <h1>Productos y Valoraciones</h1>

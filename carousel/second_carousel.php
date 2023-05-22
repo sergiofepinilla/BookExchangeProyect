@@ -8,10 +8,10 @@
         </div>
         <div class="carousel-inner h-50">
             <div class="carousel-item active">
-                <img src="../assets/img/carousel/economia.jpg" class="img-fluid w-100 border border-dark border-5 rounded" alt="..." style="max-height: 400px;">
+                <img src="../assets/img/carousel/economia.jpg" class="img-fluid w-100 custom-card-border-2 rounded" alt="..." style="max-height: 400px;">
             </div>
             <div class="carousel-item">
-                <img src="../assets/img/carousel/new.jpg" class="img-fluid w-100 border border-dark border-5 rounded" alt="..." style="max-height: 400px;">
+                <img src="../assets/img/carousel/new.jpg" class="img-fluid w-100 custom-card-border-2 rounded" alt="..." style="max-height: 400px;">
             </div>
         </div>
     </div>
