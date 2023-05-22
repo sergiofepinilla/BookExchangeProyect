@@ -519,3 +519,16 @@ Array
     [precio] => 97
     [id_libro] => 4515
 )
+Array
+(
+    [id_usu_comprador] => 31
+    [id_usu_vendedor] => 32
+    [titulo] => The Witcher: Baptism of Fire
+    [isbn] => 1039727897
+    [autor] => Naguib Mahfouz
+    [genero] => 10
+    [editorial] => Wakefield Press
+    [estado] => usado
+    [precio] => 88
+    [id_libro] => 4711
+)

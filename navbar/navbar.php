@@ -38,9 +38,11 @@ session_start();
                 <li class="nav-item">
                     <a class="nav-link text-white fw-bold " href="../contact/contact.php">Contacto</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white fw-bold " href="../purchase_history/purchase_history.php">Historial</a>
-                </li>
+                <?php if (isset($_SESSION["user"])) { ?>
+                    <li class="nav-item">
+                        <a class="nav-link text-white fw-bold " href="../purchase_history/purchase_history.php">Historial</a>
+                    </li>
+                <?php } ?>
 
                 <?php if (!isset($_SESSION["user"])) { ?>
                     <li class="nav-item d-lg-none">
@@ -81,8 +83,12 @@ session_start();
 
             <?php if (!isset($_SESSION["user"])) { ?>
                 <div class="button-container me-2 d-none d-lg-block">
-                    <a href="../signup/signup.php"><button class="btn  text-white" type="button">Registrarse</button></a>
-                    <a href="../login/login.php"><button class="btn text-white" type="button">Iniciar Sesion</button></a>
+                    <button class="btn  me-3  fw-bold primary-btn" onclick="window.location.href='../signup/signup.php'">
+                        Registrarse
+                    </button>
+                    <button class="btn me-3  fw-bold primary-btn " onclick="window.location.href='../login/login.php'">
+                        Inicar Sesión
+                    </button>
                 </div>
 
             <?php } else { ?>

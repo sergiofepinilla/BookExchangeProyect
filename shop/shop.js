@@ -4,9 +4,9 @@ var totalPages = 1;
 
 $(document).ready(function () {
   const urlParams = new URLSearchParams(window.location.search);
-  const query = urlParams.get('query');
+  const query = urlParams.get("query");
   getProducts(currentPage, currentCategory, query);
-  
+
   $(".dropdown-item").click(function (event) {
     event.preventDefault();
     currentCategory = $(this).attr("href").split("=")[1];
@@ -26,7 +26,7 @@ $(document).ready(function () {
     event.preventDefault();
     if (currentPage < totalPages) {
       currentPage++;
-      window.scrollTo(0, document.getElementById('category-header').offsetTop);
+      window.scrollTo(0, document.getElementById("category-header").offsetTop);
       getProducts(currentPage, currentCategory, query);
     }
   });
@@ -58,18 +58,17 @@ function getProducts(page, category, query) {
     url: "../modelo/shop_product.php",
     type: "GET",
     dataType: "json",
-    data: { page: page, category: category, query: query }
+    data: { page: page, category: category, query: query },
   };
 
   $.ajax(ajaxSettings)
     .done(function (response) {
       $("#container").empty();
-      var categoryName = (category === "") ? "Todos" : response.categoryName;
+      var categoryName = category === "" ? "Todos" : response.categoryName;
       $("#category-header").text(categoryName);
-      
 
       if (response.products.length === 0) {
-        $("#no-results-image").css("display", "block");
+        $("#no-results-image").css("display", "flex");
         $("#container").css("display", "none");
       } else {
         response.products.forEach((producto) => {
@@ -93,10 +92,9 @@ function getProducts(page, category, query) {
     });
 }
 
-
 function createCard(producto, margin = "") {
   var card = document.createElement("div");
-  card.classList.add("col-6","col-md-4","col-lg-3", "mb-3");
+  card.classList.add("col-6", "col-md-4", "col-lg-3", "mb-3");
   if (margin) card.classList.add(margin);
   card.id = producto.id;
 
@@ -146,7 +144,7 @@ function createCard(producto, margin = "") {
   bookNameRow.classList.add("row", "justify-content-center");
 
   var bookName = document.createElement("p");
-  bookName.classList.add("mb-2","fw-bold");
+  bookName.classList.add("mb-2", "fw-bold");
   bookName.textContent = producto.titulo;
   applyEllipsisStyle(bookName, "1.2em", 1);
 
@@ -165,14 +163,8 @@ function createCard(producto, margin = "") {
   priceRow.classList.add("row", "justify-content-end");
 
   var price = document.createElement("span");
-  price.classList.add(
-    "price-hp",
-    "text-white",
-    "fw-bold",
-    "text-end",
-    "mb-3"
-  );
-  
+  price.classList.add("price-hp", "text-white", "fw-bold", "text-end", "mb-3");
+
   price.innerHTML = `${producto.precio}&euro;`;
 
   priceRow.appendChild(price);
@@ -212,4 +204,3 @@ function applyEllipsisStyle(element, lineHeight, maxLines) {
   element.style.lineHeight = lineHeight;
   element.style.maxHeight = `calc(${lineHeight} * ${maxLines})`;
 }
-
