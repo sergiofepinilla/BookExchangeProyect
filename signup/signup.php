@@ -58,12 +58,14 @@
                     placeholder="Repite la contraseña" name="signupRepwd" maxlength="69" required/>
                   </div>
                   <?php if (isset($_GET[ "error"])) { if ($_GET[ "error"]=="emptyFields"
-                  ) { echo "<p class='text-danger'>There are empty fields</p>"; } elseif
-                  ($_GET[ "error"]=="emailExist" ) { echo
-                  "<p class='text-danger'>El apodo o el correo ya existen</p>"; } elseif ($_GET[ "error"]=="stmtFailed" ) { echo
-                  "<p class='text-danger'>Error interno</p>"; } elseif ($_GET[ "error"]=="noMatchPwd" ) { echo
-                  "<p class='text-danger'>Las contraseñas no coinciden</p>"; } elseif ($_GET[ "error"]=="invalidEmail" ) { echo
-                  "<p class='text-danger'>Email Invalido</p>"; } } ?>
+  ) { echo "<p class='text-danger'>There are empty fields</p>"; } elseif
+  ($_GET[ "error"]=="emailExist" ) { echo
+  "<p class='text-danger'>El apodo o el correo ya existen</p>"; } elseif ($_GET[ "error"]=="stmtFailed" ) { echo
+  "<p class='text-danger'>Error interno</p>"; } elseif ($_GET[ "error"]=="noMatchPwd" ) { echo
+  "<p class='text-danger'>Las contraseñas no coinciden</p>"; } elseif ($_GET[ "error"]=="invalidEmail" ) { echo
+  "<p class='text-danger'>Email Invalido</p>"; } elseif ($_GET[ "error"]=="userBlocked" ) { echo
+  "<p class='text-danger'>El usuario está bloqueado</p>"; } } ?>
+
                     <div class="text-center text-lg-start mt-4 pt-2">
                       <button type="submit" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;"
                       name="signup-submit">

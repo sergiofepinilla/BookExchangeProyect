@@ -32,6 +32,11 @@ if (isset($_POST['signup-submit'])) {
         exit();
     }
 
+    if (isUserBlocked($conn, $signupEmail) !== false) {
+        header('location: ../signup/signup.php?error=userBlocked');
+        exit();
+    }
+
     $user = User::createUser($conn, $signupNick, $signupEmail, $signupName, $signupPwd);
 
 

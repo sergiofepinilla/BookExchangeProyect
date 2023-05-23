@@ -13,7 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $precio = $_POST['precio'];
     $id_libro_venta = $_POST['id_libro'];
     $review = 0;
-    file_put_contents('debug.log', print_r($_POST, true), FILE_APPEND);
 
     
 

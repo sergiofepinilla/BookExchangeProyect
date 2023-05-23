@@ -619,7 +619,7 @@ $carpetaImagenes = "imagenes/inyeccion/IMG/";
 $imagenes = glob($carpetaImagenes . "*.jpg");
 
 $conn = Connection::getConnection();
-$usuarios = [30, 31, 32, 33, 34];
+$usuarios = [30, 31, 32, 33];
 
 foreach ($titulos as $titulo) {
     if ($insertedBooks >= $maxBooks) {

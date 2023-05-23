@@ -260,7 +260,7 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
         <tbody>
           <?php while ($row = $resultLibrosEnVenta->fetch_assoc()) : ?>
             <tr>
-              <td><?php echo htmlspecialchars($row['titulo']); ?></td>
+            <td><a class="klk" href="../product/product.php?id=<?php echo $row['id']; ?>"><?php echo htmlspecialchars($row['titulo']); ?></a></td>
               <td><?php echo htmlspecialchars($row['editorial']); ?></td>
               <td><?php echo htmlspecialchars($row['nombre_genero']); ?></td>
               <td><?php echo htmlspecialchars($row['estado']); ?></td>

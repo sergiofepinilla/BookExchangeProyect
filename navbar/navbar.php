@@ -5,8 +5,8 @@ session_start();
 <nav class="navbar navbar-expand-lg bg dark-theme">
     <div class="container">
         <a href="../home/home.php" class="w-25 d-flex align-items-center me-2">
-            <img src="../assets/img/logo/wow.png" class="w-100 d-none d-lg-flex" alt="Logo">
-            <img src="../assets/img/logo/wow.png" class="d-lg-none w-100" alt="Logo">
+            <img src="../assets/img/logo/logo.png" class="w-100 d-none d-lg-flex" alt="Logo">
+            <img src="../assets/img/logo/logo.png" class="d-lg-none w-100" alt="Logo">
         </a>
 
         <!-- SEARCH BAR -->
