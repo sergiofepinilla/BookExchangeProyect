@@ -38,10 +38,17 @@ document.addEventListener("DOMContentLoaded", function () {
         data: { id: id },
         dataType: "json",
         success: function (data) {
+          // No Existe Producto Mostrar Imagen
+          if(data.length === 0){
+            document.getElementById("no-results-image").style.display = "block";
+            document.getElementById("bookContainer").style.display = "none";
+            document.getElementById("recommendedContainer").style.display = "none";
+            return;
+          };
           resolve(data);
         },
         error: function (xhr, status, error) {
-          reject(error);
+          
         },
       });
     });
@@ -160,7 +167,7 @@ function loadProduct(product) {
   id_book = product.id;
 
 
-   const categoryName = document.getElementById("genero_name");
+  const categoryName = document.getElementById("genero_name");
   categoryName.innerHTML = "<span class='fw-bold'>Género</span>: " +product.nombre_genero;
 
   // Obtener el valor de la cookie de aceptación de cookies
@@ -440,5 +447,15 @@ function applyEllipsisStyle(element, lineHeight, maxLines) {
   element.style.lineHeight = lineHeight;
   element.style.maxHeight = `calc(${lineHeight} * ${maxLines})`;
 }
+// Selección del botón
+let comprarButton = document.getElementById('comprarButton')
+
+// Creación de una instancia del modal
+let comprarModal = new bootstrap.Modal(document.getElementById('comprarModal'))
+
+// Mostrar el modal al hacer clic en el botón "Comprar"
+comprarButton.addEventListener('click', () => {
+  comprarModal.show()
+})
 
 });

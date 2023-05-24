@@ -12,12 +12,19 @@ if (isset($_SESSION["user"])) {
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $query = "
-    SELECT usuarios.apodo, usuarios.correo, datos_usuario.foto_perfil, datos_usuario.nombre, libros_venta.*
+
+    // Consulta para obtener los datos del usuario
+    $query_user = "
+    SELECT usuarios.apodo, usuarios.correo, datos_usuario.foto_perfil, datos_usuario.nombre
     FROM usuarios
-    LEFT JOIN libros_venta ON usuarios.id = libros_venta.id_usuario
     INNER JOIN datos_usuario ON usuarios.id = datos_usuario.id_usuario
-    WHERE usuarios.id = '$id'
+    WHERE usuarios.id = '$id'";
+
+    // Consulta para obtener los productos del usuario
+    $query_products = "
+    SELECT libros_venta.*
+    FROM libros_venta
+    WHERE libros_venta.id_usuario = '$id'
     ORDER BY libros_venta.id DESC";
     
     // Consulta para contar libros vendidos
@@ -36,13 +43,15 @@ if (isset($_GET['id'])) {
     //error
 }
 
-$result = $conn->query($query);
+$result_user = $conn->query($query_user);
+$user_info = $result_user->fetch_assoc();
+$user_info['foto_perfil'] = base64_encode($user_info['foto_perfil']);
 
+$result_products = $conn->query($query_products);
 $products = array();
 
-while ($row = $result->fetch_assoc()) {
+while ($row = $result_products->fetch_assoc()) {
     $row['imagen'] = base64_encode($row['imagen']);
-    $row['foto_perfil'] = base64_encode($row['foto_perfil']);
     $products[] = (object) $row;
 }
 
@@ -57,11 +66,13 @@ $books_on_sale = $result_books_on_sale->fetch_row()[0];
 $books_on_sale = $books_on_sale ?? 0;
 
 $response = array(
+    'user_info' => $user_info,  // Añade los datos del usuario al objeto de respuesta
     'products' => $products,
     'total' => count($products),
-    'books_sold' => $books_sold, // Añade la cantidad de libros vendidos al objeto de respuesta
-    'books_on_sale' => $books_on_sale, // Añade la cantidad de libros en venta al objeto de respuesta
+    'books_sold' => $books_sold, 
+    'books_on_sale' => $books_on_sale,
 );
 
 header("Content-Type: application/json");
 echo json_encode($response);
+?>

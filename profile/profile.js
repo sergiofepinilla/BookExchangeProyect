@@ -11,7 +11,10 @@ function getProducts() {
         resolve(data);
       },
       error: function (xhr, status, error) {
-        reject(error);
+        document.getElementById("no-results-image").style.display = "block";
+        document.getElementById("user-info").style.display = "none";
+        document.getElementById("user-reviews").style.display = "none";
+        //reject(error);
       },
     });
   });
@@ -40,7 +43,7 @@ var productos;
 var containerNovedades = document.getElementById("containerNovedades");
 var productosLista = document.getElementById("productosLista");
 
-function loadCarousel(carouselInnerId, productsToShow, userProfile) {
+function loadCarousel(carouselInnerId, productsToShow, userInfo) {
   // Crea la imagen de perfil aquí
   var imgPerfil = document.createElement("img");
   imgPerfil.classList.add(
@@ -52,7 +55,7 @@ function loadCarousel(carouselInnerId, productsToShow, userProfile) {
     "border-3",
     "border-dark"
   );
-  imgPerfil.src = "data:image/jpeg;base64," + userProfile.foto_perfil;
+  imgPerfil.src = "data:image/jpeg;base64," + userInfo.foto_perfil;
   imgPerfil.style.objectFit = "cover";
   imgPerfil.style.width = "180px";
   imgPerfil.style.borderRadius = "10px";
@@ -65,17 +68,17 @@ function loadCarousel(carouselInnerId, productsToShow, userProfile) {
 
   var usu_apodo = document.getElementById("apodo");
   if (usu_apodo) {
-    usu_apodo.textContent = userProfile.apodo;
+    usu_apodo.textContent = userInfo.apodo;
   }
 
   var usu_nombre = document.getElementById("nombre");
   if (usu_nombre) {
-    usu_nombre.innerHTML = userProfile.nombre;
+    usu_nombre.innerHTML = userInfo.nombre;
   }
 
   var usu_correo = document.getElementById("correo");
   if (usu_correo) {
-    usu_correo.innerHTML = userProfile.correo;
+    usu_correo.innerHTML = userInfo.correo;
   }
 
   var carouselInner = document.getElementById(carouselInnerId);
@@ -113,9 +116,8 @@ function loadCarousel(carouselInnerId, productsToShow, userProfile) {
 
 getProducts().then(
   function (data) {
-    var products = data.products;
-    console.log(products);
-    if (products.length === 0) {
+    var userInfo = data.user_info;
+    if (userInfo.length === 0) {
       // Suponiendo que data.products es un array.
       // No se encontraron productos para este usuario, mostrar imagen y ocultar divs.
       document.getElementById("no-results-image").style.display = "block";
@@ -124,14 +126,12 @@ getProducts().then(
       return;
     }
     var total = 0;
-
+    var products = data.products;
     products.forEach(function (product) {
       if (product.titulo != null) {
         total++;
       }
     });
-
-    var userProfile = products[0];
 
     var booksTabLink = document.querySelector(
       "a[data-toggle='tab'][href='#login']"
@@ -139,7 +139,7 @@ getProducts().then(
     booksTabLink.innerHTML = `Libros (${total})`;
 
     var lastBooks = products;
-    loadCarousel("carouselInner", lastBooks, userProfile);
+    loadCarousel("carouselInner", lastBooks, userInfo);
 
     // Muestra la cantidad de libros vendidos
     var libros_vendidos = document.getElementById("libros_vendidos");

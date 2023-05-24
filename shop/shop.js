@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', (event) => {
 var currentCategory = "";
 var currentPage = 1;
 var totalPages = 1;
@@ -204,3 +205,4 @@ function applyEllipsisStyle(element, lineHeight, maxLines) {
   element.style.lineHeight = lineHeight;
   element.style.maxHeight = `calc(${lineHeight} * ${maxLines})`;
 }
+});
