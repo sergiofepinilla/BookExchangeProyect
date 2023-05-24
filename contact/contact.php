@@ -36,9 +36,7 @@
                     <label for="nombreContacto" class="form-label">
                         <strong>Nombre Completo *</strong>
                     </label>
-                    <input type="text" maxlength="50" class="form-control" id="nombreContacto" aria-describedby="nombreContacto" name="contactName" required <?php if (
-                        isset($_SESSION["user"])
-                    ) {
+                    <input type="text" maxlength="50" class="form-control" id="nombreContacto" aria-describedby="nombreContacto" name="contactName" required <?php if (isset($_SESSION["user"])) {
                         echo "value='" . $userName . "'";
                     } ?>>
                     <div id="nombreContacto" class="form-text">Este nombre se usara para ponernos en contacto con usted.</div>
@@ -47,9 +45,7 @@
                     <label for="emailInput" class="form-label">
                         <strong>E-mail *</strong>
                     </label>
-                    <input type="email" maxlength="50" class="form-control" id="emailInput" name="contactEmail" required <?php if (
-                        isset($_SESSION["user"])
-                    ) {
+                    <input type="email" maxlength="50" class="form-control" id="emailInput" name="contactEmail" required <?php if (isset($_SESSION["user"])) {
                         echo "value='" . $userEmail . "'";
                     } ?>>
                 </div>

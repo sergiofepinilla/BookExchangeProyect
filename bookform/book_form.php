@@ -1,7 +1,7 @@
 <?php
-require_once '../header/header.php';
-require_once '../navbar/navbar.php';
-?>
+    require_once '../header/header.php';
+    require_once '../navbar/navbar.php';
+    ?>
 <div class="container mt-5 mb-5">
     <div class="row">
         <div class="col-md-12">
@@ -92,85 +92,82 @@ require_once '../navbar/navbar.php';
                         <button type="button" class="btn btn-primary" id="btnFase1">Siguiente</button>
                 </div>
                 <div class="tab-pane fade" id="pills-fase2" role="tabpanel" aria-labelledby="pills-fase2-tab">
-                    <h1>Precio y envio</h1>
-                    <div class="mb-3 col-sm-6">
-                        <label for="precio" class="form-label">Precio</label>
-                        <div class="input-group">
-                            <input type="number" class="form-control" id="precio" name="precio" required>
-                            <span class="input-group-text">
-                                <i class="bi bi-currency-euro"></i>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="descripcion" class="form-label">Descripción</label>
-                        <textarea class="form-control" id="descripcion" name="descripcion" rows="5"></textarea>
-                    </div>
-                    <button type="button" class="btn btn-secondary" id="btnRegresar">Regresar</button>
-                    <button type="button" class="btn btn-primary" id="btnFase2">Siguiente</button>
+                <h1>Precio y envio</h1>
+                <div class="mb-3 col-sm-6">
+                <label for="precio" class="form-label">Precio</label>
+                <div class="input-group">
+                <input type="number" class="form-control" id="precio" name="precio" required>
+                <span class="input-group-text">
+                <i class="bi bi-currency-euro"></i>
+                </span>
+                </div>
+                </div>
+                <div class="mb-3">
+                <label for="descripcion" class="form-label">Descripción</label>
+                <textarea class="form-control" id="descripcion" name="descripcion" rows="5"></textarea>
+                </div>
+                <button type="button" class="btn btn-secondary" id="btnRegresar">Regresar</button>
+                <button type="button" class="btn btn-primary" id="btnFase2">Siguiente</button>
                 </div>
                 <div class="tab-pane fade" id="pills-fase3" role="tabpanel" aria-labelledby="pills-fase3-tab">
-                    <h1>Imagen del libro</h1>
-                    <hr>
-                    <div class="row">
-                        <!-- Columna izquierda: Seleccionar archivo -->
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <h5>Seleccione una imagen para la portada del libro</h5>
-                                <hr>
-                                <input class="form-control" type="file" id="imagen" name="imagen">
-                            </div>
-                        </div>
-                        <!-- Columna derecha: Mostrar imagen seleccionada -->
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <!-- Añade este div para mostrar la previsualización -->
-                                <h5>Imagen del libro</h5>
-                                <hr>
-                                <img src="" id="imagenPrevia" alt="" style="max-width: 100%; max-height: 300px;">
-                            </div>
-                        </div>
-                    </div>
-                    <button type="button" class="btn btn-secondary" id="btnRegresar2">Regresar</button>
-                    <button type="button" class="btn btn-primary" id="btnFase3">Siguiente</button>
+                <h1>Imagen del libro</h1>
+                <hr>
+                <div class="row">
+                <!-- Columna Izquierda: Seleccionar archivo -->
+                <div class="col-md-6">
+                <div class="mb-3">
+                <h5>Seleccione una imagen para la portada del libro</h5>
+                <hr>
+                <input class="form-control" type="file" id="imagen" name="imagen">
+                </div>
+                </div>
+                <!-- Columna derecha: Mostrar imagen seleccionada -->
+                <div class="col-md-6">
+                <div class="mb-3">
+                <!-- Previsualización -->
+                <h5>Imagen del libro</h5>
+                <hr>
+                <img src="" id="imagenPrevia" alt="" style="max-width: 100%; max-height: 300px;">
+                </div>
+                </div>
+                </div>
+                <button type="button" class="btn btn-secondary" id="btnRegresar2">Regresar</button>
+                <button type="button" class="btn btn-primary" id="btnFase3">Siguiente</button>
                 </div>
                 <div class="tab-pane fade" id="pills-fase4" role="tabpanel" aria-labelledby="pills-fase4-tab">
-                    <h1>Confirmación</h1>
-                    <hr>
-                    <div class="row">
-                        <!-- Columna izquierda: Datos -->
-                        <div class="col-md-6">
-                            <h5>Información del libro</h5>
-                            <ul>
-                                <li><strong>Nombre del libro:</strong> <span id="confirmNombre" class="limit-text"></span></li>
-                                <li><strong>Autor:</strong> <span id="confirmAutor" class="limit-text"></span></li>
-                                <li><strong>ISBN:</strong> <span id="confirmISBN" class="limit-text"></span></li>
-                                <li><strong>Editorial:</strong> <span id="confirmEditorial" class="limit-text"></span></li>
-                                <li><strong>Género:</strong> <span id="confirmGenero" class="limit-text"></span></li>
-                                <li><strong>Estado del libro:</strong> <span id="confirmEstado"></span></li>
-                                <li><strong>Precio:</strong> <span id="confirmPrecio"></span>€</li>
-                                <li><strong>Descripción:</strong> <span id="confirmDescripcion" class="limit-text"></span></li>
-                            </ul>
-                        </div>
-                        <!-- Columna derecha: Imagen del libro -->
-                        <div class="col-md-6">
-                            <h5>Imagen del libro</h5>
-                            <div class="mb-3">
-                                <img src="" class="img-fluid border border-dark border-3" id="confirmImagen" alt="Vista previa de la imagen" style="max-width: 100%; max-height: 300px;">
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="confirmarEnvio" name="confirmarEnvio">
-    <label for="confirmarEnvio" class="form-check-label">Confirmo que toda la información es correcta</label>
-</div>
-
-<button id="btnRegresar3" type="button" class="btn btn-secondary">Atrás</button>
-<input id="enviarFormulario" type="submit" class="btn btn-primary" value="Enviar" disabled>
-
-
-                    </form>
+                <h1>Confirmación</h1>
+                <hr>
+                <div class="row">
+                <!-- Columna izquierda: Datos -->
+                <div class="col-md-6">
+                <h5>Información del libro</h5>
+                <ul>
+                <li><strong>Nombre del libro:</strong> <span id="confirmNombre" class="limit-text"></span></li>
+                <li><strong>Autor:</strong> <span id="confirmAutor" class="limit-text"></span></li>
+                <li><strong>ISBN:</strong> <span id="confirmISBN" class="limit-text"></span></li>
+                <li><strong>Editorial:</strong> <span id="confirmEditorial" class="limit-text"></span></li>
+                <li><strong>Género:</strong> <span id="confirmGenero" class="limit-text"></span></li>
+                <li><strong>Estado del libro:</strong> <span id="confirmEstado"></span></li>
+                <li><strong>Precio:</strong> <span id="confirmPrecio"></span>€</li>
+                <li><strong>Descripción:</strong> <span id="confirmDescripcion" class="limit-text"></span></li>
+                </ul>
+                </div>
+                <!-- Columna derecha: Imagen del libro -->
+                <div class="col-md-6">
+                <h5>Imagen del libro</h5>
+                <div class="mb-3">
+                <img src="" class="img-fluid border border-dark border-3" id="confirmImagen" alt="Vista previa de la imagen" style="max-width: 100%; max-height: 300px;">
+                </div>
+                </div>
+                </div>
+                <hr>
+                <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="confirmarEnvio" name="confirmarEnvio">
+                <label for="confirmarEnvio" class="form-check-label">Confirmo que toda la información es correcta</label>
+                </div>
+                <button id="btnRegresar3" type="button" class="btn btn-secondary">Atrás</button>
+                <input id="enviarFormulario" type="submit" class="btn btn-primary" value="Enviar" disabled>
+                </form>
                 </div>
             </div>
         </div>

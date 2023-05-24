@@ -1,6 +1,6 @@
-<?php require_once '../header/header.php' ?>
-<?php require_once '../navbar/navbar.php' ?>
-<?php require_once '../carousel/main_carousel.php' ?>
+<?php require_once '../header/header.php'; ?>
+<?php require_once '../navbar/navbar.php'; ?>
+<?php require_once '../carousel/main_carousel.php'; ?>
 <div class="container">
 
 
@@ -34,7 +34,7 @@
     </div>
     <!--Ultimos Productos Container FIN-->
     <div class="mt-5 mb-5 mx-auto custom-hr"> </div>
-    <?php require_once '../carousel/second_carousel.php' ?>
+    <?php require_once '../carousel/second_carousel.php'; ?>
     <div class="mt-5 mb-5 mx-auto custom-hr"> </div>
     <!-- Libros recomendados Container -->
     <div class="container">
@@ -86,8 +86,8 @@
 </div>
 </div>
 
-<?php require_once '../footer/upper_footer.php' ?>
+<?php require_once '../footer/upper_footer.php'; ?>
 </div>
 <script src="../navbar/navbar.js"></script>
 <script src="home.js"></script>
-<?php require_once '../footer/footer_links.php' ?>
+<?php require_once '../footer/footer_links.php'; ?>
