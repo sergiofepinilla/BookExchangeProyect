@@ -114,6 +114,7 @@ function loadCarousel(carouselInnerId, productsToShow, userProfile) {
 getProducts().then(
   function (data) {
     var products = data.products;
+    console.log(products);
     if (products.length === 0) {
       // Suponiendo que data.products es un array.
       // No se encontraron productos para este usuario, mostrar imagen y ocultar divs.
@@ -147,7 +148,6 @@ getProducts().then(
     // Muestra la cantidad de libros en venta
     var libros_en_venta = document.getElementById("libros_en_venta");
     libros_en_venta.innerHTML = data.books_on_sale;
-    console.log(data.products.length);
   },
   function (error) {
     console.error(error);
