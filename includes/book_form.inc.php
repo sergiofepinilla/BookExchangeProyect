@@ -17,8 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $genero = isset($_POST['genero']) ? $_POST['genero'] : '';
   $estado = isset($_POST['estado']) ? $_POST['estado'] : '';
   $precio = isset($_POST['precio']) ? $_POST['precio'] : '';
-  $cambio = isset($_POST['cambio']) ? 1 : 0;
-  $envio = isset($_POST['envio']) ? 1 : 0;
   $descripcion = isset($_POST['descripcion']) ? $_POST['descripcion'] : '';
 
 
@@ -42,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $imagen = file_get_contents($defaultImagePath);
   }
 
-  $libro = new Libro($nombre, $isbn, $autor, $editorial, $genero, $estado, $precio, $cambio, $envio, $descripcion, $imagen, $userId);
+  $libro = new Libro($nombre, $isbn, $autor, $editorial, $genero, $estado, $precio, $descripcion, $imagen, $userId);
 
   if ($libro->insertar()) {
     header("location: ../home/home.php");

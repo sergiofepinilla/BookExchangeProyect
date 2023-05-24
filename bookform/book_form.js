@@ -32,7 +32,6 @@ descripcionInput.addEventListener('input', () => {
 });
 
 //Limitar ISBN 
-
 const isbnInput = document.getElementById('isbn');
 const maxLengthISBN = 13;
 
@@ -63,6 +62,14 @@ function validarFase1() {
     alert("Rellene todos los campos marcados con un asterisco *");
     return false;
   }
+
+     // Expresión regular para validar el ISBN
+     const isbnRegex = /^(|\d{10}|\d{13})$/;
+
+      if (!isbnRegex.test(sanitizedIsbn)) {
+        alert("El ISBN debe estar vacío, contener 10 dígitos o 13 dígitos.");
+        return false;
+    }
 
   // Actualizar el valor de los campos de texto con la versión sanitizada
   nombre.value = sanitizedNombre;
@@ -137,13 +144,6 @@ document.getElementById("btnFase3").addEventListener("click", function () {
       ].text;
     document.getElementById("confirmPrecio").innerText =
       document.getElementById("precio").value;
-    document.getElementById("confirmCambio").innerText =
-      document.getElementById("cambio").checked ? "Sí" : "No";
-    document.getElementById("confirmEnvio").innerText = document.getElementById(
-      "envio"
-    ).checked
-      ? "Sí"
-      : "No";
     document.getElementById("confirmDescripcion").innerText =
       document.getElementById("descripcion").value;
       
@@ -158,6 +158,21 @@ document.getElementById("btnFase3").addEventListener("click", function () {
     document.getElementById("pills-fase4-tab").click();
   }
 });
+
+// Habilitar - Deshabilitar Envio por CheckBox
+
+const enviarFormulario = document.getElementById('enviarFormulario');
+const confirmarEnvio = document.getElementById('confirmarEnvio');
+
+// Inicialmente, el botón de envío está deshabilitado
+enviarFormulario.disabled = true;
+
+// Cuando el estado del checkbox cambia, actualiza el estado del botón de envío
+confirmarEnvio.addEventListener('change', () => {
+    enviarFormulario.disabled = !confirmarEnvio.checked;
+});
+
+
 
 
 //Botones de regreso

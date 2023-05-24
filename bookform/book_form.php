@@ -103,14 +103,6 @@ require_once '../navbar/navbar.php';
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="cambio" class="form-check-label">¿Acepta cambios?</label>
-                        <input type="checkbox" class="form-check-input" id="cambio" name="cambio">
-                    </div>
-                    <div class="mb-3">
-                        <label for="envio" class="form-check-label">¿Realizas envios?</label>
-                        <input type="checkbox" class="form-check-input" id="envio" name="envio">
-                    </div>
-                    <div class="mb-3">
                         <label for="descripcion" class="form-label">Descripción</label>
                         <textarea class="form-control" id="descripcion" name="descripcion" rows="5"></textarea>
                     </div>
@@ -157,8 +149,6 @@ require_once '../navbar/navbar.php';
                                 <li><strong>Género:</strong> <span id="confirmGenero" class="limit-text"></span></li>
                                 <li><strong>Estado del libro:</strong> <span id="confirmEstado"></span></li>
                                 <li><strong>Precio:</strong> <span id="confirmPrecio"></span>€</li>
-                                <li><strong>Acepta cambios:</strong> <span id="confirmCambio"></span></li>
-                                <li><strong>Realiza envíos:</strong> <span id="confirmEnvio"></span></li>
                                 <li><strong>Descripción:</strong> <span id="confirmDescripcion" class="limit-text"></span></li>
                             </ul>
                         </div>
@@ -171,13 +161,15 @@ require_once '../navbar/navbar.php';
                         </div>
                     </div>
                     <hr>
-
                     <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="envio" name="envio">
-                        <label for="envio" class="form-check-label">Confirmo que toda la información es correcta</label>
-                    </div>
-                    <button id="btnRegresar3" type="button" class="btn btn-secondary">Atrás</button>
-                    <input type="submit" class="btn btn-primary" value="Enviar">
+    <input type="checkbox" class="form-check-input" id="confirmarEnvio" name="confirmarEnvio">
+    <label for="confirmarEnvio" class="form-check-label">Confirmo que toda la información es correcta</label>
+</div>
+
+<button id="btnRegresar3" type="button" class="btn btn-secondary">Atrás</button>
+<input id="enviarFormulario" type="submit" class="btn btn-primary" value="Enviar" disabled>
+
+
                     </form>
                 </div>
             </div>
