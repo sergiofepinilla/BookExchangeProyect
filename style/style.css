@@ -1,7 +1,11 @@
 .w-15 {
     width: 175px;
 }
-/*
+
+body,
+footer {
+    cursor: url(../assets/img/cursor/cursor.png), auto;
+}
 td:hover,
 i:hover,
 button:hover:enabled,
@@ -10,8 +14,6 @@ a:hover,
 .carousel-control-next:hover {
     cursor: url(../assets/img/cursor/pointer.png), pointer;
 }
-*/
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 /* Aplica la fuente Montserrat a los títulos */
 h1, h2 {
