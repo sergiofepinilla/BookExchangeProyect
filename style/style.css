@@ -154,3 +154,6 @@ background-color: #1d1d1d;
   color: #5c55be;
 }
 
+.limit-text{
+  word-wrap: break-word;
+}

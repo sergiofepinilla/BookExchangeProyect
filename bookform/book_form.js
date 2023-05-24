@@ -76,8 +76,9 @@ function validarFase1() {
 
 function validarFase2() {
   const precio = document.getElementById("precio");
+ 
 
-  const sanitizedPrecio = sanitarizar(precio.value);
+  const sanitizedPrecio = precio.value;
   const descripcion = document.getElementById("descripcion");
 
   const sanitizedDescripcion = sanitarizar(descripcion.value);
@@ -86,10 +87,16 @@ function validarFase2() {
     alert("Por favor, ingrese un precio válido");
     return false;
   }
+  console.log(sanitizedPrecio);
+  console.log(isNaN(sanitizedPrecio));
 
   // Actualizar el valor del campo de texto con la versión sanitizada
   precio.value = sanitizedPrecio;
   descripcion.value = sanitizedDescripcion;
+
+  console.log(precio.value);
+  console.log(isNaN(sanitizedPrecio));
+  console.log(isNaN(sanitizedPrecio));
 
   return true;
 }

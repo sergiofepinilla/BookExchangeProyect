@@ -23,7 +23,7 @@ require_once '../navbar/navbar.php';
                 <div class="tab-pane fade show active" id="pills-fase1" role="tabpanel" aria-labelledby="pills-fase1-tab">
                     <h1>Información del libro</h1>
                     <hr>
-                    <form id="formularioCompleto" method="post" action="../includes/book_form.inc.php" enctype="multipart/form-data">
+                    <form id="formularioCompleto" method="post" action="../includes/book_form.inc.php" enctype="multipart/form-data" novalidate>
                         <div class="row">
                             <!-- Columna izquierda -->
                             <div class="col-md-6">
@@ -96,7 +96,7 @@ require_once '../navbar/navbar.php';
                     <div class="mb-3 col-sm-6">
                         <label for="precio" class="form-label">Precio</label>
                         <div class="input-group">
-                            <input type="number" class="form-control" id="precio" name="precio" maxlength="7" required>
+                            <input type="number" class="form-control" id="precio" name="precio" required>
                             <span class="input-group-text">
                                 <i class="bi bi-currency-euro"></i>
                             </span>
@@ -150,16 +150,16 @@ require_once '../navbar/navbar.php';
                         <div class="col-md-6">
                             <h5>Información del libro</h5>
                             <ul>
-                                <li><strong>Nombre del libro:</strong> <span id="confirmNombre"></span></li>
-                                <li><strong>Autor:</strong> <span id="confirmAutor"></span></li>
-                                <li><strong>ISBN:</strong> <span id="confirmISBN"></span></li>
-                                <li><strong>Editorial:</strong> <span id="confirmEditorial"></span></li>
-                                <li><strong>Género:</strong> <span id="confirmGenero"></span></li>
+                                <li><strong>Nombre del libro:</strong> <span id="confirmNombre" class="limit-text"></span></li>
+                                <li><strong>Autor:</strong> <span id="confirmAutor" class="limit-text"></span></li>
+                                <li><strong>ISBN:</strong> <span id="confirmISBN" class="limit-text"></span></li>
+                                <li><strong>Editorial:</strong> <span id="confirmEditorial" class="limit-text"></span></li>
+                                <li><strong>Género:</strong> <span id="confirmGenero" class="limit-text"></span></li>
                                 <li><strong>Estado del libro:</strong> <span id="confirmEstado"></span></li>
                                 <li><strong>Precio:</strong> <span id="confirmPrecio"></span>€</li>
                                 <li><strong>Acepta cambios:</strong> <span id="confirmCambio"></span></li>
                                 <li><strong>Realiza envíos:</strong> <span id="confirmEnvio"></span></li>
-                                <li><strong>Descripción:</strong> <span id="confirmDescripcion"></span></li>
+                                <li><strong>Descripción:</strong> <span id="confirmDescripcion" class="limit-text"></span></li>
                             </ul>
                         </div>
                         <!-- Columna derecha: Imagen del libro -->

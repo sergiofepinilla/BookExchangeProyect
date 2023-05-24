@@ -35,17 +35,17 @@
                 </div>
             </div>
         </div>
-        <div class="col dark-theme custom-text custom-card-border-2 " style="border-radius: 15px;">
+        <div class="col-7 dark-theme custom-text custom-card-border-2 " style="border-radius: 15px;">
             <div class="card-body">
-                <h3 class="card-title fs-1 fw-bold" id="titulo">Libro de Prueba</h3>
+                <h3 class="card-title fs-1 fw-bold limit-text" id="titulo">Libro de Prueba</h3>
                 <hr>
-                <p id="autor">Autor.</p>
-                <p id="genero_name">Fantasia</p>
-                <p id="isbn">ISBN.</p>
-                <p id="editorial">Editorial.</p>
-                <p id="estado">Estado.</p>
+                <p id="autor" class="limit-text">Autor.</p>
+                <p id="genero_name" class="limit-text">Fantasia</p>
+                <p id="isbn" class="limit-text">ISBN.</p>
+                <p id="editorial" class="limit-text">Editorial.</p>
+                <p id="estado" class="limit-text">Estado.</p>
                 <hr>
-                <p id="descripcion">Descripción.</p>
+                <p id="descripcion" class="limit-text">Descripción.</p>
         
             </div>
             <hr>
