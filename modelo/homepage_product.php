@@ -1,25 +1,12 @@
 <?php
-require_once 'connection.php';
+require_once '../includes/dbh.inc.php';
 $conn = Connection::getConnection();
 
-if (!empty($_GET['category']) or !empty($_GET['name'])) {
-    $category = $_GET['category'];
-    // $query = "SELECT * FROM productos WHERE categoria='$category'";
-    if (!empty($_GET['name'])) {
-        $name = $_GET['name'];
-        $query .= " or LOWER(name) LIKE LOWER('%$name%')";
-    }
-    // $query .= " ORDER BY id DESC";
-} else if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    //  $query = "SELECT * FROM productos WHERE id='$id'";
-} else {
-    $query = "SELECT libros_venta.*, generos.nombre_genero
+
+$query = "SELECT libros_venta.*, generos.nombre_genero
     FROM libros_venta
     JOIN generos ON libros_venta.genero = generos.id_genero
     ORDER BY libros_venta.id DESC";
-}
-
 
 $result = $conn->query($query);
 

@@ -1,4 +1,4 @@
-<?php
+<?php // Borrar Usuario
 include_once 'dbh.inc.php';
 session_start();
 

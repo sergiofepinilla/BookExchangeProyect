@@ -1,7 +1,6 @@
 <?php
-require_once 'connection.php';
+require_once '../includes/dbh.inc.php';
 $conn = Connection::getConnection();
-
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -12,9 +11,7 @@ if (isset($_GET['id'])) {
     JOIN datos_usuario ON datos_usuario.id_usuario = usuarios.id
     JOIN generos ON libros_venta.genero = generos.id_genero
     WHERE libros_venta.id='$id'";
-} else {
 }
-
 
 $result = $conn->query($query);
 

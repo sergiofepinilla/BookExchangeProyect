@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $precio = isset($_POST['precio']) ? $_POST['precio'] : '';
   $descripcion = isset($_POST['descripcion']) ? $_POST['descripcion'] : '';
 
-
+  //Establecer Campos Vacios como "Desconocido"
   if (empty($autor)) {
     $autor = "Desconocido";
   }
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === 0) {
     if ($_FILES['imagen']['error'] == UPLOAD_ERR_OK) {
-      // Obtener la imagen cargada
+      // Obtener Imagen Cargada
       $imagen = file_get_contents($_FILES['imagen']['tmp_name']);
     }
   } else {

@@ -1,5 +1,5 @@
 <?php
-require_once 'connection.php';
+require_once '../includes/dbh.inc.php';
 include_once "../includes/class/user.class.php";
 $conn = Connection::getConnection();
 
@@ -39,4 +39,3 @@ if (isset($_GET['id'])) {
 } else {
     // error
 }
-?>

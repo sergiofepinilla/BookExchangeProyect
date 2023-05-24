@@ -1,5 +1,5 @@
 <?php
-require_once 'connection.php';
+require_once '../includes/dbh.inc.php';
 $conn = Connection::getConnection();
 
 if (isset($_GET['id'])) {
@@ -23,7 +23,7 @@ if (isset($_GET['id'])) {
 
     $response = array(
         'average_score' => $average_score,
-        'num_reviews' => $count  // Aquí añado el número de revisiones
+        'num_reviews' => $count
     );
 
     header("Content-Type: application/json");
@@ -31,4 +31,3 @@ if (isset($_GET['id'])) {
 } else {
     // error
 }
-?>

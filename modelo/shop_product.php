@@ -1,5 +1,5 @@
 <?php
-require_once 'connection.php';
+require_once '../includes/dbh.inc.php';
 $conn = Connection::getConnection();
 
 $items_per_page = 12;
@@ -40,7 +40,7 @@ while ($row = $result->fetch_assoc()) {
     $products[] = (object) $row;
 }
 
-// Obtener el número total de páginas
+// Obtener Numero Total Páginas
 $totalItemsQuery = "SELECT COUNT(*) as total FROM libros_venta INNER JOIN generos ON libros_venta.genero = generos.id_genero";
 
 if (!empty($conditions)) {
@@ -61,7 +61,7 @@ if (isset($_GET['category']) && $_GET['category'] != "") {
     $stmt->bind_param("s", $category);
     $stmt->execute();
     $result = $stmt->get_result();
-    if($result->num_rows > 0) {
+    if ($result->num_rows > 0) {
         $categoryName = $result->fetch_assoc()['nombre_genero'];
     }
 }
@@ -74,4 +74,3 @@ $response = array(
 
 header("Content-Type: application/json");
 echo json_encode($response);
-?>

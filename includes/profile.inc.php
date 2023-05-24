@@ -10,35 +10,30 @@ if (isset($_POST['saveProfileSubmit'])) {
     $userId = $user->getId();
     $userName = $user->getName();
 
-    // Current User Data
     $userProfilePicture = $user->getProfilePicture();
 
-    // New Form Values
-    $profileUserName = $_POST['profileUserName']; // Form Full Name
+    $profileUserName = $_POST['profileUserName'];
 
     if (empty($profileUserName)) {
-        $profileUserName = $userName; // If no new name entered, use current name
+        $profileUserName = $userName;
     }
 
-    $image = $userProfilePicture; // Use current image by default
+    $image = $userProfilePicture;
 
     if (isset($_FILES['profilePicture']) && $_FILES['profilePicture']['error'] === 0) {
-        // If a new image was uploaded, use it instead
         $image = file_get_contents($_FILES['profilePicture']['tmp_name']);
     }
-
+    // No Hay Cambios
     if ($userName == $profileUserName && $image == $userProfilePicture) {
-        // No changes
         unset($_SESSION['editProfileSubmit']);
-       header('location: ../profile/profile.php?id='.$userId);
+        header('location: ../profile/profile.php?id=' . $userId);
     } else {
-        // There were changes
+        //Hay Cambios
         updateData($conn, $userId, $profileUserName, $image);
         $user->setName($profileUserName);
         $user->setProfilePicture($image);
         $_SESSION["user"] = serialize($user);
         unset($_SESSION['editProfileSubmit']);
-        header('location: ../profile/profile.php?id='.$userId);
+        header('location: ../profile/profile.php?id=' . $userId);
     }
 }
-
