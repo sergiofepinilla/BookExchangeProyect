@@ -22,8 +22,9 @@ if (isset($_GET['id'])) {
 
     // Consulta para obtener los productos del usuario
     $query_products = "
-    SELECT libros_venta.*
+    SELECT libros_venta.*,generos.nombre_genero
     FROM libros_venta
+    JOIN generos ON libros_venta.genero = generos.id_genero
     WHERE libros_venta.id_usuario = '$id'
     ORDER BY libros_venta.id DESC";
     

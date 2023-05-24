@@ -192,10 +192,11 @@ Código de seguridad requerido
 <div class="container mb-3"  id="recommendedContainer">
     <div class="row mb-2 mt-2">
         <div class="col">
-            <h1 class="">También te puede interesar...</h1>
+            <h1 >También te puede interesar...</h1>
         </div>
         <div class="col d-flex justify-content-end">
-            <a href="" class="align-self-center text-dark custom-link" id="recommended_shop">Ver todos los libros recomendados...</a>
+            <a href="" class="align-self-center text-dark custom-link" id="recommended_shop">
+                <h2>Ver todos los libros recomendados...</h2></a>
         </div>
     </div>
     <!-- Libros recomendados Row Container -->

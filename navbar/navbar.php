@@ -12,7 +12,7 @@ session_start();
         <!-- SEARCH BAR -->
         <div class="d-flex justify-content-center align-items-center flex-grow-1">
             <div class="input-group">
-                <input class="form-control" placeholder="Busca por autor, título, género, ISBN" id="searchBar">
+                <input class="form-control dark-theme" placeholder="Busca por autor, título, género, ISBN" id="searchBar">
                 <button class="btn btn-outline-light" id="btnSearch"><i class="bi bi-search"></i></button>
             </div>
         </div>

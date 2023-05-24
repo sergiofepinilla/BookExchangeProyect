@@ -107,7 +107,8 @@ document.addEventListener("DOMContentLoaded", function () {
       "justify-content-center",
       "img-fluid",
       "overflow-hidden",
-      "custom-card-border"
+    "custom-card-border",
+    "rounded"
     );
     imgContainer.style.height = "250px";
 
@@ -126,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
     link.appendChild(imgContainer);
 
     var cardBody = document.createElement("div");
-    cardBody.classList.add("card-body", "d-flex", "flex-column", "dark-theme","custom-card-border-2");
+    cardBody.classList.add("card-body", "d-flex", "flex-column", "dark-theme","custom-card-border","rounded");
 
     var bookNameRow = document.createElement("div");
     bookNameRow.classList.add("row", "justify-content-center");
@@ -138,14 +139,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
     bookNameRow.appendChild(bookName);
 
-    var badgeRow = document.createElement("div");
-    badgeRow.classList.add("row", "justify-content-center", "mb-3");
+    var autorBadgeRow = document.createElement("div");
+    autorBadgeRow.classList.add("row", "justify-content-center", "mb-3");
+
+    var autorBadge = document.createElement("span");
+    autorBadge.classList.add("badge", "bg-light","text-dark");
+    autorBadge.textContent = producto.autor;
+    
+    autorBadgeRow.appendChild(autorBadge);
+
+    var categoryBadgeRow = document.createElement("div");
+    categoryBadgeRow.classList.add("row", "justify-content-center", "mb-3");
 
     var badge = document.createElement("span");
-    badge.classList.add("badge", "rounded-pill", "bg-primary");
+    badge.classList.add("badge", "inf-nav","border","border-white");
     badge.textContent = producto.nombre_genero;
 
-    badgeRow.appendChild(badge);
+    categoryBadgeRow.appendChild(badge);
 
     var priceRow = document.createElement("div");
     priceRow.classList.add("row", "justify-content-end", "text-end");
@@ -157,7 +167,8 @@ document.addEventListener("DOMContentLoaded", function () {
     priceRow.appendChild(price);
 
     cardBody.appendChild(bookNameRow);
-    cardBody.appendChild(badgeRow);
+    cardBody.appendChild(autorBadgeRow);
+    cardBody.appendChild(categoryBadgeRow);
     cardBody.appendChild(priceRow);
 
     var btnRow = document.createElement("div");
@@ -167,7 +178,7 @@ document.addEventListener("DOMContentLoaded", function () {
     divCheck.classList.add("col-12");
 
     var checkBtn = document.createElement("a");
-    checkBtn.classList.add("btn", "primary-btn", "w-100","fw-bold","custom-text");
+    checkBtn.classList.add("btn", "primary-btn", "w-100","fw-bold","border","border-white","rounded");
     checkBtn.textContent = "VER";
     checkBtn.href = `../product/product.php?id=${producto.id}`;
     divCheck.appendChild(checkBtn);

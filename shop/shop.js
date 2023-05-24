@@ -4,6 +4,7 @@ var currentPage = 1;
 var totalPages = 1;
 
 $(document).ready(function () {
+
   const urlParams = new URLSearchParams(window.location.search);
   const query = urlParams.get("query");
   getProducts(currentPage, currentCategory, query);
@@ -95,16 +96,15 @@ function getProducts(page, category, query) {
 
 function createCard(producto, margin = "") {
   var card = document.createElement("div");
-  card.classList.add("col-6", "col-md-4", "col-lg-3", "mb-3");
+  card.classList.add("col", "bg-black","mb-3");
   if (margin) card.classList.add(margin);
   card.id = producto.id;
 
   var innerCard = document.createElement("div");
   innerCard.classList.add(
+    "bg-black",
     "text-white",
     "card",
-    "border-3",
-    "border-dark",
     "d-flex",
     "flex-column",
     "h-100"
@@ -118,9 +118,8 @@ function createCard(producto, margin = "") {
     "justify-content-center",
     "img-fluid",
     "overflow-hidden",
-    "border",
-    "border-bottom",
-    "border-white"
+  "custom-card-border",
+  "rounded"
   );
   imgContainer.style.height = "250px";
 
@@ -139,7 +138,7 @@ function createCard(producto, margin = "") {
   link.appendChild(imgContainer);
 
   var cardBody = document.createElement("div");
-  cardBody.classList.add("card-body", "d-flex", "flex-column", "bg-black");
+  cardBody.classList.add("card-body", "d-flex", "flex-column", "dark-theme","custom-card-border","rounded");
 
   var bookNameRow = document.createElement("div");
   bookNameRow.classList.add("row", "justify-content-center");
@@ -151,27 +150,36 @@ function createCard(producto, margin = "") {
 
   bookNameRow.appendChild(bookName);
 
-  var badgeRow = document.createElement("div");
-  badgeRow.classList.add("row", "justify-content-center", "mb-3");
+  var autorBadgeRow = document.createElement("div");
+  autorBadgeRow.classList.add("row", "justify-content-center", "mb-3");
+
+  var autorBadge = document.createElement("span");
+  autorBadge.classList.add("badge", "bg-light","text-dark");
+  autorBadge.textContent = producto.autor;
+  
+  autorBadgeRow.appendChild(autorBadge);
+
+  var categoryBadgeRow = document.createElement("div");
+  categoryBadgeRow.classList.add("row", "justify-content-center", "mb-3");
 
   var badge = document.createElement("span");
-  badge.classList.add("badge", "rounded-pill", "bg-primary");
+  badge.classList.add("badge", "inf-nav","border","border-white");
   badge.textContent = producto.nombre_genero;
 
-  badgeRow.appendChild(badge);
+  categoryBadgeRow.appendChild(badge);
 
   var priceRow = document.createElement("div");
-  priceRow.classList.add("row", "justify-content-end");
+  priceRow.classList.add("row", "justify-content-end", "text-end");
 
   var price = document.createElement("span");
-  price.classList.add("price-hp", "text-white", "fw-bold", "text-end", "mb-3");
-
+  price.classList.add("price-hp", "text-white", "fw-bold", "mb-3");
   price.innerHTML = `${producto.precio}&euro;`;
 
   priceRow.appendChild(price);
 
   cardBody.appendChild(bookNameRow);
-  cardBody.appendChild(badgeRow);
+  cardBody.appendChild(autorBadgeRow);
+  cardBody.appendChild(categoryBadgeRow);
   cardBody.appendChild(priceRow);
 
   var btnRow = document.createElement("div");
@@ -181,7 +189,7 @@ function createCard(producto, margin = "") {
   divCheck.classList.add("col-12");
 
   var checkBtn = document.createElement("a");
-  checkBtn.classList.add("btn", "btn-success", "w-100");
+  checkBtn.classList.add("btn", "primary-btn", "w-100","fw-bold","border","border-white","rounded");
   checkBtn.textContent = "VER";
   checkBtn.href = `../product/product.php?id=${producto.id}`;
   divCheck.appendChild(checkBtn);
