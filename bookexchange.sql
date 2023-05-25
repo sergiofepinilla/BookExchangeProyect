@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-05-2023 a las 17:09:14
+-- Tiempo de generación: 25-05-2023 a las 11:40:25
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -43,18 +43,6 @@ CREATE TABLE `claves` (
   `clave` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `claves`
---
-
-INSERT INTO `claves` (`id_usuario`, `clave`) VALUES
-(5, '$2y$10$FpP5hoUfUja3HvnDbWjgkuN8olwl1jMSFcJsePVQVuR.1iAAYvhJe'),
-(30, '$2y$10$GYNb56vNgf4HGvPUIhk81eEBgNoAQN9QIXkke34ea9f2NFn4IBB16'),
-(31, '$2y$10$wvSJwQG1DU0f9R1rZmD5qevbe1Mjn2X518MtqgJR2LBOmC9hXYn7O'),
-(32, '$2y$10$.XETba1vQfO2p0Wjni6D/u/SuPg5kF6LV10r5cwsFy1/2py49t92C'),
-(34, '$2y$10$E12QX42rRfQZQANojVeFyu0zeAnupxEZ9iQU8OC5xG6eRZvFYWXSW'),
-(35, '$2y$10$ljpBrJFjEL.qwiWs.OQgX.dqi3yxIf1XVu2heX3ndh.oK75eS3HvC');
-
 -- --------------------------------------------------------
 
 --
@@ -67,17 +55,6 @@ CREATE TABLE `contacto` (
   `correo` varchar(100) NOT NULL,
   `descripcion` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `contacto`
---
-
-INSERT INTO `contacto` (`id`, `nombre_completo`, `correo`, `descripcion`) VALUES
-(1, '1', '1@1.com', '123123'),
-(2, '1', '1@1.com', '123123'),
-(3, '1', '1@1.com', '123123'),
-(4, 'Pepe', 'pepe@pepe.com', 'Quiero lo que sea'),
-(5, 'Fernanddo', 'fernan@do.com', 'Quiero que me llameis');
 
 -- --------------------------------------------------------
 
@@ -156,31 +133,6 @@ CREATE TABLE `libros_vendidos` (
   `id_libro_venta` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `libros_vendidos`
---
-
-INSERT INTO `libros_vendidos` (`id`, `id_usu_comprador`, `id_usu_vendedor`, `titulo`, `isbn`, `autor`, `genero`, `editorial`, `estado`, `precio`, `review`, `fecha_compra`, `id_libro_venta`) VALUES
-(52, 5, 30, 'The Witcher: Season of Storms', '8403281833', 'Walter Scott', 11, 'National Geographic', 'Malo', 41.00, 0, '2023-05-23 13:17:58', 4714),
-(53, 5, 32, 'The Name of the Wind', '9615666401', 'Walter Scott', 19, 'Harper Perennial', 'Usado', 24.00, 0, '2023-05-23 13:18:13', 4715),
-(54, 35, 30, 'Harry Potter', '2222222222222', '22222222222222222222222222222222222222222222222222', 14, '22222222222222222222222222222222222222222222222222', 'Usado', 25.90, 0, '2023-05-24 12:39:17', 4724),
-(55, 35, 30, 'Harry Potter', 'Desconocido', 'Desconocido', 17, 'Desconocido', 'Nuevo', 2525.00, 1, '2023-05-24 13:34:17', 4720),
-(56, 35, 34, '123123', '2131231231231', 'Desconocido', 16, 'Desconocido', 'Nuevo', 213.00, 0, '2023-05-24 13:48:24', 4727),
-(57, 35, 30, 'Harry Potter', '2222222222222', '22222222222222222222222222222222222222222222222222', 14, '22222222222222222222222222222222222222222222222222', 'Usado', 25.90, 1, '2023-05-24 13:49:14', 4724),
-(58, 35, 30, 'Brave New World', '2952000844', 'Albert Camus', 14, 'Orbit Books', 'Nuevo', 11.00, 1, '2023-05-24 13:54:35', 4596),
-(59, 35, 30, 'Harry Potter', '2222222222222', '22222222222222222222222222222222222222222222222222', 14, '22222222222222222222222222222222222222222222222222', 'Usado', 25.90, 1, '2023-05-24 13:56:53', 4724),
-(60, 5, 30, 'The Witcher: The Tower of Swallows', '8099331696', 'Lewis Carroll', 15, 'Mills & Boon', 'Nuevo', 81.00, 0, '2023-05-24 14:40:19', 4712),
-(61, 5, 30, 'The Witcher: Season of Storms', '8403281833', 'Walter Scott', 11, 'National Geographic', 'Malo', 41.00, 0, '2023-05-24 14:40:25', 4714),
-(62, 5, 30, 'The Witcher: Season of Storms', '8403281833', 'Walter Scott', 11, 'National Geographic', 'Malo', 41.00, 0, '2023-05-24 14:40:33', 4714),
-(63, 5, 30, 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', 'Desconocido', 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', 16, 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', 'Usado', 25.99, 0, '2023-05-24 14:40:42', 4725),
-(64, 5, 30, 'The Witcher: Season of Storms', '8403281833', 'Walter Scott', 11, 'National Geographic', 'Malo', 41.00, 0, '2023-05-24 14:41:15', 4714),
-(65, 5, 30, 'The Witcher: Season of Storms', '8403281833', 'Walter Scott', 11, 'National Geographic', 'Malo', 41.00, 0, '2023-05-24 14:44:41', 4714),
-(66, 5, 30, 'The Witcher: Season of Storms', '8403281833', 'Walter Scott', 11, 'National Geographic', 'Malo', 41.00, 0, '2023-05-24 14:45:45', 4714),
-(67, 5, 30, 'The Witcher: Season of Storms', '8403281833', 'Walter Scott', 11, 'National Geographic', 'Malo', 41.00, 0, '2023-05-24 14:46:01', 4714),
-(68, 5, 30, 'The Witcher: Season of Storms', '8403281833', 'Walter Scott', 11, 'National Geographic', 'Malo', 41.00, 0, '2023-05-24 14:49:10', 4714),
-(69, 5, 30, 'The Witcher: Season of Storms', '8403281833', 'Walter Scott', 11, 'National Geographic', 'Malo', 41.00, 0, '2023-05-24 14:50:54', 4714),
-(70, 5, 30, 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', 'Desconocido', 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', 16, 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', 'Usado', 25.99, 0, '2023-05-24 14:51:23', 4725);
-
 -- --------------------------------------------------------
 
 --
@@ -217,17 +169,6 @@ CREATE TABLE `review` (
   `fecha_review` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `review`
---
-
-INSERT INTO `review` (`id`, `id_usu_valorado`, `id_usu_valorador`, `id_libro`, `puntuacion`, `comentario`, `fecha_review`) VALUES
-(29, 30, 35, 4720, 5, '12211', '2023-05-24 11:34:38'),
-(30, 30, 35, 4720, 0, '', '2023-05-24 11:34:38'),
-(31, 30, 35, 4724, 5, '', '2023-05-24 11:49:48'),
-(32, 30, 35, 4596, 1, 'Bastante malo', '2023-05-24 11:55:31'),
-(33, 30, 35, 4724, 0, '', '2023-05-24 11:57:12');
-
 -- --------------------------------------------------------
 
 --
@@ -259,18 +200,6 @@ CREATE TABLE `usuarios` (
   `tipo` int(11) NOT NULL CHECK (`tipo` in (1,2)),
   `correo` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `usuarios`
---
-
-INSERT INTO `usuarios` (`id`, `apodo`, `tipo`, `correo`) VALUES
-(5, 'admin', 2, 'admin@admin.com'),
-(30, 'usu', 1, 'usu@usu.com'),
-(31, '3', 1, '3@3.com'),
-(32, '4', 1, '4@4.com'),
-(34, '1', 1, '1@1.com'),
-(35, 'qweqweqwe', 1, 'qwewq@1321.com');
 
 --
 -- Índices para tablas volcadas
@@ -371,19 +300,19 @@ ALTER TABLE `generos`
 -- AUTO_INCREMENT de la tabla `libros_vendidos`
 --
 ALTER TABLE `libros_vendidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=590;
 
 --
 -- AUTO_INCREMENT de la tabla `libros_venta`
 --
 ALTER TABLE `libros_venta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4729;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5831;
 
 --
 -- AUTO_INCREMENT de la tabla `review`
 --
 ALTER TABLE `review`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=537;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo`
@@ -395,7 +324,7 @@ ALTER TABLE `tipo`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- Restricciones para tablas volcadas
