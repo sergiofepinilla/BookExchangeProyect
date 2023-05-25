@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   if (!id) {
-    window.location.replace("../error/404.html");
+    window.location.replace("../home/home.php");
   } else {
     getProduct()
       .then((product) => {
@@ -238,18 +238,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (typeof currentUserId !== "undefined") {
       if (currentUserId == product.id_usuario) {
-        const buyBtn = document.getElementById("buyBtn");
-        buyBtn.disabled = true;
-        buyBtn.classList.add("btn-secondary");
-        buyBtn.classList.remove("btn-primary");
-        buyBtn.textContent = "No puedes comprar tu propio producto";
+        var comprarButton = document.getElementById("comprarButton");
+        comprarButton.disabled = true;
+        comprarButton.classList.add("btn-secondary");
+        comprarButton.classList.remove("btn-primary");
+        comprarButton.textContent = "No puedes comprar tu propio producto";
       }
     } else {
-      const buyBtn = document.getElementById("buyBtn");
-      buyBtn.disabled = true;
-      buyBtn.classList.add("btn-secondary");
-      buyBtn.classList.remove("btn-primary");
-      buyBtn.textContent =
+      var comprarButton = document.getElementById("comprarButton");
+      comprarButton.disabled = true;
+      comprarButton.classList.add("btn-secondary");
+      comprarButton.classList.remove("btn-primary");
+      comprarButton.textContent =
         "Necesitas estar registrado para poder comprar un producto";
     }
 

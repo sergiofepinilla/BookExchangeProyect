@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute();
 
         if ($stmt->affected_rows > 0) {
-            echo "completado";
+            echo "sucess";
         } else {
             echo "Ha habido un error en el borrado";
         }

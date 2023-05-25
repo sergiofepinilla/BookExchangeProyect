@@ -1,6 +1,29 @@
 <?php
 require_once 'includes/dbh.inc.php';
 
+$comentarios = [
+    "Gran producto, recomendado.",
+    "Excelente calidad, me encantó.",
+    "El artículo llegó a tiempo, muy bueno.",
+    "Mejor de lo que esperaba.",
+    "Muy satisfecho con mi compra.",
+    "El servicio al cliente fue excelente.",
+    "Rápido envío, gran servicio.",
+    "Superó mis expectativas.",
+    "Definitivamente compraré aquí de nuevo.",
+    "Producto de alta calidad, valió la pena la inversión.",
+    "Increíble, simplemente increíble.",
+    "Justo lo que estaba buscando.",
+    "No decepciona, buen producto.",
+    "Se lo recomendaría a mis amigos.",
+    "Realmente agradezco la rápida entrega.",
+    "Estoy realmente impresionado con este producto.",
+    "No puedo esperar para usarlo más.",
+    "Realmente satisfecho con esta compra.",
+    "Esto vale cada centavo.",
+    "¡El mejor producto en su clase!",
+];
+
 $editoriales = [
     "Penguin Random House",
     "HarperCollins",
@@ -612,19 +635,25 @@ function generateRandomBoolean()
     return rand(0, 1);
 }
 
-$maxBooks = 200; 
+$maxBooks = 400; 
 $insertedBooks = 0; 
 
 $carpetaImagenes = "imagenes/inyeccion/IMG/";
 $imagenes = glob($carpetaImagenes . "*.jpg");
 
 $conn = Connection::getConnection();
-$usuarios = [30, 31, 32, 33];
+$usuarios = [2,3,4,5,6,7,8,9,10];
 
 foreach ($titulos as $titulo) {
     if ($insertedBooks >= $maxBooks) {
         break; 
     }
+
+    // Asegúrate de que el vendedor y el comprador sean diferentes
+    do {
+        $id_usu_vendedor = $usuarios[array_rand($usuarios)];
+        $id_usu_comprador = $usuarios[array_rand($usuarios)];
+    } while ($id_usu_vendedor == $id_usu_comprador);
 
     $usuario = $usuarios[array_rand($usuarios)];
 
@@ -648,13 +677,31 @@ foreach ($titulos as $titulo) {
     $stmt->bind_param("isssisdsss", $usuario, $tituloEscaped, $isbn, $editorialEscaped, $genero, $estado, $precio, $descripcion, $imagen, $autor);
     $result = $stmt->execute();
 
-    if ($result) {
+     if ($result) {
         $insertedBooks++;
+
+        // Inserta en la tabla libros_vendidos
+        $query = "INSERT INTO libros_vendidos(id_usu_comprador, id_usu_vendedor, titulo, isbn, autor, genero, editorial, estado, precio, review)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($query);
+    $review = $comentarios[array_rand($comentarios)];
+    $stmt->bind_param("iississdss", $id_usu_comprador, $id_usu_vendedor, $tituloEscaped, $isbn, $autor, $genero, $editorialEscaped, $estado, $precio, $review);
+    $stmt->execute();
+
+        // Inserta en la tabla review
+        $query = "INSERT INTO review (id_usu_valorado, id_usu_valorador, puntuacion, comentario)
+              VALUES (?, ?, ?, ?)";
+        $stmt = $conn->prepare($query);
+        $puntuacion = rand(1, 5);
+        $comentario = $comentarios[array_rand($comentarios)];
+        $stmt->bind_param("iiis", $id_usu_vendedor, $id_usu_comprador, $puntuacion, $comentario);
+        $stmt->execute();
     } else {
         echo "Error al insertar el libro: " . $stmt->error;
     }
 }
 
-echo "Se han insertado $insertedBooks libros.";
+echo "Ok";
 
 $conn->close();
+?>
