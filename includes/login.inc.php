@@ -18,7 +18,6 @@ if (isset($_POST["login-submit"])) {
         header("location: ../login/login.php?error=wrongLogin");
         exit();
     } else {
-        // Iniciar sesión y crear la variable de sesión
         session_start();
         $_SESSION["user"] = serialize($user);
 

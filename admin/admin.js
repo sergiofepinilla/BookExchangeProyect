@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	});
 
 
-	// Borrar usuario
+	// Borrar Usuario
 	$(".delete-user").click(function() {
 		var idUsuario = $(this).data("id");
 		console.log(idUsuario);
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		}
 	});
   
-	// Bloquear usuario
+	// Bloquear Usuario
 	$(".block-user").click(function() {
 		var idUsuario = $(this).data("id");
 		console.log(idUsuario);

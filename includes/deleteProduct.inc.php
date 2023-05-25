@@ -22,6 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->close();
         $conn->close();
     } else {
-        header("Location: ../error.php"); // Redirige a una página de error si no se ha proporcionado el id del libro
+        header("Location: ../error.php"); 
     }
 }

@@ -225,9 +225,9 @@ $autores = [
     "Ernesto Sabato",
     "A.A. Milne",
     "Italo Calvino",
-]; // Agrega los autores que desees
+]; 
 
-$imagenesDirectorio = "imagenes/inyeccion/"; // Ruta al directorio que contiene las imágenes
+$imagenesDirectorio = "imagenes/inyeccion/"; 
 
 $titulos = [
     "1984",
@@ -604,7 +604,7 @@ function generateRandomISBN($length)
 
 function generateRandomPrice()
 {
-    return rand(10, 100); // Ajusta el rango de precios según tus necesidades
+    return rand(10, 100); 
 }
 
 function generateRandomBoolean()
@@ -612,8 +612,8 @@ function generateRandomBoolean()
     return rand(0, 1);
 }
 
-$maxBooks = 200; // Máximo de libros a insertar
-$insertedBooks = 0; // Contador de libros insertados
+$maxBooks = 200; 
+$insertedBooks = 0; 
 
 $carpetaImagenes = "imagenes/inyeccion/IMG/";
 $imagenes = glob($carpetaImagenes . "*.jpg");
@@ -623,12 +623,12 @@ $usuarios = [30, 31, 32, 33];
 
 foreach ($titulos as $titulo) {
     if ($insertedBooks >= $maxBooks) {
-        break; // Salir del bucle si se ha alcanzado el límite de libros
+        break; 
     }
 
     $usuario = $usuarios[array_rand($usuarios)];
 
-    $isbn = generateRandomISBN(10); // ISBN de 10 dígitos
+    $isbn = generateRandomISBN(10); 
     $editorial = $editoriales[array_rand($editoriales)];
     $genero = $generos[array_rand($generos)];
     $estado = $estados[array_rand($estados)];
