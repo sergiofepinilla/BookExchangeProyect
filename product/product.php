@@ -55,7 +55,7 @@
             <!-- Modal -->
             <div class="modal fade" id="comprarModal" tabindex="-1" aria-labelledby="comprarModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
-                    <div class="modal-content">
+                    <div class="modal-content dark-theme custom-text custom-card-border-2">
                         <div class="modal-header">
                             <h5 class="modal-title" id="comprarModalLabel">Completar la Compra</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -168,12 +168,12 @@
                                         </div>
                                     </div>
                                     <hr class="my-4">
-                                    <button class="w-100 btn btn-primary btn-lg" type="submit" id="buyBtn">Completar el pago</button>
+                                    <button class="w-100 btn primary-btn btn-lg  border border-white " type="submit" id="buyBtn">Completar el pago</button>
                                 </form>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn inf-nav custom-text" data-bs-dismiss="modal">Cerrar</button>
                         </div>
                     </div>
                 </div>
