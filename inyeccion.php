@@ -633,8 +633,6 @@ foreach ($titulos as $titulo) {
     $genero = $generos[array_rand($generos)];
     $estado = $estados[array_rand($estados)];
     $precio = generateRandomPrice();
-    $cambio = generateRandomBoolean();
-    $envio = generateRandomBoolean();
     $descripcion = $descripciones[array_rand($descripciones)];
     $indiceAleatorio = array_rand($imagenes);
     $rutaImagenAleatoria = $imagenes[$indiceAleatorio];
@@ -643,11 +641,11 @@ foreach ($titulos as $titulo) {
     $tituloEscaped = mysqli_real_escape_string($conn, $titulo);
     $editorialEscaped = mysqli_real_escape_string($conn, $editorial);
 
-    $query = "INSERT INTO libros_venta (id_usuario, titulo, isbn, editorial, genero, estado, precio, cambio, envio, descripcion, imagen, autor)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $query = "INSERT INTO libros_venta (id_usuario, titulo, isbn, editorial, genero, estado, precio, descripcion, imagen, autor)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("isssisdiisss", $usuario, $tituloEscaped, $isbn, $editorialEscaped, $genero, $estado, $precio, $cambio, $envio, $descripcion, $imagen, $autor);
+    $stmt->bind_param("isssisdsss", $usuario, $tituloEscaped, $isbn, $editorialEscaped, $genero, $estado, $precio, $descripcion, $imagen, $autor);
     $result = $stmt->execute();
 
     if ($result) {
