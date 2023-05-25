@@ -7,7 +7,7 @@
         <div class="col-md-12">
             <ul class="nav nav-pills mb-3 " id="pills-tab" role="tablist">
                 <li class="nav-item " role="presentation">
-                    <a class="nav-link active " id="pills-fase1-tab" data-bs-toggle="pill" href="#pills-fase1" role="tab" aria-controls="pills-fase1" aria-selected="true" style="pointer-events: none;">Información</a>
+                    <a class="nav-link active" id="pills-fase1-tab" data-bs-toggle="pill" href="#pills-fase1" role="tab" aria-controls="pills-fase1" aria-selected="true" style="pointer-events: none;">Información</a>
                 </li>
                 <li class="nav-item" role="presentation">
                     <a class="nav-link" id="pills-fase2-tab" data-bs-toggle="pill" href="#pills-fase2" role="tab" aria-controls="pills-fase2" aria-selected="false" style="pointer-events: none;">Precio y Envío</a>

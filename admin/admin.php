@@ -1,6 +1,16 @@
 <?php
     require_once '../header/header.php';
     require_once '../navbar/navbar.php';
+
+    if (!isset($_SESSION['user']) || $userType !== 2) {
+      echo '<script>window.location.href = "../home/home.php";</script>';
+      echo '<img src="../assets/img/403.png" alt="forbidden" class="dark-theme w-100">';
+      require_once "../footer/upper_footer.php"; 
+      echo '<script src="../navbar/navbar.js"></script>' ;
+       require_once "../footer/footer_links.php";
+      exit();
+    }
+
     include_once "../includes/dbh.inc.php";
     
     // Página Actual de Pestañas

@@ -130,3 +130,15 @@ a.profile-link {
 .custom-nav-pills{
   background-color: rebeccapurple;
 }
+
+.accent-text{
+  text-decoration: none;
+color: #a39fdb;
+}
+
+.xdddd{
+ 
+}
+.nav-link.active {
+  background-color: red;
+}

@@ -3,10 +3,10 @@
 
 <?php
 if (isset($_SESSION['user'])) {
-  echo
-  '<img src="../assets/img/403.png" alt="forbidden" class="bg-danger w-100">';
-   require_once "../footer/upper_footer.php"; 
- echo '<script src="../navbar/navbar.js"></script>' ;
+  echo '<script>window.location.href = "../home/home.php";</script>';
+  echo '<img src="../assets/img/403.png" alt="forbidden" class="custom-white-bg w-100">';
+  require_once "../footer/upper_footer.php"; 
+  echo '<script src="../navbar/navbar.js"></script>' ;
    require_once "../footer/footer_links.php";
   exit();
 } ?>
@@ -21,13 +21,13 @@ if (isset($_SESSION['user'])) {
           <form action="../includes/login.inc.php" method="POST">
             <!-- Email Input -->
             <div class="form-outline mb-4">
-              <label class="form-label" for="form3Example3">Direccion de correo</label>
+              <label class="form-label custom-text" for="form3Example3">Direccion de correo</label>
               <input type="text" id="form3Example3" class="form-control form-control-lg" placeholder="Introduce el correo electronico" name="uid" maxlength="69" />
             </div>
 
             <!-- Password Input -->
             <div class="form-outline mb-3">
-              <label class="form-label" for="form3Example4">Contraseña</label>
+              <label class="form-label custom-text" for="form3Example4">Contraseña</label>
               <input type="password" id="form3Example4" class="form-control form-control-lg" placeholder="Introduce la contraseña" name="pwd" maxlength="69" />
             </div>
 
@@ -46,20 +46,9 @@ if (isset($_SESSION['user'])) {
             }
             ?>
 
-            <div class="d-flex justify-content-between align-items-center">
-              <!-- Checkbox -->
-              <div class="form-check mb-0">
-                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
-                <label class="form-check-label" for="form2Example3">
-                  Recuerdame
-                </label>
-              </div>
-              <a href="#!" class="text-body">¿Olvidaste la contraseña?</a>
-            </div>
-
             <div class="text-center text-lg-start mt-4 pt-2">
-              <button type="submit" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;" name="login-submit">Inicias Sesión</button>
-              <p class="small fw-bold mt-2 pt-1 mb-0">¿No tienes una cuenta? <a href="../signup/signup.php" class="link-danger">Registrate</a></p>
+              <button type="submit" class="btn primary-btn custom-card-border-2  btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;" name="login-submit">Inicias Sesión</button>
+              <p class="small fw-bold mt-2 pt-1 mb-0 custom-text">¿No tienes una cuenta? <a href="../signup/signup.php" >Registrate</a></p>
             </div>
           </form>
         </div>
