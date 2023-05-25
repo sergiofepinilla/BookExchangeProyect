@@ -12,15 +12,17 @@ if (isset($_POST["idUsuario"])) {
     $stmt->execute();
     $resultado = $stmt->get_result();
 
-    if($resultado->num_rows > 0){
+    if ($resultado->num_rows > 0) {
         $usuario = $resultado->fetch_assoc();
-        $correo = $usuario['correo']; 
+        $correo = $usuario['correo'];
+
+        // Bloqueo de Usuario
 
         $stmt = $conn->prepare("INSERT INTO bloqueados (correo) VALUES (?)");
         $stmt->bind_param("s", $correo);
         $stmt->execute();
 
-        // Eliminar los registros del usuario en las otras tablas.
+        // Borrar Usuario de Todas las Tablas
         $query = "DELETE FROM datos_usuario WHERE id_usuario = ?;";
         $stmt = $conn->prepare($query);
         $stmt->bind_param("i", $id);

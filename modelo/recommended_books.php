@@ -1,5 +1,5 @@
 <?php
-require_once 'connection.php';
+require_once '../includes/dbh.inc.php';
 $conn = Connection::getConnection();
 
 if (isset($_COOKIE['genre'])) {
@@ -32,4 +32,3 @@ while ($row = $result->fetch_assoc()) {
 
 header("Content-Type: application/json");
 echo json_encode($products);
-?>

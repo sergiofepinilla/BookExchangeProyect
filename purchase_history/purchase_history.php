@@ -3,13 +3,13 @@ require_once '../header/header.php';
 require_once '../navbar/navbar.php';
 include_once "../includes/dbh.inc.php";
 
-// Definimos la página actual para cada pestaña
+// Pagina Actual de Cada Pestaña
 $pageComprados = isset($_GET['pageComprados']) ? (int)$_GET['pageComprados'] : 1;
 $pageVendidos = isset($_GET['pageVendidos']) ? (int)$_GET['pageVendidos'] : 1;
 $pageEnVenta = isset($_GET['pageEnVenta']) ? (int)$_GET['pageEnVenta'] : 1;
-$perPage = 10; // Limitamos los resultados a 10 por página
+$perPage = 10; // 10 Resultados por Página
 
-// Calculamos el inicio para cada pestaña
+// Inicio de Cada Pestaña
 $startComprados = ($pageComprados > 1) ? ($pageComprados * $perPage) - $perPage : 0;
 $startVendidos = ($pageVendidos > 1) ? ($pageVendidos * $perPage) - $perPage : 0;
 $startEnVenta = ($pageEnVenta > 1) ? ($pageEnVenta * $perPage) - $perPage : 0;
@@ -24,9 +24,6 @@ $stmt = $conn->prepare("
     WHERE libros_vendidos.id_usu_comprador = ? 
     ORDER BY libros_vendidos.id DESC
     LIMIT ? OFFSET ?
-    
-    
-    
 ");
 
 $stmt->bind_param("iii", $userId, $perPage, $startComprados);
@@ -260,7 +257,7 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
         <tbody>
           <?php while ($row = $resultLibrosEnVenta->fetch_assoc()) : ?>
             <tr>
-            <td><a class="klk" href="../product/product.php?id=<?php echo $row['id']; ?>"><?php echo htmlspecialchars($row['titulo']); ?></a></td>
+              <td><a class="klk" href="../product/product.php?id=<?php echo $row['id']; ?>"><?php echo htmlspecialchars($row['titulo']); ?></a></td>
               <td><?php echo htmlspecialchars($row['editorial']); ?></td>
               <td><?php echo htmlspecialchars($row['nombre_genero']); ?></td>
               <td><?php echo htmlspecialchars($row['estado']); ?></td>

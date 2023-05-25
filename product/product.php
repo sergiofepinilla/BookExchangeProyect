@@ -6,21 +6,20 @@
         <div class="col-4 d-flex flex-column align-items-center me-2 dark-theme custom-text custom-card-border-2" style="border-radius: 15px;">
             <div id="imgContainer" class="mt-3  d-flex align-items-center justify-content-center  my-auto" style="height: 200px; width: 100%;"></div>
             <div class="row mt-2 p-4">
-            <h5 class="text-center">Información del Vendedor</h5>
+                <h5 class="text-center">Información del Vendedor</h5>
                 <div class="card dark-theme  custom-card-border-2" style="border-radius: 15px;">
                     <div class="card-body">
-                   
+
                         <div class="row align-items-center">
                             <div id="profilePicture" class="col-auto d-flex align-items-center">
-                                <!-- Aquí va el contenido de la foto del vendedor -->
                             </div>
                             <div class="col-auto d-flex align-items-center">
                                 <h1 class="mb-2 custom-text fw-bold" id="usu_vendedor">Vendedor</h1>
                             </div>
-                            
+
                         </div>
                         <div class="row d-flex justify-content-end">
-                        <div class="col-auto d-flex align-items-center rating-container">
+                            <div class="col-auto d-flex align-items-center rating-container">
                                 <p class="star-rating" id="user_rating"></p>
                                 <p id="review_count"></p>
                             </div>
@@ -47,159 +46,158 @@
                 <p id="estado" class="limit-text">Estado.</p>
                 <hr>
                 <p id="descripcion" class="limit-text">Descripción.</p>
-        
+
             </div>
             <hr>
             <p class="fs-4 text-end" id="precio">9.99€</p>
-           <!-- Botón de Comprar -->
-<button type="button" class="btn btn-lg primary-btn w-100" id="comprarButton">Comprar</button>
+            <button type="button" class="btn btn-lg primary-btn w-100" id="comprarButton">Comprar</button>
 
-<!-- Modal -->
-<div class="modal fade" id="comprarModal" tabindex="-1" aria-labelledby="comprarModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="comprarModalLabel">Completar la Compra</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <!-- Aquí puedes insertar tu formulario para recolectar los datos de dirección del usuario -->
-        <div class="col">
-<h4 class="mb-3">Dirección de envio</h4>
-<form class="needs-validation" novalidate="">
-<div class="row g-3">
-<div class="col-sm-6">
-<label for="firstName" class="form-label">Nombre</label>
-<input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
-<div class="invalid-feedback">
-Se requiere un nombre válido.
-</div>
-</div>
-<div class="col-sm-6">
-<label for="lastName" class="form-label">Apellido</label>
-<input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
-<div class="invalid-feedback">
-Se requiere apellido válido.
-</div>
-</div>
-<div class="col-12">
-<label for="address" class="form-label">Dirección</label>
-<input type="text" class="form-control" id="address" placeholder="1234 Main St" required="">
-<div class="invalid-feedback">
-Por favor introduce tu direccion de envio.
-Please enter your shipping address.
-</div>
-</div>
-<div class="col-12">
-<label for="address2" class="form-label">Dirección 2 <span class="text-muted">(Opcional)</span></label>
-<input type="text" class="form-control" id="address2" placeholder="Apartamento o suite">
-</div>
-<div class="col-md-5">
-<label for="country" class="form-label">Cominudad Autónoma</label>
-<select class="form-select" id="country" required="">
-<option value="">Elige...</option>
-<option>Andalucía</option>
-  <option>Aragón</option>
-  <option>Asturias</option>
-  <option>Baleares</option>
-  <option>Canarias</option>
-  <option>Cantabria</option>
-  <option>Castilla y León</option>
-  <option>Castilla-La Mancha</option>
-  <option>Cataluña</option>
-  <option>Extremadura</option>
-  <option>Galicia</option>
-  <option>La Rioja</option>
-  <option>Madrid</option>
-  <option>Murcia</option>
-  <option>Navarra</option>
-  <option>País Vasco</option>
-  <option>Valencia</option>
-  <option>Ceuta</option>
-  <option>Melilla</option>
-</select>
-<div class="invalid-feedback">
-Selecciona un país válido.
-</div>
-</div>
-<div class="col-md-3">
-<label for="zip" class="form-label">Código postal</label>
-<input type="text" class="form-control" id="zip" placeholder="" required="">
-<div class="invalid-feedback">
-Código postal requerido.
-</div>
-</div>
-</div>
-<hr class="my-4">
-<div class="form-check">
-<input type="checkbox" class="form-check-input" id="same-address">
-<label class="form-check-label" for="same-address">La dirección de envío es la misma que mi dirección de facturación</label>
-</div>
-<hr class="my-4">
-<h4 class="mb-3">Pago</h4>
-<div class="my-3">
-</div>
-<div class="row gy-3">
-<div class="col-md-6">
-<label for="cc-name" class="form-label">Nombre en la tarjeta</label>
-<input type="text" class="form-control" id="cc-name" placeholder="" required="">
-<small class="text-muted">Nombre completo como se muestra en la tarjeta</small>
-<div class="invalid-feedback">
-Se requiere el nombre en la tarjeta
-</div>
-</div>
-<div class="col-md-6">
-<label for="cc-number" class="form-label">Número de tarjeta de crédito</label>
-<input type="text" class="form-control" id="cc-number" placeholder="" required="">
-<div class="invalid-feedback">
-Se requiere número de tarjeta de crédito
-</div>
-</div>
-<div class="col-md-3">
-<label for="cc-expiration" class="form-label">Vencimiento</label>
-<input type="text" class="form-control" id="cc-expiration" placeholder="" required="">
-<div class="invalid-feedback">
-Fecha de vencimiento requerida
-</div>
-</div>
-<div class="col-md-3">
-<label for="cc-cvv" class="form-label">CVV</label>
-<input type="text" class="form-control" id="cc-cvv" placeholder="" required="">
-<div class="invalid-feedback">
-Código de seguridad requerido
-</div>
-</div>
-</div>
-<hr class="my-4">
-<button class="w-100 btn btn-primary btn-lg" type="submit" id="buyBtn">Completar el pago</button>
-</form>
-</div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-  </div>
-</div>
+            <!-- Modal -->
+            <div class="modal fade" id="comprarModal" tabindex="-1" aria-labelledby="comprarModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="comprarModalLabel">Completar la Compra</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="col">
+                                <h4 class="mb-3">Dirección de envio</h4>
+                                <form class="needs-validation" novalidate="">
+                                    <div class="row g-3">
+                                        <div class="col-sm-6">
+                                            <label for="firstName" class="form-label">Nombre</label>
+                                            <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+                                            <div class="invalid-feedback">
+                                                Se requiere un nombre válido.
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label for="lastName" class="form-label">Apellido</label>
+                                            <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
+                                            <div class="invalid-feedback">
+                                                Se requiere apellido válido.
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="address" class="form-label">Dirección</label>
+                                            <input type="text" class="form-control" id="address" placeholder="1234 Main St" required="">
+                                            <div class="invalid-feedback">
+                                                Por favor introduce tu direccion de envio.
+                                                Please enter your shipping address.
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="address2" class="form-label">Dirección 2 <span class="text-muted">(Opcional)</span></label>
+                                            <input type="text" class="form-control" id="address2" placeholder="Apartamento o suite">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <label for="country" class="form-label">Cominudad Autónoma</label>
+                                            <select class="form-select" id="country" required="">
+                                                <option value="">Elige...</option>
+                                                <option>Andalucía</option>
+                                                <option>Aragón</option>
+                                                <option>Asturias</option>
+                                                <option>Baleares</option>
+                                                <option>Canarias</option>
+                                                <option>Cantabria</option>
+                                                <option>Castilla y León</option>
+                                                <option>Castilla-La Mancha</option>
+                                                <option>Cataluña</option>
+                                                <option>Extremadura</option>
+                                                <option>Galicia</option>
+                                                <option>La Rioja</option>
+                                                <option>Madrid</option>
+                                                <option>Murcia</option>
+                                                <option>Navarra</option>
+                                                <option>País Vasco</option>
+                                                <option>Valencia</option>
+                                                <option>Ceuta</option>
+                                                <option>Melilla</option>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Selecciona un país válido.
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="zip" class="form-label">Código postal</label>
+                                            <input type="text" class="form-control" id="zip" placeholder="" required="">
+                                            <div class="invalid-feedback">
+                                                Código postal requerido.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr class="my-4">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="same-address">
+                                        <label class="form-check-label" for="same-address">La dirección de envío es la misma que mi dirección de facturación</label>
+                                    </div>
+                                    <hr class="my-4">
+                                    <h4 class="mb-3">Pago</h4>
+                                    <div class="my-3">
+                                    </div>
+                                    <div class="row gy-3">
+                                        <div class="col-md-6">
+                                            <label for="cc-name" class="form-label">Nombre en la tarjeta</label>
+                                            <input type="text" class="form-control" id="cc-name" placeholder="" required="">
+                                            <small class="text-muted">Nombre completo como se muestra en la tarjeta</small>
+                                            <div class="invalid-feedback">
+                                                Se requiere el nombre en la tarjeta
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="cc-number" class="form-label">Número de tarjeta de crédito</label>
+                                            <input type="text" class="form-control" id="cc-number" placeholder="" required="">
+                                            <div class="invalid-feedback">
+                                                Se requiere número de tarjeta de crédito
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="cc-expiration" class="form-label">Vencimiento</label>
+                                            <input type="text" class="form-control" id="cc-expiration" placeholder="" required="">
+                                            <div class="invalid-feedback">
+                                                Fecha de vencimiento requerida
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="cc-cvv" class="form-label">CVV</label>
+                                            <input type="text" class="form-control" id="cc-cvv" placeholder="" required="">
+                                            <div class="invalid-feedback">
+                                                Código de seguridad requerido
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr class="my-4">
+                                    <button class="w-100 btn btn-primary btn-lg" type="submit" id="buyBtn">Completar el pago</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-<!-- MODAL FIN -->
+            <!-- MODAL FIN -->
             <p id="removeProductLink" style="display:none;" class="mt-2 text-center"><a href="#">¿Deseas retirar tu producto de la tienda?</a></p>
         </div>
     </div>
 </div>
-    <hr>
+<hr>
 <!-- Libros recomendados Container -->
-<div class="container mb-3"  id="recommendedContainer">
+<div class="container mb-3" id="recommendedContainer">
     <div class="row mb-2 mt-2">
         <div class="col">
-            <h1 >También te puede interesar...</h1>
+            <h1>También te puede interesar...</h1>
         </div>
         <div class="col d-flex justify-content-end">
             <a href="" class="align-self-center text-dark custom-link" id="recommended_shop">
-                <h2>Ver todos los libros recomendados...</h2></a>
+                <h2>Ver todos los libros recomendados...</h2>
+            </a>
         </div>
     </div>
-    <!-- Libros recomendados Row Container -->
+    <!-- Libros Recomendados Row Container -->
     <div id="recommendedCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner" id="recommendedCarouselInner">
         </div>
@@ -214,19 +212,19 @@ Código de seguridad requerido
     </div>
 </div>
 
-<!-- Libros recomendados Container FIN -->
+<!-- Libros Recomendados Container FIN -->
 
 
 
 
 </div>
-<?php 
-    echo "<script>let currentUserId = undefined;";
-    if(isset($userId)){
-        echo "currentUserId = $userId;";
-    } 
-    echo "</script>";
-    ?>
+<?php
+echo "<script>let currentUserId = undefined;";
+if (isset($userId)) {
+    echo "currentUserId = $userId;";
+}
+echo "</script>";
+?>
 <?php echo "<script>var sellerUserId;</script>"; ?>
 <?php require_once '../footer/upper_footer.php' ?>
 <script src="../navbar/navbar.js"></script>

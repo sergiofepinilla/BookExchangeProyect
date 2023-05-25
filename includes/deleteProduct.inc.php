@@ -1,4 +1,4 @@
-<?php
+<?php   // Borrar Libro
 include_once 'dbh.inc.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $conn = Connection::getConnection();
 
-        // Preparar la consulta SQL para eliminar el libro
+
         $stmt = $conn->prepare("DELETE FROM libros_venta WHERE id = ?");
         $stmt->bind_param("i", $idLibro);
 

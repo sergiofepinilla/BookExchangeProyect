@@ -9,7 +9,7 @@ if (isset($_POST["login-submit"])) {
 
     if (checkEmptyValuesLogin($uid, $pwd) !== false) {
         header("location: ../login/login.php?error=emptyFields");
-        exit(); // para el script
+        exit();
     }
 
     $user = User::login($uid, $pwd);
@@ -22,7 +22,6 @@ if (isset($_POST["login-submit"])) {
         session_start();
         $_SESSION["user"] = serialize($user);
 
-        // Redirigir a la página de inicio
         header("location: ../home/home.php");
         exit();
     }

@@ -1,4 +1,4 @@
-<?php
+<?php //Varias Funciones Generales
 function checkEmptyValues($name, $email, $uid, $pwd, $pwdRepeat)
 {
     $result = null;
@@ -15,7 +15,8 @@ function checkEmptyValues($name, $email, $uid, $pwd, $pwdRepeat)
     }
     return $result;
 }
-function isUserBlocked($conn, $email){
+function isUserBlocked($conn, $email)
+{
     $sql = "SELECT * FROM bloqueados WHERE correo = ?;";
     $stmt = mysqli_stmt_init($conn);
 
@@ -31,8 +32,7 @@ function isUserBlocked($conn, $email){
 
     if ($row = mysqli_fetch_assoc($resultData)) {
         return $row;
-    }
-    else {
+    } else {
         $result = false;
         return $result;
     }
@@ -118,7 +118,7 @@ function matchPwd($pwd, $pwdRepeat)
     }
     return $result;
 }
-
+// Comprobar si Usuario Existe 
 function uidExists($conn, $uid, $email)
 {
     $sql = 'SELECT US.id as id, US.tipo as userType, US.apodo as nick,
@@ -159,7 +159,7 @@ function uidExists($conn, $uid, $email)
     mysqli_stmt_close($stmt);
 }
 
-
+// Guarda Consulta 
 function saveTicket($conn, $contactName, $contactEmail, $contactText)
 {
     $sql = "INSERT INTO contacto (nombre_completo,correo,descripcion) VALUES (?,?,?);";
@@ -168,7 +168,7 @@ function saveTicket($conn, $contactName, $contactEmail, $contactText)
     $stmt->execute();
 }
 
-
+// Personalizar Perfil
 function updateData(
     $conn,
     $userId,
@@ -188,8 +188,8 @@ function updateData(
     $stmt->execute();
 
     if ($stmt->affected_rows > 0) {
-        return true; // Se realizaron cambios
+        return true;
     } else {
-        return false; // No se realizaron cambios
+        return false;
     }
 }

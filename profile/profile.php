@@ -11,14 +11,14 @@
 </div>
 
 <img src="../assets/img/no-result.JPG" alt="" id="no-results-image" class="w-75 mt-5 mb-5 mx-auto" style="display:none">
-<!-- USER FIX -->
+<!-- USER -->
 <div class="container border boder-5 border-white mt-5 mb-5 rounded inf-nav" id="user-info">
     <!-- Perfil -->
     <div class="row card-body inf-nav rounded inf-nav custom-text">
         <div class="d-flex text-black flex-column flex-md-row">
             <div class="me-3 mb-md-0 flex">
                 <div id="profileImageContainer" class="profileImageContainer"></div>
-                <!-- IMAGE EDITING-->
+                <!-- EDITAR IMAGEN-->
                 <?php if (isset($_POST["editProfileSubmit"])) : ?>
                     <form action="../includes/profile.inc.php" method="POST" enctype="multipart/form-data" class="d-flex justify-content-center">
                         <div class="row">
@@ -32,7 +32,7 @@
             </div>
             <div class="flex-grow-1 ms-3 ms-md-0 mt-3 mt-md-0">
                 <div class="card-body">
-                    <!-- Start of Profile Details -->
+                    <!-- Estadísticas -->
                     <div class="row">
                         <?php if (isset($userId) && $userId == $_GET['id']) { ?>
                             <div class="col-12 col-md-4">
@@ -71,7 +71,7 @@
                             <span class="mt-2" id="apodo"></span>
                         </div>
                     </div>
-                    <!-- End of Profile Details -->
+                    <!-- Estadísticas Fin -->
                 </div>
             </div>
         </div>
@@ -170,7 +170,7 @@
                 <div class="col-md-12 d-flex justify-content-between align-items-center">
                     <h2 class="mt-3">Valoraciones de los usuarios</h2>
                 </div>
-                <!-- Aquí es donde se cargarán las valoraciones -->
+                <!-- Valoraciones Container -->
                 <div id="reviewsContainer" class="mt-4"></div>
             </div>
         </div>

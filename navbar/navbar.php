@@ -110,9 +110,11 @@ session_start();
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item " href="../home/logout.php">
+                            <li>
+                                <a class="dropdown-item " href="../home/logout.php">
                                     <p>Cerrar Sesión</p>
-                                </a></li>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>

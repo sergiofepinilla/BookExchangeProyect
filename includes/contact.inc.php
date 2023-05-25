@@ -1,4 +1,4 @@
-<?php
+<?php // Gestión de Contacto
 if (isset($_POST["contact-submit"])) {
     include_once "dbh.inc.php";
     include_once "functions.inc.php";
