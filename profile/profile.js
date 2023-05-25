@@ -44,7 +44,6 @@ var containerNovedades = document.getElementById("containerNovedades");
 var productosLista = document.getElementById("productosLista");
 
 function loadCarousel(carouselInnerId, productsToShow, userInfo) {
-  // Crea la imagen de perfil aquí
   var imgPerfil = document.createElement("img");
   imgPerfil.classList.add(
     "card-img-top",
@@ -60,10 +59,8 @@ function loadCarousel(carouselInnerId, productsToShow, userInfo) {
   imgPerfil.style.width = "180px";
   imgPerfil.style.borderRadius = "10px";
 
-  // Selecciona el contenedor de la imagen de perfil
   var profileImageContainer = document.getElementById("profileImageContainer");
 
-  // Agrega la imagen de perfil al contenedor
   profileImageContainer.appendChild(imgPerfil);
 
   var usu_apodo = document.getElementById("apodo");
@@ -119,8 +116,7 @@ getProducts().then(
     console.log(data);
     var userInfo = data.user_info;
     if (userInfo.length === 0) {
-      // Suponiendo que data.products es un array.
-      // No se encontraron productos para este usuario, mostrar imagen y ocultar divs.
+      // Mostrar Imagen no-products 
       document.getElementById("no-results-image").style.display = "block";
       document.getElementById("user-info").style.display = "none";
       document.getElementById("user-reviews").style.display = "none";
@@ -142,11 +138,11 @@ getProducts().then(
     var lastBooks = products;
     loadCarousel("carouselInner", lastBooks, userInfo);
 
-    // Muestra la cantidad de libros vendidos
+    // Cantidad Libros Vendidos
     var libros_vendidos = document.getElementById("libros_vendidos");
     libros_vendidos.innerHTML = data.books_sold;
 
-    // Muestra la cantidad de libros en venta
+    // Cantidad Libros Venta
     var libros_en_venta = document.getElementById("libros_en_venta");
     libros_en_venta.innerHTML = data.books_on_sale;
   },
@@ -171,9 +167,10 @@ getReviews().then(
 
     loadReviews(reviews); // Llama a la nueva función aquí
 
-    // Muestra la puntuación media
+    // Puntuación Media
     var puntuacion = document.getElementById("puntuacion");
-    puntuacion.innerHTML = data.average_score.toFixed(2); // Convierte la puntuación media a un número con dos decimales
+    // Puntuación Media a Numero con 2 Decimales
+    puntuacion.innerHTML = data.average_score.toFixed(2); 
   },
   function (error) {
     console.error(error);
@@ -181,7 +178,7 @@ getReviews().then(
 );
 
 function loadReviews(reviews) {
-  var reviewsContainer = document.getElementById("reviewsContainer"); // Asegúrate de tener este contenedor en tu HTML
+  var reviewsContainer = document.getElementById("reviewsContainer"); 
 
   reviews.forEach(function (review) {
     var reviewCard = createReviewCard(review);
@@ -314,14 +311,14 @@ function createReviewCard(review) {
 
   var imgLink = document.createElement("a");
   imgLink.href = `../profile/profile.php?id=${review.id_usu_valorador}`;
-  imgLink.classList.add("profile-link"); // Añade la clase aquí
+  imgLink.classList.add("profile-link"); 
 
   var img = document.createElement("img");
   img.classList.add("rounded-circle");
   img.src = "data:image/jpeg;base64," + review.foto_perfil;
   img.alt = "Foto de perfil del revisor";
-  img.style.width = "60px"; // Ajusta este valor para cambiar el tamaño de la imagen
-  img.style.height = "60px"; // Asegúrate de que el alto y el ancho sean iguales para una imagen circular
+  img.style.width = "60px"; 
+  img.style.height = "60px"; 
   img.style.objectFit = "cover";
 
   imgLink.appendChild(img);
@@ -332,7 +329,7 @@ function createReviewCard(review) {
 
   var titleLink = document.createElement("a");
   titleLink.href = `../profile/profile.php?id=${review.id_usu_valorador}`;
-  titleLink.classList.add("profile-link"); // Añade la clase aquí
+  titleLink.classList.add("profile-link"); 
 
   var title = document.createElement("h5");
   title.classList.add("card-title", "mb-0");
@@ -353,7 +350,7 @@ function createReviewCard(review) {
   colRating.classList.add("col-auto");
 
   var rating = document.createElement("p");
-  rating.classList.add("card-text", "mb-3", "star-rating"); // Añade la clase aquí
+  rating.classList.add("card-text", "mb-3", "star-rating"); 
   var fullStar = "&#9733;";
   var emptyStar = "&#9734;";
   var stars = "";
@@ -410,10 +407,9 @@ if (profilePictureElement) {
   document
     .getElementById("profilePicture")
     .addEventListener("change", function (e) {
-      // Comprueba si el usuario seleccionó un archivo
       if (e.target.files && e.target.files[0]) {
-        // Restricciones de tamaño y formato
-        var fileSize = e.target.files[0].size / 1024 / 1024; // tamaño del archivo en MB
+        // Restricciones Tamaño / Formato
+        var fileSize = e.target.files[0].size / 1024 / 1024;
         var fileType = e.target.files[0].type;
 
         if (fileSize > 2) {
@@ -433,7 +429,6 @@ if (profilePictureElement) {
         var reader = new FileReader();
 
         reader.onload = function (event) {
-          // Cuando la imagen esté cargada, reemplace la imagen del perfil
           var imgElement = document.createElement("img");
           imgElement.src = event.target.result;
           imgElement.classList.add(
@@ -449,13 +444,11 @@ if (profilePictureElement) {
           imgElement.style.width = "180px";
           imgElement.style.borderRadius = "10px";
 
-          // Limpia el contenedor de la imagen de perfil y agrega la nueva imagen
           var container = document.getElementById("profileImageContainer");
           container.innerHTML = "";
           container.appendChild(imgElement);
         };
 
-        // Lee la imagen como URL de datos
         reader.readAsDataURL(e.target.files[0]);
       } else {
         console.log("No file selected");
