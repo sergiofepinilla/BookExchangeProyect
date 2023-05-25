@@ -247,30 +247,28 @@ document.addEventListener("DOMContentLoaded", function () {
     cookieNotification.style.display = "block";
   }
 
-  // Ocultar la notificación de cookies sin establecer la cookie de género
+  // Ocultar Notificación sin Establecer Cookie
   function acceptCookies() {
-    setCookie("cookiesAccepted", "true", 30); // Establece la cookie "cookiesAccepted" con el valor "true" durante 30 días
+    setCookie("cookiesAccepted", "true", 30); 
     var cookieNotification = document.getElementById("cookie-notification");
     cookieNotification.style.display = "none";
   }
 
-  // Rechazar las cookies y ocultar la notificación sin establecer la cookie de género
+  //Rechazar Cookie - Ocultar Notificación
   function rejectCookies() {
     var cookieNotification = document.getElementById("cookie-notification");
     cookieNotification.style.display = "none";
   }
 
-  // Verifica si la cookie de género ya está establecida
+  // Verifica Cookie "genero" Establecida
   var genreCookie = getCookie("cookiesAccepted");
   if (genreCookie === null) {
     showCookieNotification();
   }
 
-  // Maneja el evento de clic en el botón de aceptar cookies
   var acceptCookiesButton = document.getElementById("accept-cookies");
   acceptCookiesButton.addEventListener("click", acceptCookies);
-
-  // Maneja el evento de clic en el botón de rechazar cookies
+  
   var rejectCookiesButton = document.getElementById("reject-cookies");
   rejectCookiesButton.addEventListener("click", rejectCookies);
 });
