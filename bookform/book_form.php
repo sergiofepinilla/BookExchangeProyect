@@ -5,9 +5,9 @@
 <div class="container mt-5 mb-5">
     <div class="row">
         <div class="col-md-12">
-            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link active" id="pills-fase1-tab" data-bs-toggle="pill" href="#pills-fase1" role="tab" aria-controls="pills-fase1" aria-selected="true" style="pointer-events: none;">Información</a>
+            <ul class="nav nav-pills mb-3 " id="pills-tab" role="tablist">
+                <li class="nav-item " role="presentation">
+                    <a class="nav-link active " id="pills-fase1-tab" data-bs-toggle="pill" href="#pills-fase1" role="tab" aria-controls="pills-fase1" aria-selected="true" style="pointer-events: none;">Información</a>
                 </li>
                 <li class="nav-item" role="presentation">
                     <a class="nav-link" id="pills-fase2-tab" data-bs-toggle="pill" href="#pills-fase2" role="tab" aria-controls="pills-fase2" aria-selected="false" style="pointer-events: none;">Precio y Envío</a>
@@ -22,32 +22,32 @@
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-fase1" role="tabpanel" aria-labelledby="pills-fase1-tab">
                     <h1>Información del libro</h1>
-                    <hr>
+                    <div class="custom-hr w-100 mb-3"></div>
                     <form id="formularioCompleto" method="post" action="../includes/book_form.inc.php" enctype="multipart/form-data" novalidate>
                         <div class="row">
                             <!-- Columna izquierda -->
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="nombre" class="form-label">Nombre del libro *</label>
+                                    <label for="nombre" class="form-label custom-text">Nombre del libro *</label>
                                     <input type="text" placeholder="Ingrese el nombre del libro *" class="form-control" id="nombre" name="nombre" maxlength="50" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="isbn" class="form-label">ISBN</label>
+                                    <label for="isbn" class="form-label custom-text">ISBN</label>
                                     <input type="number" placeholder="Ingrese el ISBN del libro" class="form-control" id="isbn" name="isbn">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="autor" class="form-label">Autor</label>
+                                    <label for="autor" class="form-label custom-text">Autor</label>
                                     <input type="text" placeholder="Ingrese el autor del libro " class="form-control" id="autor" name="autor" maxlength="50">
                                 </div>
                             </div>
                             <!-- Columna derecha -->
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="editorial" class="form-label">Editorial</label>
+                                    <label for="editorial" class="form-label custom-text">Editorial</label>
                                     <input type="text" placeholder="Ingrese la editorial del libro" class="form-control" id="editorial" name="editorial" maxlength="50">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="genero" class="form-label">Género *</label>
+                                    <label for="genero" class="form-label custom-text">Género *</label>
                                     <select class="form-select" id="genero" name="genero" required>
                                         <option value="">Seleccione el género del libro</option>
                                         <option value="1">Acción y aventura</option>
@@ -79,7 +79,7 @@
                                     </select>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="estado" class="form-label">Estado del libro *</label>
+                                    <label for="estado" class="form-label custom-text">Estado del libro *</label>
                                     <select class="form-select" id="estado" name="estado" required>
                                         <option value="">Seleccione el estado del libro</option>
                                         <option value="nuevo">Nuevo</option>
@@ -89,35 +89,36 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-primary" id="btnFase1">Siguiente</button>
+                        <button type="button" class="btn  primary-btn" id="btnFase1">Siguiente</button>
                 </div>
                 <div class="tab-pane fade" id="pills-fase2" role="tabpanel" aria-labelledby="pills-fase2-tab">
                 <h1>Precio y envio</h1>
+                <div class="custom-hr w-100 mb-3"></div>
                 <div class="mb-3 col-sm-6">
-                <label for="precio" class="form-label">Precio</label>
+                <label for="precio" class="form-label custom-text">Precio</label>
                 <div class="input-group">
-                <input type="number" class="form-control" id="precio" name="precio" required>
+                <input type="number" class="form-control" id="precio" name="precio" placeholder="Ingrese el precio del libro" required>
                 <span class="input-group-text">
                 <i class="bi bi-currency-euro"></i>
                 </span>
                 </div>
                 </div>
                 <div class="mb-3">
-                <label for="descripcion" class="form-label">Descripción</label>
-                <textarea class="form-control" id="descripcion" name="descripcion" rows="5"></textarea>
+                <label for="descripcion" class="form-label custom-text">Descripción</label>
+                <textarea class="form-control" id="descripcion" name="descripcion" rows="5" placeholder="Introduzca una brece descripción del libro"></textarea>
                 </div>
-                <button type="button" class="btn btn-secondary" id="btnRegresar">Regresar</button>
-                <button type="button" class="btn btn-primary" id="btnFase2">Siguiente</button>
+                <button type="button" class="btn inf-nav border border-white border-2 custom-text" id="btnRegresar">Regresar</button>
+                <button type="button" class="btn primary-btn" id="btnFase2">Siguiente</button>
                 </div>
                 <div class="tab-pane fade" id="pills-fase3" role="tabpanel" aria-labelledby="pills-fase3-tab">
                 <h1>Imagen del libro</h1>
-                <hr>
+                <div class="custom-hr w-100 mb-3"></div>
                 <div class="row">
                 <!-- Columna Izquierda: Seleccionar archivo -->
                 <div class="col-md-6">
                 <div class="mb-3">
-                <h5>Seleccione una imagen para la portada del libro</h5>
-                <hr>
+                <h5 class="custom-text">Seleccione una imagen para la portada del libro</h5>
+                <div class="custom-hr w-100 mb-3"></div>
                 <input class="form-control" type="file" id="imagen" name="imagen">
                 </div>
                 </div>
@@ -125,23 +126,23 @@
                 <div class="col-md-6">
                 <div class="mb-3">
                 <!-- Previsualización -->
-                <h5>Imagen del libro</h5>
-                <hr>
+                <h5 class="custom-text">Imagen del libro</h5>
+                <div class="custom-hr w-100 mb-3"></div>
                 <img src="" id="imagenPrevia" alt="" style="max-width: 100%; max-height: 300px;">
                 </div>
                 </div>
                 </div>
-                <button type="button" class="btn btn-secondary" id="btnRegresar2">Regresar</button>
-                <button type="button" class="btn btn-primary" id="btnFase3">Siguiente</button>
+                <button type="button" class="btn inf-nav border border-white border-2 custom-text" id="btnRegresar2">Regresar</button>
+                <button type="button" class="btn primary-btn" id="btnFase3">Siguiente</button>
                 </div>
                 <div class="tab-pane fade" id="pills-fase4" role="tabpanel" aria-labelledby="pills-fase4-tab">
                 <h1>Confirmación</h1>
-                <hr>
+                <div class="custom-hr w-100 mb-3"></div>
                 <div class="row">
                 <!-- Columna izquierda: Datos -->
                 <div class="col-md-6">
-                <h5>Información del libro</h5>
-                <ul>
+                <h5 class="custom-text">Información del libro</h5>
+                <ul class="custom-text">
                 <li><strong>Nombre del libro:</strong> <span id="confirmNombre" class="limit-text"></span></li>
                 <li><strong>Autor:</strong> <span id="confirmAutor" class="limit-text"></span></li>
                 <li><strong>ISBN:</strong> <span id="confirmISBN" class="limit-text"></span></li>
@@ -154,19 +155,19 @@
                 </div>
                 <!-- Columna derecha: Imagen del libro -->
                 <div class="col-md-6">
-                <h5>Imagen del libro</h5>
+                <h5 class="custom-text">Imagen del libro</h5>
                 <div class="mb-3">
                 <img src="" class="img-fluid border border-dark border-3" id="confirmImagen" alt="Vista previa de la imagen" style="max-width: 100%; max-height: 300px;">
                 </div>
                 </div>
                 </div>
-                <hr>
+                <div class="custom-hr w-100 mb-3"></div>
                 <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="confirmarEnvio" name="confirmarEnvio">
-                <label for="confirmarEnvio" class="form-check-label">Confirmo que toda la información es correcta</label>
+                <label for="confirmarEnvio" class="form-check-label custom-text">Confirmo que toda la información es correcta</label>
                 </div>
-                <button id="btnRegresar3" type="button" class="btn btn-secondary">Atrás</button>
-                <input id="enviarFormulario" type="submit" class="btn btn-primary" value="Enviar" disabled>
+                <button id="btnRegresar3" type="button" class="btn inf-nav border border-white border-2 custom-text">Atrás</button>
+                <input id="enviarFormulario" type="submit" class="btn primary-btn" value="Enviar" disabled>
                 </form>
                 </div>
             </div>

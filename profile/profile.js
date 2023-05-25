@@ -298,7 +298,7 @@ function createCard(producto, margin = "") {
 
 function createReviewCard(review) {
   var card = document.createElement("div");
-  card.classList.add("card", "my-2", "rounded", "bg-light");
+  card.classList.add("card", "my-2", "rounded", "dark-theme","custom-card-border-2","custom-text");
 
   var cardBody = document.createElement("div");
   cardBody.classList.add("card-body");
@@ -341,7 +341,8 @@ function createReviewCard(review) {
   rowTop.appendChild(colImg);
   rowTop.appendChild(colName);
 
-  var hr = document.createElement("hr");
+  var hr = document.createElement("div");
+  hr.classList.add("custom-hr","w-100","mb-2","mt-2"); 
 
   var rowMid = document.createElement("div");
   rowMid.classList.add("row", "align-items-center");

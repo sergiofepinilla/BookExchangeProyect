@@ -5,7 +5,9 @@
 if (isset($_SESSION['user'])) {
   echo
   '<img src="../assets/img/403.png" alt="forbidden" class="bg-danger w-100">';
-  include_once "../footer/footer.html";
+   require_once "../footer/upper_footer.php"; 
+ echo '<script src="../navbar/navbar.js"></script>' ;
+   require_once "../footer/footer_links.php";
   exit();
 } ?>
 <div class="container  mt-5 mb-5 ">

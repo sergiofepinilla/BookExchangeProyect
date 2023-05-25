@@ -1,10 +1,13 @@
 <?php require_once '../header/header.php' ?>
 <?php require_once '../navbar/navbar.php' ?>
 
-<?php require_once '../navbar/navbar.php';
+<?php
 if (isset($_SESSION['user'])) {
-  echo '<img src="../assets/img/403.png" alt="forbidden" class="bg-danger w-100">';
-  include_once "../footer/footer.php";
+  echo
+  '<img src="../assets/img/403.png" alt="forbidden" class="bg-danger w-100">';
+   require_once "../footer/upper_footer.php"; 
+ echo '<script src="../navbar/navbar.js"></script>' ;
+   require_once "../footer/footer_links.php";
   exit();
 } ?>
 <div class="container mt-5 mb-5 ">

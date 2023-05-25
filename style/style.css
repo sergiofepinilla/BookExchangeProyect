@@ -126,3 +126,7 @@ a.profile-link {
 .limit-text{
   word-wrap: break-word;
 }
+
+.custom-nav-pills{
+  background-color: rebeccapurple;
+}
