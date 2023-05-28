@@ -101,7 +101,7 @@ session_start();
 
                 <div class="button-container me-2 d-none d-lg-block">
                     <div class="dropdown">
-                        <button class="border border-white btn btn-lg btn-outline-white text-white dropdown-toggle  " type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="border border-white btn btn-lg btn-outline-white text-white dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-person"></i>
                         </button>
                         <ul class="dropdown-menu border-dark " aria-labelledby="dropdownMenuButton">

@@ -3,7 +3,7 @@ require_once '../header/header.php';
 require_once '../navbar/navbar.php';
 
 if (!isset($_SESSION['user'])) {
-  echo
+  echo '<script>window.location.href = "../home/home.php";</script>';
   '<img src="../assets/img/403.png" alt="forbidden" class="bg-danger w-100">';
   require_once "../footer/upper_footer.php";
   echo '<script src="../navbar/navbar.js"></script>';
