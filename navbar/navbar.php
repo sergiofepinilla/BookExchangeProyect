@@ -92,8 +92,11 @@ session_start();
                 </div>
 
             <?php } else { ?>
-                <button class="btn btn-lg me-3 border border-2 fw-bold primary-btn" onclick="window.location.href='../bookform/book_form.php'">
-                    <i class="bi bi-book me-1 "></i> Subir Libro
+                <button class="btn btn-lg me-3 border border-2 primary-btn">
+                    <a href="../bookform/book_form.php" class="book-link fw-bold">
+                        <i class="bi bi-book me-1"> Subir Libro</i>
+                    </a>
+
                 </button>
 
                 <div class="button-container me-2 d-none d-lg-block">

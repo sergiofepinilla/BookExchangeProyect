@@ -116,7 +116,7 @@ getProducts().then(
     console.log(data);
     var userInfo = data.user_info;
     if (userInfo.length === 0) {
-      // Mostrar Imagen no-products 
+      // Mostrar Imagen no-products
       document.getElementById("no-results-image").style.display = "block";
       document.getElementById("user-info").style.display = "none";
       document.getElementById("user-reviews").style.display = "none";
@@ -165,12 +165,12 @@ getReviews().then(
     var reviewsTabLink = document.getElementById("reviewsTabLink");
     reviewsTabLink.innerHTML = `Valoraciones (${total})`;
 
-    loadReviews(reviews); // Llama a la nueva función aquí
+    loadReviews(reviews);
 
     // Puntuación Media
     var puntuacion = document.getElementById("puntuacion");
     // Puntuación Media a Numero con 2 Decimales
-    puntuacion.innerHTML = data.average_score.toFixed(2); 
+    puntuacion.innerHTML = data.average_score.toFixed(2);
   },
   function (error) {
     console.error(error);
@@ -178,7 +178,7 @@ getReviews().then(
 );
 
 function loadReviews(reviews) {
-  var reviewsContainer = document.getElementById("reviewsContainer"); 
+  var reviewsContainer = document.getElementById("reviewsContainer");
 
   reviews.forEach(function (review) {
     var reviewCard = createReviewCard(review);
@@ -187,118 +187,140 @@ function loadReviews(reviews) {
 }
 
 function createCard(producto, margin = "") {
-    var card = document.createElement("div");
-    card.classList.add("col", "bg-black");
-    if (margin) card.classList.add(margin);
-    card.id = producto.id;
+  var card = document.createElement("div");
+  card.classList.add("col", "bg-black");
+  if (margin) card.classList.add(margin);
+  card.id = producto.id;
 
-    var innerCard = document.createElement("div");
-    innerCard.classList.add(
-      "bg-black",
-      "text-white",
-      "card",
-      "d-flex",
-      "flex-column",
-      "h-100"
-    );
+  var innerCard = document.createElement("div");
+  innerCard.classList.add(
+    "bg-black",
+    "text-white",
+    "card",
+    "d-flex",
+    "flex-column",
+    "h-100"
+  );
 
-    var imgContainer = document.createElement("div");
-    imgContainer.classList.add(
-      "flex-grow-1",
-      "d-flex",
-      "align-items-center",
-      "justify-content-center",
-      "img-fluid",
-      "overflow-hidden",
+  var imgContainer = document.createElement("div");
+  imgContainer.classList.add(
+    "flex-grow-1",
+    "d-flex",
+    "align-items-center",
+    "justify-content-center",
+    "img-fluid",
+    "overflow-hidden",
     "custom-card-border",
     "rounded"
-    );
-    imgContainer.style.height = "250px";
+  );
+  imgContainer.style.height = "250px";
 
-    var link = document.createElement("a");
-    link.href = `../product/product.php?id=${producto.id}`;
+  var link = document.createElement("a");
+  link.href = `../product/product.php?id=${producto.id}`;
 
-    var img = document.createElement("img");
-    img.classList.add("card-img-top", "img-fluid");
-    img.src = "data:image/jpeg;base64," + producto.imagen;
-    img.alt = producto.titulo;
-    img.style.objectFit = "contain";
-    img.style.height = "100%";
-    img.style.width = "auto";
+  var img = document.createElement("img");
+  img.classList.add("card-img-top", "img-fluid");
+  img.src = "data:image/jpeg;base64," + producto.imagen;
+  img.alt = producto.titulo;
+  img.style.objectFit = "contain";
+  img.style.height = "100%";
+  img.style.width = "auto";
 
-    imgContainer.appendChild(img);
-    link.appendChild(imgContainer);
+  imgContainer.appendChild(img);
+  link.appendChild(imgContainer);
 
-    var cardBody = document.createElement("div");
-    cardBody.classList.add("card-body", "d-flex", "flex-column", "dark-theme","custom-card-border","rounded");
+  var cardBody = document.createElement("div");
+  cardBody.classList.add(
+    "card-body",
+    "d-flex",
+    "flex-column",
+    "dark-theme",
+    "custom-card-border",
+    "rounded"
+  );
 
-    var bookNameRow = document.createElement("div");
-    bookNameRow.classList.add("row", "justify-content-center");
+  var bookNameRow = document.createElement("div");
+  bookNameRow.classList.add("row", "justify-content-center");
 
-    var bookName = document.createElement("p");
-    bookName.classList.add("mb-2", "fw-bold");
-    bookName.textContent = producto.titulo;
-    applyEllipsisStyle(bookName, "1.2em", 1);
+  var bookName = document.createElement("p");
+  bookName.classList.add("mb-2", "fw-bold");
+  bookName.textContent = producto.titulo;
+  applyEllipsisStyle(bookName, "1.2em", 1);
 
-    bookNameRow.appendChild(bookName);
+  bookNameRow.appendChild(bookName);
 
-    var autorBadgeRow = document.createElement("div");
-    autorBadgeRow.classList.add("row", "justify-content-center", "mb-3");
+  var autorBadgeRow = document.createElement("div");
+  autorBadgeRow.classList.add("row", "justify-content-center", "mb-3");
 
-    var autorBadge = document.createElement("span");
-    autorBadge.classList.add("badge", "bg-light","text-dark");
-    autorBadge.textContent = producto.autor;
-    
-    autorBadgeRow.appendChild(autorBadge);
+  var autorBadge = document.createElement("span");
+  autorBadge.classList.add("badge", "bg-light", "text-dark");
+  autorBadge.textContent = producto.autor;
 
-    var categoryBadgeRow = document.createElement("div");
-    categoryBadgeRow.classList.add("row", "justify-content-center", "mb-3");
+  autorBadgeRow.appendChild(autorBadge);
 
-    var badge = document.createElement("span");
-    badge.classList.add("badge", "inf-nav","border","border-white");
-    badge.textContent = producto.nombre_genero;
+  var categoryBadgeRow = document.createElement("div");
+  categoryBadgeRow.classList.add("row", "justify-content-center", "mb-3");
 
-    categoryBadgeRow.appendChild(badge);
+  var badge = document.createElement("span");
+  badge.classList.add("badge", "inf-nav", "border", "border-white");
+  badge.textContent = producto.nombre_genero;
 
-    var priceRow = document.createElement("div");
-    priceRow.classList.add("row", "justify-content-end", "text-end");
+  categoryBadgeRow.appendChild(badge);
 
-    var price = document.createElement("span");
-    price.classList.add("price-hp", "text-white", "fw-bold", "mb-3");
-    price.innerHTML = `${producto.precio}&euro;`;
+  var priceRow = document.createElement("div");
+  priceRow.classList.add("row", "justify-content-end", "text-end");
 
-    priceRow.appendChild(price);
+  var price = document.createElement("span");
+  price.classList.add("price-hp", "text-white", "fw-bold", "mb-3");
+  price.innerHTML = `${producto.precio}&euro;`;
 
-    cardBody.appendChild(bookNameRow);
-    cardBody.appendChild(autorBadgeRow);
-    cardBody.appendChild(categoryBadgeRow);
-    cardBody.appendChild(priceRow);
+  priceRow.appendChild(price);
 
-    var btnRow = document.createElement("div");
-    btnRow.classList.add("row");
+  cardBody.appendChild(bookNameRow);
+  cardBody.appendChild(autorBadgeRow);
+  cardBody.appendChild(categoryBadgeRow);
+  cardBody.appendChild(priceRow);
 
-    var divCheck = document.createElement("div");
-    divCheck.classList.add("col-12");
+  var btnRow = document.createElement("div");
+  btnRow.classList.add("row");
 
-    var checkBtn = document.createElement("a");
-    checkBtn.classList.add("btn", "primary-btn", "w-100","fw-bold","border","border-white","rounded");
-    checkBtn.textContent = "VER";
-    checkBtn.href = `../product/product.php?id=${producto.id}`;
-    divCheck.appendChild(checkBtn);
-    btnRow.appendChild(divCheck);
+  var divCheck = document.createElement("div");
+  divCheck.classList.add("col-12");
 
-    cardBody.appendChild(btnRow);
+  var checkBtn = document.createElement("a");
+  checkBtn.classList.add(
+    "btn",
+    "primary-btn",
+    "w-100",
+    "fw-bold",
+    "border",
+    "border-white",
+    "rounded"
+  );
+  checkBtn.textContent = "VER";
+  checkBtn.href = `../product/product.php?id=${producto.id}`;
+  divCheck.appendChild(checkBtn);
+  btnRow.appendChild(divCheck);
 
-    innerCard.appendChild(link);
-    innerCard.appendChild(cardBody);
-    card.appendChild(innerCard);
+  cardBody.appendChild(btnRow);
 
-    return card;
+  innerCard.appendChild(link);
+  innerCard.appendChild(cardBody);
+  card.appendChild(innerCard);
+
+  return card;
 }
 
 function createReviewCard(review) {
   var card = document.createElement("div");
-  card.classList.add("card", "my-2", "rounded", "dark-theme","custom-card-border-2","custom-text");
+  card.classList.add(
+    "card",
+    "mb-4",
+    "rounded",
+    "dark-theme",
+    "custom-card-border-2",
+    "custom-text"
+  );
 
   var cardBody = document.createElement("div");
   cardBody.classList.add("card-body");
@@ -311,14 +333,14 @@ function createReviewCard(review) {
 
   var imgLink = document.createElement("a");
   imgLink.href = `../profile/profile.php?id=${review.id_usu_valorador}`;
-  imgLink.classList.add("profile-link"); 
+  imgLink.classList.add("profile-link");
 
   var img = document.createElement("img");
   img.classList.add("rounded-circle");
   img.src = "data:image/jpeg;base64," + review.foto_perfil;
   img.alt = "Foto de perfil del revisor";
-  img.style.width = "60px"; 
-  img.style.height = "60px"; 
+  img.style.width = "60px";
+  img.style.height = "60px";
   img.style.objectFit = "cover";
 
   imgLink.appendChild(img);
@@ -329,7 +351,7 @@ function createReviewCard(review) {
 
   var titleLink = document.createElement("a");
   titleLink.href = `../profile/profile.php?id=${review.id_usu_valorador}`;
-  titleLink.classList.add("profile-link"); 
+  titleLink.classList.add("profile-link");
 
   var title = document.createElement("h5");
   title.classList.add("card-title", "mb-0");
@@ -342,7 +364,7 @@ function createReviewCard(review) {
   rowTop.appendChild(colName);
 
   var hr = document.createElement("div");
-  hr.classList.add("custom-hr","w-100","mb-2","mt-2"); 
+  hr.classList.add("custom-hr", "w-100", "mb-2", "mt-2");
 
   var rowMid = document.createElement("div");
   rowMid.classList.add("row", "align-items-center");
@@ -351,7 +373,7 @@ function createReviewCard(review) {
   colRating.classList.add("col-auto");
 
   var rating = document.createElement("p");
-  rating.classList.add("card-text", "mb-3", "star-rating"); 
+  rating.classList.add("card-text", "mb-3", "star-rating");
   var fullStar = "&#9733;";
   var emptyStar = "&#9734;";
   var stars = "";

@@ -3,7 +3,7 @@
 <!--CONTACT INICIO-->
 <div class="container mt-3 ">
     <h2>¿Dónde nos encontramos?</h2>
-    <hr>
+    <div class="custom-hr w-100"></div>
 </div>
 <div class="container map-container mb-3 mb-lg-0">
     <iframe class="w-100 mt-4 custom-card-border-2" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3030.1277515822867!2d-4.014140323417795!3d40.58293544550607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4175ec9f68fe3d%3A0xcdea945e27ea5e5b!2sIES%20Infanta%20Elena!5e0!3m2!1ses!2ses!4v1681394605391!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -37,8 +37,8 @@
                         <strong>Nombre Completo *</strong>
                     </label>
                     <input type="text" maxlength="50" class="form-control" id="nombreContacto" aria-describedby="nombreContacto" name="contactName" required <?php if (isset($_SESSION["user"])) {
-                        echo "value='" . $userName . "'";
-                    } ?>>
+                                                                                                                                                                    echo "value='" . $userName . "'";
+                                                                                                                                                                } ?>>
                     <div id="nombreContacto" class="form-text custom-text">Este nombre se usara para ponernos en contacto con usted.</div>
                 </div>
                 <div class="mb-3">
@@ -46,8 +46,8 @@
                         <strong>E-mail *</strong>
                     </label>
                     <input type="email" maxlength="50" class="form-control" id="emailInput" name="contactEmail" required <?php if (isset($_SESSION["user"])) {
-                        echo "value='" . $userEmail . "'";
-                    } ?>>
+                                                                                                                                echo "value='" . $userEmail . "'";
+                                                                                                                            } ?>>
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label custom-text">
