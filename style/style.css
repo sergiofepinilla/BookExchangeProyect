@@ -29,10 +29,12 @@ h3, h4 {
   font-weight: 300;
   color: white;
 }
+/*
 .btn,p, span, a {
   font-family: 'Montserrat', sans-serif;
   font-weight: 300;
 }
+*/
 /* LOGO MOVIL*/
 .mobile-p {
   width: 180px;
@@ -141,6 +143,6 @@ color: #a39fdb;
 }
 
 .book-link{
-  text-decoration: none; /* Elimina el subrayado */
-  color: black; /* Establece el color de la letra en negro */
+  text-decoration: none; 
+  color: black; 
 }

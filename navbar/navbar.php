@@ -92,12 +92,9 @@ session_start();
                 </div>
 
             <?php } else { ?>
-                <button class="btn btn-lg me-3 border border-2 primary-btn">
-                    <a href="../bookform/book_form.php" class="book-link fw-bold">
-                        <i class="bi bi-book me-1"> Subir Libro</i>
-                    </a>
-
-                </button>
+                <a href="../bookform/book_form.php" class="book-link fw-bold btn btn-lg me-3 border border-2 primary-btn">
+                    <i class="bi bi-book me-1"> Subir Libro</i>
+                </a>
 
                 <div class="button-container me-2 d-none d-lg-block">
                     <div class="dropdown">

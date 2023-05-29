@@ -1,7 +1,7 @@
 <?php
-    require_once '../header/header.php';
-    require_once '../navbar/navbar.php';
-    ?>
+require_once '../header/header.php';
+require_once '../navbar/navbar.php';
+?>
 <div class="container mt-5 mb-5">
     <div class="row">
         <div class="col-md-12">
@@ -89,86 +89,86 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="button" class="btn  primary-btn" id="btnFase1">Siguiente</button>
+                        <button type="button" class="btn  btn-primary" id="btnFase1">Siguiente</button>
                 </div>
                 <div class="tab-pane fade" id="pills-fase2" role="tabpanel" aria-labelledby="pills-fase2-tab">
-                <h1>Precio y envio</h1>
-                <div class="custom-hr w-100 mb-3"></div>
-                <div class="mb-3 col-sm-6">
-                <label for="precio" class="form-label custom-text">Precio</label>
-                <div class="input-group">
-                <input type="number" class="form-control" id="precio" name="precio" placeholder="Ingrese el precio del libro" required>
-                <span class="input-group-text">
-                <i class="bi bi-currency-euro"></i>
-                </span>
-                </div>
-                </div>
-                <div class="mb-3">
-                <label for="descripcion" class="form-label custom-text">Descripción</label>
-                <textarea class="form-control" id="descripcion" name="descripcion" rows="5" placeholder="Introduzca una brece descripción del libro"></textarea>
-                </div>
-                <button type="button" class="btn inf-nav border border-white border-2 custom-text" id="btnRegresar">Regresar</button>
-                <button type="button" class="btn primary-btn" id="btnFase2">Siguiente</button>
+                    <h1>Precio y envio</h1>
+                    <div class="custom-hr w-100 mb-3"></div>
+                    <div class="mb-3 col-sm-6">
+                        <label for="precio" class="form-label custom-text">Precio</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="precio" name="precio" placeholder="Ingrese el precio del libro" required>
+                            <span class="input-group-text">
+                                <i class="bi bi-currency-euro"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="descripcion" class="form-label custom-text">Descripción</label>
+                        <textarea class="form-control" id="descripcion" name="descripcion" rows="5" placeholder="Introduzca una brece descripción del libro"></textarea>
+                    </div>
+                    <button type="button" class="btn inf-nav border border-white border-2 custom-text" id="btnRegresar">Regresar</button>
+                    <button type="button" class="btn primary-btn" id="btnFase2">Siguiente</button>
                 </div>
                 <div class="tab-pane fade" id="pills-fase3" role="tabpanel" aria-labelledby="pills-fase3-tab">
-                <h1>Imagen del libro</h1>
-                <div class="custom-hr w-100 mb-3"></div>
-                <div class="row">
-                <!-- Columna Izquierda: Seleccionar archivo -->
-                <div class="col-md-6">
-                <div class="mb-3">
-                <h5 class="custom-text">Seleccione una imagen para la portada del libro</h5>
-                <div class="custom-hr w-100 mb-3"></div>
-                <input class="form-control" type="file" id="imagen" name="imagen">
-                </div>
-                </div>
-                <!-- Columna derecha: Mostrar imagen seleccionada -->
-                <div class="col-md-6">
-                <div class="mb-3">
-                <!-- Previsualización -->
-                <h5 class="custom-text">Imagen del libro</h5>
-                <div class="custom-hr w-100 mb-3"></div>
-                <img src="" id="imagenPrevia" alt="" style="max-width: 100%; max-height: 300px;">
-                </div>
-                </div>
-                </div>
-                <button type="button" class="btn inf-nav border border-white border-2 custom-text" id="btnRegresar2">Regresar</button>
-                <button type="button" class="btn primary-btn" id="btnFase3">Siguiente</button>
+                    <h1>Imagen del libro</h1>
+                    <div class="custom-hr w-100 mb-3"></div>
+                    <div class="row">
+                        <!-- Columna Izquierda: Seleccionar archivo -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <h5 class="custom-text">Seleccione una imagen para la portada del libro</h5>
+                                <div class="custom-hr w-100 mb-3"></div>
+                                <input class="form-control" type="file" id="imagen" name="imagen">
+                            </div>
+                        </div>
+                        <!-- Columna derecha: Mostrar imagen seleccionada -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <!-- Previsualización -->
+                                <h5 class="custom-text">Imagen del libro</h5>
+                                <div class="custom-hr w-100 mb-3"></div>
+                                <img src="" id="imagenPrevia" alt="" style="max-width: 100%; max-height: 300px;">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn inf-nav border border-white border-2 custom-text" id="btnRegresar2">Regresar</button>
+                    <button type="button" class="btn primary-btn" id="btnFase3">Siguiente</button>
                 </div>
                 <div class="tab-pane fade" id="pills-fase4" role="tabpanel" aria-labelledby="pills-fase4-tab">
-                <h1>Confirmación</h1>
-                <div class="custom-hr w-100 mb-3"></div>
-                <div class="row">
-                <!-- Columna izquierda: Datos -->
-                <div class="col-md-6">
-                <h5 class="custom-text">Información del libro</h5>
-                <ul class="custom-text">
-                <li><strong>Nombre del libro:</strong> <span id="confirmNombre" class="limit-text"></span></li>
-                <li><strong>Autor:</strong> <span id="confirmAutor" class="limit-text"></span></li>
-                <li><strong>ISBN:</strong> <span id="confirmISBN" class="limit-text"></span></li>
-                <li><strong>Editorial:</strong> <span id="confirmEditorial" class="limit-text"></span></li>
-                <li><strong>Género:</strong> <span id="confirmGenero" class="limit-text"></span></li>
-                <li><strong>Estado del libro:</strong> <span id="confirmEstado"></span></li>
-                <li><strong>Precio:</strong> <span id="confirmPrecio"></span>€</li>
-                <li><strong>Descripción:</strong> <span id="confirmDescripcion" class="limit-text"></span></li>
-                </ul>
-                </div>
-                <!-- Columna derecha: Imagen del libro -->
-                <div class="col-md-6">
-                <h5 class="custom-text">Imagen del libro</h5>
-                <div class="mb-3">
-                <img src="" class="img-fluid border border-dark border-3" id="confirmImagen" alt="Vista previa de la imagen" style="max-width: 100%; max-height: 300px;">
-                </div>
-                </div>
-                </div>
-                <div class="custom-hr w-100 mb-3"></div>
-                <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="confirmarEnvio" name="confirmarEnvio">
-                <label for="confirmarEnvio" class="form-check-label custom-text">Confirmo que toda la información es correcta</label>
-                </div>
-                <button id="btnRegresar3" type="button" class="btn inf-nav border border-white border-2 custom-text">Atrás</button>
-                <input id="enviarFormulario" type="submit" class="btn primary-btn" value="Enviar" disabled>
-                </form>
+                    <h1>Confirmación</h1>
+                    <div class="custom-hr w-100 mb-3"></div>
+                    <div class="row">
+                        <!-- Columna izquierda: Datos -->
+                        <div class="col-md-6">
+                            <h5 class="custom-text">Información del libro</h5>
+                            <ul class="custom-text">
+                                <li><strong>Nombre del libro:</strong> <span id="confirmNombre" class="limit-text"></span></li>
+                                <li><strong>Autor:</strong> <span id="confirmAutor" class="limit-text"></span></li>
+                                <li><strong>ISBN:</strong> <span id="confirmISBN" class="limit-text"></span></li>
+                                <li><strong>Editorial:</strong> <span id="confirmEditorial" class="limit-text"></span></li>
+                                <li><strong>Género:</strong> <span id="confirmGenero" class="limit-text"></span></li>
+                                <li><strong>Estado del libro:</strong> <span id="confirmEstado"></span></li>
+                                <li><strong>Precio:</strong> <span id="confirmPrecio"></span>€</li>
+                                <li><strong>Descripción:</strong> <span id="confirmDescripcion" class="limit-text"></span></li>
+                            </ul>
+                        </div>
+                        <!-- Columna derecha: Imagen del libro -->
+                        <div class="col-md-6">
+                            <h5 class="custom-text">Imagen del libro</h5>
+                            <div class="mb-3">
+                                <img src="" class="img-fluid border border-dark border-3" id="confirmImagen" alt="Vista previa de la imagen" style="max-width: 100%; max-height: 300px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="custom-hr w-100 mb-3"></div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="confirmarEnvio" name="confirmarEnvio">
+                        <label for="confirmarEnvio" class="form-check-label custom-text">Confirmo que toda la información es correcta</label>
+                    </div>
+                    <button id="btnRegresar3" type="button" class="btn inf-nav border border-white border-2 custom-text">Atrás</button>
+                    <input id="enviarFormulario" type="submit" class="btn primary-btn" value="Enviar" disabled>
+                    </form>
                 </div>
             </div>
         </div>

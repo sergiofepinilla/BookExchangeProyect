@@ -28,11 +28,11 @@ $result = $conn->query($query);
 
 // Insertar los demás usuarios
 for ($i = 2; $i <= 14; $i++) {
-    $apodo = $apodos[$i-2];
-    $nombre = $nombres[$i-2]; // Asegúrate de tener suficientes nombres en el array
-    $correo = $correos[$i-2]; // Asegúrate de tener suficientes correos en el array
+    $apodo = $apodos[$i - 2];
+    $nombre = $nombres[$i - 2]; // Asegúrate de tener suficientes nombres en el array
+    $correo = $correos[$i - 2]; // Asegúrate de tener suficientes correos en el array
     $hashedPassword = password_hash(strtolower(str_replace(' ', '', $apodo)), PASSWORD_DEFAULT);
-    $rutaImagen = $imagenes[$i-2]; // Asegúrate de tener suficientes imágenes en el directorio
+    $rutaImagen = $imagenes[$i - 2]; // Asegúrate de tener suficientes imágenes en el directorio
     $imagen = file_get_contents($rutaImagen);
 
     $query = "INSERT INTO usuarios (id, apodo, tipo, correo) VALUES (?, ?, ?, ?)";
@@ -49,13 +49,8 @@ for ($i = 2; $i <= 14; $i++) {
     $stmt = $conn->prepare($query);
     $stmt->bind_param("is", $i, $hashedPassword);
     $result = $stmt->execute();
-
-    if ($result) {
-        echo "Usuario $apodo insertado correctamente.<br>";
-    } else {
-        echo "Error al insertar el usuario $apodo: " . $stmt->error . "<br>";
-    }
 }
 
+header("Location:inyeccion.php");
+
 $conn->close();
-?>
