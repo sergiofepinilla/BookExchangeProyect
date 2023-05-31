@@ -142,7 +142,7 @@ $editoriales = [
     "Wiley"
 ];
 $generos = range(1, 26);
-$estados = ["nuevo", "usado", "malo"];
+$estados = ["Nuevo", "Usado", "Malo"];
 $autores = [
     "George Orwell",
     "Gabriel García Márquez",
@@ -248,9 +248,9 @@ $autores = [
     "Ernesto Sabato",
     "A.A. Milne",
     "Italo Calvino",
-]; 
+];
 
-$imagenesDirectorio = "imagenes/inyeccion/"; 
+$imagenesDirectorio = "imagenes/inyeccion/";
 
 $titulos = [
     "1984",
@@ -627,7 +627,7 @@ function generateRandomISBN($length)
 
 function generateRandomPrice()
 {
-    return rand(10, 100); 
+    return rand(10, 100);
 }
 
 function generateRandomBoolean()
@@ -635,18 +635,18 @@ function generateRandomBoolean()
     return rand(0, 1);
 }
 
-$maxBooks = 400; 
-$insertedBooks = 0; 
+$maxBooks = 400;
+$insertedBooks = 0;
 
 $carpetaImagenes = "imagenes/inyeccion/IMG/";
 $imagenes = glob($carpetaImagenes . "*.jpg");
 
 $conn = Connection::getConnection();
-$usuarios = [2,3,4,5,6,7,8,9,10];
+$usuarios = [2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 foreach ($titulos as $titulo) {
     if ($insertedBooks >= $maxBooks) {
-        break; 
+        break;
     }
 
     // Asegúrate de que el vendedor y el comprador sean diferentes
@@ -657,7 +657,7 @@ foreach ($titulos as $titulo) {
 
     $usuario = $usuarios[array_rand($usuarios)];
 
-    $isbn = generateRandomISBN(10); 
+    $isbn = generateRandomISBN(10);
     $editorial = $editoriales[array_rand($editoriales)];
     $genero = $generos[array_rand($generos)];
     $estado = $estados[array_rand($estados)];
@@ -677,16 +677,16 @@ foreach ($titulos as $titulo) {
     $stmt->bind_param("isssisdsss", $usuario, $tituloEscaped, $isbn, $editorialEscaped, $genero, $estado, $precio, $descripcion, $imagen, $autor);
     $result = $stmt->execute();
 
-     if ($result) {
+    if ($result) {
         $insertedBooks++;
 
         // Inserta en la tabla libros_vendidos
         $query = "INSERT INTO libros_vendidos(id_usu_comprador, id_usu_vendedor, titulo, isbn, autor, genero, editorial, estado, precio, review)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($query);
-    $review = $comentarios[array_rand($comentarios)];
-    $stmt->bind_param("iississdss", $id_usu_comprador, $id_usu_vendedor, $tituloEscaped, $isbn, $autor, $genero, $editorialEscaped, $estado, $precio, $review);
-    $stmt->execute();
+        $setReview = 1;
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("iissssssdi", $id_usu_comprador, $id_usu_vendedor, $tituloEscaped, $isbn, $autor, $genero, $editorialEscaped, $estado, $precio, $setReview);
+        $stmt->execute();
 
         // Inserta en la tabla review
         $query = "INSERT INTO review (id_usu_valorado, id_usu_valorador, puntuacion, comentario)
@@ -704,4 +704,3 @@ foreach ($titulos as $titulo) {
 echo "Ok";
 
 $conn->close();
-?>
