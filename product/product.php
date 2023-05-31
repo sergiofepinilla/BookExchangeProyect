@@ -213,10 +213,6 @@
 </div>
 
 <!-- Libros Recomendados Container FIN -->
-
-
-
-
 </div>
 <?php
 echo "<script>let currentUserId = undefined;";

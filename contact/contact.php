@@ -1,5 +1,14 @@
 <?php require_once "../header/header.php"; ?>
-<?php require_once "../navbar/navbar.php"; ?>
+<?php require_once "../navbar/navbar.php";
+if (isset($_SESSION['user']) && $userType == 2) {
+    echo '<script>window.location.href = "../home/home.php";</script>';
+    echo '<img src="../assets/img/403.png" alt="forbidden" class="dark-theme w-100">';
+    require_once "../footer/upper_footer.php";
+    echo '<script src="../navbar/navbar.js"></script>';
+    require_once "../footer/footer_links.php";
+    exit();
+}
+?>
 <!--CONTACT INICIO-->
 <div class="container mt-3 ">
     <h2>¿Dónde nos encontramos?</h2>

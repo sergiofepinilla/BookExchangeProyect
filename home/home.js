@@ -249,7 +249,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Ocultar Notificación sin Establecer Cookie
   function acceptCookies() {
-    setCookie("cookiesAccepted", "true", 30); 
+    setCookie("cookiesAccepted", "true", 30);
     var cookieNotification = document.getElementById("cookie-notification");
     cookieNotification.style.display = "none";
   }
@@ -268,7 +268,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var acceptCookiesButton = document.getElementById("accept-cookies");
   acceptCookiesButton.addEventListener("click", acceptCookies);
-  
+
   var rejectCookiesButton = document.getElementById("reject-cookies");
   rejectCookiesButton.addEventListener("click", rejectCookies);
 });

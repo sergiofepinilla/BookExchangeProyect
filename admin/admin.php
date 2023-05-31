@@ -174,6 +174,7 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
             <table class="table mt-3 dark-theme custom-text">
                 <thead class="custom-card-border">
                     <tr>
+                        <th scope="col">Id</th>
                         <th scope="col">Título</th>
                         <th scope="col">Autor</th>
                         <th scope="col">Género</th>
@@ -188,6 +189,7 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
                 <tbody class="inf-nav custom-card-border">
                     <?php while ($row = $resultLibrosVendidos->fetch_assoc()) : ?>
                         <tr>
+                            <td><?php echo htmlspecialchars($row['id']); ?></td>
                             <td><?php echo htmlspecialchars($row['titulo']); ?></td>
                             <td><?php echo htmlspecialchars($row['autor']); ?></td>
                             <td><?php echo htmlspecialchars($row['nombre_genero']); ?></td>
@@ -233,6 +235,7 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
             <table class="table mt-3 dark-theme custom-text">
                 <thead class="custom-card-border">
                     <tr>
+                        <th scope="col">Id</th>
                         <th scope="col">Título</th>
                         <th scope="col">Editorial</th>
                         <th scope="col">Género</th>
@@ -244,6 +247,7 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
                 <tbody class="inf-nav custom-card-border">
                     <?php while ($row = $resultLibrosEnVenta->fetch_assoc()) : ?>
                         <tr>
+                            <td><?php echo htmlspecialchars($row['id']); ?></td>
                             <td><a class="custom-h-link" href="../product/product.php?id=<?php echo $row['id']; ?>"><?php echo htmlspecialchars($row['titulo']); ?></a></td>
                             <td><?php echo htmlspecialchars($row['editorial']); ?></td>
                             <td><?php echo htmlspecialchars($row['nombre_genero']); ?></td>

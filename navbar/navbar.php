@@ -1,5 +1,15 @@
 <?php require_once "../includes/class/user.class.php";
 session_start();
+
+if (isset($_SESSION["user"])) {
+    $user = unserialize($_SESSION["user"]);
+    $userId = $user->getId();
+    $userNick = $user->getNick();
+    $userType = $user->getUserType();
+    $userEmail = $user->getEmail();
+    $userName = $user->getName();
+    $userProfilePicture = $user->getProfilePicture();
+}
 ?>
 <!-- Primera navbar (superior) con logo y barra de búsqueda -->
 <nav class="navbar navbar-expand-lg bg dark-theme">
@@ -35,13 +45,25 @@ session_start();
                 <li class="nav-item ">
                     <a class="nav-link text-white fw-bold " href="../shop/shop.php">Tienda</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white fw-bold " href="../contact/contact.php">Contacto</a>
-                </li>
                 <?php if (isset($_SESSION["user"])) { ?>
+                    <?php if ($userType == 2) { ?>
+                        <li>
+                            <a class="nav-link text-white fw-bold " href="../admin/admin.php">Administrar</a>
+                        </li>
+                    <?php } ?>
+                <?php } ?>
+                <?php if (!isset($_SESSION["user"]) || $userType != 2) { ?>
                     <li class="nav-item">
-                        <a class="nav-link text-white fw-bold " href="../purchase_history/purchase_history.php">Historial</a>
+                        <a class="nav-link text-white fw-bold " href="../contact/contact.php">Contacto</a>
                     </li>
+                <?php } ?>
+
+                <?php if (isset($_SESSION["user"])) { ?>
+                    <?php if ($userType != 2) { ?>
+                        <li class="nav-item">
+                            <a class="nav-link text-white fw-bold " href="../purchase_history/purchase_history.php">Historial</a>
+                        </li>
+                    <?php } ?>
                 <?php } ?>
 
                 <?php if (!isset($_SESSION["user"])) { ?>
@@ -51,26 +73,15 @@ session_start();
                     <li class="nav-item d-lg-none">
                         <a class="nav-link text-white" href="../login/login.php">Iniciar Sesion</a>
                     </li>
-                <?php } else {
-
-                    $user = unserialize($_SESSION["user"]);
-
-                    $userId = $user->getId();
-                    $userNick = $user->getNick();
-                    $userType = $user->getUserType();
-                    $userEmail = $user->getEmail();
-                    $userName = $user->getName();
-                    $userProfilePicture = $user->getProfilePicture();
-                ?>
-                    <?php if ($userType == 2) { ?>
-
-                        <li class="nav-item d-lg-none">
-                            <a class="nav-link text-white" href="../admin/admin.php?admin=users">Administrar Usuarios</a>
-                        </li>
-                        <li class="nav-item d-lg-none">
-                            <a class="nav-link text-white" href="../admin/admin.php?admin=products">Administrar Productos</a>
-                        </li>
-
+                    <?php if (isset($_SESSION["user"])) { ?>
+                        <?php if ($userType == 2) { ?>
+                            <li class="nav-item d-lg-none">
+                                <a class="nav-link text-white" href="../admin/admin.php?admin=users">Administrar Usuarios</a>
+                            </li>
+                            <li class="nav-item d-lg-none">
+                                <a class="nav-link text-white" href="../admin/admin.php?admin=products">Administrar Productos</a>
+                            </li>
+                        <?php } ?>
                     <?php } ?>
                     <li class="nav-item d-lg-none">
                         <a href="../profile/profile.php?id=<?php echo $userId; ?>">Perfil</a>
@@ -92,21 +103,21 @@ session_start();
                 </div>
 
             <?php } else { ?>
-                <a href="../bookform/book_form.php" class="book-link fw-bold btn btn-lg me-3 border border-2 primary-btn">
-                    <i class="bi bi-book me-1"> Subir Libro</i>
-                </a>
-
+                <?php if ($userType != 2) { ?>
+                    <a href="../bookform/book_form.php" class="book-link fw-bold btn btn-lg me-3 border border-2 primary-btn">
+                        <i class="bi bi-book me-1"> Subir Libro</i>
+                    </a>
+                <?php } ?>
                 <div class="button-container me-2 d-none d-lg-block">
                     <div class="dropdown">
                         <button class="border border-white btn btn-lg btn-outline-white text-white dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-person"></i>
                         </button>
                         <ul class="dropdown-menu border-dark " aria-labelledby="dropdownMenuButton">
-                            <li><a class="dropdown-item " href="../profile/profile.php?id=<?php echo $userId; ?>">Perfil</a></li>
-                            <?php if ($userType == 2) { ?>
-                                <a class="dropdown-item " href="../admin/admin.php?admin=users">Administrar Usuarios</a>
-                                <a class="dropdown-item " href="../admin/admin.php?admin=products">Administrar Productos </a>
+                            <?php if ($userType != 2) { ?>
+                                <li><a class="dropdown-item " href="../profile/profile.php?id=<?php echo $userId; ?>">Perfil</a></li>
                             <?php } ?>
+
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
