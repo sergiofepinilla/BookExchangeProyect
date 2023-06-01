@@ -39,10 +39,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  function loadCarousel(carouselInnerId, productsToShow) {
+  function loadCarousel(carouselInnerId, productsToShow, productsPerSlide) {
     var carouselInner = document.getElementById(carouselInnerId);
 
-    for (let i = 0; i < productsToShow.length; i += 5) {
+    for (let i = 0; i < productsToShow.length; i += productsPerSlide) {
       var carouselItem = document.createElement("div");
       carouselItem.classList.add("carousel-item");
 
@@ -53,14 +53,19 @@ document.addEventListener("DOMContentLoaded", function () {
       var row = document.createElement("div");
       row.classList.add(
         "row",
-        "row-cols-1",
+        "row-cols-2",
+        "row-cols-sm-2",
         "row-cols-md-2",
-        "row-cols-lg-3",
+        "row-cols-lg-5",
         "row-cols-xl-5",
         "g-3"
       );
 
-      for (let j = i; j < i + 5 && j < productsToShow.length; j++) {
+      for (
+        let j = i;
+        j < i + productsPerSlide && j < productsToShow.length;
+        j++
+      ) {
         var product = productsToShow[j];
         var card = createCard(product);
         row.appendChild(card);
@@ -75,17 +80,20 @@ document.addEventListener("DOMContentLoaded", function () {
   Promise.all([getProducts(), getRecommendedBooks()]).then(
     function ([products, recommendedBooks]) {
       var lastBooks = products.slice(0, 10);
-      loadCarousel("carouselInner", lastBooks);
-      loadCarousel("recommendedCarouselInner", recommendedBooks);
+      loadCarousel("carouselInnerLg", lastBooks, 5); // 5 productos por slide en pantalla grande
+      loadCarousel("carouselInnerSm", lastBooks, 2); // 2 productos por slide en pantalla pequeña
+      loadCarousel("recommendedCarouselInnerLg", recommendedBooks, 5); // Ajusta esto según tus necesidades
+      loadCarousel("recommendedCarouselInnerSm", recommendedBooks, 2); // Ajusta esto según tus necesidades
     },
     function (error) {
       console.error(error);
     }
   );
+
   // Crear Tarjetas Personalizadas Para Cada Producto
   function createCard(producto, margin = "") {
     var card = document.createElement("div");
-    card.classList.add("col", "dark-theme");
+    card.classList.add("col", "dark-th");
     if (margin) card.classList.add(margin);
     card.id = producto.id;
 
