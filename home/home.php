@@ -9,7 +9,7 @@
     <!--separador-->
 
     <!--Ultimos Productos Container-->
-    <div class="container mb-4 mt-2">
+    <div class="container mb-4 mt-2 col-12 d-block">
         <div class="row mb-2">
             <div class="col">
                 <h2 class="">Ultimos Libros...</h2>
@@ -19,7 +19,7 @@
             </div>
         </div>
         <!--Book Row Container-->
-        <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div id="productCarousel" class="carousel slide " data-bs-ride="carousel">
             <div class="carousel-inner" id="carouselInner">
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">

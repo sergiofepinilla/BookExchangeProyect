@@ -25,6 +25,11 @@ h3, h4 {
   line-height: 2rem;
   color: #eff1da;
 }
+
+.custom-m-link{
+  text-decoration: none;
+  color: #eff1da;
+}
 .custom-h-link{
   font-weight: 300;
   color: white;
@@ -135,9 +140,6 @@ a.profile-link {
 color: #a39fdb;
 }
 
-.xdddd{
- 
-}
 .nav-link.active {
   background-color: red;
 }
