@@ -7,6 +7,27 @@ document
     }
   });
 
+document
+  .getElementById("searchBar2")
+  .addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      search();
+    }
+  });
+
+document
+  .getElementById("btnSearch")
+  .addEventListener("click", function (event) {
+    search();
+  });
+
+document
+  .getElementById("btnSearch2")
+  .addEventListener("click", function (event) {
+    search();
+  });
+
 function search() {
   var product = document.getElementById("searchBar").value;
   if (product) {

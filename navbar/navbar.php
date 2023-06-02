@@ -44,8 +44,8 @@ if (isset($_SESSION["user"])) {
         <!-- SEARCH BAR FOR MOBILE -->
         <div class="d-flex d-lg-none justify-content-center align-items-center w-100 mt-3">
             <div class="input-group">
-                <input class="form-control dark-theme" placeholder="Busca por autor, título, género, ISBN" id="searchBar">
-                <button class="btn btn-outline-light" id="btnSearch"><i class="bi bi-search"></i></button>
+                <input class="form-control dark-theme" placeholder="Busca por autor, título, género, ISBN" id="searchBar2">
+                <button class="btn btn-outline-light" id="btnSearch2"><i class="bi bi-search"></i></button>
             </div>
         </div>
     </div>

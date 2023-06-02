@@ -1,9 +1,9 @@
 <?php require_once '../header/header.php'; ?>
 <?php require_once '../navbar/navbar.php'; ?>
-<?php require_once '../carousel/main_carousel.php'; ?>
+<div class="container mt-4 mb-4">
+    <img src="../assets/img/carousel/envio_pink.png" class="img-fluid w-100 custom-card-border-2 rounded" alt="Imagen Envio Gratis" />
+</div>
 <div class="container">
-
-
     <!--separador-->
     <div class="mt-5 mb-5 mx-auto custom-hr"> </div>
     <!--separador-->
@@ -50,7 +50,7 @@
         <!--Ultimos Productos Container FIN-->
         <div class="mt-5 mb-5 mx-auto custom-hr"> </div>
         <?php require_once '../carousel/second_carousel.php'; ?>
-        <div class="mt-5 mb-5 mx-auto custom-hr"> </div>
+        <div class="mt-5 mb-5 mx-auto custom-hr d-none d-md-block"> </div>
         <!-- Libros recomendados Container -->
         <div class="container">
             <div class="row mb-2 mt-2">
