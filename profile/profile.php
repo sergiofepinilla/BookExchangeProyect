@@ -12,45 +12,47 @@
 
 <img src="../assets/img/no-result.JPG" alt="" id="no-results-image" class="w-75 mt-5 mb-5 mx-auto" style="display:none">
 <!-- USER -->
-<div class="container custom-card-border-2 rounded mt-5 mb-5 rounded dark-theme" id="user-info">
+<div class="container custom-card-border-2 rounded mt-5 mb-5 rounded dark-theme " id="user-info">
     <!-- Perfil -->
     <div class="row card-body rounded dark-theme custom-text">
         <div class="d-flex text-black flex-column flex-md-row">
-            <div class="me-3 mb-md-0 flex">
-                <div id="profileImageContainer" class="profileImageContainer"></div>
+            <div class="me-3 mb-md-0 ">
+                <div class="d-flex justify-content-center">
+                    <div id="profileImageContainer" class="profileImageContainer"></div>
+                </div>
                 <!-- EDITAR IMAGEN-->
                 <?php if (isset($_POST["editProfileSubmit"])) : ?>
                     <form action="../includes/profile.inc.php" method="POST" enctype="multipart/form-data" class="d-flex justify-content-center">
                         <div class="row">
-                            <div class="col">
-                                <input type="file" name="profilePicture" id="profilePicture" class="custom-file-input" style="display:none;" accept="image/*">
+                            <div class="col-12 mt-2">
+                                <input type="file" name="profilePicture" id="profilePicture" class="custom-file-input " style="display:none;" accept="image/*">
                                 <label class="custom-file-label btn primary-btn mt-3" for="profilePicture">Cambiar imagen</label>
                             </div>
                         </div>
 
                     <?php endif; ?>
             </div>
-            <div class="flex-grow-1 ms-3 ms-md-0 mt-3 mt-md-0">
-                <div class="card-body">
+            <div class="flex-grow-1 ms-3 ms-md-0 mt-3 mt-md-0 ">
+                <div class="card-body ">
                     <!-- Estadísticas -->
                     <?php if (isset($userId) && $userId == $_GET['id']) { ?>
                         <div class="row mb-2">
                         <?php } else { ?>
                             <div class="row mt-5">
                             <?php }; ?>
-                            <div class="col-12 col-md-8">
-                                <h2><span class="mt-2" id="apodo"></span></h2>
+                            <div class="col-12 col-md-8 text-center text-md-start">
+                                <h2><span class="mt-2 " id="apodo"></span></h2>
                             </div>
                             </div>
-                            <div class="row mb-2">
+                            <div class="row mb-2  text-center text-md-start">
                                 <?php if (isset($userId) && $userId == $_GET['id']) { ?>
                                     <div class="col-12 col-md-4">
                                         <strong>Nombre Completo:</strong>
                                     </div>
                                 <?php } ?>
-                                <div class="col-12 col-md-8">
+                                <div class="col-md-8 text-center text-md-start d-flex justify-content-center justify-content-md-start">
                                     <?php if (isset($_POST["editProfileSubmit"])) : ?>
-                                        <div class="col-8">
+                                        <div class="col-8 ">
                                             <input type="text" name="profileUserName" class="form-control" value="<?php echo $user->getName(); ?>">
                                         </div>
                                     <?php else : ?>
@@ -62,12 +64,12 @@
                                     <?php endif; ?>
                                 </div>
                             </div>
-                            <div class="row mb-2">
+                            <div class="row mb-2  text-center text-md-start">
                                 <?php if (isset($userId) && $userId == $_GET['id']) { ?>
                                     <div class="col-12 col-md-4">
                                         <strong>Correo electrónico:</strong>
                                     </div>
-                                    <div class="col-12 col-md-8">
+                                    <div class="col-md-8  text-center text-md-start">
                                         <span id="correo"></span>
                                     </div>
                                 <?php } ?>

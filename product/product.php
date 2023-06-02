@@ -2,12 +2,16 @@
 <?php require_once '../navbar/navbar.php' ?>
 <img src="../assets/img/no-result.JPG" alt="" id="no-results-image" class="w-75 mt-5 mb-5 mx-auto" style="display:none">
 <div class="container mt-5 mb-5" id="bookContainer">
-    <div class="row ">
-        <div class="col-4 d-flex flex-column align-items-center me-2 dark-theme custom-text custom-card-border-2" style="border-radius: 15px;">
+    <div class="row p-4 p-md-0">
+
+        <div class="col-12 col-md-4 d-flex flex-column align-items-center me-2 dark-theme custom-text custom-card-border-2 mb-4 mb-md-0 " style="border-radius: 15px;">
+            <h3 class="card-title fs-1 fw-bold limit-text text-center mt-3" id="titulo">Libro de Prueba</h3>
+            <div class="custom-hr mb-3"></div>
             <div id="imgContainer" class="mt-3  d-flex align-items-center justify-content-center  my-auto" style="height: 200px; width: 100%;"></div>
             <div class="row mt-2 p-4">
                 <h5 class="text-center">Información del Vendedor</h5>
-                <div class="card dark-theme  custom-card-border-2" style="border-radius: 15px;">
+
+                <div class="card dark-theme " style="border-radius: 15px;">
                     <div class="card-body">
 
                         <div class="row align-items-center">
@@ -35,22 +39,21 @@
                 </div>
             </div>
         </div>
-        <div class="col-7 dark-theme custom-text custom-card-border-2 " style="border-radius: 15px;">
+        <div class="col-12 col-md-7  dark-theme custom-text custom-card-border-2 " style="border-radius: 15px;">
             <div class="card-body">
-                <h3 class="card-title fs-1 fw-bold limit-text" id="titulo">Libro de Prueba</h3>
-                <hr>
+                <h3 class="card-title fs-1 fw-bold limit-text text-center text-md-start">Información del Libro</h3>
+                <div class="custom-hr w-100 mb-4"></div>
                 <p id="autor" class="limit-text">Autor.</p>
                 <p id="genero_name" class="limit-text">Fantasia</p>
                 <p id="isbn" class="limit-text">ISBN.</p>
                 <p id="editorial" class="limit-text">Editorial.</p>
                 <p id="estado" class="limit-text">Estado.</p>
-                <hr>
-                <p id="descripcion" class="limit-text">Descripción.</p>
+                <p id="descripcion" class="limit-text">Descripción:</p>
 
             </div>
-            <hr>
+            <div class="custom-hr w-100 mb-4"></div>
             <p class="fs-4 text-end" id="precio">9.99€</p>
-            <button type="button" class="btn btn-lg primary-btn w-100" id="comprarButton">Comprar</button>
+            <button type="button" class="btn btn-lg primary-btn w-100 mb-4 mb-md-0" id="comprarButton">Comprar</button>
 
             <!-- Modal -->
             <div class="modal fade" id="comprarModal" tabindex="-1" aria-labelledby="comprarModalLabel" aria-hidden="true">
@@ -184,9 +187,9 @@
         </div>
     </div>
 </div>
-<hr>
+
 <!-- Libros recomendados Container -->
-<div class="container mb-3" id="recommendedContainer">
+<div class="container mb-3 d-none d-md-block" id="recommendedContainer ">
     <div class="row mb-2 mt-2">
         <div class="col">
             <h1>También te puede interesar...</h1>

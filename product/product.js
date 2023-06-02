@@ -204,7 +204,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const desc = document.getElementById("descripcion");
     desc.innerHTML =
-      "<span class='fw-bold'>Descripción</span>:" + product.descripcion;
+      "<span class='fw-bold'>Descripción</span>: " + product.descripcion;
 
     const usu_vendedor = document.getElementById("usu_vendedor");
     usu_vendedor.textContent = product.vendedor_apodo;

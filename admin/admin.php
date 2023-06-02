@@ -104,45 +104,49 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
 ?>
 <div class="container mb-5 mt-5">
     <h1>Gestionar Usuarios y Libros</h1>
-    <ul class="nav nav-tabs mt-5">
+    <ul class="nav nav-tabs mt-5 flex-nowrap overflow-auto">
         <li class="nav-item">
-            <a class="nav-link active" href="#comprados" data-bs-toggle="tab">Usuarios</a>
+            <a class="nav-link active" href="#comprados" data-bs-toggle="tab">Gestionar Usuarios</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#vendidos" data-bs-toggle="tab">Libros Vendidos</a>
+        </li>
         <li class="nav-item">
             <a class="nav-link" href="#enventa" data-bs-toggle="tab">Libros en Venta</a>
         </li>
     </ul>
+
     <div class="tab-content">
         <div class="tab-pane active" id="comprados">
             <!-- Tabla de Usuarios -->
-            <table class="table mt-3 dark-theme custom-text">
-                <thead class="custom-card-border">
-                    <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Apodo</th>
-                        <th scope="col">Correo</th>
-                        <th scope="col">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody class="inf-nav custom-card-border">
-                    <?php while ($row = $resultLibrosComprados->fetch_assoc()) : ?>
+            <div class="table-responsive-md">
+                <table class="table mt-3 dark-theme custom-text">
+                    <thead class="custom-card-border">
                         <tr>
-                            <td><?php echo htmlspecialchars($row['id']); ?></td>
-                            <td><a class="custom-h-link" href="../profile/profile.php?id=<?php echo $row['id']; ?>"><?php echo htmlspecialchars($row['nombre']); ?></a></td>
-                            <td><?php echo htmlspecialchars($row['apodo']); ?></td>
-                            <td><?php echo htmlspecialchars($row['correo']); ?></td>
-                            <td>
-                                <i class="bi bi-trash-fill delete-user text-danger ms-2 me-3" data-id="<?php echo $row['id']; ?>" style="cursor:pointer;"></i>
-                                <i class="bi bi-lock-fill block-user text-warning " data-id="<?php echo $row['id']; ?>" style="cursor:pointer;"></i>
-                            </td>
+                            <th scope="col">Id</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apodo</th>
+                            <th scope="col">Correo</th>
+                            <th scope="col">Acciones</th>
                         </tr>
-                    <?php endwhile; ?>
-                </tbody>
-            </table>
-            <!-- Tabla de Usuarios -->
+                    </thead>
+                    <tbody class="inf-nav custom-card-border">
+                        <?php while ($row = $resultLibrosComprados->fetch_assoc()) : ?>
+                            <tr class="d-md-table-row">
+                                <td><?php echo htmlspecialchars($row['id']); ?></td>
+                                <td><a class="custom-h-link" href="../profile/profile.php?id=<?php echo $row['id']; ?>"><?php echo htmlspecialchars($row['nombre']); ?></a></td>
+                                <td><?php echo htmlspecialchars($row['apodo']); ?></td>
+                                <td><?php echo htmlspecialchars($row['correo']); ?></td>
+                                <td>
+                                    <i class="bi bi-trash-fill delete-user text-danger ms-2 me-3" data-id="<?php echo $row['id']; ?>" style="cursor:pointer;"></i>
+                                    <i class="bi bi-lock-fill block-user text-warning " data-id="<?php echo $row['id']; ?>" style="cursor:pointer;"></i>
+                                </td>
+                            </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Tabla de Usuarios FIN-->
             <!-- Paginación Usuarios -->
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
@@ -171,39 +175,42 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
         </div>
         <div class="tab-pane" id="vendidos">
             <!-- Tabla de Libros Vendidos -->
-            <table class="table mt-3 dark-theme custom-text">
-                <thead class="custom-card-border">
-                    <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">Título</th>
-                        <th scope="col">Autor</th>
-                        <th scope="col">Género</th>
-                        <th scope="col">Editorial</th>
-                        <th scope="col">Estado</th>
-                        <th scope="col">Precio</th>
-                        <th scope="col">Comprador</th>
-                        <th scope="col">Vendedor</th>
-                        <th scope="col">Fecha de compra</th>
-                    </tr>
-                </thead>
-                <tbody class="inf-nav custom-card-border">
-                    <?php while ($row = $resultLibrosVendidos->fetch_assoc()) : ?>
+            <div class="table-responsive-md">
+                <table class="table mt-3 dark-theme custom-text">
+                    <thead class="custom-card-border">
                         <tr>
-                            <td><?php echo htmlspecialchars($row['id']); ?></td>
-                            <td><?php echo htmlspecialchars($row['titulo']); ?></td>
-                            <td><?php echo htmlspecialchars($row['autor']); ?></td>
-                            <td><?php echo htmlspecialchars($row['nombre_genero']); ?></td>
-                            <td><?php echo htmlspecialchars($row['editorial']); ?></td>
-                            <td><?php echo htmlspecialchars($row['estado']); ?></td>
-                            <td><?php echo htmlspecialchars($row['precio']); ?></td>
-                            <td><a class="custom-h-link" href="../profile/profile.php?id=<?php echo $row['id_usu_comprador']; ?>"><?php echo htmlspecialchars($row['apodo_comprador']); ?></a></td>
-                            <td><a class="custom-h-link" href="../profile/profile.php?id=<?php echo $row['id_usu_vendedor']; ?>"><?php echo htmlspecialchars($row['apodo']); ?></a></td>
-                            <td><?php echo htmlspecialchars($row['fecha_compra']); ?></td>
+                            <th scope="col">Id</th>
+                            <th scope="col">Título</th>
+                            <th scope="col">Autor</th>
+                            <th scope="col">Género</th>
+                            <th scope="col">Editorial</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Comprador</th>
+                            <th scope="col">Vendedor</th>
+                            <th scope="col">Fecha de compra</th>
                         </tr>
-                    <?php endwhile; ?>
-                </tbody>
-            </table>
-            <!-- Tabla de Libros Vendidos -->
+                    </thead>
+                    <tbody class="inf-nav custom-card-border">
+                        <?php while ($row = $resultLibrosVendidos->fetch_assoc()) : ?>
+                            <tr class="d-md-table-row">
+                                <td><?php echo htmlspecialchars($row['id']); ?></td>
+                                <td><?php echo htmlspecialchars($row['titulo']); ?></td>
+                                <td><?php echo htmlspecialchars($row['autor']); ?></td>
+                                <td><?php echo htmlspecialchars($row['nombre_genero']); ?></td>
+                                <td><?php echo htmlspecialchars($row['editorial']); ?></td>
+                                <td><?php echo htmlspecialchars($row['estado']); ?></td>
+                                <td><?php echo htmlspecialchars($row['precio']); ?></td>
+                                <td><a class="custom-h-link" href="../profile/profile.php?id=<?php echo $row['id_usu_comprador']; ?>"><?php echo htmlspecialchars($row['apodo_comprador']); ?></a></td>
+                                <td><a class="custom-h-link" href="../profile/profile.php?id=<?php echo $row['id_usu_vendedor']; ?>"><?php echo htmlspecialchars($row['apodo']); ?></a></td>
+                                <td><?php echo htmlspecialchars($row['fecha_compra']); ?></td>
+                            </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Tabla de Libros Vendidos FIN-->
+
             <!-- Paginación Libros en Vendidos -->
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
@@ -232,37 +239,40 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
         </div>
         <div class="tab-pane" id="enventa">
             <!-- Tabla Libros en Venta -->
-            <table class="table mt-3 dark-theme custom-text">
-                <thead class="custom-card-border">
-                    <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">Título</th>
-                        <th scope="col">Editorial</th>
-                        <th scope="col">Género</th>
-                        <th scope="col">Estado</th>
-                        <th scope="col">Precio</th>
-                        <th scope="col">Acción</th>
-                    </tr>
-                </thead>
-                <tbody class="inf-nav custom-card-border">
-                    <?php while ($row = $resultLibrosEnVenta->fetch_assoc()) : ?>
+            <div class="table-responsive-md">
+                <table class="table mt-3 dark-theme custom-text">
+                    <thead class="custom-card-border">
                         <tr>
-                            <td><?php echo htmlspecialchars($row['id']); ?></td>
-                            <td><a class="custom-h-link" href="../product/product.php?id=<?php echo $row['id']; ?>"><?php echo htmlspecialchars($row['titulo']); ?></a></td>
-                            <td><?php echo htmlspecialchars($row['editorial']); ?></td>
-                            <td><?php echo htmlspecialchars($row['nombre_genero']); ?></td>
-                            <td><?php echo htmlspecialchars($row['estado']); ?></td>
-                            <td><?php echo htmlspecialchars($row['precio']); ?></td>
-                            <td>
-                                <button class="btn custom-text accent retirar" data-id="<?php echo $row['id']; ?>">
-                                    Retirar Libro
-                                </button>
-                            </td>
+                            <th scope="col">Id</th>
+                            <th scope="col">Título</th>
+                            <th scope="col">Editorial</th>
+                            <th scope="col">Género</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Acción</th>
                         </tr>
-                    <?php endwhile; ?>
-                </tbody>
-            </table>
-            <!-- Tabla Libros en Venta -->
+                    </thead>
+                    <tbody class="inf-nav custom-card-border">
+                        <?php while ($row = $resultLibrosEnVenta->fetch_assoc()) : ?>
+                            <tr class="d-md-table-row">
+                                <td><?php echo htmlspecialchars($row['id']); ?></td>
+                                <td><a class="custom-h-link" href="../product/product.php?id=<?php echo $row['id']; ?>"><?php echo htmlspecialchars($row['titulo']); ?></a></td>
+                                <td><?php echo htmlspecialchars($row['editorial']); ?></td>
+                                <td><?php echo htmlspecialchars($row['nombre_genero']); ?></td>
+                                <td><?php echo htmlspecialchars($row['estado']); ?></td>
+                                <td><?php echo htmlspecialchars($row['precio']); ?></td>
+                                <td>
+                                    <button class="btn custom-text accent retirar" data-id="<?php echo $row['id']; ?>">
+                                        Retirar Libro
+                                    </button>
+                                </td>
+                            </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Tabla Libros en Venta FIN -->
+
 
             <!-- Paginación Libros en Venta -->
             <nav aria-label="Page navigation example">
