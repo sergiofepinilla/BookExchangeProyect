@@ -5,19 +5,18 @@
 if (isset($_SESSION['user'])) {
   echo '<script>window.location.href = "../home/home.php";</script>';
   echo '<img src="../assets/img/403.png" alt="forbidden" class="custom-white-bg w-100">';
-  require_once "../footer/upper_footer.php"; 
-  echo '<script src="../navbar/navbar.js"></script>' ;
-   require_once "../footer/footer_links.php";
+  require_once "../footer/upper_footer.php";
+  echo '<script src="../navbar/navbar.js"></script>';
+  require_once "../footer/footer_links.php";
   exit();
 } ?>
-<div class="container mt-5 mb-5 ">
+<div class="container mt-5 mb-5">
   <section>
     <div class="container-fluid mb-5 mt-5">
       <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-md-9 col-lg-6 col-xl-5">
-          <img src="https://www.go.ooo/img/bg-img/Login.jpg" class="img-fluid" alt="Sample image">
-        </div>
-        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <div class="col-md-8 col-lg-6 rounded p-md-5">
+          <h2>Iniciar Sesión</h2>
+          <div class="custom-hr w-100 mb-3 mt-3"></div>
           <form action="../includes/login.inc.php" method="POST">
             <!-- Email Input -->
             <div class="form-outline mb-4">
@@ -47,8 +46,8 @@ if (isset($_SESSION['user'])) {
             ?>
 
             <div class="text-center text-lg-start mt-4 pt-2">
-              <button type="submit" class="btn primary-btn custom-card-border-2  btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;" name="login-submit">Inicias Sesión</button>
-              <p class="small fw-bold mt-2 pt-1 mb-0 custom-text">¿No tienes una cuenta? <a href="../signup/signup.php" >Registrate</a></p>
+              <button type="submit" class="btn primary-btn custom-card-border-2 btn-lg mb-3" style="padding-left: 2.5rem; padding-right: 2.5rem;" name="login-submit">Inicias Sesión</button>
+              <p class="small fw-bold mt-2 pt-1 mb-5 custom-text">¿No tienes una cuenta? <a href="../signup/signup.php">Registrate</a></p>
             </div>
           </form>
         </div>

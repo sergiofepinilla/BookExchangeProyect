@@ -188,7 +188,7 @@ function loadReviews(reviews) {
 
 function createCard(producto, margin = "") {
   var card = document.createElement("div");
-  card.classList.add("col", "bg-black");
+  card.classList.add("col", "dark-theme");
   if (margin) card.classList.add(margin);
   card.id = producto.id;
 

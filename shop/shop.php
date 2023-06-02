@@ -10,7 +10,7 @@
                         <h1 id="category-header"></h1> <!-- Encabezado -->
                         <ul class="navbar-nav">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle custom-text border border-2 custom-hover" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle custom-text custom-hover" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Categorias
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-scrollable" aria-labelledby="navbarDropdown">
@@ -54,13 +54,14 @@
         <div class="row pt-3 row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4" id="container"></div>
         <img src="../assets/img/no-result.JPG" alt="" id="no-results-image" class="w-75 mt-5 mb-5 mx-auto" style="display:none">
 
-        <div id="pagination-container">
+        <div id="pagination-container mt-5">
             <div class="row">
                 <div class="col d-flex justify-content-center">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
                             <li class="page-item"><a class="page-link btn-lg text-dark" href="#" id="prev-page">Anterior</a></li>
-                            <li class="page-item"><span class="page-link btn-lg text-dark" id="page-number">1</span></li>
+                            <p class="custom-text ms-3">Página </p>
+                            <li class="page-item"><span class="custom-text dark theme me-3" id="page-number">1</span></li>
                             <li class="page-item"><a class="page-link btn-lg text-dark" href="#" id="next-page">Siguiente</a></li>
                         </ul>
                     </nav>

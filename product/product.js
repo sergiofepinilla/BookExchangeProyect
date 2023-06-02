@@ -338,13 +338,13 @@ document.addEventListener("DOMContentLoaded", function () {
   //Función de Creación de Cartas de Producto
   function createCard(producto, margin = "") {
     var card = document.createElement("div");
-    card.classList.add("col", "bg-black");
+    card.classList.add("col", "dark-theme");
     if (margin) card.classList.add(margin);
     card.id = producto.id;
 
     var innerCard = document.createElement("div");
     innerCard.classList.add(
-      "bg-black",
+      "dark-theme",
       "text-white",
       "card",
       "d-flex",

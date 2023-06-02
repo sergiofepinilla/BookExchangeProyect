@@ -14,25 +14,40 @@ if (isset($_SESSION["user"])) {
 <!-- Primera navbar (superior) con logo y barra de búsqueda -->
 <nav class="navbar navbar-expand-lg bg dark-theme">
     <div class="container">
-        <!-- TOGGLER BUTTON -->
-        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-list" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M1 2.5A.5.5 0 0 1 1.5 2h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5zm0 5A.5.5 0 0 1 1.5 7h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5zm0 5A.5.5 0 0 1 1.5 12h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5z" />
-            </svg>
-        </button>
+        <div class="d-flex d-lg-none w-100">
+            <!-- TOGGLER BUTTON -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-list" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1 2.5A.5.5 0 0 1 1.5 2h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5zm0 5A.5.5 0 0 1 1.5 7h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5zm0 5A.5.5 0 0 1 1.5 12h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5z" />
+                </svg>
+            </button>
 
-        <!-- LOGO AND SEARCH BAR -->
-        <a href="../home/home.php" class="w-25 d-flex align-items-center me-2">
-            <img src="../assets/img/logo/logo.png" class="w-100 d-none d-lg-flex" alt="Logo">
-            <img src="../assets/img/logo/logo.png" class="d-lg-none w-100" alt="Logo">
+            <!-- LOGO FOR MOBILE -->
+            <a href="../home/home.php" class="d-flex align-items-center">
+                <img src="../assets/img/logo/logo.png" class="w-75 ms-3" alt="Logo">
+            </a>
+        </div>
+
+        <!-- LOGO FOR DESKTOP -->
+        <a href="../home/home.php" class="w-25 d-none d-lg-flex align-items-center me-2">
+            <img src="../assets/img/logo/logo.png" class="w-100" alt="Logo">
         </a>
-        <div class="d-flex justify-content-center align-items-center flex-grow-1">
+
+        <!-- SEARCH BAR FOR DESKTOP -->
+        <div class="d-none d-lg-flex justify-content-center align-items-center flex-grow-1">
             <div class="input-group">
                 <input class="form-control dark-theme" placeholder="Busca por autor, título, género, ISBN" id="searchBar">
                 <button class="btn btn-outline-light" id="btnSearch"><i class="bi bi-search"></i></button>
             </div>
         </div>
 
+        <!-- SEARCH BAR FOR MOBILE -->
+        <div class="d-flex d-lg-none justify-content-center align-items-center w-100 mt-3">
+            <div class="input-group">
+                <input class="form-control dark-theme" placeholder="Busca por autor, título, género, ISBN" id="searchBar">
+                <button class="btn btn-outline-light" id="btnSearch"><i class="bi bi-search"></i></button>
+            </div>
+        </div>
     </div>
     <div class="container d-lg-none mt-3">
         <div class="collapse navbar-collapse" id="navbarNav">

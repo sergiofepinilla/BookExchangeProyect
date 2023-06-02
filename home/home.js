@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var innerCard = document.createElement("div");
     innerCard.classList.add(
-      "bg-black",
+      "dark-theme",
       "text-white",
       "card",
       "d-flex",

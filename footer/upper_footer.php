@@ -1,5 +1,6 @@
 <footer class="text-center text-lg-start text-white">
     <div class="container">
+        <!-- Redes Sociales -->
         <section class="d-flex justify-content-center justify-content-lg-end p-4 border-bottom">
             <div class="d-flex">
                 <a href="" class="me-4 text-reset">
