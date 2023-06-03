@@ -104,7 +104,7 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
 ?>
 <div class="container mb-5 mt-5">
     <h1>Gestionar Usuarios y Libros</h1>
-    <ul class="nav nav-tabs mt-5 flex-nowrap overflow-auto">
+    <ul class="nav nav-tabs mt-5 flex-nowrap ">
         <li class="nav-item">
             <a class="nav-link active" href="#comprados" data-bs-toggle="tab">Gestionar Usuarios</a>
         </li>
@@ -231,8 +231,8 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
                         <li class="page-item disabled">
                             <a class="page-link">Siguiente</a>
                         </li>
-                        <span class="pagination-item custom-text d-inline-block p-2  align-middle">Página <?php echo $pageVendidos; ?> de <?php echo $totalPagesVendidos; ?></span>
                     <?php endif; ?>
+                    <span class="pagination-item custom-text d-inline-block p-2  align-middle">Página <?php echo $pageVendidos; ?> de <?php echo $totalPagesVendidos; ?></span>
                 </ul>
             </nav>
             <!-- Paginación Libros en Vendidos -->
@@ -294,8 +294,8 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
                         <li class="page-item disabled">
                             <a class="page-link">Siguiente</a>
                         </li>
-                        <span class="pagination-item custom-text d-inline-block p-2  align-middle">Página <?php echo $pageEnVenta; ?> de <?php echo $totalPagesEnVenta; ?></span>
                     <?php endif; ?>
+                    <span class="pagination-item custom-text d-inline-block p-2  align-middle">Página <?php echo $pageEnVenta; ?> de <?php echo $totalPagesEnVenta; ?></span>
                 </ul>
             </nav>
             <!-- Paginación Libros en Venta -->

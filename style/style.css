@@ -145,4 +145,7 @@ color: #a39fdb;
   text-decoration: none; 
   color: black; 
 }
-
+button.btn-primary:disabled {
+  background-color: gray; 
+  color: white; 
+}

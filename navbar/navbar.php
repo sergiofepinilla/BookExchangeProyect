@@ -88,14 +88,6 @@ if (isset($_SESSION["user"])) {
                     </li>
                 <?php } ?>
                 <?php if (isset($_SESSION["user"])) { ?>
-                    <?php if ($userType == 2) { ?>
-                        <li class="nav-item d-lg-none">
-                            <a class="nav-link text-white" href="../admin/admin.php?admin=users">Administrar Usuarios</a>
-                        </li>
-                        <li class="nav-item d-lg-none">
-                            <a class="nav-link text-white" href="../admin/admin.php?admin=products">Administrar Productos</a>
-                        </li>
-                    <?php } ?>
                     <li class="nav-item d-lg-none">
                         <a class="nav-link text-white fw-bold" href="../profile/profile.php?id=<?php echo $userId; ?>">Perfil</a>
                     </li>

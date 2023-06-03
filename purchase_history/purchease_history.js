@@ -70,7 +70,15 @@ document.addEventListener("DOMContentLoaded", function () {
     $("#formValoracion").submit(function (e) {
       e.preventDefault();
 
-      // Aquí puedes enviar la valoración al servidor
+      // Verificar si se ha seleccionado una puntuación
+      var rating = parseInt($("#rating").val());
+      if (!rating) {
+        alert(
+          "Por favor, selecciona una puntuación antes de enviar la valoración."
+        );
+        return;
+      }
+
       var rating = parseInt($("#rating").val());
       var comentario = $("#comentario").val();
       var libroId = parseInt($("#idLibroValorar").val());

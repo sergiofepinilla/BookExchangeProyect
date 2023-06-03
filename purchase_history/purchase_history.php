@@ -113,7 +113,7 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
 
 <div class="container mb-5 mt-5">
   <h1>Historial de Transacciones</h1>
-  <ul class="nav nav-tabs mt-5">
+  <ul class="nav nav-tabs mt-5 flex-nowrap">
     <li class="nav-item">
       <a class="nav-link active" href="#comprados" data-bs-toggle="tab">Libros Comprados</a>
     </li>
@@ -242,8 +242,8 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
             <li class="page-item disabled">
               <a class="page-link">Siguiente</a>
             </li>
-            <span class="pagination-item  d-inline-block p-2  align-middle">Página <?php echo $pageVendidos; ?> de <?php echo $totalPagesVendidos; ?></span>
           <?php endif; ?>
+          <span class="pagination-item  d-inline-block p-2 align-middle custom-text">Página <?php echo $pageVendidos; ?> de <?php echo $totalPagesVendidos; ?></span>
         </ul>
       </nav>
     </div>
@@ -304,8 +304,8 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
             <li class="page-item disabled">
               <a class="page-link">Siguiente</a>
             </li>
-            <span class="pagination-item  d-inline-block p-2  align-middle">Página <?php echo $pageEnVenta; ?> de <?php echo $totalPagesEnVenta; ?></span>
           <?php endif; ?>
+          <span class="pagination-item d-inline-block p-2 align-middle custom-text">Página <?php echo $pageEnVenta; ?> de <?php echo $totalPagesEnVenta; ?></span>
         </ul>
       </nav>
       <!-- Paginación Libros en Venta -->
@@ -316,15 +316,15 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
 </div>
 
 <!-- Modal Valoración -->
-<div class="modal fade" id="modalValoracion" tabindex="-1" aria-labelledby="modalValoracionLabel" aria-hidden="true">
+<div class="modal fade " id="modalValoracion" tabindex="-1" aria-labelledby="modalValoracionLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header bg-black text-white">
+    <div class="modal-content ">
+      <div class="modal-header dark-theme text-white">
         <h5 class="modal-title" id="modalValoracionLabel">Valoración</h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
       </div>
       <form id="formValoracion">
-        <div class="modal-body">
+        <div class="modal-body ">
           <input type="hidden" id="idLibroValorar" name="idLibro">
           <input type="hidden" id="rowId" value="">
           <input type="hidden" id="idUsuarioVendedor" name="idUsuarioVendedor">
@@ -348,7 +348,7 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="submit" class="btn btn-success">Enviar valoración</button>
+          <button type="submit" class="btn accent custom-text">Enviar valoración</button>
         </div>
       </form>
     </div>
