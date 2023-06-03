@@ -26,7 +26,7 @@
                         <div class="row">
                             <div class="col-12 mt-2">
                                 <input type="file" name="profilePicture" id="profilePicture" class="custom-file-input " style="display:none;" accept="image/*">
-                                <label class="custom-file-label btn primary-btn mt-3" for="profilePicture">Cambiar imagen</label>
+                                <label class="custom-file-label fw-bold btn dark-theme custom-text custom-card-border mt-3" for="profilePicture">Cambiar imagen</label>
                             </div>
                         </div>
 
@@ -116,10 +116,10 @@
                 <div class="col d-flex justify-content-end">
                     <!-- EDIT OR SAVE BUTTON -->
                     <?php if (isset($_POST["editProfileSubmit"])) : ?>
-                        <button type="submit" class="btn btn-lg primary-btn" name="saveProfileSubmit">Guardar cambios</button>
+                        <button type="submit" class="fw-bold btn btn-lg dark-theme custom-text custom-card-border" name="saveProfileSubmit">Guardar cambios</button>
                     <?php else : ?>
                         <form action="profile.php?id=<?php echo $userId ?>" method="POST">
-                            <button type="submit" class="btn btn-lg primary-btn" name="editProfileSubmit">Editar Perfil</button>
+                            <button type="submit" class="fw-bold btn btn-lg dark-theme custom-text custom-card-border" name="editProfileSubmit">Editar Perfil</button>
                         <?php endif; ?>
                         </form>
                 </div>

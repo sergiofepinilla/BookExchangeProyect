@@ -54,15 +54,17 @@
         <div class="row pt-3 row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4" id="container"></div>
         <img src="../assets/img/no-result.JPG" alt="" id="no-results-image" class="w-75 mt-5 mb-5 mx-auto" style="display:none">
 
-        <div id="pagination-container mt-5">
+        <div id="pagination-container" class="mt-3">
             <div class="row">
                 <div class="col d-flex justify-content-center">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
-                            <li class="page-item"><a class="page-link btn-lg text-dark" href="#" id="prev-page">Anterior</a></li>
-                            <p class="custom-text ms-3">Página </p>
-                            <li class="page-item"><span class="custom-text dark theme me-3" id="page-number">1</span></li>
-                            <li class="page-item"><a class="page-link btn-lg text-dark" href="#" id="next-page">Siguiente</a></li>
+                            <li class="page-item"><a class="btn btn-lg inf-nav text-white custom-card-border" href="#" id="prev-page">Anterior</a></li>
+                            <div id="page-info" class="custom-text text-center d-flex align-items-center justify-content-center mx-3">
+                                <!-- Tu contenido aquí -->
+                            </div>
+
+                            <li class="page-item"><a class="btn btn-lg inf-nav text-white custom-card-border" href="#" id="next-page">Siguiente</a></li>
                         </ul>
                     </nav>
                 </div>

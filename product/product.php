@@ -31,7 +31,7 @@
                         <div class="row">
                             <div class="col-12 d-flex align-items-center">
                                 <a href="" id="usu_vendedor_link" class="w-100">
-                                    <button type="button" class="btn accent custom-text fw-bold w-100">Ver Perfil</button>
+                                    <button type="button" class="fw-bold btn btn-lg dark-theme custom-text custom-card-border w-100">Ver Perfil</button>
                                 </a>
                             </div>
                         </div>
@@ -53,7 +53,7 @@
             </div>
             <div class="custom-hr w-100 mb-4"></div>
             <p class="fs-4 text-end" id="precio">9.99€</p>
-            <button type="button" class="btn btn-lg primary-btn w-100 mb-4 mb-md-0" id="comprarButton">Comprar</button>
+            <button type="button" class="fw-bold btn btn-lg dark-theme custom-text custom-card-border w-100 mb-4 mb-md-0" id="comprarButton">Comprar</button>
 
             <!-- Modal -->
             <div class="modal fade" id="comprarModal" tabindex="-1" aria-labelledby="comprarModalLabel" aria-hidden="true">
@@ -171,7 +171,7 @@
                                         </div>
                                     </div>
                                     <hr class="my-4">
-                                    <button class="w-100 btn primary-btn btn-lg  border border-white " type="submit" id="buyBtn">Completar el pago</button>
+                                    <button class="w-100 btn btn-lg dark-theme custom-text custom-card-border " type="submit" id="buyBtn">Completar el pago</button>
                                 </form>
                             </div>
                         </div>

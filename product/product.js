@@ -440,12 +440,12 @@ document.addEventListener("DOMContentLoaded", function () {
     var checkBtn = document.createElement("a");
     checkBtn.classList.add(
       "btn",
-      "primary-btn",
       "w-100",
       "fw-bold",
-      "border",
-      "border-white",
-      "rounded"
+      "dark-theme",
+      "custom-text",
+      "rounded",
+      "custom-card-border"
     );
     checkBtn.textContent = "VER";
     checkBtn.href = `../product/product.php?id=${producto.id}`;

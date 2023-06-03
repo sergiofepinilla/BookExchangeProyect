@@ -123,8 +123,18 @@ getProducts().then(
       document.getElementById("user-reviews").style.display = "none";
       return;
     }
+
     var total = 0;
     var products = data.products;
+
+    if (products.length === 0) {
+      // Mostrar Imagen no-products
+      document.getElementById("no-results-image").style.display = "block";
+      document.getElementById("user-info").style.display = "none";
+      document.getElementById("user-reviews").style.display = "none";
+      return;
+    }
+
     products.forEach(function (product) {
       if (product.titulo != null) {
         total++;
@@ -292,12 +302,12 @@ function createCard(producto, margin = "") {
   var checkBtn = document.createElement("a");
   checkBtn.classList.add(
     "btn",
-    "primary-btn",
     "w-100",
     "fw-bold",
-    "border",
-    "border-white",
-    "rounded"
+    "dark-theme",
+    "custom-text",
+    "rounded",
+    "custom-card-border"
   );
   checkBtn.textContent = "VER";
   checkBtn.href = `../product/product.php?id=${producto.id}`;
@@ -320,7 +330,7 @@ function createReviewCard(review) {
     "mb-4",
     "rounded",
     "dark-theme",
-    "custom-card-border-2",
+    "custom-card-border",
     "custom-text"
   );
 

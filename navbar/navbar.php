@@ -106,7 +106,7 @@ if (isset($_SESSION["user"])) {
 
             <?php } else { ?>
                 <?php if ($userType != 2) { ?>
-                    <a href="../bookform/book_form.php" class="book-link fw-bold btn btn-lg me-3 border border-2 primary-btn mt-2 mt-lg-0 mb-2 mb-lg-0">
+                    <a href="../bookform/book_form.php" class="fw-bold  btn btn-lg dark-theme text-white custom-card-border me-3 mt-2 mt-lg-0 mb-2 mb-lg-0">
                         <i class="bi bi-book me-1"> Subir Libro</i>
                     </a>
                 <?php } ?>
@@ -205,13 +205,13 @@ if (isset($_SESSION["user"])) {
 
         <?php } else { ?>
             <?php if ($userType != 2) { ?>
-                <a href="../bookform/book_form.php" class="book-link fw-bold btn btn-lg me-3 border border-2 primary-btn">
-                    <i class="bi bi-book me-1"> Subir Libro</i>
+                <a href="../bookform/book_form.php" class="fw-bold btn btn-lg dark-theme custom-text custom-card-border me-3 mt-2 mt-lg-0 mb-2 mb-lg-0">
+                    <i class=" bi bi-book me-1"> Subir Libro</i>
                 </a>
             <?php } ?>
             <div class="button-container me-2 d-none d-lg-block">
                 <div class="dropdown">
-                    <button class="border border-white btn btn-lg btn-outline-white text-white dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="custom-card-border btn btn-lg text-white dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bi bi-person"></i>
                     </button>
                     <ul class="dropdown-menu border-dark " aria-labelledby="dropdownMenuButton">

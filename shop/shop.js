@@ -12,7 +12,15 @@ document.addEventListener("DOMContentLoaded", (event) => {
       event.preventDefault();
       currentCategory = $(this).attr("href").split("=")[1];
       currentPage = 1;
-      getProducts(currentPage, currentCategory, query);
+
+      // Borra el parámetro de búsqueda (query) de la URL.
+      urlParams.delete("query");
+
+      // Actualiza la URL en la barra de direcciones sin recargar la página.
+      history.pushState({}, "", "?" + urlParams.toString());
+
+      // Llama a getProducts sin el parámetro de búsqueda.
+      getProducts(currentPage, currentCategory);
     });
 
     $("#prev-page").click(function (event) {
@@ -74,19 +82,20 @@ document.addEventListener("DOMContentLoaded", (event) => {
         if (response.products.length === 0) {
           $("#no-results-image").css("display", "flex");
           $("#container").css("display", "none");
+          $("#pagination-container").css("display", "none");
         } else {
           response.products.forEach((producto) => {
             $("#container").append(createCard(producto));
           });
           $("#no-results-image").css("display", "none");
           $("#container").css("display", "flex");
+          $("#pagination-container").css("display", "block");
         }
 
         currentPage = page;
         totalPages = response.totalPages;
 
-        $("#page-number").text(currentPage);
-        $("#total-pages").text(totalPages);
+        $("#page-info").text(`Página ${currentPage} de ${totalPages}`);
 
         $("#prev-page").prop("disabled", currentPage === 1);
         $("#next-page").prop("disabled", currentPage === totalPages);
@@ -207,12 +216,12 @@ document.addEventListener("DOMContentLoaded", (event) => {
     var checkBtn = document.createElement("a");
     checkBtn.classList.add(
       "btn",
-      "primary-btn",
       "w-100",
       "fw-bold",
-      "border",
-      "border-white",
-      "rounded"
+      "dark-theme",
+      "custom-text",
+      "rounded",
+      "custom-card-border"
     );
     checkBtn.textContent = "VER";
     checkBtn.href = `../product/product.php?id=${producto.id}`;

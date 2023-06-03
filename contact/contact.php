@@ -70,7 +70,7 @@ if (isset($_SESSION['user']) && $userType == 2) {
                         <strong>Consiento el tratamiento de mis datos.</strong> BookExchange tratará sus datos con la finalidad de contestar a sus consultas, dudas o reclamaciones. Puede ejercer sus derechos de acceso, rectificación, supresión, portabilidad, limitación y oposición, como le informamos en nuestra <a href="" class="text-primary">Política de Privacidad</a> y <a href="" class="text-primary">Aviso Legal.</a>
                     </label>
                 </div>
-                <button type="submit" class="btn primary-btn btn-md mt-3" name="contact-submit">Enviar</button>
+                <button type="submit" class="fw-bold btn dark-theme custom-text custom-card-border mt-3" name="contact-submit">Enviar</button>
             </form>
         </div>
         <div class="col-12 col-lg-6 mb-3 mt-3">
