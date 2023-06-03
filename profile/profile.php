@@ -151,19 +151,32 @@
                     <!--Productos Usuario Container-->
                     <div class="container mb-4">
                         <!--Book Row Container-->
-                        <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
-                            <div class="carousel-inner" id="carouselInner"></div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+                        <div id="productCarouselLarge" class="carousel slide d-none d-lg-block" data-bs-ride="carousel">
+                            <div class="carousel-inner" id="carouselInnerLarge"></div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#productCarouselLarge" data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Previous</span>
                             </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+                            <button class="carousel-control-next" type="button" data-bs-target="#productCarouselLarge" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+
+                        <div id="productCarouselSmall" class="carousel slide d-block d-lg-none" data-bs-ride="carousel">
+                            <div class="carousel-inner" id="carouselInnerSmall"></div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#productCarouselSmall" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#productCarouselSmall" data-bs-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Next</span>
                             </button>
                         </div>
                     </div>
                     <!--Productos Usuario Container FIN-->
+
                 </div>
                 <div id="signup" class="tab-pane">
                     <div class="col-md-12 d-flex justify-content-between align-items-center">

@@ -43,7 +43,7 @@ var productos;
 var containerNovedades = document.getElementById("containerNovedades");
 var productosLista = document.getElementById("productosLista");
 
-function loadCarousel(carouselInnerId, productsToShow, userInfo) {
+function loadCarousel(carouselInnerId, productsToShow, userInfo, isLarge) {
   var imgPerfil = document.createElement("img");
   imgPerfil.classList.add(
     "card-img-top",
@@ -60,7 +60,6 @@ function loadCarousel(carouselInnerId, productsToShow, userInfo) {
   imgPerfil.style.borderRadius = "10px";
 
   var profileImageContainer = document.getElementById("profileImageContainer");
-
   profileImageContainer.appendChild(imgPerfil);
 
   var usu_apodo = document.getElementById("apodo");
@@ -80,7 +79,9 @@ function loadCarousel(carouselInnerId, productsToShow, userInfo) {
 
   var carouselInner = document.getElementById(carouselInnerId);
 
-  for (let i = 0; i < productsToShow.length; i += 5) {
+  var productsPerItem = isLarge ? 5 : 2;
+
+  for (let i = 0; i < productsToShow.length; i += productsPerItem) {
     var carouselItem = document.createElement("div");
     carouselItem.classList.add("carousel-item");
 
@@ -91,14 +92,14 @@ function loadCarousel(carouselInnerId, productsToShow, userInfo) {
     var row = document.createElement("div");
     row.classList.add(
       "row",
-      "row-cols-1",
+      "row-cols-2",
       "row-cols-md-2",
       "row-cols-lg-3",
-      "row-cols-xl-5",
+      "row-cols-xl-" + productsPerItem,
       "g-3"
     );
 
-    for (let j = i; j < i + 5 && j < productsToShow.length; j++) {
+    for (let j = i; j < i + productsPerItem && j < productsToShow.length; j++) {
       var product = productsToShow[j];
       if (product.titulo != null) {
         var card = createCard(product);
@@ -136,7 +137,8 @@ getProducts().then(
     booksTabLink.innerHTML = `Libros (${total})`;
 
     var lastBooks = products;
-    loadCarousel("carouselInner", lastBooks, userInfo);
+    loadCarousel("carouselInnerLarge", lastBooks, userInfo, true);
+    loadCarousel("carouselInnerSmall", lastBooks, userInfo, false);
 
     // Cantidad Libros Vendidos
     var libros_vendidos = document.getElementById("libros_vendidos");
