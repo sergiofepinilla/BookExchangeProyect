@@ -351,6 +351,7 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
           <button type="submit" class="btn accent custom-text">Enviar valoración</button>
         </div>
       </form>
+      <p id="successMessage" class="fs-5 ms-2 my-4" style="display:none">Se ha registrado la valoración correctamente.</p>
     </div>
   </div>
 </div>

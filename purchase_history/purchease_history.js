@@ -98,13 +98,23 @@ document.addEventListener("DOMContentLoaded", function () {
           rowId: rowId,
         },
         success: function (data) {
-          $("#modalValoracion").modal("hide");
+          $("#formValoracion").hide();
+          // Mostrar el mensaje de éxito
+          $("#successMessage").show();
+
+          // Establecer un temporizador para ocultar el modal
+          setTimeout(function () {
+            $("#modalValoracion").modal("hide");
+          }, 2000);
 
           // Limpiar Formulario
           $("#rating").barrating("clear");
           $("#comentario").val("");
 
-          location.reload();
+          // Recargar la página después de un cierto tiempo (por ejemplo, 3 segundos más)
+          setTimeout(function () {
+            location.reload();
+          }, 2000);
         },
         error: function (err) {
           alert(

@@ -116,11 +116,11 @@
         <!--Cookies-->
         <div id="cookie-notification" class="container alert custom-text dark-theme alert-dismissible fade show fixed-bottom custom-card-border-2" role="alert" style="display: none;">
             <div class="container">
-                <div class="row align-items-center">
-                    <div class="col">
+                <div class="row flex-column flex-lg-row">
+                    <div class="col-lg mb-2 mb-lg-0">
                         <p>Este sitio web utiliza cookies para mejorar la experiencia del usuario. Al continuar navegando, aceptas nuestra política de cookies.</p>
                     </div>
-                    <div class="col-auto">
+                    <div class="col-lg-auto text-center text-lg-right">
                         <button id="accept-cookies" class="btn primary-btn custom-text cookie-btn">Aceptar</button>
                         <button id="reject-cookies" class="btn secondary-btn custom-text cookie-btn">Rechazar</button>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
