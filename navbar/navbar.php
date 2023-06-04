@@ -211,7 +211,7 @@ if (isset($_SESSION["user"])) {
             <?php } ?>
             <div class="button-container me-2 d-none d-lg-block">
                 <div class="dropdown">
-                    <button class="custom-card-border btn btn-lg text-white dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="dark-theme custom-card-border btn btn-lg text-white dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bi bi-person"></i>
                     </button>
                     <ul class="dropdown-menu border-dark " aria-labelledby="dropdownMenuButton">

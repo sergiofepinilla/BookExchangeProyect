@@ -149,7 +149,10 @@
                         <h2 class="mt-3">Libros en Venta</h2>
                     </div>
                     <!--Productos Usuario Container-->
-                    <div class="container mb-4">
+                    <div id="no_book_div" style="display:none">
+                        <h3>Este usuario no tiene ningún libro disponible</h3>
+                    </div>
+                    <div class="container mb-4" id="book_div">
                         <!--Book Row Container-->
                         <div id="productCarouselLarge" class="carousel slide d-none d-lg-block" data-bs-ride="carousel">
                             <div class="carousel-inner" id="carouselInnerLarge"></div>
@@ -184,6 +187,9 @@
                     </div>
                     <!-- Valoraciones Container -->
                     <div id="reviewsContainer" class="mt-3 mb-4"></div>
+                    <div id="no-reviews-div" class="mt-3 mb-4" style="display:none">
+                        <h3>Este Usuario no tiene valoraciones.</h3>
+                    </div>
                 </div>
             </div>
         </div>

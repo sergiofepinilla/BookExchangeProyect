@@ -129,10 +129,8 @@ getProducts().then(
 
     if (products.length === 0) {
       // Mostrar Imagen no-products
-      document.getElementById("no-results-image").style.display = "block";
-      document.getElementById("user-info").style.display = "none";
-      document.getElementById("user-reviews").style.display = "none";
-      return;
+      $("#book_div").css("display", "none");
+      $("#no_book_div").css("display", "flex");
     }
 
     products.forEach(function (product) {
@@ -167,6 +165,12 @@ getReviews().then(
   function (data) {
     var reviews = data.reviews;
     var total = 0;
+
+    if (reviews.length === 0) {
+      // Mostrar Imagen no-products
+      $("#reviewsContainer").css("display", "none");
+      $("#no-reviews-div").css("display", "flex");
+    }
 
     reviews.forEach(function (review) {
       if (review.puntuacion != null) {

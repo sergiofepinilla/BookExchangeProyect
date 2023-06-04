@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
             $("#container").append(createCard(producto));
           });
           $("#no-results-image").css("display", "none");
-          $("#container").css("display", "flex");
+          $("#no_book_div").css("display", "flex");
           $("#pagination-container").css("display", "block");
         }
 
