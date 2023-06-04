@@ -28,6 +28,6 @@
     </div>
     <div class="row">
         <input type="text" class="form-control dark-theme mb-2" placeholder="Introduce tu correo electrónico">
-        <button class="btn btn-lg-lg primary-btn border-rad">Suscribete</button>
+        <button class="fw-bold btn btn-lg dark-theme text-white custom-card-border">Suscribete</button>
     </div>
 </div>

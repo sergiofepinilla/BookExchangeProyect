@@ -207,7 +207,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "<span class='fw-bold'>Descripción</span>: " + product.descripcion;
 
     const usu_vendedor = document.getElementById("usu_vendedor");
-    usu_vendedor.textContent = product.vendedor_apodo;
+    usu_vendedor.textContent = product.vendedor_nombre;
 
     const usuVendedorLink = document.getElementById("usu_vendedor_link");
     usuVendedorLink.href = `../profile/profile.php?id=${product.id_usuario}`;
@@ -279,9 +279,57 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  document.getElementById("buyBtn").addEventListener("click", function () {
+  document.getElementById("buyBtn").addEventListener("click", function (event) {
+    event.preventDefault();
+
+    var firstName = document.getElementById("firstName").value;
+    var lastName = document.getElementById("lastName").value;
+    var address = document.getElementById("address").value;
+    var country = document.getElementById("country").value;
+    var zip = document.getElementById("zip").value;
+    var ccName = document.getElementById("cc-name").value;
+    var ccNumber = document.getElementById("cc-number").value;
+    var ccExpiration = document.getElementById("cc-expiration").value;
+    var ccCvv = document.getElementById("cc-cvv").value;
+
+    if (firstName == "" || lastName == "") {
+      alert("Por favor, introduzca su nombre y apellido.");
+      return false;
+    }
+    if (address == "") {
+      alert("Por favor, introduzca su dirección.");
+      return false;
+    }
+    if (country == "") {
+      alert("Por favor, seleccione una Comunidad Autónoma.");
+      return false;
+    }
+    if (zip == "" || zip.length != 5) {
+      alert("Por favor, introduzca un código postal válido.");
+      return false;
+    }
+    if (ccName == "") {
+      alert("Por favor, introduzca el nombre que aparece en la tarjeta.");
+      return false;
+    }
+    if (ccNumber == "" || ccNumber.length != 16) {
+      alert("Por favor, introduzca un número de tarjeta de crédito válido.");
+      return false;
+    }
+    if (ccExpiration == "" || !ccExpiration.match(/^(0[1-9]|1[0-2])\/\d{2}$/)) {
+      alert(
+        "Por favor, introduzca una fecha de vencimiento válida en formato MM/YY."
+      );
+      return false;
+    }
+
+    if (ccCvv == "" || ccCvv.length != 3) {
+      alert("Por favor, introduzca un código de seguridad (CVV) válido.");
+      return false;
+    }
     purchaseProduct();
   });
+
   //Proceso de Compra de Libro
   function purchaseProduct() {
     const id_usu_comprador = currentUserId;
@@ -325,11 +373,20 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       })
       .then((data) => {
-        if (data === "success") {
-          window.location.href = "../home/home.php";
-        } else {
-          window.location.href = "../home/home.php?error=purchaseError";
-        }
+        // Ocultar contenido original y mostrar mensaje de carga
+        document.getElementById("purchease_form").style.display = "none";
+        document.getElementById("loadingMessage").style.display = "block";
+
+        setTimeout(() => {
+          // Ocultar mensaje de carga y mostrar mensaje de éxito
+          document.getElementById("loadingMessage").style.display = "none";
+          document.getElementById("successMessage").style.display = "block";
+
+          // Redirigir a la página de inicio después de un retardo
+          setTimeout(function () {
+            window.location.href = "../home/home.php";
+          }, 2000); // 3000 ms = 3 segundos
+        }, 4000); // Este retardo es para simular el tiempo de carga. Puedes ajustarlo según tus necesidades.
       })
       .catch((error) => {
         console.error("Error:", error);

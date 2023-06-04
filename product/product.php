@@ -64,7 +64,25 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <div class="col">
+                            <!-- Loading Message -->
+                            <div id="loadingMessage" style="display: none;">
+                                <div class="d-flex align-items-center">
+                                    <div class="spinner-border text-primary me-3" role="status">
+                                        <span class="sr-only">Cargando...</span>
+                                    </div>
+                                    <p class="mb-0 ml-2">Verificando Credenciales...</p>
+                                </div>
+                            </div>
+
+                            <!-- Success Message -->
+                            <div id="successMessage" style="display: none;">
+                                <div class="d-flex align-items-center">
+                                    <i class="bi bi-check-circle-fill bi-lg custom-text me-3"></i>
+                                    <p class="mb-0 ml-2">La compra se ha completado con éxito</p>
+                                </div>
+                            </div>
+
+                            <div class="col" id="purchease_form">
                                 <h4 class="mb-3">Dirección de envio</h4>
                                 <form class="needs-validation" novalidate="">
                                     <div class="row g-3">
@@ -183,6 +201,8 @@
             </div>
 
             <!-- MODAL FIN -->
+
+
             <p id="removeProductLink" style="display:none;" class="mt-2 text-center"><a href="#">¿Deseas retirar tu producto de la tienda?</a></p>
         </div>
     </div>

@@ -14,12 +14,12 @@ if (!isset($_SESSION['user']) || $userType == 2) {
 <div class="container mt-5 mb-5">
     <div class="row">
         <div class="col-md-12">
-            <ul class="nav nav-pills mb-3 " id="pills-tab" role="tablist">
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item " role="presentation">
                     <a class="nav-link active" id="pills-fase1-tab" data-bs-toggle="pill" href="#pills-fase1" role="tab" aria-controls="pills-fase1" aria-selected="true" style="pointer-events: none;">Información</a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="pills-fase2-tab" data-bs-toggle="pill" href="#pills-fase2" role="tab" aria-controls="pills-fase2" aria-selected="false" style="pointer-events: none;">Precio y Envío</a>
+                    <a class="nav-link" id="pills-fase2-tab" data-bs-toggle="pill" href="#pills-fase2" role="tab" aria-controls="pills-fase2" aria-selected="false" style="pointer-events: none;">Precio</a>
                 </li>
                 <li class="nav-item" role="presentation">
                     <a class="nav-link" id="pills-fase3-tab" data-bs-toggle="pill" href="#pills-fase3" role="tab" aria-controls="pills-fase3" aria-selected="false" style="pointer-events: none;">Imagen</a>
@@ -98,7 +98,7 @@ if (!isset($_SESSION['user']) || $userType == 2) {
                                 </div>
                             </div>
                         </div>
-                        <button type="button" class="btn  btn-primary" id="btnFase1">Siguiente</button>
+                        <button type="button" class="fw-bold btn dark-theme text-white custom-card-border" id="btnFase1">Siguiente</button>
                 </div>
                 <div class="tab-pane fade" id="pills-fase2" role="tabpanel" aria-labelledby="pills-fase2-tab">
                     <h1>Precio y envio</h1>
@@ -116,8 +116,8 @@ if (!isset($_SESSION['user']) || $userType == 2) {
                         <label for="descripcion" class="form-label custom-text">Descripción</label>
                         <textarea class="form-control" id="descripcion" name="descripcion" rows="5" placeholder="Introduzca una brece descripción del libro"></textarea>
                     </div>
-                    <button type="button" class="btn inf-nav border border-white border-2 custom-text" id="btnRegresar">Regresar</button>
-                    <button type="button" class="btn primary-btn" id="btnFase2">Siguiente</button>
+                    <button type="button" class="fw-bold btn dark-theme text-white custom-card-border" id="btnRegresar">Regresar</button>
+                    <button type="button" class="fw-bold btn dark-theme text-white custom-card-border" id="btnFase2">Siguiente</button>
                 </div>
                 <div class="tab-pane fade" id="pills-fase3" role="tabpanel" aria-labelledby="pills-fase3-tab">
                     <h1>Imagen del libro</h1>
@@ -141,8 +141,8 @@ if (!isset($_SESSION['user']) || $userType == 2) {
                             </div>
                         </div>
                     </div>
-                    <button type="button" class="btn inf-nav border border-white border-2 custom-text" id="btnRegresar2">Regresar</button>
-                    <button type="button" class="btn primary-btn" id="btnFase3">Siguiente</button>
+                    <button type="button" class="fw-bold btn dark-theme text-white custom-card-border" id="btnRegresar2">Regresar</button>
+                    <button type="button" class="fw-bold btn dark-theme text-white custom-card-border" id="btnFase3">Siguiente</button>
                 </div>
                 <div class="tab-pane fade" id="pills-fase4" role="tabpanel" aria-labelledby="pills-fase4-tab">
                     <h1>Confirmación</h1>
@@ -175,8 +175,8 @@ if (!isset($_SESSION['user']) || $userType == 2) {
                         <input type="checkbox" class="form-check-input" id="confirmarEnvio" name="confirmarEnvio">
                         <label for="confirmarEnvio" class="form-check-label custom-text">Confirmo que toda la información es correcta</label>
                     </div>
-                    <button id="btnRegresar3" type="button" class="btn inf-nav border border-white border-2 custom-text">Atrás</button>
-                    <input id="enviarFormulario" type="submit" class="btn primary-btn" value="Enviar" disabled>
+                    <button id="btnRegresar3" type="button" class="fw-bold btn dark-theme text-white custom-card-border">Atrás</button>
+                    <input id="enviarFormulario" type="submit" class="fw-bold btn dark-theme text-white custom-card-border" value="Enviar" disabled>
                     </form>
                 </div>
             </div>

@@ -106,7 +106,7 @@ if (isset($_SESSION["user"])) {
 
             <?php } else { ?>
                 <?php if ($userType != 2) { ?>
-                    <a href="../bookform/book_form.php" class="fw-bold  btn btn-lg dark-theme text-white custom-card-border me-3 mt-2 mt-lg-0 mb-2 mb-lg-0">
+                    <a href="../bookform/book_form.php" class="fw-bold btn btn-lg dark-theme text-white custom-card-border me-3 mt-2 mt-lg-0 mb-2 mb-lg-0">
                         <i class="bi bi-book me-1"> Subir Libro</i>
                     </a>
                 <?php } ?>

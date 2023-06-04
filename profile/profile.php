@@ -41,7 +41,7 @@
                             <div class="row mt-5">
                             <?php }; ?>
                             <div class="col-12 col-md-8 text-center text-md-start">
-                                <h2><span class="mt-2 " id="apodo"></span></h2>
+                                <h1 class="mt-2" id="apodo"></h1>
                             </div>
                             </div>
                             <div class="row mb-2  text-center text-md-start">
@@ -71,6 +71,17 @@
                                     </div>
                                     <div class="col-md-8  text-center text-md-start">
                                         <span id="correo"></span>
+                                    </div>
+                                <?php } ?>
+                            </div>
+
+                            <div class="row mb-2  text-center text-md-start">
+                                <?php if (isset($userId) && $userId == $_GET['id']) { ?>
+                                    <div class="col-12 col-md-4">
+                                        <strong>Nombre de usuario:</strong>
+                                    </div>
+                                    <div class="col-md-8  text-center text-md-start">
+                                        <span id="user_name"></span>
                                     </div>
                                 <?php } ?>
                             </div>

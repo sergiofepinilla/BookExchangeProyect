@@ -64,7 +64,7 @@ function loadCarousel(carouselInnerId, productsToShow, userInfo, isLarge) {
 
   var usu_apodo = document.getElementById("apodo");
   if (usu_apodo) {
-    usu_apodo.textContent = userInfo.apodo;
+    usu_apodo.textContent = userInfo.nombre;
   }
 
   var usu_nombre = document.getElementById("nombre");
@@ -75,6 +75,11 @@ function loadCarousel(carouselInnerId, productsToShow, userInfo, isLarge) {
   var usu_correo = document.getElementById("correo");
   if (usu_correo) {
     usu_correo.innerHTML = userInfo.correo;
+  }
+
+  var user_name = document.getElementById("user_name");
+  if (user_name) {
+    user_name.innerHTML = userInfo.apodo;
   }
 
   var carouselInner = document.getElementById(carouselInnerId);

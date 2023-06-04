@@ -170,7 +170,7 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
         <ul class="pagination">
           <?php if ($pageComprados > 1) : ?>
             <li class="page-item">
-              <a class="page-link" href="?pageComprados=<?php echo $pageComprados - 1; ?>">Anterior</a>
+              <a class="page-link fw-bold btn dark-theme text-white custom-card-border" href="?pageComprados=<?php echo $pageComprados - 1; ?>">Anterior</a>
             </li>
           <?php else : ?>
             <li class="page-item disabled">
@@ -179,11 +179,11 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
           <?php endif; ?>
           <?php if ($pageComprados < $totalPagesComprados) : ?>
             <li class="page-item">
-              <a class="page-link" href="?pageComprados=<?php echo $pageComprados + 1; ?>">Siguiente</a>
+              <a class="page-link fw-bold btn dark-theme text-white custom-card-border" href="?pageComprados=<?php echo $pageComprados + 1; ?>">Siguiente</a>
             </li>
           <?php else : ?>
             <li class="page-item disabled">
-              <a class="page-link">Siguiente</a>
+              <a class="page-link ">Siguiente</a>
             </li>
           <?php endif; ?>
           <span class="pagination-item  d-inline-block p-2  align-middle custom-text">Página <?php echo $pageComprados; ?> de <?php echo $totalPagesComprados; ?></span>
@@ -226,7 +226,7 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
         <ul class="pagination">
           <?php if ($pageVendidos > 1) : ?>
             <li class="page-item">
-              <a class="page-link" href="?pageVendidos=<?php echo $pageVendidos - 1; ?>">Anterior</a>
+              <a class="page-link fw-bold btn dark-theme text-white custom-card-border" href="?pageVendidos=<?php echo $pageVendidos - 1; ?>">Anterior</a>
             </li>
           <?php else : ?>
             <li class="page-item disabled">
@@ -236,14 +236,14 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
 
           <?php if ($pageVendidos < $totalPagesVendidos) : ?>
             <li class="page-item">
-              <a class="page-link" href="?pageVendidos=<?php echo $pageVendidos + 1; ?>">Siguiente</a>
+              <a class="page-link fw-bold btn dark-theme text-white custom-card-border" href="?pageVendidos=<?php echo $pageVendidos + 1; ?>">Siguiente</a>
             </li>
           <?php else : ?>
             <li class="page-item disabled">
               <a class="page-link">Siguiente</a>
             </li>
           <?php endif; ?>
-          <span class="pagination-item  d-inline-block p-2 align-middle custom-text">Página <?php echo $pageVendidos; ?> de <?php echo $totalPagesVendidos; ?></span>
+          <span class="pagination-item d-inline-block p-2 align-middle custom-text">Página <?php echo $pageVendidos; ?> de <?php echo $totalPagesVendidos; ?></span>
         </ul>
       </nav>
     </div>
@@ -288,7 +288,7 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
         <ul class="pagination">
           <?php if ($pageEnVenta > 1) : ?>
             <li class="page-item">
-              <a class="page-link" href="?pageEnVenta=<?php echo $pageEnVenta - 1; ?>">Anterior</a>
+              <a class="page-link fw-bold btn dark-theme text-white custom-card-border" href="?pageEnVenta=<?php echo $pageEnVenta - 1; ?>">Anterior</a>
             </li>
           <?php else : ?>
             <li class="page-item disabled">
@@ -298,7 +298,7 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
 
           <?php if ($pageEnVenta < $totalPagesEnVenta) : ?>
             <li class="page-item">
-              <a class="page-link" href="?pageEnVenta=<?php echo $pageEnVenta + 1; ?>">Siguiente</a>
+              <a class="page-link fw-bold btn dark-theme text-white custom-card-border" href="?pageEnVenta=<?php echo $pageEnVenta + 1; ?>">Siguiente</a>
             </li>
           <?php else : ?>
             <li class="page-item disabled">

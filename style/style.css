@@ -149,3 +149,11 @@ button.btn-primary:disabled {
   background-color: gray; 
   color: white; 
 }
+
+.page-item.disabled .page-link {
+  font-weight: bold;
+  color: #858585; /* Cambia el color del texto */
+  border: 1px solid #5c55be;
+  background-color: #040401; /* Cambia el color de fondo */
+  cursor: not-allowed; /* Cambia el cursor para indicar que el elemento no es interactivo */
+}

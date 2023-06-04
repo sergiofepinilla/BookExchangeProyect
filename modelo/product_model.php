@@ -5,7 +5,7 @@ $conn = Connection::getConnection();
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $query = "
-    SELECT libros_venta.*, generos.nombre_genero,generos.id_genero,usuarios.apodo AS vendedor_apodo, datos_usuario.foto_perfil
+    SELECT libros_venta.*, generos.nombre_genero,generos.id_genero,datos_usuario.nombre AS vendedor_nombre, datos_usuario.foto_perfil
     FROM libros_venta
     JOIN usuarios ON libros_venta.id_usuario = usuarios.id
     JOIN datos_usuario ON datos_usuario.id_usuario = usuarios.id
