@@ -1,4 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
+  var successModalElement = document.getElementById("successModal");
+  if (successModalElement) {
+    var myModal = new bootstrap.Modal(successModalElement, {});
+    myModal.show();
+
+    // Esto quitará el query string de la URL en el navegador.
+    history.pushState("", document.title, window.location.pathname);
+  }
+
+  // Esto quitará el query string de la URL en el navegador.
+  history.pushState("", document.title, window.location.pathname);
   const recommendedGenre = getCookie("genre");
   const shopLink = document.getElementById("recommended_shop");
   if (recommendedGenre) {

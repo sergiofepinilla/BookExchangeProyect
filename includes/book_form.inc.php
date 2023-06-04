@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $libro = new Libro($nombre, $isbn, $autor, $editorial, $genero, $estado, $precio, $descripcion, $imagen, $userId);
 
   if ($libro->insertar()) {
-    header("location: ../home/home.php");
+    header("location: ../home/home.php?insert=success");
   } else {
     echo "Error al añadir el libro. Por favor, inténtelo de nuevo más tarde.";
   }

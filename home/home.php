@@ -93,7 +93,26 @@
         </div>
         <!-- Libros recomendados Container FIN -->
         <div class="mt-5 mb-5 mx-auto custom-hr"> </div>
-
+        <?php if (isset($_GET['insert']) && $_GET['insert'] === 'success') { ?>
+            <!-- Modal Libro Introducido  -->
+            <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content custom-card-border-2 rounded">
+                        <div class="modal-header dark-theme custom-text">
+                            <h5 class="modal-title" id="successModalLabel">Éxito</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body dark-theme custom-text">
+                            <p class="fw-bold fs-5">El libro se ha introducido correctamente.</p>
+                        </div>
+                        <div class="modal-footer dark-theme">
+                            <button type="button" class="fw-bold btn btn-lg dark-theme text-white custom-card-border" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal Libro Introducido  -->
+        <?php } ?>
         <!--Cookies-->
         <div id="cookie-notification" class="container alert custom-text dark-theme alert-dismissible fade show fixed-bottom custom-card-border-2" role="alert" style="display: none;">
             <div class="container">
