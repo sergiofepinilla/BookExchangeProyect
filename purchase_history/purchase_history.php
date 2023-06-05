@@ -346,8 +346,8 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="submit" class="btn accent custom-text">Enviar valoración</button>
+          <button type="button" class="fw-bold btn dark-theme text-white custom-card-border" data-bs-dismiss="modal">Cerrar</button>
+          <button type="submit" class="fw-bold btn dark-theme text-white custom-card-border">Enviar valoración</button>
         </div>
       </form>
       <p id="successMessage" class="fs-5 ms-2 my-4" style="display:none">Se ha registrado la valoración correctamente.</p>

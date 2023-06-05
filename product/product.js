@@ -226,9 +226,6 @@ document.addEventListener("DOMContentLoaded", function () {
       "card-img-top",
       "img-fluid",
       "rounded-circle",
-      "border",
-      "border-5",
-      "border-dark",
       "img-perfil-vendedor"
     );
     img_perfil.src = "data:image/jpeg;base64," + product.foto_perfil;
