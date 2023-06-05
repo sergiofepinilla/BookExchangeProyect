@@ -4,11 +4,11 @@ document.addEventListener("DOMContentLoaded", function () {
     var myModal = new bootstrap.Modal(successModalElement, {});
     myModal.show();
 
-    // Esto quitará el query string de la URL en el navegador.
+    // Quitar Query de URL
     history.pushState("", document.title, window.location.pathname);
   }
 
-  // Esto quitará el query string de la URL en el navegador.
+  // Quitar Query de URL
   history.pushState("", document.title, window.location.pathname);
   const recommendedGenre = getCookie("genre");
   const shopLink = document.getElementById("recommended_shop");
@@ -91,10 +91,10 @@ document.addEventListener("DOMContentLoaded", function () {
   Promise.all([getProducts(), getRecommendedBooks()]).then(
     function ([products, recommendedBooks]) {
       var lastBooks = products.slice(0, 10);
-      loadCarousel("carouselInnerLg", lastBooks, 5); // 5 productos por slide en pantalla grande
-      loadCarousel("carouselInnerSm", lastBooks, 2); // 2 productos por slide en pantalla pequeña
-      loadCarousel("recommendedCarouselInnerLg", recommendedBooks, 5); // Ajusta esto según tus necesidades
-      loadCarousel("recommendedCarouselInnerSm", recommendedBooks, 2); // Ajusta esto según tus necesidades
+      loadCarousel("carouselInnerLg", lastBooks, 5); // 5 productos Pantalla Grande
+      loadCarousel("carouselInnerSm", lastBooks, 2); // 2 productos Pantalla Pequeña
+      loadCarousel("recommendedCarouselInnerLg", recommendedBooks, 5); 
+      loadCarousel("recommendedCarouselInnerSm", recommendedBooks, 2); 
     },
     function (error) {
       console.error(error);
@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Crear Tarjetas Personalizadas Para Cada Producto
   function createCard(producto, margin = "") {
     var card = document.createElement("div");
-    card.classList.add("col", "dark-th");
+    card.classList.add("col", "dark-theme");
     if (margin) card.classList.add(margin);
     card.id = producto.id;
 
@@ -127,7 +127,8 @@ document.addEventListener("DOMContentLoaded", function () {
       "img-fluid",
       "overflow-hidden",
       "custom-card-border",
-      "rounded"
+      "rounded-0",
+      "rounded-top"
     );
     imgContainer.style.height = "250px";
 
@@ -152,7 +153,8 @@ document.addEventListener("DOMContentLoaded", function () {
       "flex-column",
       "dark-theme",
       "custom-card-border",
-      "rounded"
+      "rounded-0",
+      "rounded-bottom"
     );
 
     var bookNameRow = document.createElement("div");
