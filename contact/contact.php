@@ -1,14 +1,14 @@
 <?php require_once "../header/header.php"; ?>
 <?php require_once "../navbar/navbar.php";
-if (isset($_SESSION['user']) && $userType == 2) {
-    echo '<script>window.location.href = "../home/home.php";</script>';
-    echo '<img src="../assets/img/403.png" alt="forbidden" class="dark-theme w-100">';
-    require_once "../footer/upper_footer.php";
-    echo '<script src="../navbar/navbar.js"></script>';
-    require_once "../footer/footer_links.php";
-    exit();
-}
-?>
+    if (isset($_SESSION['user']) && $userType == 2) {
+        echo '<script>window.location.href = "../home/home.php";</script>';
+        echo '<img src="../assets/img/403.png" alt="forbidden" class="dark-theme w-100">';
+        require_once "../footer/upper_footer.php";
+        echo '<script src="../navbar/navbar.js"></script>';
+        require_once "../footer/footer_links.php";
+        exit();
+    }
+    ?>
 <!--CONTACT INICIO-->
 <div class="container mt-3 text-center text-md-start">
     <h2>¿Dónde nos encontramos?</h2>
@@ -26,48 +26,48 @@ if (isset($_SESSION['user']) && $userType == 2) {
                 </div>
                 <div class="custom-hr mb-4"></div>
                 <?php
-                if (isset($_SESSION["contactSuccess"])) { ?>
-                    <div class=" alert alert-success alert-dismissible fade show" role="alert">
-                        <p>Gracias por contactarnos. Tu consulta se ha enviado <strong>correctamente</strong>.</p>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
+                    if (isset($_SESSION["contactSuccess"])) { ?>
+                <div class=" alert alert-success alert-dismissible fade show" role="alert">
+                    <p>Gracias por contactarnos. Tu consulta se ha enviado <strong>correctamente</strong>.</p>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
                 <?php }
-                unset($_SESSION["contactSuccess"]);
-                ?>
+                    unset($_SESSION["contactSuccess"]);
+                    ?>
                 <?php if (isset($_GET["error"])) {
                     if ($_GET["error"] == "emptyFields") {
                         echo "<p class='text-danger'>There are empty fields</p>";
                     } elseif ($_GET["error"] == "invalidEmail") {
                         echo "<p class='text-danger'>Invalid email</p>";
                     }
-                } ?>
+                    } ?>
                 <div class="mb-3 mt-2">
                     <label for="nombreContacto" class="form-label custom-text">
-                        <strong>Nombre Completo *</strong>
+                    <strong>Nombre Completo *</strong>
                     </label>
                     <input type="text" maxlength="50" class="form-control" id="nombreContacto" aria-describedby="nombreContacto" name="contactName" required <?php if (isset($_SESSION["user"])) {
-                                                                                                                                                                    echo "value='" . $userName . "'";
-                                                                                                                                                                } ?>>
+                        echo "value='" . $userName . "'";
+                        } ?>>
                     <div id="nombreContacto" class="form-text custom-text">Este nombre se usara para ponernos en contacto con usted.</div>
                 </div>
                 <div class="mb-3">
                     <label for="emailInput" class="form-label custom-text">
-                        <strong>E-mail *</strong>
+                    <strong>E-mail *</strong>
                     </label>
                     <input type="email" maxlength="50" class="form-control" id="emailInput" name="contactEmail" required <?php if (isset($_SESSION["user"])) {
-                                                                                                                                echo "value='" . $userEmail . "'";
-                                                                                                                            } ?>>
+                        echo "value='" . $userEmail . "'";
+                        } ?>>
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label custom-text">
-                        <strong>Comentario *</strong>
+                    <strong>Comentario *</strong>
                     </label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Describe brevemente la razón de contacto..." name="contactText" required></textarea>
                 </div>
                 <div class="mb-3 form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
                     <label class="form-check-label custom-text" for="exampleCheck1">
-                        <strong>Consiento el tratamiento de mis datos.</strong> BookExchange tratará sus datos con la finalidad de contestar a sus consultas, dudas o reclamaciones. Puede ejercer sus derechos de acceso, rectificación, supresión, portabilidad, limitación y oposición, como le informamos en nuestra <a href="" class="text-primary">Política de Privacidad</a> y <a href="" class="text-primary">Aviso Legal.</a>
+                    <strong>Consiento el tratamiento de mis datos.</strong> BookExchange tratará sus datos con la finalidad de contestar a sus consultas, dudas o reclamaciones. Puede ejercer sus derechos de acceso, rectificación, supresión, portabilidad, limitación y oposición, como le informamos en nuestra <a href="" class="text-primary">Política de Privacidad</a> y <a href="" class="text-primary">Aviso Legal.</a>
                     </label>
                 </div>
                 <button type="submit" class="fw-bold btn dark-theme custom-text custom-card-border mt-3" name="contact-submit">Enviar</button>
@@ -83,7 +83,7 @@ if (isset($_SESSION['user']) && $userType == 2) {
                 <div class="col-6 ">
                     <div class="col-12 ">
                         <label class="form-label custom-text ">
-                            <strong>BookExchange (Madrid)</strong>
+                        <strong>BookExchange (Madrid)</strong>
                         </label>
                         <div class="col 12 custom-text">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill text-danger" viewBox="0 0 16 16">
@@ -119,7 +119,7 @@ if (isset($_SESSION['user']) && $userType == 2) {
                 <div class="col-6 ">
                     <div class="col-12">
                         <label class="form-label custom-text">
-                            <strong>BookExchange (Barcelona)</strong>
+                        <strong>BookExchange (Barcelona)</strong>
                         </label>
                         <div class="col 12 custom-text">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill text-danger" viewBox="0 0 16 16">

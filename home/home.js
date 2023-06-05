@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function getProducts() {
     return new Promise(function (resolve, reject) {
       $.ajax({
-        url: "../modelo/homepage_product.php",
+        url: "../includes/homepage_product.php",
         type: "GET",
         dataType: "json",
         success: function (data) {
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function getRecommendedBooks() {
     return new Promise(function (resolve, reject) {
       $.ajax({
-        url: "../modelo/recommended_books.php",
+        url: "../includes/recommended_books.php",
         type: "GET",
         dataType: "json",
         success: function (data) {

@@ -1,5 +1,5 @@
 <?php
-require_once 'includes/dbh.inc.php';
+require_once 'includes/class/dbh.inc.php';
 
 $nombres = ["Pedro Morales", "Ana Serrin", "Luis Gonzalez", "Maria Peña", "Juan Fernandez", "Lucia Gizdo", "Carlos Rosa", "Sofia Nieto", "Francisco Biyuela", "Isabel Peña", "Manuela Gonzalez", "Teresa Cifuentes", "Ricardo Hernandez"];
 $correos = ["pedro@mail.com", "ana@mail.com", "luis@mail.com", "maria@mail.com", "juan@mail.com", "lucia@mail.com", "carlos@mail.com", "sofia@mail.com", "francisco@mail.com", "isabel@mail.com", "manuel@mail.com", "teresa@mail.com", "ricardo@mail.com"];

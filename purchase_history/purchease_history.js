@@ -39,7 +39,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Retirar Producto de la Tienda
-
     $(".retirar").click(function () {
       var idLibro = $(this).data("id");
       console.log("qweqwe");
@@ -70,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
     $("#formValoracion").submit(function (e) {
       e.preventDefault();
 
-      // Verificar si se ha seleccionado una puntuación
+      // Verificar Puntuación Seleccionada
       var rating = parseInt($("#rating").val());
       if (!rating) {
         alert(
@@ -99,10 +98,10 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         success: function (data) {
           $("#formValoracion").hide();
-          // Mostrar el mensaje de éxito
+          // Mostrar Mensaje Exito
           $("#successMessage").show();
 
-          // Establecer un temporizador para ocultar el modal
+          // Temporizador Modal
           setTimeout(function () {
             $("#modalValoracion").modal("hide");
           }, 2000);
@@ -111,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
           $("#rating").barrating("clear");
           $("#comentario").val("");
 
-          // Recargar la página después de un cierto tiempo (por ejemplo, 3 segundos más)
+          // Recargar Página
           setTimeout(function () {
             location.reload();
           }, 2000);

@@ -11,7 +11,7 @@ if (!isset($_SESSION['user'])) {
   exit();
 }
 
-include_once "../includes/dbh.inc.php";
+include_once "../includes/class/dbh.inc.php";
 
 // Pagina Actual de Cada Pestaña
 $pageComprados = isset($_GET['pageComprados']) ? (int)$_GET['pageComprados'] : 1;
@@ -219,7 +219,6 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
         </table>
       </div>
       <!-- Tabla de Libros Vendidos FIN-->
-
 
       <!-- Paginación Libros en Vendidos -->
       <nav aria-label="Page navigation example">

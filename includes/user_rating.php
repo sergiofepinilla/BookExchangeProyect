@@ -1,5 +1,5 @@
 <?php
-require_once '../includes/dbh.inc.php';
+require_once '../includes/class/dbh.inc.php';
 $conn = Connection::getConnection();
 
 if (isset($_GET['id'])) {

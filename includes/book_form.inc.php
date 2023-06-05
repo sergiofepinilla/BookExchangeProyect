@@ -1,7 +1,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-  include_once 'dbh.inc.php';
+  include_once 'class/dbh.inc.php';
   include_once 'class/user.class.php';
   include_once 'class/book.class.php';
   $conn = Connection::getConnection();

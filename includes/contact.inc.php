@@ -1,6 +1,6 @@
 <?php // Gestión de Contacto
 if (isset($_POST["contact-submit"])) {
-    include_once "dbh.inc.php";
+    include_once "class/dbh.inc.php";
     include_once "functions.inc.php";
     $conn = Connection::getConnection();
     $contactName = $_POST["contactName"];

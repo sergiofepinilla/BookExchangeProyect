@@ -1,5 +1,5 @@
 <?php // Borrar Usuario
-include_once 'dbh.inc.php';
+include_once 'class/dbh.inc.php';
 session_start();
 
 if (isset($_POST["idUsuario"])) {

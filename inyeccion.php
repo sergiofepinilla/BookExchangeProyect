@@ -1,5 +1,5 @@
 <?php
-require_once 'includes/dbh.inc.php';
+require_once 'includes/class/dbh.inc.php';
 $comentarios = [
 "Gran producto, recomendado.",
 "Excelente calidad, me encantó.",

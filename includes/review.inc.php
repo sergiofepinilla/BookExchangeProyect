@@ -1,5 +1,5 @@
 <?php
-include_once "dbh.inc.php";
+include_once "class/dbh.inc.php";
 
 $rating = $_POST['rating'];
 $comentario = $_POST['comentario'];

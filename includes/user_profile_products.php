@@ -1,5 +1,5 @@
 <?php
-require_once '../includes/dbh.inc.php';
+require_once '../includes/class/dbh.inc.php';
 include_once "../includes/class/user.class.php";
 $conn = Connection::getConnection();
 
@@ -20,7 +20,7 @@ if (isset($_GET['id'])) {
     INNER JOIN datos_usuario ON usuarios.id = datos_usuario.id_usuario
     WHERE usuarios.id = '$id'";
 
-    // Obtener Libros del  Usuarios
+    // Obtener Libros del Usuarios
     $query_products = "
     SELECT libros_venta.*,generos.nombre_genero
     FROM libros_venta

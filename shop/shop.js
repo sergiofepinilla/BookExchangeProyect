@@ -13,13 +13,13 @@ document.addEventListener("DOMContentLoaded", (event) => {
       currentCategory = $(this).attr("href").split("=")[1];
       currentPage = 1;
 
-      // Borra el parámetro de búsqueda (query) de la URL.
+      // Borra Parámetro de Búsqueda 
       urlParams.delete("query");
 
-      // Actualiza la URL en la barra de direcciones sin recargar la página.
+      // Actualiza URL 
       history.pushState({}, "", "?" + urlParams.toString());
 
-      // Llama a getProducts sin el parámetro de búsqueda.
+      // Llamar getProducts sin Parámetro de Búsqueda.
       getProducts(currentPage, currentCategory);
     });
 
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
   function getProducts(page, category, query) {
     var ajaxSettings = {
-      url: "../modelo/shop_product.php",
+      url: "../includes/shop_product.php",
       type: "GET",
       dataType: "json",
       data: { page: page, category: category, query: query },

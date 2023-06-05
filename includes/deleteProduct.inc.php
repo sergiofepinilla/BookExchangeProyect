@@ -1,5 +1,5 @@
 <?php   // Borrar Libro
-include_once 'dbh.inc.php';
+include_once 'class/dbh.inc.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['idLibro'])) {

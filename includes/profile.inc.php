@@ -1,6 +1,6 @@
 <?php
 if (isset($_POST['saveProfileSubmit'])) {
-    include_once 'dbh.inc.php';
+    include_once 'class/dbh.inc.php';
     include_once 'functions.inc.php';
     include_once 'class/user.class.php';
     $conn = Connection::getConnection();

@@ -32,12 +32,12 @@ document.addEventListener("DOMContentLoaded", function () {
   function getProduct() {
     return new Promise(function (resolve, reject) {
       $.ajax({
-        url: "../modelo/product_model.php",
+        url: "../includes/product_model.php",
         type: "GET",
         data: { id: id },
         dataType: "json",
         success: function (data) {
-          // No Existe Producto Mostrar Imagen no-result
+          // No Existe Producto : Mostrar Imagen no-result
           if (data.length === 0) {
             document.getElementById("no-results-image").style.display = "block";
             document.getElementById("bookContainer").style.display = "none";
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function getRecommendedBooks() {
     return new Promise(function (resolve, reject) {
       $.ajax({
-        url: "../modelo/recommended_books.php",
+        url: "../includes/recommended_books.php",
         type: "GET",
         dataType: "json",
         success: function (data) {
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadSellerRating() {
     return new Promise(function (resolve, reject) {
       $.ajax({
-        url: "../modelo/user_rating.php",
+        url: "../includes/user_rating.php",
         type: "GET",
         data: { id: sellerId },
         dataType: "json",
@@ -274,7 +274,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "a"
       ).href = `../purchase_history/purchase_history.php`;
     } else {
-      // Si el producto no pertenece al usuario actual, oculta el enlace
+      // Producto Ajeno : Ocultar Retirar Libro
       removeProductLink.style.display = "none";
     }
   }

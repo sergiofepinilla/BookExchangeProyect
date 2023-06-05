@@ -3,7 +3,7 @@ function getProducts() {
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get("id");
     $.ajax({
-      url: "../modelo/user_profile_products.php",
+      url: "../includes/user_profile_products.php",
       type: "GET",
       dataType: "json",
       data: { id: id },
@@ -14,7 +14,6 @@ function getProducts() {
         document.getElementById("no-results-image").style.display = "block";
         document.getElementById("user-info").style.display = "none";
         document.getElementById("user-reviews").style.display = "none";
-        //reject(error);
       },
     });
   });
@@ -25,7 +24,7 @@ function getReviews() {
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get("id");
     $.ajax({
-      url: "../modelo/user_profile_reviews.php",
+      url: "../includes/user_profile_reviews.php",
       type: "GET",
       dataType: "json",
       data: { id: id },

@@ -1,5 +1,5 @@
 <?php
-include_once 'dbh.inc.php';
+include_once 'class/dbh.inc.php';
 session_start();
 
 if (isset($_POST["idUsuario"])) {
@@ -38,8 +38,5 @@ if (isset($_POST["idUsuario"])) {
         $stmt->bind_param("ii", $id, $id);
         $stmt->execute();
 
-        echo "Usuario bloqueado y registros eliminados exitosamente.";
-    } else {
-        echo "El usuario no existe.";
     }
 }
