@@ -360,7 +360,6 @@ document.addEventListener("DOMContentLoaded", function () {
     formData.append("precio", precio);
     formData.append("id_libro", id_libro);
 
-    // Enviar Datos al Script PHP vía AJAX
     fetch("../includes/purchase_process.inc.php", {
       method: "POST",
       body: formData,
@@ -373,20 +372,20 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       })
       .then((data) => {
-        // Ocultar contenido original y mostrar mensaje de carga
+        // Ocultar y Mostrar Carga
         document.getElementById("purchease_form").style.display = "none";
         document.getElementById("loadingMessage").style.display = "block";
 
         setTimeout(() => {
-          // Ocultar mensaje de carga y mostrar mensaje de éxito
+          // Ocultar Carga Mostrar Mensaje
           document.getElementById("loadingMessage").style.display = "none";
           document.getElementById("successMessage").style.display = "block";
 
-          // Redirigir a la página de inicio después de un retardo
+          // Redirigir 
           setTimeout(function () {
             window.location.href = "../home/home.php";
-          }, 2000); // 3000 ms = 3 segundos
-        }, 4000); // Este retardo es para simular el tiempo de carga. Puedes ajustarlo según tus necesidades.
+          }, 2000); 
+        }, 4000); 
       })
       .catch((error) => {
         console.error("Error:", error);

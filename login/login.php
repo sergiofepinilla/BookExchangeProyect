@@ -46,7 +46,7 @@ if (isset($_SESSION['user'])) {
             ?>
 
             <div class="text-center text-lg-start mt-4 pt-2">
-              <button type="submit" class="btn primary-btn custom-card-border-2 btn-lg mb-3" style="padding-left: 2.5rem; padding-right: 2.5rem;" name="login-submit">Inicias Sesión</button>
+              <button type="submit" class="fw-bold btn btn-lg dark-theme custom-text custom-card-border mb-3" style="padding-left: 2.5rem; padding-right: 2.5rem;" name="login-submit">Inicias Sesión</button>
               <p class="small fw-bold mt-2 pt-1 mb-5 custom-text">¿No tienes una cuenta? <a href="../signup/signup.php">Registrate</a></p>
             </div>
           </form>

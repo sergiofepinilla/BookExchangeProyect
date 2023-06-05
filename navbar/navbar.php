@@ -172,7 +172,7 @@ if (isset($_SESSION["user"])) {
 
             <?php if (!isset($_SESSION["user"])) { ?>
                 <li class="nav-item d-lg-none">
-                    <a class="nav-link text-white fw-bold" href="../login/login.php">Iniciar Sesion</a>
+                    <a class="nav-link text-white fw-bold" href="../login/login.php">IniciarSesion</a>
                 </li>
                 <li class="nav-item d-lg-none">
                     <a class="nav-link text-white fw-bold " href="../signup/signup.php">Registrarse</a>
@@ -199,8 +199,8 @@ if (isset($_SESSION["user"])) {
 
         <?php if (!isset($_SESSION["user"])) { ?>
             <div class="button-container me-2 d-none d-lg-block">
-                <a href="../signup/signup.php" class="btn me-3 fw-bold primary-btn">Registrarse</a>
-                <a href="../login/login.php" class="btn me-3 fw-bold primary-btn"> Inicar Sesión</a>
+                <a href="../signup/signup.php" class="fw-bold btn dark-theme custom-text custom-card-border">Registrarse</a>
+                <a href="../login/login.php" class="fw-bold btn dark-theme custom-text custom-card-border"> Inicar Sesión</a>
             </div>
 
         <?php } else { ?>

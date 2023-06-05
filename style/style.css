@@ -4,9 +4,10 @@
 body, footer {
   cursor: url(../assets/img/cursor/cursor.png), auto;
 }
-td:hover, i:hover, button:hover:enabled, a:hover, .carousel-control-prev:hover, .carousel-control-next:hover {
+td:hover, i:hover, button:hover:enabled, a:hover, .carousel-control-prev:hover, .carousel-control-next:hover, select:hover {
   cursor: url(../assets/img/cursor/pointer.png), pointer;
 }
+
 h1, h2 {
   font-family: 'Amatic SC', cursive;
   font-weight: 600;
@@ -82,10 +83,15 @@ a.profile-link {
   border-radius: 50%;
 }
 .inf-nav,footer{
-  background-color: #1d1d1d;
+  background-color: #333232;
 }
 .dark-theme{
-  background-color: #040401;
+  /*background-color: #040401;*/
+ /*  background-color: #0e100e; */
+ background-color: #101113; 
+ /* background-color: #040401; */
+ /* background-color: #040401; */
+ /* background-color: #040401; */
 }
 .primary-btn{
   background-color: #a39fdb;

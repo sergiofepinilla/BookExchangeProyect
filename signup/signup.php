@@ -17,20 +17,20 @@ if (isset($_SESSION['user'])) {
         <div class="col-md-8 col-lg-6 rounded  p-md-5">
           <h2>Registro</h2>
           <div class="custom-hr w-100 mb-3 mt-3"></div>
-          <form action="../includes/signup.inc.php" method="POST">
+          <form action="../includes/signup.inc.php" method="POST" id="signupForm">
             <!-- Nombre completo input -->
             <div class="form-outline mb-4">
               <label class="form-label custom-text" for="signupName">
                 Nombre Completo
               </label>
-              <input type="text" id="signupName" class="form-control form-control-lg" placeholder="Introduce el nombre completo" name="signupName" maxlength="69 " required />
+              <input type="text" id="signupName" class="form-control form-control-lg" placeholder="Introduce el nombre completo" name="signupName" maxlength="30 " required />
             </div>
             <!-- Nombre de usuario input -->
             <div class="form-outline mb-4">
               <label class="form-label custom-text" for="signupNick">
                 Nombre de Usuario
               </label>
-              <input type="text" id="signupNick" class="form-control form-control-lg" placeholder="Introduce el nombre de usuario" name="signupNick" maxlength="69" required />
+              <input type="text" id="signupNick" class="form-control form-control-lg" placeholder="Introduce el nombre de usuario" name="signupNick" maxlength="20" required />
             </div>
             <!-- Correo electrónico input -->
             <div class="form-outline mb-4">
@@ -55,19 +55,12 @@ if (isset($_SESSION['user'])) {
             </div>
 
             <?php if (isset($_GET["error"])) {
-              if (
-                $_GET["error"] == "emptyFields"
-              ) {
-                echo "<p class='text-danger'>There are empty fields</p>";
-              } elseif ($_GET["error"] == "emailExist") {
+             if ($_GET["error"] == "emailExist") {
                 echo
                 "<p class='text-danger'>El apodo o el correo ya existen</p>";
               } elseif ($_GET["error"] == "stmtFailed") {
                 echo
                 "<p class='text-danger'>Error interno</p>";
-              } elseif ($_GET["error"] == "noMatchPwd") {
-                echo
-                "<p class='text-danger'>Las contraseñas no coinciden</p>";
               } elseif ($_GET["error"] == "invalidEmail") {
                 echo
                 "<p class='text-danger'>Email Invalido</p>";
@@ -78,7 +71,7 @@ if (isset($_SESSION['user'])) {
             } ?>
 
             <div class="text-center text-lg-start mt-4 pt-2">
-              <button type="submit" class="btn primary-btn custom-card-border-2 btn-lg mb-3" style="padding-left: 2.5rem; padding-right: 2.5rem;" name="signup-submit">
+              <button type="submit" class="fw-bold btn btn-lg dark-theme custom-text custom-card-border" style="padding-left: 2.5rem; padding-right: 2.5rem;" name="signup-submit">
                 Registrarse
               </button>
               <p class="small fw-bold mt-2 pt-1 mb-5 custom-text">
@@ -88,6 +81,7 @@ if (isset($_SESSION['user'])) {
                 </a>
               </p>
             </div>
+            <input type="hidden" name="signup-submit" value="1">
           </form>
         </div>
       </div>
@@ -95,7 +89,7 @@ if (isset($_SESSION['user'])) {
   </section>
 </div>
 
-
+<script src="signup.js"></script>
 <?php require_once '../footer/upper_footer.php' ?>
 <script src="../navbar/navbar.js"></script>
 <?php require_once '../footer/footer_links.php' ?>

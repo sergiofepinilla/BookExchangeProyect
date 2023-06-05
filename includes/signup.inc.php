@@ -12,20 +12,6 @@ if (isset($_POST['signup-submit'])) {
     $signupPwd = $_POST['signupPwd'];
     $signupRepwd = $_POST['signupRepwd'];
 
-    if (checkEmptyValuesSignUp($signupName, $signupNick, $signupEmail, $signupPwd, $signupRepwd) !== false) {
-        header('location: ../signup/signup.php?error=emptyFields');
-        exit();
-    }
-
-    if (invalidEmail($signupEmail) !== false) {
-        header('location: ../signup/signup.php?error=invalidEmail');
-        exit();
-    }
-
-    if (matchPwd($signupPwd, $signupRepwd) !== false) {
-        header('location: ../signup/signup.php?error=noMatchPwd');
-        exit();
-    }
 
     if (uidExists($conn, $signupNick, $signupEmail) !== false) {
         header('location: ../signup/signup.php?error=emailExist');

@@ -1,7 +1,7 @@
 <?php require_once '../header/header.php'; ?>
 <?php require_once '../navbar/navbar.php'; ?>
 <div class="container mt-4 mb-4">
-    <img src="../assets/img/carousel/envio_pink.png" class="img-fluid w-100 custom-card-border-2 rounded" alt="Imagen Envio Gratis" />
+    <img src="../assets/img/carousel/envio_pink.png" class="img-fluid w-100 custom-card-border rounded" alt="Imagen Envio Gratis" />
 </div>
 <div class="container">
     <!--separador-->
@@ -121,8 +121,8 @@
                         <p>Este sitio web utiliza cookies para mejorar la experiencia del usuario. Al continuar navegando, aceptas nuestra política de cookies.</p>
                     </div>
                     <div class="col-lg-auto text-center text-lg-right">
-                        <button id="accept-cookies" class="btn primary-btn custom-text cookie-btn">Aceptar</button>
-                        <button id="reject-cookies" class="btn secondary-btn custom-text cookie-btn">Rechazar</button>
+                        <button id="accept-cookies" class="fw-bold btn dark-theme custom-text custom-card-border cookie-btn">Aceptar</button>
+                        <button id="reject-cookies" class="fw-bold btn dark-theme custom-text custom-card-border cookie-btn">Rechazar</button>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 </div>

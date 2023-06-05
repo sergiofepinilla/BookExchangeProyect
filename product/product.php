@@ -88,21 +88,21 @@
                                     <div class="row g-3">
                                         <div class="col-sm-6">
                                             <label for="firstName" class="form-label">Nombre</label>
-                                            <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+                                            <input type="text" class="form-control" id="firstName" placeholder="Nombre *">
                                             <div class="invalid-feedback">
                                                 Se requiere un nombre válido.
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <label for="lastName" class="form-label">Apellido</label>
-                                            <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
+                                            <input type="text" class="form-control" id="lastName" placeholder="Apellido *">
                                             <div class="invalid-feedback">
                                                 Se requiere apellido válido.
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <label for="address" class="form-label">Dirección</label>
-                                            <input type="text" class="form-control" id="address" placeholder="1234 Main St" required="">
+                                            <input type="text" class="form-control" id="address" placeholder="Calle..." >
                                             <div class="invalid-feedback">
                                                 Por favor introduce tu direccion de envio.
                                                 Please enter your shipping address.
@@ -110,11 +110,11 @@
                                         </div>
                                         <div class="col-12">
                                             <label for="address2" class="form-label">Dirección 2 <span class="text-muted">(Opcional)</span></label>
-                                            <input type="text" class="form-control" id="address2" placeholder="Apartamento o suite">
+                                            <input type="text" class="form-control" id="address2" placeholder="Apartamento...">
                                         </div>
                                         <div class="col-md-5">
                                             <label for="country" class="form-label">Cominudad Autónoma</label>
-                                            <select class="form-select" id="country" required="">
+                                            <select class="form-select" id="country" >
                                                 <option value="">Elige...</option>
                                                 <option>Andalucía</option>
                                                 <option>Aragón</option>
@@ -142,7 +142,7 @@
                                         </div>
                                         <div class="col-md-3">
                                             <label for="zip" class="form-label">Código postal</label>
-                                            <input type="text" class="form-control" id="zip" placeholder="" required="">
+                                            <input type="text" class="form-control" id="zip" placeholder="" >
                                             <div class="invalid-feedback">
                                                 Código postal requerido.
                                             </div>
@@ -160,29 +160,28 @@
                                     <div class="row gy-3">
                                         <div class="col-md-6">
                                             <label for="cc-name" class="form-label">Nombre en la tarjeta</label>
-                                            <input type="text" class="form-control" id="cc-name" placeholder="" required="">
-                                            <small class="text-muted">Nombre completo como se muestra en la tarjeta</small>
+                                            <input type="text" class="form-control" id="cc-name" placeholder="" >
                                             <div class="invalid-feedback">
                                                 Se requiere el nombre en la tarjeta
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <label for="cc-number" class="form-label">Número de tarjeta de crédito</label>
-                                            <input type="text" class="form-control" id="cc-number" placeholder="" required="">
+                                            <input type="text" class="form-control" id="cc-number" placeholder="" >
                                             <div class="invalid-feedback">
                                                 Se requiere número de tarjeta de crédito
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <label for="cc-expiration" class="form-label">Vencimiento</label>
-                                            <input type="text" class="form-control" id="cc-expiration" placeholder="" required="">
+                                            <input type="text" class="form-control" id="cc-expiration" placeholder="" >
                                             <div class="invalid-feedback">
                                                 Fecha de vencimiento requerida
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <label for="cc-cvv" class="form-label">CVV</label>
-                                            <input type="text" class="form-control" id="cc-cvv" placeholder="" required="">
+                                            <input type="text" class="form-control" id="cc-cvv" placeholder="" >
                                             <div class="invalid-feedback">
                                                 Código de seguridad requerido
                                             </div>
