@@ -29,11 +29,13 @@ document
   });
 
 function search() {
-  var product = document.getElementById("searchBar").value;
+  var productDesktop = document.getElementById("searchBar").value;
+  var productMobile = document.getElementById("searchBar2").value;
+  var product = productDesktop ? productDesktop : productMobile;
   if (product) {
-    window.location.replace("../shop/shop.php?query=" + product);
+      window.location.replace("../shop/shop.php?query=" + product);
   } else {
-    window.location.replace("../shop/shop.php");
+      window.location.replace("../shop/shop.php");
   }
 }
 

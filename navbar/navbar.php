@@ -11,7 +11,7 @@ if (isset($_SESSION["user"])) {
     $userProfilePicture = $user->getProfilePicture();
 }
 ?>
-<!-- Primera navbar (superior) con logo y barra de búsqueda -->
+<!-- Navbar Superior -->
 <nav class="navbar navbar-expand-lg bg dark-theme">
     <div class="container">
         <div class="d-flex d-lg-none w-100">
@@ -22,18 +22,18 @@ if (isset($_SESSION["user"])) {
                 </svg>
             </button>
 
-            <!-- LOGO FOR MOBILE -->
+            <!-- LOGO MOVIL -->
             <a href="../home/home.php" class="d-flex align-items-center">
                 <img src="../assets/img/logo/logo.png" class="w-75 ms-3" alt="Logo">
             </a>
         </div>
 
-        <!-- LOGO FOR DESKTOP -->
+        <!-- LOGO DESKTOP -->
         <a href="../home/home.php" class="w-25 d-none d-lg-flex align-items-center me-2">
             <img src="../assets/img/logo/logo.png" class="w-100" alt="Logo">
         </a>
 
-        <!-- SEARCH BAR FOR DESKTOP -->
+        <!-- BARRA DE BUSQUEDA DESKTOP -->
         <div class="d-none d-lg-flex justify-content-center align-items-center flex-grow-1">
             <div class="input-group">
                 <input class="form-control dark-theme" placeholder="Busca por autor, título, género, ISBN" id="searchBar">
@@ -41,7 +41,7 @@ if (isset($_SESSION["user"])) {
             </div>
         </div>
 
-        <!-- SEARCH BAR FOR MOBILE -->
+        <!-- BARRA DE BUSQUEDA MOVIL -->
         <div class="d-flex d-lg-none justify-content-center align-items-center w-100 mt-3">
             <div class="input-group">
                 <input class="form-control dark-theme" placeholder="Busca por autor, título, género, ISBN" id="searchBar2">
