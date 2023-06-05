@@ -30,7 +30,7 @@ if (isset($_SESSION['user'])) {
               <label class="form-label custom-text" for="signupNick">
                 Nombre de Usuario
               </label>
-              <input type="text" id="signupNick" class="form-control form-control-lg" placeholder="Introduce el nombre de usuario" name="signupNick" maxlength="20" required />
+              <input type="text" id="signupNick" class="form-control form-control-lg" placeholder="Introduce el nombre de usuario" name="signupNick" maxlength="16" required />
             </div>
             <!-- Correo electrónico input -->
             <div class="form-outline mb-4">

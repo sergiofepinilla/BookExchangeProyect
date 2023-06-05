@@ -64,7 +64,7 @@ function loadCarousel(carouselInnerId, productsToShow, userInfo, isLarge) {
 
   var usu_apodo = document.getElementById("apodo");
   if (usu_apodo) {
-    usu_apodo.textContent = userInfo.nombre;
+    usu_apodo.textContent = userInfo.apodo;
   }
 
   var usu_nombre = document.getElementById("nombre");

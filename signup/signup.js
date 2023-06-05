@@ -14,8 +14,8 @@ document.getElementById('signupForm').addEventListener('submit', function(e) {
     }
   
     // Limitar Nombre
-    if(signupName.split(' ').length > 2) {
-      alert("El nombre puede tener un máximo de 2 palabras.");
+    if(signupName.split(' ').length > 3) {
+      alert("El nombre puede tener un máximo de 3 palabras.");
       return;
     }
   
@@ -45,8 +45,8 @@ document.getElementById('signupForm').addEventListener('submit', function(e) {
 // Limitar Nombre
 document.getElementById('signupName').addEventListener('input', function(e) {
     let words = this.value.split(' ');
-    if(words.length > 2) {
-      words.length = 2;
+    if(words.length > 3) {
+      words.length = 3;
       this.value = words.join(' ');
     }
 });

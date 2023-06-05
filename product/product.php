@@ -1,6 +1,6 @@
 <?php require_once '../header/header.php' ?>
 <?php require_once '../navbar/navbar.php' ?>
-<img src="../assets/img/no-result.JPG" alt="" id="no-results-image" class="w-75 mt-5 mb-5 mx-auto" style="display:none">
+<img src="../assets/img/no-result.JPG" alt="" id="no-results-image" class="w-75 mt-5 mb-5 mx-auto rounded" style="display:none">
 <div class="container mt-5 mb-5" id="bookContainer">
     <div class="row p-4 p-md-0">
 
@@ -14,13 +14,12 @@
                 <div class="card dark-theme " style="border-radius: 15px;">
                     <div class="card-body">
 
-                        <div class="row align-items-center">
+                        <div class="row align-items-center flex-nowrap">
                             <div id="profilePicture" class="col-auto d-flex align-items-center">
                             </div>
-                            <div class="col-auto d-flex align-items-center">
-                                <h1 class="mb-2 custom-text fw-bold" id="usu_vendedor">Vendedor</h1>
+                            <div class="col-auto d-flex align-items-start w-100">
+                                <h2 class="mb-2 custom-text fw-bold" id="usu_vendedor">Vendedor</h2>
                             </div>
-
                         </div>
                         <div class="row d-flex justify-content-end">
                             <div class="col-auto d-flex align-items-center rating-container">

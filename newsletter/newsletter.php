@@ -21,10 +21,10 @@
 
 <div class="container mb-5 d-lg-none">
     <div class="row mb-3">
-        <span class="text-white">
+        <span class="text-white text-center">
             Suscribete y no te piedras los ultimos productos
         </span>
-        <div class="custom-hr w-100 mt-2 mb-2"></div>
+        <div class="custom-hr mt-2 mb-2"></div>
     </div>
     <div class="row">
         <input type="text" class="form-control dark-theme mb-2" placeholder="Introduce tu correo electrónico">

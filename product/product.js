@@ -207,7 +207,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "<span class='fw-bold'>Descripción</span>: " + product.descripcion;
 
     const usu_vendedor = document.getElementById("usu_vendedor");
-    usu_vendedor.textContent = product.vendedor_nombre;
+    usu_vendedor.textContent = product.vendedor_apodo;
 
     const usuVendedorLink = document.getElementById("usu_vendedor_link");
     usuVendedorLink.href = `../profile/profile.php?id=${product.id_usuario}`;

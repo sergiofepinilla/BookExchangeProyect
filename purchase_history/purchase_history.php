@@ -149,7 +149,7 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
                 <td><?php echo htmlspecialchars($row['fecha_compra']); ?></td>
                 <td>
                   <?php if ($row['review'] == 0) : ?>
-                    <button class="btn accent valorar custom-text" data-rowid="<?php echo $row['id']; ?>" data-idlibro="<?php echo $row['id_libro_venta']; ?>" data-idusuvendedor="<?php echo $row['id_usu_vendedor']; ?>" data-idusucomprador="<?php echo $userId; ?>">
+                    <button class="fw-bold btn dark-theme text-white custom-card-border valorar " data-rowid="<?php echo $row['id']; ?>" data-idlibro="<?php echo $row['id_libro_venta']; ?>" data-idusuvendedor="<?php echo $row['id_usu_vendedor']; ?>" data-idusucomprador="<?php echo $userId; ?>">
                       Valorar
                     </button>
                   <?php else : ?>
@@ -272,7 +272,7 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
                 <td><?php echo htmlspecialchars($row['estado']); ?></td>
                 <td><?php echo htmlspecialchars($row['precio']); ?></td>
                 <td>
-                  <button class="btn accent custom-text retirar" data-id="<?php echo $row['id']; ?>">
+                  <button class="fw-bold btn dark-theme text-white custom-card-border retirar" data-id="<?php echo $row['id']; ?>">
                     Retirar Libro
                   </button>
                 </td>

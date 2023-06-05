@@ -20,7 +20,7 @@ if (isset($_SESSION['user'])) {
           <form action="../includes/login.inc.php" method="POST">
             <!-- Email Input -->
             <div class="form-outline mb-4">
-              <label class="form-label custom-text" for="form3Example3">Direccion de correo</label>
+              <label class="form-label custom-text" for="form3Example3">Correo Electrónico / Nombre de Usuario</label>
               <input type="text" id="form3Example3" class="form-control form-control-lg" placeholder="Introduce el correo electronico" name="uid" maxlength="69" />
             </div>
 

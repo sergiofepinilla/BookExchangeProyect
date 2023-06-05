@@ -62,28 +62,6 @@ function checkEmptyValuesContact($contactName, $contactEmail, $contactText)
     return $result;
 }
 
-function checkEmptyValuesSignUp(
-    $signupName,
-    $signupNick,
-    $signupEmail,
-    $signupPwd,
-    $signupRepwd
-) {
-    $result = null;
-    if (
-        empty($signupName) ||
-        empty($signupNick) ||
-        empty($signupEmail) ||
-        empty($signupPwd) ||
-        empty($signupRepwd)
-    ) {
-        $result = true;
-    } else {
-        $result = false;
-    }
-    return $result;
-}
-
 function invalidUid($uid)
 {
     $result = null;

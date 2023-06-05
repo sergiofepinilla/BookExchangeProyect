@@ -1,29 +1,47 @@
 <?php
 require_once 'includes/dbh.inc.php';
-
 $comentarios = [
-    "Gran producto, recomendado.",
-    "Excelente calidad, me encantó.",
-    "El artículo llegó a tiempo, muy bueno.",
-    "Mejor de lo que esperaba.",
-    "Muy satisfecho con mi compra.",
-    "El servicio al cliente fue excelente.",
-    "Rápido envío, gran servicio.",
-    "Superó mis expectativas.",
-    "Definitivamente compraré aquí de nuevo.",
-    "Producto de alta calidad, valió la pena la inversión.",
-    "Increíble, simplemente increíble.",
-    "Justo lo que estaba buscando.",
-    "No decepciona, buen producto.",
-    "Se lo recomendaría a mis amigos.",
-    "Realmente agradezco la rápida entrega.",
-    "Estoy realmente impresionado con este producto.",
-    "No puedo esperar para usarlo más.",
-    "Realmente satisfecho con esta compra.",
-    "Esto vale cada centavo.",
-    "¡El mejor producto en su clase!",
+"Gran producto, recomendado.",
+"Excelente calidad, me encantó.",
+"El artículo llegó a tiempo, muy bueno.",
+"Mejor de lo que esperaba.",
+"Muy satisfecho con mi compra.",
+"El servicio al cliente fue excelente.",
+"Rápido envío, gran servicio.",
+"Superó mis expectativas.",
+"Definitivamente compraré aquí de nuevo.",
+"Producto de alta calidad, valió la pena la inversión.",
+"Increíble, simplemente increíble.",
+"Justo lo que estaba buscando.",
+"No decepciona, buen producto.",
+"Se lo recomendaría a mis amigos.",
+"Realmente agradezco la rápida entrega.",
+"Estoy realmente impresionado con este producto.",
+"No puedo esperar para usarlo más.",
+"Realmente satisfecho con esta compra.",
+"Esto vale cada centavo.",
+"¡El mejor producto en su clase!",
+"¡Realmente se ha convertido en uno de mis productos favoritos! Lo uso todos los días.",
+"¡Wow, estoy completamente impresionado! Este producto excede todas mis expectativas.",
+"Compré esto como un regalo para un amigo y le encantó. Definitivamente recomendaré este producto a otros.",
+"Estoy tan contento de haber encontrado este producto. Realmente ha hecho una gran diferencia.",
+"He comprado esto varias veces y siempre ha sido genial. ¡Gracias por la calidad consistente!",
+"Este es definitivamente un producto de cinco estrellas. ¡No puedo recomendarlo lo suficiente!",
+"Estoy muy impresionado con la calidad de este producto, realmente ha superado mis expectativas.",
+"Recibí mi pedido rápidamente y en perfectas condiciones. ¡Muy satisfecho con la compra!",
+"La mejor calidad a un precio razonable. No podría estar más feliz con mi compra.",
+"He estado utilizando este producto durante varios meses y todavía funciona como nuevo.",
+"Este producto no cumplió con mis expectativas. Lo encontré de baja calidad y no duradero.",
+"No estoy satisfecho con mi compra. El producto llegó tarde y no funcionó como se esperaba.",
+"Desafortunadamente, este producto no era lo que esperaba. No recomendaría comprarlo.",
+"Este producto se rompió después de un par de usos. Estoy muy decepcionado.",
+"La descripción del producto es engañosa. No es lo que esperaba.",
+"El servicio al cliente fue muy insatisfactorio. Tardaron mucho en responder y no resolvieron mi problema.",
+"El producto no valió la pena para el precio que pagué. Podría haber obtenido algo mejor por el mismo precio.",
+"El envío tomó mucho más tiempo de lo prometido. Estoy muy decepcionado con el servicio.",
+"El producto llegó dañado y no he podido obtener un reemplazo. No estoy satisfecho con mi compra.",
+"Tuve una mala experiencia con este producto. No duró tanto como decía la descripción."
 ];
-
 $editoriales = [
     "Penguin Random House",
     "HarperCollins",
@@ -635,21 +653,19 @@ function generateRandomBoolean()
     return rand(0, 1);
 }
 
-$maxBooks = 400;
+$maxBooks = 300;
 $insertedBooks = 0;
 
 $carpetaImagenes = "imagenes/inyeccion/IMG/";
 $imagenes = glob($carpetaImagenes . "*.jpg");
 
 $conn = Connection::getConnection();
-$usuarios = [2, 3, 4, 5, 6, 7, 8, 9, 10];
+$usuarios = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 
 foreach ($titulos as $titulo) {
     if ($insertedBooks >= $maxBooks) {
         break;
     }
-
-    // Asegúrate de que el vendedor y el comprador sean diferentes
     do {
         $id_usu_vendedor = $usuarios[array_rand($usuarios)];
         $id_usu_comprador = $usuarios[array_rand($usuarios)];

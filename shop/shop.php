@@ -59,12 +59,12 @@
                 <div class="col d-flex justify-content-center">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
-                            <li class="page-item"><a class="btn btn-lg inf-nav text-white custom-card-border" href="#" id="prev-page">Anterior</a></li>
+                            <li class="page-item"><a class="fw-bold btn btn-lg dark-theme text-white custom-card-border" href="#" id="prev-page">Anterior</a></li>
                             <div id="page-info" class="custom-text text-center d-flex align-items-center justify-content-center mx-3">
                                 <!-- Tu contenido aquí -->
                             </div>
 
-                            <li class="page-item"><a class="btn btn-lg inf-nav text-white custom-card-border" href="#" id="next-page">Siguiente</a></li>
+                            <li class="page-item"><a class="fw-bold btn btn-lg dark-theme text-white custom-card-border" href="#" id="next-page">Siguiente</a></li>
                         </ul>
                     </nav>
                 </div>
