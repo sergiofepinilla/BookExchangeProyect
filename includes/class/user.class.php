@@ -7,10 +7,6 @@ class User
     private $email;
     private $name;
     private $password;
-    private $gender;
-    private $dateOfBirth;
-    private $country;
-    private $address;
     private $profilePicture;
 
     public function __construct($id, $nick, $userType, $email, $name, $password,$profilePicture)
@@ -108,7 +104,7 @@ public function setProfilePicture($profilePicture)
         }
 
         $id = $result->fetch_assoc()['id'];
-        $user = new User($id, null, null, null, null, null, null, null, null, null, null);
+        $user = new User($id, null, null, null, null, null, null);
         $user->loadUserById($conn, $id);
 
         $hashedPwd = $user->getPassword();
@@ -153,16 +149,10 @@ public function setProfilePicture($profilePicture)
     {
         // Crear un nuevo objeto User
         $user = User::createUser($conn, $signupNick, $signupEmail, $signupName, $signupPassword);
-
         if ($user) {
-
             $user->loadUserById($conn, $user->getId());
-
-
             session_start();
             $_SESSION["user"] = serialize($user);
-
-
             header("location: ../home/home.php");
         } else {
             header("location: ../signup/signup.php?error=signupFailed");
