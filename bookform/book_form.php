@@ -101,7 +101,7 @@
                             <button type="button" class="fw-bold btn dark-theme text-white custom-card-border" id="btnFase1">Siguiente</button>
                     </div>
                     <div class="tab-pane fade" id="pills-fase2" role="tabpanel" aria-labelledby="pills-fase2-tab">
-                        <h1>Precio y envio</h1>
+                        <h1>Precio y Descripción</h1>
                         <div class="custom-hr w-100 mb-3"></div>
                         <div class="mb-3 col-sm-6">
                             <label for="precio" class="form-label custom-text">Precio</label>

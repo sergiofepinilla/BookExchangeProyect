@@ -309,7 +309,7 @@ document.addEventListener("DOMContentLoaded", function () {
       alert("Por favor, introduzca el nombre que aparece en la tarjeta.");
       return false;
     }
-    if (ccNumber == "" || ccNumber.length != 16) {
+    if (ccNumber == "" || ccNumber.length != 19) {
       alert("Por favor, introduzca un número de tarjeta de crédito válido.");
       return false;
     }
