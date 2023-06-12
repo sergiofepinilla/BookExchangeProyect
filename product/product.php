@@ -27,7 +27,7 @@
                         <div class="row">
                             <div class="col-12 d-flex align-items-center">
                                 <a href="" id="usu_vendedor_link" class="w-100">
-                                <button type="button" class="fw-bold btn btn-lg dark-theme custom-text custom-card-border w-100">Ver Perfil</button>
+                                    <button type="button" class="fw-bold btn btn-lg dark-theme custom-text custom-card-border w-100">Ver Perfil</button>
                                 </a>
                             </div>
                         </div>
@@ -58,7 +58,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <!-- Loading Message -->
+                            <!-- Animación Cargando -->
                             <div id="loadingMessage" style="display: none;">
                                 <div class="d-flex align-items-center">
                                     <div class="spinner-border text-primary me-3" role="status">
@@ -67,7 +67,7 @@
                                     <p class="mb-0 ml-2">Verificando Credenciales...</p>
                                 </div>
                             </div>
-                            <!-- Success Message -->
+                            <!-- Success -->
                             <div id="successMessage" style="display: none;">
                                 <div class="d-flex align-items-center">
                                     <i class="bi bi-check-circle-fill bi-lg custom-text me-3"></i>
@@ -94,7 +94,7 @@
                                         </div>
                                         <div class="col-12">
                                             <label for="address" class="form-label">Dirección</label>
-                                            <input type="text" class="form-control" id="address" placeholder="Calle..." >
+                                            <input type="text" class="form-control" id="address" placeholder="Calle...">
                                             <div class="invalid-feedback">
                                                 Por favor introduce tu direccion de envio.
                                                 Please enter your shipping address.
@@ -106,7 +106,7 @@
                                         </div>
                                         <div class="col-md-5">
                                             <label for="country" class="form-label">Cominudad Autónoma</label>
-                                            <select class="form-select" id="country" >
+                                            <select class="form-select" id="country">
                                                 <option value="">Elige...</option>
                                                 <option>Andalucía</option>
                                                 <option>Aragón</option>
@@ -134,7 +134,7 @@
                                         </div>
                                         <div class="col-md-3">
                                             <label for="zip" class="form-label">Código postal</label>
-                                            <input type="text" class="form-control" id="zip" placeholder="" >
+                                            <input type="text" class="form-control" id="zip" placeholder="">
                                             <div class="invalid-feedback">
                                                 Código postal requerido.
                                             </div>
@@ -152,28 +152,28 @@
                                     <div class="row gy-3">
                                         <div class="col-md-6">
                                             <label for="cc-name" class="form-label">Nombre en la tarjeta</label>
-                                            <input type="text" class="form-control" id="cc-name" placeholder="" >
+                                            <input type="text" class="form-control" id="cc-name" placeholder="">
                                             <div class="invalid-feedback">
                                                 Se requiere el nombre en la tarjeta
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <label for="cc-number" class="form-label">Número de tarjeta de crédito</label>
-                                            <input type="text" class="form-control" id="cc-number" placeholder="" >
+                                            <input type="text" class="form-control" id="cc-number" placeholder="" maxlength="19">
                                             <div class="invalid-feedback">
                                                 Se requiere número de tarjeta de crédito
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <label for="cc-expiration" class="form-label">Vencimiento</label>
-                                            <input type="text" class="form-control" id="cc-expiration" placeholder="" >
+                                            <input type="text" class="form-control" id="cc-expiration" placeholder="">
                                             <div class="invalid-feedback">
                                                 Fecha de vencimiento requerida
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <label for="cc-cvv" class="form-label">CVV</label>
-                                            <input type="text" class="form-control" id="cc-cvv" placeholder="" >
+                                            <input type="text" class="form-control" id="cc-cvv" placeholder="">
                                             <div class="invalid-feedback">
                                                 Código de seguridad requerido
                                             </div>
@@ -212,24 +212,24 @@
         <div class="carousel-inner" id="recommendedCarouselInner">
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#recommendedCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#recommendedCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
         </button>
     </div>
 </div>
 <!-- Libros Recomendados Container FIN -->
 </div>
 <?php
-    echo "<script>let currentUserId = undefined;";
-    if (isset($userId)) {
-        echo "currentUserId = $userId;";
-    }
-    echo "</script>";
-    ?>
+echo "<script>let currentUserId = undefined;";
+if (isset($userId)) {
+    echo "currentUserId = $userId;";
+}
+echo "</script>";
+?>
 <?php echo "<script>var sellerUserId;</script>"; ?>
 <?php require_once '../footer/upper_footer.php' ?>
 <script src="../navbar/navbar.js"></script>

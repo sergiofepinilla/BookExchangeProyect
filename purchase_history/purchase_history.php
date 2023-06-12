@@ -317,7 +317,7 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
 <!-- Modal Valoración -->
 <div class="modal fade " id="modalValoracion" tabindex="-1" aria-labelledby="modalValoracionLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content ">
+    <div class="modal-content dark-theme custom-card-border custom-text rounded">
       <div class="modal-header dark-theme text-white">
         <h5 class="modal-title" id="modalValoracionLabel">Valoración</h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
@@ -342,7 +342,7 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
           </div>
           <div class="form-group">
             <label for="comentario" class="mb-2">Comentario</label>
-            <textarea id="comentario" name="comentario" class="form-control" rows="3" placeholder="Escriba aqui su comentario sobre la venta o el vendedor, o dejelo vacío."></textarea>
+            <textarea id="comentario" name="comentario" class="form-control custom-card-border-2" rows="3" placeholder="Escriba aqui su comentario sobre la venta o el vendedor, o dejelo vacío."></textarea>
           </div>
         </div>
         <div class="modal-footer">
@@ -350,7 +350,12 @@ $totalPagesEnVenta = ceil($totalEnVenta / $perPage);
           <button type="submit" class="fw-bold btn dark-theme text-white custom-card-border">Enviar valoración</button>
         </div>
       </form>
-      <p id="successMessage" class="fs-5 ms-2 my-4" style="display:none">Se ha registrado la valoración correctamente.</p>
+      <div id="successMessage" class="m-4" style="display:none">
+        <div class="d-flex dark-theme custom-text rounded">
+          <i class="bi bi-check-circle-fill bi-lg custom-text me-3"></i>
+          <p class="mb-0 ml-2">Se ha registrado la valoración correctamente.</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
