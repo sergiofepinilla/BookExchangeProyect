@@ -9,7 +9,7 @@
     <h1>Perfil de Usuario</h1>
     <div class="custom-hr w-100"></div>
 </div>
-<img src="../assets/img/no-result.JPG" alt="" id="no-results-image" class="w-75 mt-5 mb-5 mx-auto" style="display:none">
+<img src="../assets/img/no-result.png" alt="" id="no-results-image" class="w-75 mt-5 mb-5 mx-auto" style="display:none">
 <!-- USER -->
 <div class="container custom-card-border-2 rounded mt-5 mb-5 rounded dark-theme " id="user-info">
     <!-- Perfil -->

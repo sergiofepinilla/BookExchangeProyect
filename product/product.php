@@ -1,6 +1,6 @@
 <?php require_once '../header/header.php' ?>
 <?php require_once '../navbar/navbar.php' ?>
-<img src="../assets/img/no-result.JPG" alt="" id="no-results-image" class="w-75 mt-5 mb-5 mx-auto rounded" style="display:none">
+<img src="../assets/img/no-result.png" alt="" id="no-results-image" class="w-75 mt-5 mb-5 mx-auto rounded" style="display:none">
 <div class="container mt-5 mb-5" id="bookContainer">
     <div class="row p-4 p-md-0">
         <div class="col-12 col-md-4 d-flex flex-column align-items-center me-2 dark-theme custom-text custom-card-border-2 mb-4 mb-md-0 " style="border-radius: 15px;">
