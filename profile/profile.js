@@ -118,7 +118,7 @@ function loadCarousel(carouselInnerId, productsToShow, userInfo, isLarge) {
 
 getProducts().then(
   function (data) {
-    console.log(data);
+    data;
     var userInfo = data.user_info;
     if (userInfo.length === 0) {
       // Mostrar Imagen no-products
@@ -497,7 +497,7 @@ if (profilePictureElement) {
 
         reader.readAsDataURL(e.target.files[0]);
       } else {
-        console.log("No file selected");
+        ("No file selected");
       }
     });
 }

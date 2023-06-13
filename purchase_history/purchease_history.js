@@ -41,8 +41,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Retirar Producto de la Tienda
     $(".retirar").click(function () {
       var idLibro = $(this).data("id");
-      console.log("qweqwe");
-      console.log(idLibro);
+      ("qweqwe");
+      idLibro;
 
       var confirmar = confirm(
         "¿Seguro que quieres retirar el libro de la tienda?"
